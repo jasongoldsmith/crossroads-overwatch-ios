@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0AFC7F45F909CF4C2255123122134CF4FA037EE1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0AFC7F45F909CF4C2255123122134CF4FA037EE1" : 0,
+    "B5DFFF7FA1B3FE3D0421F1F5883C2B0C64B984EB" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2A58E5D6-68FA-4F96-87B2-53E5B4F04D9F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0AFC7F45F909CF4C2255123122134CF4FA037EE1" : "overwatch-ios\/",
+    "B5DFFF7FA1B3FE3D0421F1F5883C2B0C64B984EB" : "traveler-ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Overwatch",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Overwatch.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/feighty\/overwatch-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0AFC7F45F909CF4C2255123122134CF4FA037EE1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/feighty\/traveler-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B5DFFF7FA1B3FE3D0421F1F5883C2B0C64B984EB"
+    }
+  ]
+}
