@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DatePicker" customModule="Overwatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2mC-nt-ZVb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="6hl-Xi-2h9">
+                    <rect key="frame" x="20" y="192" width="335" height="283"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <date key="date" timeIntervalSinceReferenceDate="492566665.48508698">
+                        <!--2016-08-11 00:04:25 +0000-->
+                    </date>
+                </datePicker>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2mC-nt-ZVb" secondAttribute="trailing" id="4Ll-ci-Vi8"/>
+                <constraint firstAttribute="bottom" secondItem="2mC-nt-ZVb" secondAttribute="bottom" id="Kdh-xZ-Db0"/>
+                <constraint firstAttribute="trailing" secondItem="6hl-Xi-2h9" secondAttribute="trailing" constant="20" id="P32-wW-cbq"/>
+                <constraint firstItem="6hl-Xi-2h9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="192" id="SnS-C6-ZVM"/>
+                <constraint firstItem="6hl-Xi-2h9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="eaf-Cu-QYO"/>
+                <constraint firstItem="2mC-nt-ZVb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="f2F-4E-bVH"/>
+                <constraint firstItem="2mC-nt-ZVb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lFJ-77-h2X"/>
+                <constraint firstAttribute="bottom" secondItem="6hl-Xi-2h9" secondAttribute="bottom" constant="192" id="wpA-lY-7Rq"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="datePicker" destination="6hl-Xi-2h9" id="1Re-NM-BY6"/>
+                <outletCollection property="gestureRecognizers" destination="o1i-BB-UCY" appends="YES" id="T4D-qp-HHN"/>
+            </connections>
+            <point key="canvasLocation" x="760" y="530"/>
+        </view>
+        <tapGestureRecognizer id="o1i-BB-UCY">
+            <connections>
+                <action selector="closePickerViewWithSender:" destination="iN0-l3-epB" id="V1y-t4-tWN"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

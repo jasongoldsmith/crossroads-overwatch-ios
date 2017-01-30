@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="5Cp-if-cEY" customClass="ErrorView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tkw-6E-YlU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-fH-0wG">
+                    <rect key="frame" x="13" y="164" width="350" height="340"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="340" id="l7z-cj-zhH"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6N-AV-o7O">
+                    <rect key="frame" x="312" y="171" width="44" height="44"/>
+                    <state key="normal" image="iconCloseX"/>
+                    <connections>
+                        <action selector="closeErrorView" destination="5Cp-if-cEY" eventType="touchUpInside" id="Ggg-ei-q5f"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wy6-h0-UeY">
+                    <rect key="frame" x="163" y="192" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Ig0-k0-TZL"/>
+                        <constraint firstAttribute="width" constant="50" id="TBM-Cu-nRb"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EYES UP, GUARDIAN!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG5-bO-hxF">
+                    <rect key="frame" x="105" y="257" width="166" height="20"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cug-zm-Aw5">
+                    <rect key="frame" x="163" y="297" width="50" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="mCN-Bk-ilv"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll need to be in the group to join activity. Request to join?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="044-lZ-A2B">
+                    <rect key="frame" x="32" y="314" width="312" height="37.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uf-fY-on8">
+                    <rect key="frame" x="106" y="383.5" width="164" height="37"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                    <state key="normal" title="ADD THIS ACTIVITY"/>
+                    <connections>
+                        <action selector="buttonOneYesPressed:" destination="5Cp-if-cEY" eventType="touchUpInside" id="D7x-VK-iV9"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-IH-onv">
+                    <rect key="frame" x="151" y="440.5" width="73" height="31"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <state key="normal" title="No thanks">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonTwoCancelPressed:" destination="5Cp-if-cEY" eventType="touchUpInside" id="RnL-Uj-4qk"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="1Ie-fH-0wG" firstAttribute="trailing" secondItem="044-lZ-A2B" secondAttribute="trailing" constant="19" id="2ra-hm-byD"/>
+                <constraint firstItem="6uf-fY-on8" firstAttribute="top" secondItem="044-lZ-A2B" secondAttribute="bottom" constant="32" id="7Jp-JB-BNI"/>
+                <constraint firstItem="044-lZ-A2B" firstAttribute="leading" secondItem="1Ie-fH-0wG" secondAttribute="leading" constant="19" id="7gF-K9-9VE"/>
+                <constraint firstItem="044-lZ-A2B" firstAttribute="top" secondItem="Cug-zm-Aw5" secondAttribute="bottom" constant="16" id="Bbq-gh-A49"/>
+                <constraint firstItem="1Ie-fH-0wG" firstAttribute="leading" secondItem="5Cp-if-cEY" secondAttribute="leading" constant="13" id="D3V-xV-Dsm"/>
+                <constraint firstItem="1Ie-fH-0wG" firstAttribute="centerY" secondItem="5Cp-if-cEY" secondAttribute="centerY" id="HPI-ZD-PVw"/>
+                <constraint firstItem="Cug-zm-Aw5" firstAttribute="leading" secondItem="wy6-h0-UeY" secondAttribute="leading" id="KHD-Tn-lY1"/>
+                <constraint firstItem="wy6-h0-UeY" firstAttribute="centerX" secondItem="5Cp-if-cEY" secondAttribute="centerX" id="U4u-Bu-d4u"/>
+                <constraint firstAttribute="bottom" secondItem="tkw-6E-YlU" secondAttribute="bottom" id="Whr-eS-L4M"/>
+                <constraint firstAttribute="trailing" secondItem="tkw-6E-YlU" secondAttribute="trailing" id="aIE-25-8gE"/>
+                <constraint firstItem="yG5-bO-hxF" firstAttribute="top" secondItem="wy6-h0-UeY" secondAttribute="bottom" constant="15" id="dBs-JM-o9q"/>
+                <constraint firstItem="Cug-zm-Aw5" firstAttribute="top" secondItem="yG5-bO-hxF" secondAttribute="bottom" constant="20" id="eaH-q0-1d2"/>
+                <constraint firstItem="6uf-fY-on8" firstAttribute="centerX" secondItem="wy6-h0-UeY" secondAttribute="centerX" id="fLe-vy-heW"/>
+                <constraint firstItem="tkw-6E-YlU" firstAttribute="leading" secondItem="5Cp-if-cEY" secondAttribute="leading" id="kkk-Fs-lpM"/>
+                <constraint firstItem="wy6-h0-UeY" firstAttribute="top" secondItem="1Ie-fH-0wG" secondAttribute="top" constant="28" id="l9v-8c-als"/>
+                <constraint firstItem="yG5-bO-hxF" firstAttribute="centerX" secondItem="wy6-h0-UeY" secondAttribute="centerX" id="mwf-Q8-ltc"/>
+                <constraint firstItem="ttf-IH-onv" firstAttribute="centerX" secondItem="wy6-h0-UeY" secondAttribute="centerX" id="nw4-8x-4yW"/>
+                <constraint firstItem="ttf-IH-onv" firstAttribute="top" secondItem="6uf-fY-on8" secondAttribute="bottom" constant="20" id="oXl-TE-eHi"/>
+                <constraint firstAttribute="trailing" secondItem="1Ie-fH-0wG" secondAttribute="trailing" constant="12" id="sa4-qG-PDa"/>
+                <constraint firstItem="Cug-zm-Aw5" firstAttribute="centerX" secondItem="wy6-h0-UeY" secondAttribute="centerX" id="ub3-qX-CdB"/>
+                <constraint firstItem="v6N-AV-o7O" firstAttribute="top" secondItem="1Ie-fH-0wG" secondAttribute="top" constant="7" id="whx-r0-1J5"/>
+                <constraint firstItem="v6N-AV-o7O" firstAttribute="trailing" secondItem="1Ie-fH-0wG" secondAttribute="trailing" constant="-7" id="yWb-x0-ao7"/>
+                <constraint firstItem="tkw-6E-YlU" firstAttribute="top" secondItem="5Cp-if-cEY" secondAttribute="top" id="zfQ-dA-XnI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="buttonOneYes" destination="6uf-fY-on8" id="wFx-SO-23g"/>
+                <outlet property="buttonTwoCancel" destination="ttf-IH-onv" id="xRn-d1-8PG"/>
+                <outlet property="errorDescription" destination="044-lZ-A2B" id="9kT-XX-Hga"/>
+            </connections>
+            <point key="canvasLocation" x="13" y="59"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconCloseX" width="44" height="44"/>
+    </resources>
+</document>

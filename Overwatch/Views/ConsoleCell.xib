@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="9uw-sa-MQg" customClass="ConsoleCell" customModule="Overwatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="419" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9uw-sa-MQg" id="ENo-tC-Rv3">
+                <rect key="frame" x="0.0" y="0.0" width="419" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJH-Ux-oIP">
+                        <rect key="frame" x="2" y="2" width="415" height="115.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PS4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-QI-TYm">
+                                <rect key="frame" x="54" y="0.0" width="361" height="115.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32156862749999998" green="0.3921568627" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Emv-QI-TYm" secondAttribute="bottom" id="AgG-lq-Qcq"/>
+                            <constraint firstItem="Emv-QI-TYm" firstAttribute="leading" secondItem="qJH-Ux-oIP" secondAttribute="leading" constant="54" id="Axw-re-gCg"/>
+                            <constraint firstAttribute="trailing" secondItem="Emv-QI-TYm" secondAttribute="trailing" id="PF8-Sk-JRq"/>
+                            <constraint firstItem="Emv-QI-TYm" firstAttribute="top" secondItem="qJH-Ux-oIP" secondAttribute="top" id="oCx-0i-XZs"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="qJH-Ux-oIP" firstAttribute="top" secondItem="ENo-tC-Rv3" secondAttribute="top" constant="2" id="6Dj-8L-Yws"/>
+                    <constraint firstItem="qJH-Ux-oIP" firstAttribute="leading" secondItem="ENo-tC-Rv3" secondAttribute="leading" constant="2" id="CP2-TY-QNi"/>
+                    <constraint firstAttribute="bottom" secondItem="qJH-Ux-oIP" secondAttribute="bottom" constant="2" id="Yuh-rx-ikH"/>
+                    <constraint firstAttribute="trailing" secondItem="qJH-Ux-oIP" secondAttribute="trailing" constant="2" id="aWw-vQ-3kM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="consoleTitle" destination="Emv-QI-TYm" id="JcJ-U0-SID"/>
+            </connections>
+            <point key="canvasLocation" x="-116.5" y="-58"/>
+        </tableViewCell>
+    </objects>
+</document>

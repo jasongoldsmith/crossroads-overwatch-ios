@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rTe-Ia-RY4" customClass="CustomError" customModule="Overwatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.44999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dO8-ve-sNH">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4nc-47-eOL">
+                    <rect key="frame" x="12" y="153" width="576" height="294"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wML-yQ-ER9">
+                    <rect key="frame" x="12" y="160" width="576" height="294"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBN-aW-fEm">
+                            <rect key="frame" x="532" y="0.0" width="44" height="44"/>
+                            <state key="normal" image="iconCloseX"/>
+                            <connections>
+                                <action selector="cancelView" destination="rTe-Ia-RY4" eventType="touchUpInside" id="GwK-ju-zjl"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="epN-vS-mg1">
+                            <rect key="frame" x="263" y="32" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="9aH-bq-ITk"/>
+                                <constraint firstAttribute="height" constant="50" id="vzA-Hj-DaW"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPORT SUBMITTED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMV-yS-Tmc">
+                            <rect key="frame" x="8" y="102" width="560" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="29K-l9-nDg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Wp-Wz-nfB">
+                            <rect key="frame" x="263" y="142" width="50" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Ruk-uV-b1T"/>
+                                <constraint firstAttribute="width" constant="50" id="vdZ-b7-CQI"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are on the case and will work to address your issue as soon as possible." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knc-bI-1Nf">
+                            <rect key="frame" x="30" y="153" width="516" height="38"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgi-Wt-PF2">
+                            <rect key="frame" x="188" y="230" width="200" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="jSl-pn-JmN"/>
+                                <constraint firstAttribute="width" constant="200" id="lvB-jX-Vwx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="closeView" destination="rTe-Ia-RY4" eventType="touchUpInside" id="kC7-mJ-cM5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="3Wp-Wz-nfB" firstAttribute="centerX" secondItem="wML-yQ-ER9" secondAttribute="centerX" id="5RZ-F6-jXG"/>
+                        <constraint firstAttribute="trailing" secondItem="Knc-bI-1Nf" secondAttribute="trailing" constant="30" id="6Mx-v6-Iiz"/>
+                        <constraint firstItem="epN-vS-mg1" firstAttribute="top" secondItem="wML-yQ-ER9" secondAttribute="top" constant="32" id="86U-fV-vPz"/>
+                        <constraint firstItem="3Wp-Wz-nfB" firstAttribute="top" secondItem="GMV-yS-Tmc" secondAttribute="bottom" constant="20" id="9FB-dc-Xkk"/>
+                        <constraint firstItem="Knc-bI-1Nf" firstAttribute="leading" secondItem="wML-yQ-ER9" secondAttribute="leading" constant="30" id="GBQ-dQ-yfg"/>
+                        <constraint firstItem="Knc-bI-1Nf" firstAttribute="top" secondItem="3Wp-Wz-nfB" secondAttribute="bottom" constant="10" id="TT3-1X-KpI"/>
+                        <constraint firstAttribute="trailing" secondItem="GMV-yS-Tmc" secondAttribute="trailing" constant="8" id="WmD-NG-41V"/>
+                        <constraint firstItem="GMV-yS-Tmc" firstAttribute="top" secondItem="epN-vS-mg1" secondAttribute="bottom" constant="20" id="Y6Q-1W-iIj"/>
+                        <constraint firstItem="uBN-aW-fEm" firstAttribute="top" secondItem="wML-yQ-ER9" secondAttribute="top" id="cbJ-0V-Swf"/>
+                        <constraint firstAttribute="trailing" secondItem="uBN-aW-fEm" secondAttribute="trailing" id="fQz-hy-Z9W"/>
+                        <constraint firstItem="GMV-yS-Tmc" firstAttribute="leading" secondItem="wML-yQ-ER9" secondAttribute="leading" constant="8" id="gis-do-w5O"/>
+                        <constraint firstAttribute="height" constant="294" id="rqN-Q9-Zwr"/>
+                        <constraint firstItem="bgi-Wt-PF2" firstAttribute="centerX" secondItem="wML-yQ-ER9" secondAttribute="centerX" id="tb9-2d-5ge"/>
+                        <constraint firstItem="epN-vS-mg1" firstAttribute="centerX" secondItem="wML-yQ-ER9" secondAttribute="centerX" id="ycm-9f-Mw5"/>
+                        <constraint firstAttribute="bottom" secondItem="bgi-Wt-PF2" secondAttribute="bottom" constant="20" id="yxf-o9-LUD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="wML-yQ-ER9" firstAttribute="leading" secondItem="rTe-Ia-RY4" secondAttribute="leading" constant="12" id="3jn-ds-32x"/>
+                <constraint firstAttribute="trailing" secondItem="wML-yQ-ER9" secondAttribute="trailing" constant="12" id="N80-yE-HSp"/>
+                <constraint firstItem="wML-yQ-ER9" firstAttribute="top" secondItem="rTe-Ia-RY4" secondAttribute="top" constant="160" id="sS3-pd-rQj"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="actionButton" destination="bgi-Wt-PF2" id="1D9-61-Vb3"/>
+                <outlet property="crossButton" destination="uBN-aW-fEm" id="yEM-Hz-ZWq"/>
+                <outlet property="errorMessageDescription" destination="Knc-bI-1Nf" id="VF1-st-QjD"/>
+                <outlet property="errorMessageHeader" destination="GMV-yS-Tmc" id="yh5-HC-v8c"/>
+                <outlet property="errorViewContainer" destination="wML-yQ-ER9" id="4nX-AM-CYq"/>
+            </connections>
+            <point key="canvasLocation" x="786" y="560"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconCloseX" width="44" height="44"/>
+    </resources>
+</document>
