@@ -146,6 +146,15 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     }
     
     
+    @IBAction func changePassword (sender: AnyObject) {
+        let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+        let vc : ChangePasswordViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CHANGE_PASSWORD) as! ChangePasswordViewController
+
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.navigationBar.isHidden = true
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
     @IBAction func sendReport () {
 //        let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
 //        let vc : TRSendReportViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as! TRSendReportViewController

@@ -194,14 +194,14 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
             if let anImage = image, error != nil {
                 self.eventBackGround.image = anImage
-            } else {
-                self.eventBackGround.image = UIImage(named:"imgBGEventDetail")
             }
         }
+        
         if let hasImage = self.eventInfo?.eventActivity?.activityImage, hasImage != "",
             let imageURL = URL(string: hasImage) {
-            self.eventBackGround.sd_setImage(with: imageURL, completed: block)
+            self.eventBackGround.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "imgBGEventDetail"), options: SDWebImageOptions(rawValue: 0), completed: block)
         }
+        
         
         //Update Comment Count
         if let hasComments = self.eventInfo?.eventComments.count {

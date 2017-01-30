@@ -124,6 +124,8 @@ struct K {
         static let TR_ACCEPT_INVITATION   =  "/api/v1/a/event/invite/accept"
         static let TR_CANCEL_INVITATION   =  "/api/v1/a/event/invite/cancel"
         static let TR_KICK_PLAYER         =  "/api/v1/a/event/kick"
+        static let TR_CHANGE_PASSWORD     =  "/api/v1/a/user/changePassword"
+        static let TR_CHANGE_EMAIL        =  "/api/v1/a/user/changeEmail"
     }
     
     struct StoryBoard {
@@ -151,6 +153,7 @@ struct K {
         static let VIEW_CONTROLLER_SIGNIN_ERROR            = "SIGINERROR"
         static let VIEW_CONTROLLER_CONTACT_MESSAGE_SENT    = "messageSent"
         static let VIEW_CONTROLLER_WEB_VIEW_SIGNIN         = "webviewVC"
+        static let VIEW_CONTROLLER_CHANGE_PASSWORD         = "changePassword"
     }
     
     struct ActivityType {
