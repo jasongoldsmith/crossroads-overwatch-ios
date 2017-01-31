@@ -17,6 +17,7 @@ private let CURRENT_EVENT_NO_CHECK_POINT_CELL       = "currentEventCellNoCheckPo
 private let UPCOMING_EVENT_WITH_CHECK_POINT_CELL    = "upcomingEventCellWithCheckPoint"
 private let UPCOMING_EVENT_NO_CHECK_POINT_CELL      = "upcomingEventCellNoCheckPoint"
 private let EVENT_ACTIVITY_CARD_CELL                = "eventActivityCard"
+private let RATE_APP_CARD_CELL                      = "rateApplicationCell"
 
 private let EVENT_TABLE_HEADER_HEIGHT:CGFloat = 10.0
 
@@ -25,6 +26,7 @@ private let EVENT_CURRENT_NO_CHECK_POINT_CELL_HEIGHT:CGFloat     = 119.0
 private let EVENT_UPCOMING_WITH_CHECK_POINT_CELL_HEIGHT:CGFloat  = 150.0
 private let EVENT_UPCOMING_NO_CHECK_POINT_CELL_HEIGHT:CGFloat    = 137.0
 private let EVENT_ACTIVITY_CELL_HEIGHT:CGFloat                   = 156.0
+private let RATE_APP_CELL_HEIGHT:CGFloat                         = 125.0
 
 class EventListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ErrorViewProtocol, VerificationPopUpProtocol {
     
@@ -39,7 +41,7 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     
     
     //Events Information
-    var eventsInfo: [EventInfo] = []
+    var eventsInfo: [AnyObject] = []
     
     //Activity Cards
     var activityCardsInfo: [ActivityInfo] = []
@@ -75,6 +77,7 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
         self.eventsTableView?.register(UINib(nibName: "EventUpcomingWithCheckPointCell", bundle: nil), forCellReuseIdentifier: UPCOMING_EVENT_WITH_CHECK_POINT_CELL)
         self.eventsTableView?.register(UINib(nibName: "EventUpcomingNoCheckPointCell", bundle: nil), forCellReuseIdentifier: UPCOMING_EVENT_NO_CHECK_POINT_CELL)
         self.eventsTableView?.register(UINib(nibName: "EventActivityCardCell", bundle: nil), forCellReuseIdentifier: EVENT_ACTIVITY_CARD_CELL)
+        self.eventsTableView?.register(UINib(nibName: "RateAppCell", bundle: nil), forCellReuseIdentifier: RATE_APP_CARD_CELL)
         
         self.eventsTableView?.tableFooterView = UIView(frame: CGRect.zero)
         self.eventsTableView?.addSubview(self.refreshControl)
@@ -313,28 +316,45 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
         if segmentControl?.selectedSegmentIndex == 0 {
             
             if indexPath.section < self.eventsInfo.count {
-                
-                if self.eventsInfo[indexPath.section].eventActivity?.activityCheckPoint != "" && self.eventsInfo[indexPath.section].eventActivity?.activityCheckPoint != nil{
-                    cell = tableView.dequeueReusableCell(withIdentifier: CURRENT_EVENT_WITH_CHECK_POINT_CELL) as! EventCurrentWithCheckPointCell
-                    if let hasTag = self.eventsInfo[indexPath.section].eventActivity?.activityTag, hasTag != ""{
-                        self.eventsTableView?.rowHeight = 166.0
+                if let eventInfo = self.eventsInfo[indexPath.section] as? EventInfo {
+                    if eventInfo.eventActivity?.activityCheckPoint != "" && eventInfo.eventActivity?.activityCheckPoint != nil{
+                        cell = tableView.dequeueReusableCell(withIdentifier: CURRENT_EVENT_WITH_CHECK_POINT_CELL) as! EventCurrentWithCheckPointCell
+                        if let hasTag = eventInfo.eventActivity?.activityTag, hasTag != ""{
+                            self.eventsTableView?.rowHeight = 166.0
+                        } else {
+                            self.eventsTableView?.rowHeight = EVENT_CURRENT_WITH_CHECK_POINT_CELL_HEIGHT
+                        }
                     } else {
-                        self.eventsTableView?.rowHeight = EVENT_CURRENT_WITH_CHECK_POINT_CELL_HEIGHT
+                        cell = tableView.dequeueReusableCell(withIdentifier: CURRENT_EVENT_NO_CHECK_POINT_CELL) as! EventCurrentNoCheckPointCell
+                        
+                        if let hasTag = eventInfo.eventActivity?.activityTag, hasTag != ""{
+                            self.eventsTableView?.rowHeight = 153.0
+                        } else {
+                            self.eventsTableView?.rowHeight = EVENT_CURRENT_NO_CHECK_POINT_CELL_HEIGHT
+                        }
                     }
-                } else {
-                    cell = tableView.dequeueReusableCell(withIdentifier: CURRENT_EVENT_NO_CHECK_POINT_CELL) as! EventCurrentNoCheckPointCell
                     
-                    if let hasTag = self.eventsInfo[indexPath.section].eventActivity?.activityTag, hasTag != ""{
-                        self.eventsTableView?.rowHeight = 153.0
-                    } else {
-                        self.eventsTableView?.rowHeight = EVENT_CURRENT_NO_CHECK_POINT_CELL_HEIGHT
-                    }
+                    cell?.updateCellViewWithEvent(eventInfo: eventInfo)
+                    cell?.joinEventButton?.buttonEventInfo = eventInfo
+                    cell?.leaveEventButton.buttonEventInfo = eventInfo
+                    cell?.eventTimeLabel?.isHidden = true
+                } else {
+                    let ratingInfo = self.eventsInfo[indexPath.section] as? RatingAppModel
+                    let cell = tableView.dequeueReusableCell(withIdentifier: RATE_APP_CARD_CELL) as! RateAppCell
+                    self.eventsTableView?.rowHeight = RATE_APP_CELL_HEIGHT
+                    let imageURL = URL(string: ratingInfo!.ratingInfoImageURL!)
+                    cell.cellBackgroundImage.sd_setImage(with: imageURL)
+                    
+                    cell.closeButton?.layer.cornerRadius = 2.0
+                    cell.actionButton?.layer.cornerRadius = 2.0
+                    cell.closeButton?.addTarget(self, action: #selector(EventListViewController.hideRatingRow), for: .touchUpInside)
+                    cell.actionButton?.addTarget(self, action: #selector(EventListViewController.ratingButtonClicked), for: .touchUpInside)
+                    
+                    cell.actionButton.setTitle(ratingInfo!.ratingInfoButtonText, for: .normal)
+                    cell.cellTextLabel.text = ratingInfo!.ratingCardText
+                    
+                    return cell
                 }
-                
-                cell?.updateCellViewWithEvent(eventInfo: self.eventsInfo[indexPath.section])
-                cell?.joinEventButton?.buttonEventInfo = eventsInfo[indexPath.section]
-                cell?.leaveEventButton.buttonEventInfo = eventsInfo[indexPath.section]
-                cell?.eventTimeLabel?.isHidden = true
             } else {
                 
                 let index = indexPath.section - self.eventsInfo.count
@@ -388,7 +408,7 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
         let eventInfo: EventInfo!
         if self.segmentControl?.selectedSegmentIndex == 0 {
             if indexPath.section < self.eventsInfo.count {
-                eventInfo = self.eventsInfo[indexPath.section]
+                eventInfo = self.eventsInfo[indexPath.section] as? EventInfo
                 self.showEventInfoViewController(eventInfo: eventInfo, fromPushNoti: false)
             } else {
                 
@@ -417,6 +437,40 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
 
     }
     
+    //MARK: RATING UI SELECTORS
+    func hideRatingRow () {
+        
+        self.displayAlertWithTwoButtonsTitleAndMessage(title: "\"Do you have time to explain?\" \n - The Exo Stranger", message: nil, buttonOne: "Definitely", buttonTwo: "Cancel") { (complete) in
+            if complete == true {
+//                _ = TRRateApplication().updateRateApplication("REFUSED", completion: { (didSucceed) in
+//                    TRApplicationManager.sharedInstance.ratingInfo = nil
+//                    self.reloadEventTable()
+//                    
+//                    let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+//                    let vc : TRSendReportViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as! TRSendReportViewController
+//                    vc.isModallyPresented = false
+//                    let navigationController = UINavigationController(rootViewController: vc)
+//                    navigationController.navigationBar.hidden = true
+//                    self.presentViewController(navigationController, animated: true, completion: nil)
+//                })
+            }
+        }
+    }
+    
+    func ratingButtonClicked () {
+        
+        self.displayAlertWithTwoButtonsTitleAndMessage(title: "\"Tick, tock. Get rolling.\" - Lord Shaxx", message: nil, buttonOne: "Rate Us", buttonTwo: "Cancel") { (complete) in
+            if complete == true {
+//                _ = RateApplication().updateRateApplication("COMPLETED", completion: { (didSucceed) in
+//                    TRApplicationManager.sharedInstance.ratingInfo = nil
+//                    self.reloadEventTable()
+//                    
+//                    UIApplication.sharedApplication().openURL(NSURL(string: K.TRUrls.TR_APP_STORE_LINK)!)
+//                })
+            }
+        }
+    }
+
     func showEventInfoViewController(eventInfo: EventInfo?, fromPushNoti: Bool?) {
         if let eventId = eventInfo?.eventID {
             let eventRequest = GetEventRequest()

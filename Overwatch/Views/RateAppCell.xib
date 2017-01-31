@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="rateApplicationCell" id="po1-Qy-pdG" customClass="RateAppCell" customModule="Overwatch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="po1-Qy-pdG" id="Ymb-Nn-2ZD">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCardBg" translatesAutoresizingMaskIntoConstraints="NO" id="t0m-GR-bHC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd6-Pz-xN3">
+                        <rect key="frame" x="171" y="39" width="141" height="18"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="141" id="V34-jy-MxE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBJ-0h-IY9">
+                        <rect key="frame" x="213" y="72" width="99" height="36"/>
+                        <color key="backgroundColor" red="0.0" green="0.52549019610000003" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="99" id="Fd8-62-Tga"/>
+                            <constraint firstAttribute="height" constant="36" id="VaM-CC-a5P"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                        <state key="normal" title="Button.....">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxS-EH-cRz">
+                        <rect key="frame" x="171" y="72" width="36" height="36"/>
+                        <state key="normal" image="imgCancelX"/>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="pxS-EH-cRz" firstAttribute="centerY" secondItem="bBJ-0h-IY9" secondAttribute="centerY" id="7eo-jE-bD8"/>
+                    <constraint firstItem="t0m-GR-bHC" firstAttribute="leading" secondItem="Ymb-Nn-2ZD" secondAttribute="leading" id="CcY-Ph-Dei"/>
+                    <constraint firstAttribute="trailing" secondItem="t0m-GR-bHC" secondAttribute="trailing" id="I59-Ku-8T2"/>
+                    <constraint firstItem="bBJ-0h-IY9" firstAttribute="top" secondItem="xd6-Pz-xN3" secondAttribute="bottom" constant="15" id="K49-OR-8eU"/>
+                    <constraint firstItem="bBJ-0h-IY9" firstAttribute="bottom" secondItem="Ymb-Nn-2ZD" secondAttribute="baseline" constant="-16" id="PKn-Ra-akh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="bBJ-0h-IY9" secondAttribute="trailing" id="W6e-Gt-RDw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xd6-Pz-xN3" secondAttribute="trailing" id="fcs-gK-2NF"/>
+                    <constraint firstAttribute="bottom" secondItem="t0m-GR-bHC" secondAttribute="bottom" id="hhb-8O-nHL"/>
+                    <constraint firstItem="t0m-GR-bHC" firstAttribute="top" secondItem="Ymb-Nn-2ZD" secondAttribute="top" id="mCH-1a-rnB"/>
+                    <constraint firstItem="bBJ-0h-IY9" firstAttribute="leading" secondItem="pxS-EH-cRz" secondAttribute="trailing" constant="6" id="xoN-Vj-RFM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="actionButton" destination="bBJ-0h-IY9" id="2ku-Te-HVd"/>
+                <outlet property="cellBackgroundImage" destination="t0m-GR-bHC" id="Nhj-Yb-Vu0"/>
+                <outlet property="cellTextLabel" destination="xd6-Pz-xN3" id="WpY-uM-wDd"/>
+                <outlet property="closeButton" destination="pxS-EH-cRz" id="LGA-EH-wb9"/>
+            </connections>
+            <point key="canvasLocation" x="311" y="272.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="imgCancelX" width="36" height="36"/>
+        <image name="imgCardBg" width="327" height="135"/>
+    </resources>
+</document>

@@ -238,7 +238,7 @@ class InviteView: UIView, KSTokenViewDelegate, CustomErrorDelegate, KSTokenField
         
         self.tokenView?.resignFirstResponder()
         
-        let errorView = Bundle.main.loadNibNamed("TRCustomError", owner: self, options: nil)?[0] as! CustomError
+        let errorView = Bundle.main.loadNibNamed("CustomError", owner: self, options: nil)?[0] as! CustomError
         errorView.errorMessageHeader?.text = "INVALID GAMERTAG"
         errorView.errorMessageDescription?.text = "Please enter a valid gamertag."
         errorView.frame = self.frame

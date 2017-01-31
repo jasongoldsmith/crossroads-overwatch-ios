@@ -80,7 +80,7 @@ class NetworkRequest {
                     let url = response.request?.url {
                     let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url)
                     for cookie:HTTPCookie in cookies as [HTTPCookie] {
-                        if cookie.domain == "travelerbackend.herokuapp.com" {
+                        if cookie.domain == K.TRUrls.TR_BaseUrl.replacingOccurrences(of: "https://", with: "") {
                             print("\(cookie)")
                         }
                     }

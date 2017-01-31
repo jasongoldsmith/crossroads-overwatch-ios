@@ -11,7 +11,7 @@ import TTTAttributedLabel
 import UIKit
 import SlideMenuControllerSwift
 
-class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TTTAttributedLabelDelegate {
+class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TTTAttributedLabelDelegate, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBOutlet weak var avatorImageView: UIImageView?
@@ -19,6 +19,8 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var backGroundImageView: UIImageView?
     @IBOutlet weak var buildNumberLabel: UILabel!
     @IBOutlet weak var legalLabel: TTTAttributedLabel!
+    @IBOutlet weak var consolesTable: UITableView!
+    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     
     //Console Buttons/ Image
     @IBOutlet weak var changePasswordButton: UIButton!
@@ -32,6 +34,8 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     var isConsoleMenuOpen: Bool = false
     var consoleAddButtonImageView: UIImageView?
     var consoleTwoButtonImageView: UIImageView?
+    var consoles = ["PS4", "XBox One"]
+    var currentConsole = "PC"
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -49,6 +53,7 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         self.contactUsButton.layer.cornerRadius = 2.0
         self.logOutButton.layer.cornerRadius = 2.0
         self.updateView()
+        consolesTable.register(UINib(nibName: "ConsoleCell", bundle: nil), forCellReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,9 +90,9 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         let privateRange = nsString.range(of: privatePolicy)
         let licenseRange = nsString.range(of: licenses)
         
-        let tosUrl = NSURL(string: "https://www.crossroadsapp.co/terms")!
-        let privatePolicyUrl = NSURL(string: "https://www.crossroadsapp.co/privacy")!
-        let licensesUrl = NSURL(string: "https://www.crossroadsapp.co/license")!
+        let tosUrl = URL(string: "https://www.crossroadsapp.co/terms")!
+        let privatePolicyUrl = URL(string: "https://www.crossroadsapp.co/privacy")!
+        let licensesUrl = URL(string: "https://www.crossroadsapp.co/license")!
         
         let subscriptionNoticeLinkAttributes = [
             NSForegroundColorAttributeName: UIColor.white,
@@ -95,9 +100,9 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
             ]
         
         self.legalLabel.linkAttributes = subscriptionNoticeLinkAttributes
-        self.legalLabel.addLink(to: tosUrl as URL!, with: tosRange)
-        self.legalLabel.addLink(to: privatePolicyUrl as URL!, with: privateRange)
-        self.legalLabel.addLink(to: licensesUrl as URL!, with: licenseRange)
+        self.legalLabel.addLink(to: tosUrl, with: tosRange)
+        self.legalLabel.addLink(to: privatePolicyUrl, with: privateRange)
+        self.legalLabel.addLink(to: licensesUrl, with: licenseRange)
         self.legalLabel.delegate = self
     }
     
@@ -163,46 +168,44 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
 //        navigationController.navigationBar.hidden = true
 //        self.presentViewController(navigationController, animated: true, completion: nil)
     }
-    
-    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-//        let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-//        let legalViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as! TRLegalViewController
-//        legalViewController.linkToOpen = url
-//        self.presentViewController(legalViewController, animated: true, completion: {
-//            
-//        })
+
+    @IBAction func consoleButtonPressed() {
+        if tableHeightConstraint.constant == 0 {
+            tableHeightConstraint.constant = 90
+        } else {
+            tableHeightConstraint.constant = 0
+        }
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
     }
-    
+
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+        let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+        let legalViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as!
+        LegalViewController
+        legalViewController.linkToOpen = url
+        self.present(legalViewController, animated: true, completion: {
+        })
+        guard  let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView else {
+            return
+        }
+        statusBar.backgroundColor = UIColor.clear
+    }
     
     //MOVE THIS TO ANOTHER CLASS LATER
     func addLogOutAlert () {
         let refreshAlert = UIAlertController(title: "", message: "Are you sure you want to log out?", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-//            let createRequest = TRAuthenticationRequest()
-//            createRequest.logoutTRUser() { (value ) in
-//                if value == true {
-//                    
-//                    self.dismissViewControllerAnimated(false, completion:{
-//                        TRUserInfo.removeUserData()
-//                        TRApplicationManager.sharedInstance.purgeSavedData()
-//                        
-//                        self.didMoveToParentViewController(nil)
-//                        self.removeFromParentViewController()
-//                    })
-//                    
-//                    self.presentingViewController?.dismissViewControllerAnimated(false, completion: {
-//                        TRUserInfo.removeUserData()
-//                        TRApplicationManager.sharedInstance.purgeSavedData()
-//                        
-//                        self.didMoveToParentViewController(nil)
-//                        self.removeFromParentViewController()
-//                    })
-//                } else {
-//                    self.displayAlertWithTitle("Logout Failed", complete: { (complete) -> () in
-//                    })
-//                }
-//            }
+            UserInfo.removeUserData()
+            ApplicationManager.sharedInstance.purgeSavedData()
+            DispatchQueue.main.async {
+                ApplicationManager.sharedInstance.slideMenuController.dismiss(animated: false, completion:{
+                    UserInfo.removeUserData()
+                    ApplicationManager.sharedInstance.purgeSavedData()
+                })
+            }
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -210,6 +213,25 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         }))
         
         present(refreshAlert, animated: true, completion: nil)
+    }
+    
+
+    //Table View Data Source methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return consoles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ConsoleCell
+        cell.consoleTitle.text = consoles[indexPath.row]
+        return cell
+    }
+    
+    //Table View Delegate methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "choosePlatformViewController") as! ChoosePlatformViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
 }

@@ -177,7 +177,7 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
         if let activityImage = activityInfo.activityImage,
             activityImage != "",
             let imageURL = URL(string: activityImage) {
-            activityBGImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "imgBGVaultOfGlass"), options: SDWebImageOptions(rawValue: 0), completed: block)
+            activityBGImageView.sd_setImage(with: imageURL, completed: block)
         }
         
         if let aType = activityInfo.activityType {

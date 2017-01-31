@@ -1021,7 +1021,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func leaveInvitationButton (sender: UIButton) {
-        let errorView = Bundle.main.loadNibNamed("CustomError", owner: self, options: nil)?[0] as! CustomError
+        let errorView = Bundle.main.loadNibNamed("CustomErrorUserAction", owner: self, options: nil)?[0] as! CustomError
         errorView.errorMessageHeader?.text = "CAN’T MAKE IT?"
         errorView.errorMessageDescription?.text = "If you turn down this invite, another Guardian will take your spot. Are you sure you want to leave?"
         errorView.frame = self.view.frame
@@ -1038,7 +1038,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         let eventBtn = sender as! EventButton
         self.userToKick = eventBtn.buttonPlayerInfo
         
-        let errorView = Bundle.main.loadNibNamed("TRCustomErrorUserAction", owner: self, options: nil)?[0] as! CustomError
+        let errorView = Bundle.main.loadNibNamed("CustomErrorUserAction", owner: self, options: nil)?[0] as! CustomError
         errorView.errorMessageHeader?.text = "KICK FOR INACTIVITY?"
         errorView.errorMessageDescription?.text = "Removing this Guardian will allow another to join instead."
         errorView.frame = self.view.frame

@@ -33,6 +33,8 @@ class LoginBaseViewController: BaseViewController {
         if let navController = navigationController {
             navController.popViewController(animated: true)
             navController.navigationBar.isHidden = true
+        } else {
+            dismiss(animated: true, completion: nil)
         }
     }
     
