@@ -38,6 +38,9 @@ class ApplicationManager: NSObject {
     //Branch Manager
     var branchManager: BranchManager?
 
+    // Error Notification View
+    var errorNotificationView = ErrorNotificationView()
+
     //Current User
     var currentUser: UserInfo?
 
@@ -64,6 +67,8 @@ class ApplicationManager: NSObject {
         super.init()
         //Init FireBase Manager
         self.fireBaseManager = FireBaseManager()
+        // Init Error Notification View with nib
+        self.errorNotificationView = Bundle.main.loadNibNamed("ErrorNotificationView", owner: self, options: nil)?[0] as! ErrorNotificationView
     }
 
     // Rewrite this method- User Server Login Response to save userID, psnID, UserImage -- ASHU
@@ -268,4 +273,8 @@ class ApplicationManager: NSObject {
         return false
     }
     
+    func addErrorSubViewWithMessage(errorString: String) {
+        self.errorNotificationView.errorSting = errorString
+        self.errorNotificationView.addErrorSubViewWithMessage()
+    }
 }
