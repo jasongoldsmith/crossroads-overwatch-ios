@@ -38,13 +38,18 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
         if let consoleId = battleTagTextField.text,
             consoleId != "" {
             let addConsoleRequest = AddConsoleRequest()
-            addConsoleRequest.addConsoleWith(consoleType: currentConsole.lowercased().replacingOccurrences(of: " ", with: ""), and: consoleId, completion: { (value) -> () in
-                if let wrappedValue = value,
-                    wrappedValue == true {
+            addConsoleRequest.addConsoleWith(consoleType: currentConsole.lowercased().replacingOccurrences(of: " ", with: ""), and: consoleId, completion: { (error, responseObject) -> () in
+                if let _ = responseObject {
                     print("Console added")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         self.validateCookies()
                     }
+                } else if let wrappedError = error {
+                    let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
+                    vc.errorString = wrappedError
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.view.endEditing(true)
                 } else {
                     print("Something went wrong registering consoles")
                 }

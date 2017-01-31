@@ -10,7 +10,7 @@ import Foundation
 
 class SignUpRequest: NSObject {
     
-    func signUpWith(email: String, and password:String, completion:@escaping TRValueCallBack) {
+    func signUpWith(email: String, and password:String, completion:@escaping TRResponseCallBack) {
         let signUpUrl = K.TRUrls.TR_BaseUrl + "/api/v1/auth/signUp"
         let request = NetworkRequest.sharedInstance
         request.requestURL = signUpUrl
@@ -20,11 +20,11 @@ class SignUpRequest: NSObject {
         request.params = params
         request.URLMethod = .post
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in
-            if let _ = error {
-                completion(nil)
+            if let wrappedError = error {
+                completion(wrappedError, nil)
                 return
             }
-            completion(true)
+            completion(nil, swiftyJsonVar)
         }
     }
 }

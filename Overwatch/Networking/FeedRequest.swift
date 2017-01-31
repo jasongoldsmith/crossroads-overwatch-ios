@@ -18,7 +18,6 @@ class FeedRequest: NSObject {
         request.requestURL = feedURL
         request.URLMethod = .get
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in
-            print(swiftyJsonVar!)
             if let _ = error {
                 completion(false)
                 return
@@ -78,7 +77,6 @@ class FeedRequest: NSObject {
         request.requestURL = feedURL
         request.URLMethod = .get
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in
-            print(swiftyJsonVar!)
             if let _ = error {
                 completion(false)
                 return

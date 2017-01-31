@@ -31,15 +31,19 @@ class LoginViewController: LoginBaseViewController {
             password.isValidPassword else {
                 return
         }
-        //ChoosePlatformViewController
+        self.view.endEditing(true)
         let signInRequest = SignInRequest()
-        signInRequest.signInWith(email: email, and: password, completion: { (value) -> () in
-            if let wrappedValue = value,
-                wrappedValue == true {
+        signInRequest.signInWith(email: email, and: password, completion: { (error, responseObject) -> () in
+            if let _ = responseObject {
                 print("Success signing in")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.validateCookies()
                 }
+            } else if let wrappedError = error {
+                let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
+                vc.errorString = wrappedError
+                self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 print("Something went wrong signing in")
             }

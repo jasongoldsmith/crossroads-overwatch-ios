@@ -10,7 +10,7 @@ import Foundation
 
 class AddConsoleRequest: NSObject {
     
-    func addConsoleWith(consoleType: String, and consoleId:String, completion:@escaping TRValueCallBack) {
+    func addConsoleWith(consoleType: String, and consoleId:String, completion:@escaping TRResponseCallBack) {
         let addConsoleUrl = K.TRUrls.TR_BaseUrl + "/api/v1/a/user/addConsole"
         let request = NetworkRequest.sharedInstance
         request.requestURL = addConsoleUrl
@@ -20,11 +20,11 @@ class AddConsoleRequest: NSObject {
         request.params = params
         request.URLMethod = .post
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in
-            if let _ = error {
-                completion(nil)
+            if let wrappedError = error {
+                completion(wrappedError, nil)
                 return
             }
-            completion(true)
+            completion(nil, swiftyJsonVar)
         }
     }
 }

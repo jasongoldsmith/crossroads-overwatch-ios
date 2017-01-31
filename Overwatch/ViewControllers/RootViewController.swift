@@ -68,6 +68,10 @@ class RootViewController: BaseViewController {
                             self.pushNotificationData = nil
                         } else {
                             ApplicationManager.sharedInstance.log.debug("Failed Fetching Feed")
+                            UserInfo.removeUserData()
+                            ApplicationManager.sharedInstance.purgeSavedData()
+                            ApplicationManager.sharedInstance.log.debug("Failed Fetching profile")
+                            self.checkForUserDataAndDisplayNextViewController()
                         }
                     })
                 } else {

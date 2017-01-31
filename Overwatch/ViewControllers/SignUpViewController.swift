@@ -9,7 +9,7 @@
 import Foundation
 import TTTAttributedLabel
 
-class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate {
+class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var legalLabel: TTTAttributedLabel!
 
@@ -22,10 +22,6 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate 
         self.addLegalStatmentText()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     @IBAction func nextButtonPressed() {
         guard let email = emailTextField.text,
         let password = passwordTextField.text,
@@ -33,13 +29,18 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate 
         password.isValidPassword else {
             return
         }
-        //ChoosePlatformViewController
+        view.endEditing(true)
         let signupRequest = SignUpRequest()
-        signupRequest.signUpWith(email: email, and: password, completion: { (value) -> () in
-            if let wrappedValue = value,
-                wrappedValue == true {
+        signupRequest.signUpWith(email: email, and: password, completion: { (error, responseObject) -> () in
+            if let _ = responseObject {
                 let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "choosePlatformViewController") as! ChoosePlatformViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+                self.view.endEditing(true)
+            } else if let wrappedError = error {
+                let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
+                vc.errorString = wrappedError
                 self.navigationController?.pushViewController(vc, animated: true)
                 self.view.endEditing(true)
             } else {
@@ -61,26 +62,35 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate 
         
         let rangeCustomerAgreement = nsString.range(of: customerAgreement)
         let rangePrivacyPolicy = nsString.range(of: privacyPolicy)
-        let urlCustomerAgreement = NSURL(string: "https://www.crossroadsapp.co/terms")!
-        let urlPrivacyPolicy = NSURL(string: "https://www.crossroadsapp.co/privacy")!
+        let urlCustomerAgreement = URL(string: "https://www.crossroadsapp.co/terms")!
+        let urlPrivacyPolicy = URL(string: "https://www.crossroadsapp.co/privacy")!
         
         let subscriptionNoticeLinkAttributes = [
             NSForegroundColorAttributeName: UIColor(red: 188/255, green: 197/255, blue: 225/255, alpha: 1),
             NSUnderlineStyleAttributeName: NSNumber(value:true),
             ]
         self.legalLabel.linkAttributes = subscriptionNoticeLinkAttributes
-        self.legalLabel.addLink(to: urlCustomerAgreement as URL!, with: rangeCustomerAgreement)
-        self.legalLabel.addLink(to: urlPrivacyPolicy as URL!, with: rangePrivacyPolicy)
+        self.legalLabel.addLink(to: urlCustomerAgreement, with: rangeCustomerAgreement)
+        self.legalLabel.addLink(to: urlPrivacyPolicy, with: rangePrivacyPolicy)
         self.legalLabel.adjustsFontSizeToFitWidth = true
         self.legalLabel.delegate = self
     }
     
+    
     func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-//        let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-//        let legalViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as! TRLegalViewController
-//        legalViewController.linkToOpen = url
-//        self.presentViewController(legalViewController, animated: true, completion: {
-//
-//        })
+        let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+        let legalViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as!
+        LegalViewController
+        legalViewController.linkToOpen = url
+        self.present(legalViewController, animated: true, completion: {
+        })
+    }
+
+    //UIGestureRecognizer Delegate methods
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: legalLabel))!{
+            return false
+        }
+        return true
     }
 }

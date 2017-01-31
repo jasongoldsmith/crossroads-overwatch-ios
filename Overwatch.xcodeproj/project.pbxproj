@@ -13,6 +13,10 @@
 		C75325D11E36E99F00EB719D /* LeaveEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D01E36E99F00EB719D /* LeaveEventRequest.swift */; };
 		C75325D31E36E9D900EB719D /* JoinEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D21E36E9D900EB719D /* JoinEventRequest.swift */; };
 		C75325D51E36E9EE00EB719D /* InvitePlayersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D41E36E9EE00EB719D /* InvitePlayersRequest.swift */; };
+		C7562E691E4017C60096DE44 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E671E4017C60096DE44 /* WebView.swift */; };
+		C7562E6A1E4017C60096DE44 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7562E681E4017C60096DE44 /* WebView.xib */; };
+		C7562E6D1E4017FC0096DE44 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E6B1E4017FC0096DE44 /* LegalViewController.swift */; };
+		C7562E6E1E4017FC0096DE44 /* OnBoardingErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */; };
 		C75FDE131E30307F00339634 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FDE121E30307F00339634 /* GradientView.swift */; };
 		C75FDE151E30309200339634 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75FDE141E30309200339634 /* QuartzCore.framework */; };
 		C76F088E1E2EACBA0082AAB7 /* CustomError.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76F088D1E2EACBA0082AAB7 /* CustomError.xib */; };
@@ -131,6 +135,10 @@
 		C75325D01E36E99F00EB719D /* LeaveEventRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaveEventRequest.swift; path = Networking/LeaveEventRequest.swift; sourceTree = "<group>"; };
 		C75325D21E36E9D900EB719D /* JoinEventRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinEventRequest.swift; path = Networking/JoinEventRequest.swift; sourceTree = "<group>"; };
 		C75325D41E36E9EE00EB719D /* InvitePlayersRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitePlayersRequest.swift; path = Networking/InvitePlayersRequest.swift; sourceTree = "<group>"; };
+		C7562E671E4017C60096DE44 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebView.swift; path = Views/WebView.swift; sourceTree = "<group>"; };
+		C7562E681E4017C60096DE44 /* WebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebView.xib; path = Views/WebView.xib; sourceTree = "<group>"; };
+		C7562E6B1E4017FC0096DE44 /* LegalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LegalViewController.swift; path = ViewControllers/LegalViewController.swift; sourceTree = "<group>"; };
+		C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingErrorViewController.swift; path = ViewControllers/OnBoardingErrorViewController.swift; sourceTree = "<group>"; };
 		C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C75FDE121E30307F00339634 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = Utilities/GradientView.swift; sourceTree = "<group>"; };
 		C75FDE141E30309200339634 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -287,6 +295,8 @@
 				C77A60041E3933B1000D5E94 /* ForgotPasswordViewController.swift */,
 				C77A60061E39340A000D5E94 /* ChoosePlatformViewController.swift */,
 				33A4EBEE1E3FE97700E986C0 /* ChangePasswordViewController.swift */,
+				C7562E6B1E4017FC0096DE44 /* LegalViewController.swift */,
+				C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -383,6 +393,8 @@
 				C7E5B9A31E32CD7700FB5593 /* InviteView.xib */,
 				C7AD52BE1E3A979C001F0617 /* ConsoleCell.swift */,
 				C7AD52C01E3A97F6001F0617 /* ConsoleCell.xib */,
+				C7562E671E4017C60096DE44 /* WebView.swift */,
+				C7562E681E4017C60096DE44 /* WebView.xib */,
 			);
 			name = VIews;
 			sourceTree = "<group>";
@@ -590,6 +602,7 @@
 				C77A19371E2DB90C0047E277 /* CaroselCellView.xib in Resources */,
 				C7AD52C11E3A97F6001F0617 /* ConsoleCell.xib in Resources */,
 				C7B6BC0B1E3008E500D6BFF3 /* EventActivityCardCell.xib in Resources */,
+				C7562E6A1E4017C60096DE44 /* WebView.xib in Resources */,
 				C793CD761E2D5EC80012FEEE /* LaunchScreen.storyboard in Resources */,
 				C793CD731E2D5EC80012FEEE /* Assets.xcassets in Resources */,
 				C7B6BBFF1E30010A00D6BFF3 /* PushNotificationView.xib in Resources */,
@@ -679,6 +692,7 @@
 				C7B6BC091E30069000D6BFF3 /* EventActivityCardCell.swift in Sources */,
 				C7E39CC41E3830CE008E47A9 /* LoginBaseViewController.swift in Sources */,
 				C77A19091E2DA5480047E277 /* ActivityInfo.swift in Sources */,
+				C7562E6D1E4017FC0096DE44 /* LegalViewController.swift in Sources */,
 				C7B6BC341E30140400D6BFF3 /* UIApplicationExtension.swift in Sources */,
 				C77A192E1E2DB2730047E277 /* CustomError.swift in Sources */,
 				C7BFCE661E329CDD0081C2B0 /* InviteView.swift in Sources */,
@@ -692,6 +706,7 @@
 				C77A19021E2DA4860047E277 /* ApplicationManager.swift in Sources */,
 				C77A60191E39A19A000D5E94 /* AcceptEventInvitationRequest.swift in Sources */,
 				C7B6BC1B1E300B0000D6BFF3 /* EventUpcomingNoCheckPointCell.swift in Sources */,
+				C7562E6E1E4017FC0096DE44 /* OnBoardingErrorViewController.swift in Sources */,
 				C7B6BC101E3009BE00D6BFF3 /* EventCurrentWithCheckPointCell.swift in Sources */,
 				C7B6BC3A1E3017E700D6BFF3 /* CreateEventViewController.swift in Sources */,
 				C77A19191E2DA7770047E277 /* PlayerInfo.swift in Sources */,
@@ -714,6 +729,7 @@
 				C7BFCE731E32A1C60081C2B0 /* StringExtension.swift in Sources */,
 				C7B6BC2D1E300DD100D6BFF3 /* EventDescriptionCell.swift in Sources */,
 				C7B6BBF41E2F00DE00D6BFF3 /* UISegmentedControlExtension.swift in Sources */,
+				C7562E691E4017C60096DE44 /* WebView.swift in Sources */,
 				C7BFCE6E1E329D840081C2B0 /* KSTokenView.swift in Sources */,
 				C7B6BC061E30027400D6BFF3 /* InsertLabel.swift in Sources */,
 				C77A60151E399D27000D5E94 /* SendPushMessage.swift in Sources */,
