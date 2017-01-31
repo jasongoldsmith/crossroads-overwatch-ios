@@ -1967,7 +1967,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BDDB6D96-D1EE-4D99-ADDE-D7F54D863540" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A58BCAAA-FF6C-4D03-8EE8-AA0FA5BB48BB" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
                                 <rect key="frame" x="16" y="113.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UY6-7w-5Ph"/>
@@ -3294,7 +3294,7 @@ you signed up with, please contact us at</string>
         </scene>
     </scenes>
     <resources>
-        <image name="BDDB6D96-D1EE-4D99-ADDE-D7F54D863540" width="40" height="29">
+        <image name="A58BCAAA-FF6C-4D03-8EE8-AA0FA5BB48BB" width="40" height="29">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

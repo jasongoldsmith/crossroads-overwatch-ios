@@ -17,6 +17,8 @@
 		C7562E6A1E4017C60096DE44 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7562E681E4017C60096DE44 /* WebView.xib */; };
 		C7562E6D1E4017FC0096DE44 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E6B1E4017FC0096DE44 /* LegalViewController.swift */; };
 		C7562E6E1E4017FC0096DE44 /* OnBoardingErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */; };
+		C7562E761E401F390096DE44 /* ErrorNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7562E751E401F390096DE44 /* ErrorNotificationView.xib */; };
+		C7562E781E401F600096DE44 /* ErrorNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E771E401F600096DE44 /* ErrorNotificationView.swift */; };
 		C75FDE131E30307F00339634 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FDE121E30307F00339634 /* GradientView.swift */; };
 		C75FDE151E30309200339634 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75FDE141E30309200339634 /* QuartzCore.framework */; };
 		C76F088E1E2EACBA0082AAB7 /* CustomError.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76F088D1E2EACBA0082AAB7 /* CustomError.xib */; };
@@ -139,6 +141,8 @@
 		C7562E681E4017C60096DE44 /* WebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebView.xib; path = Views/WebView.xib; sourceTree = "<group>"; };
 		C7562E6B1E4017FC0096DE44 /* LegalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LegalViewController.swift; path = ViewControllers/LegalViewController.swift; sourceTree = "<group>"; };
 		C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingErrorViewController.swift; path = ViewControllers/OnBoardingErrorViewController.swift; sourceTree = "<group>"; };
+		C7562E751E401F390096DE44 /* ErrorNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ErrorNotificationView.xib; path = Views/ErrorNotificationView.xib; sourceTree = "<group>"; };
+		C7562E771E401F600096DE44 /* ErrorNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorNotificationView.swift; path = Views/ErrorNotificationView.swift; sourceTree = "<group>"; };
 		C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C75FDE121E30307F00339634 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = Utilities/GradientView.swift; sourceTree = "<group>"; };
 		C75FDE141E30309200339634 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -395,6 +399,8 @@
 				C7AD52C01E3A97F6001F0617 /* ConsoleCell.xib */,
 				C7562E671E4017C60096DE44 /* WebView.swift */,
 				C7562E681E4017C60096DE44 /* WebView.xib */,
+				C7562E771E401F600096DE44 /* ErrorNotificationView.swift */,
+				C7562E751E401F390096DE44 /* ErrorNotificationView.xib */,
 			);
 			name = VIews;
 			sourceTree = "<group>";
@@ -617,6 +623,7 @@
 				C7B6BC141E300A4800D6BFF3 /* EventCurrentWithCheckPointCell.xib in Resources */,
 				C77A600B1E39885A000D5E94 /* GoogleService-Info.plist in Resources */,
 				C7B6BC281E300CF500D6BFF3 /* DatePicker.xib in Resources */,
+				C7562E761E401F390096DE44 /* ErrorNotificationView.xib in Resources */,
 				C76F088E1E2EACBA0082AAB7 /* CustomError.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +705,7 @@
 				C7BFCE661E329CDD0081C2B0 /* InviteView.swift in Sources */,
 				C79899641E2EB05D000D08BB /* WebViewViewController.swift in Sources */,
 				C7B6BC041E30023B00D6BFF3 /* EventButton.swift in Sources */,
+				C7562E781E401F600096DE44 /* ErrorNotificationView.swift in Sources */,
 				C7BFCE6F1E329D840081C2B0 /* KSUtils.swift in Sources */,
 				C7AD52C71E3ABFFA001F0617 /* AddConsoleRequest.swift in Sources */,
 				C77A60131E399089000D5E94 /* RatingAppModel.swift in Sources */,
