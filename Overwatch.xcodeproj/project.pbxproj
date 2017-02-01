@@ -21,6 +21,8 @@
 		C7562E781E401F600096DE44 /* ErrorNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E771E401F600096DE44 /* ErrorNotificationView.swift */; };
 		C75FDE131E30307F00339634 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FDE121E30307F00339634 /* GradientView.swift */; };
 		C75FDE151E30309200339634 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75FDE141E30309200339634 /* QuartzCore.framework */; };
+		C76B2CD91E415E16009600C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
+		C76B2CDD1E4171FB009600C5 /* ConsoleProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76B2CDC1E4171FB009600C5 /* ConsoleProfileCell.xib */; };
 		C76F088E1E2EACBA0082AAB7 /* CustomError.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76F088D1E2EACBA0082AAB7 /* CustomError.xib */; };
 		C76F08921E2EAF670082AAB7 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F08911E2EAF670082AAB7 /* BaseNavigationViewController.swift */; };
 		C76F08941E2EAFA70082AAB7 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F08931E2EAFA70082AAB7 /* UIViewExtension.swift */; };
@@ -48,7 +50,6 @@
 		C77A19371E2DB90C0047E277 /* CaroselCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77A19361E2DB90C0047E277 /* CaroselCellView.xib */; };
 		C77A60051E3933B1000D5E94 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A60041E3933B1000D5E94 /* ForgotPasswordViewController.swift */; };
 		C77A60071E39340A000D5E94 /* ChoosePlatformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A60061E39340A000D5E94 /* ChoosePlatformViewController.swift */; };
-		C77A600B1E39885A000D5E94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C77A600A1E39885A000D5E94 /* GoogleService-Info.plist */; };
 		C77A600D1E398D86000D5E94 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A600C1E398D86000D5E94 /* FirebaseManager.swift */; };
 		C77A600F1E398DCC000D5E94 /* GetEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A600E1E398DCC000D5E94 /* GetEventRequest.swift */; };
 		C77A60131E399089000D5E94 /* RatingAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A60121E399089000D5E94 /* RatingAppModel.swift */; };
@@ -149,6 +150,7 @@
 		C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C75FDE121E30307F00339634 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = Utilities/GradientView.swift; sourceTree = "<group>"; };
 		C75FDE141E30309200339634 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C76B2CDC1E4171FB009600C5 /* ConsoleProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConsoleProfileCell.xib; path = Views/ConsoleProfileCell.xib; sourceTree = "<group>"; };
 		C76F088D1E2EACBA0082AAB7 /* CustomError.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomError.xib; path = Views/CustomError.xib; sourceTree = "<group>"; };
 		C76F08911E2EAF670082AAB7 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationViewController.swift; path = ViewControllers/BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		C76F08931E2EAFA70082AAB7 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = Utilities/UIViewExtension.swift; sourceTree = "<group>"; };
@@ -335,7 +337,6 @@
 		C77A18FA1E2D91240047E277 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				33BE5A2D1E3FEC4400BCF486 /* UpdateUser.swift */,
 				C77A18F81E2D90910047E277 /* Request.swift */,
 				C7C913A61E315678002167D8 /* FeedRequest.swift */,
 				C7C913A81E315C64002167D8 /* GroupsRequest.swift */,
@@ -352,6 +353,7 @@
 				C7AD52B81E3A876D001F0617 /* SignUpRequest.swift */,
 				C7AD52C41E3ABF1F001F0617 /* SignInRequest.swift */,
 				C7AD52C61E3ABFFA001F0617 /* AddConsoleRequest.swift */,
+				33BE5A2D1E3FEC4400BCF486 /* UpdateUser.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -399,6 +401,7 @@
 				C7E5B9A31E32CD7700FB5593 /* InviteView.xib */,
 				C7AD52BE1E3A979C001F0617 /* ConsoleCell.swift */,
 				C7AD52C01E3A97F6001F0617 /* ConsoleCell.xib */,
+				C76B2CDC1E4171FB009600C5 /* ConsoleProfileCell.xib */,
 				C7562E671E4017C60096DE44 /* WebView.swift */,
 				C7562E681E4017C60096DE44 /* WebView.xib */,
 				C7562E771E401F600096DE44 /* ErrorNotificationView.swift */,
@@ -627,6 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7B6BC311E300DE800D6BFF3 /* EventDescriptionCell.xib in Resources */,
+				C76B2CDD1E4171FB009600C5 /* ConsoleProfileCell.xib in Resources */,
 				C7E2C0861E3BF30900EBEF5D /* Default-568h@2x.png in Resources */,
 				C781D66D1E304379001FA487 /* GroupCell.xib in Resources */,
 				C7B6BC121E3009F200D6BFF3 /* EventCurrentNoCheckPointCell.xib in Resources */,
@@ -639,6 +643,7 @@
 				C7B6BBFF1E30010A00D6BFF3 /* PushNotificationView.xib in Resources */,
 				C7B6BC001E30010A00D6BFF3 /* VerificationPromptView.xib in Resources */,
 				C7B6BBEE1E2EFD0A00D6BFF3 /* ErrorView.xib in Resources */,
+				C76B2CD91E415E16009600C5 /* GoogleService-Info.plist in Resources */,
 				C793CD711E2D5EC80012FEEE /* Main.storyboard in Resources */,
 				C7B6BC191E300AD800D6BFF3 /* EventUpcomingNoCheckPointCell.xib in Resources */,
 				C7E5B9A41E32CD7700FB5593 /* InviteView.xib in Resources */,
@@ -646,7 +651,6 @@
 				C7B6BC241E300C2400D6BFF3 /* ActivityCheckPointPicker.xib in Resources */,
 				C7B6BC1F1E300B7000D6BFF3 /* EventUpcomingWithCheckPointCell.xib in Resources */,
 				C7B6BC141E300A4800D6BFF3 /* EventCurrentWithCheckPointCell.xib in Resources */,
-				C77A600B1E39885A000D5E94 /* GoogleService-Info.plist in Resources */,
 				C7F4DAEB1E4116A100E2F697 /* CustomErrorUserAction.xib in Resources */,
 				C7B6BC281E300CF500D6BFF3 /* DatePicker.xib in Resources */,
 				C7562E761E401F390096DE44 /* ErrorNotificationView.xib in Resources */,

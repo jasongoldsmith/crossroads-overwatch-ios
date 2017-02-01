@@ -31,8 +31,12 @@ class LoginBaseViewController: BaseViewController {
     @IBAction override func navBackButtonPressed(sender: UIBarButtonItem?) {
         //    override func navBackButtonPressed(sender: UIBarButtonItem?) {
         if let navController = navigationController {
-            navController.popViewController(animated: true)
-            navController.navigationBar.isHidden = true
+            if navController.viewControllers.count == 1 {
+                navController.dismiss(animated: true, completion: nil)
+            } else {
+                navController.popViewController(animated: true)
+                navController.navigationBar.isHidden = true
+            }
         } else {
             dismiss(animated: true, completion: nil)
         }

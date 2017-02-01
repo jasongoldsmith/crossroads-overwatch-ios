@@ -64,8 +64,10 @@ class RootViewController: BaseViewController {
                             return
                         }
                         if succeed {
-                            ApplicationManager.sharedInstance.addSlideMenuController(parentViewController: self, pushData: self.pushNotificationData, branchData: self.branchLinkData, showLandingPage: succeed, showGroups: false)
-                            self.pushNotificationData = nil
+                            DispatchQueue.main.async {
+                                ApplicationManager.sharedInstance.addSlideMenuController(parentViewController: self, pushData: self.pushNotificationData, branchData: self.branchLinkData, showLandingPage: succeed, showGroups: false)
+                                self.pushNotificationData = nil
+                            }
                         } else {
                             ApplicationManager.sharedInstance.log.debug("Failed Fetching Feed")
                             UserInfo.removeUserData()

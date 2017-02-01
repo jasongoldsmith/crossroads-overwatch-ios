@@ -1810,7 +1810,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49795934-B594-43E3-88FC-2EC38BD1DC35" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E0BDC34F-CD29-40B1-B6B7-F9140F8E47EC" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
                                 <rect key="frame" x="16" y="113.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UY6-7w-5Ph"/>
@@ -2483,7 +2483,6 @@ you signed up with, please contact us at</string>
                                 </state>
                                 <connections>
                                     <action selector="battleNetButtonPressed" destination="Jh5-3n-are" eventType="touchUpInside" id="62b-th-pOf"/>
-                                    <action selector="nextButtonPressed" destination="Jh5-3n-are" eventType="touchUpInside" id="Z5P-6Q-MWR"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More than one platform or console? You can add it later!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9j-9S-8p0">
@@ -2547,7 +2546,7 @@ you signed up with, please contact us at</string>
                                     <action selector="nextButtonPressed" destination="Jh5-3n-are" eventType="touchUpInside" id="HVW-2b-y91"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More than one platform or console? You can add it later!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFi-t4-Zhv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More than one platform or console? You can add it later!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WFi-t4-Zhv">
                                 <rect key="frame" x="10" y="592" width="355" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="8Rn-zv-1yX"/>
@@ -2624,6 +2623,7 @@ you signed up with, please contact us at</string>
                         <outlet property="currentConsoleLabel" destination="MGZ-SR-LTh" id="IgT-Jj-eEN"/>
                         <outlet property="nextButton" destination="X23-e6-0Cd" id="1GA-m9-uWp"/>
                         <outlet property="tableHeightConstraint" destination="aNh-eq-Jjm" id="C8n-4x-vr0"/>
+                        <outlet property="titleLabel" destination="Gwc-Vz-Afz" id="b9n-9W-mCL"/>
                         <outlet property="topAdviceLabel" destination="U9j-9S-8p0" id="ndB-vj-8aV"/>
                     </connections>
                 </viewController>
@@ -3178,7 +3178,7 @@ you signed up with, please contact us at</string>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRACER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ggL-kY-Blr">
-                                <rect key="frame" x="16" y="210" width="343" height="24"/>
+                                <rect key="frame" x="146" y="210" width="83" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="OMr-ZP-P2D"/>
                                 </constraints>
@@ -3305,14 +3305,13 @@ you signed up with, please contact us at</string>
                         <constraints>
                             <constraint firstItem="21I-9q-cEg" firstAttribute="top" secondItem="JCA-LI-jZi" secondAttribute="bottom" constant="12" id="0Fb-1u-Ejv"/>
                             <constraint firstItem="wDe-SW-JZA" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" constant="45" id="0rP-sc-NFn"/>
+                            <constraint firstItem="ggL-kY-Blr" firstAttribute="centerX" secondItem="jPT-la-SvW" secondAttribute="centerX" id="7t5-fU-kdi"/>
                             <constraint firstItem="2gc-0q-uQj" firstAttribute="leading" secondItem="wDe-SW-JZA" secondAttribute="leading" id="AmX-d6-Tv1"/>
                             <constraint firstItem="0GW-Eg-ebi" firstAttribute="trailing" secondItem="TXS-PU-mTa" secondAttribute="trailing" id="Atb-fN-2tY"/>
                             <constraint firstItem="2gc-0q-uQj" firstAttribute="top" secondItem="wDe-SW-JZA" secondAttribute="bottom" constant="-1" id="B0Q-cc-c7B"/>
-                            <constraint firstItem="ggL-kY-Blr" firstAttribute="trailing" secondItem="jPT-la-SvW" secondAttribute="trailingMargin" id="B4M-BO-4BW"/>
                             <constraint firstAttribute="trailing" secondItem="TXS-PU-mTa" secondAttribute="trailing" constant="45" id="CkI-Dn-SH9"/>
                             <constraint firstItem="ggL-kY-Blr" firstAttribute="top" secondItem="rqA-c0-toY" secondAttribute="bottom" constant="18" id="Dbm-t3-zbW"/>
                             <constraint firstItem="f51-1S-8Wu" firstAttribute="leading" secondItem="0GW-Eg-ebi" secondAttribute="leading" id="GJK-cb-Ikh"/>
-                            <constraint firstItem="ggL-kY-Blr" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leadingMargin" id="GKa-E3-Y2O"/>
                             <constraint firstAttribute="trailing" secondItem="QOs-Lw-ZJA" secondAttribute="trailing" id="GUO-35-iQ6"/>
                             <constraint firstItem="PPU-0B-ZaN" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="IzZ-6n-oMD"/>
                             <constraint firstItem="TXS-PU-mTa" firstAttribute="top" secondItem="wDe-SW-JZA" secondAttribute="bottom" constant="10" id="JFs-3L-rZ3"/>
@@ -3347,6 +3346,7 @@ you signed up with, please contact us at</string>
                         <outlet property="changePasswordButton" destination="TXS-PU-mTa" id="MsL-E8-dQh"/>
                         <outlet property="consolesTable" destination="2gc-0q-uQj" id="ApR-Rt-0LC"/>
                         <outlet property="contactUsButton" destination="0GW-Eg-ebi" id="NPZ-kf-4iD"/>
+                        <outlet property="currentConsoleLabel" destination="js7-su-HMi" id="sJD-dM-4VA"/>
                         <outlet property="legalLabel" destination="JCA-LI-jZi" id="wq2-7P-tK2"/>
                         <outlet property="logOutButton" destination="f51-1S-8Wu" id="OqQ-sd-eVl"/>
                         <outlet property="tableHeightConstraint" destination="qAw-Ad-cOc" id="Lzh-io-LfX"/>
@@ -3358,7 +3358,7 @@ you signed up with, please contact us at</string>
         </scene>
     </scenes>
     <resources>
-        <image name="49795934-B594-43E3-88FC-2EC38BD1DC35" width="40" height="29">
+        <image name="E0BDC34F-CD29-40B1-B6B7-F9140F8E47EC" width="40" height="29">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

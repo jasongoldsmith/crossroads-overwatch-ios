@@ -186,8 +186,7 @@ class UserInfo: NSObject {
     class func getUserName() -> String? {
         
         let userDefaults = UserDefaults.standard
-        if (userDefaults.object(forKey: K.UserDefaultKey.UserAccountInfo.TR_UserName) != nil) {
-            let userName = userDefaults.object(forKey: K.UserDefaultKey.UserAccountInfo.TR_UserName) as! String
+        if let userName = userDefaults.object(forKey: K.UserDefaultKey.UserAccountInfo.TR_UserName) as? String {
             return userName
         }
         return nil
@@ -195,9 +194,7 @@ class UserInfo: NSObject {
     
     class func getUserID() -> String? {
         let userDefaults = UserDefaults.standard
-        if (userDefaults.object(forKey: K.UserDefaultKey.UserAccountInfo.TR_UserID) != nil) {
-            let userID = userDefaults.object(forKey: K.UserDefaultKey.UserAccountInfo.TR_UserID) as! String
-            
+        if let userID = userDefaults.object(forKey: K.UserDefaultKey.UserAccountInfo.TR_UserID) as? String {
             return userID
         }
         

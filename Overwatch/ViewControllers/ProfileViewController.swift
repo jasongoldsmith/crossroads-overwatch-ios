@@ -20,6 +20,7 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var buildNumberLabel: UILabel!
     @IBOutlet weak var legalLabel: TTTAttributedLabel!
     @IBOutlet weak var consolesTable: UITableView!
+    @IBOutlet weak var currentConsoleLabel: UILabel!
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     
     //Console Buttons/ Image
@@ -31,11 +32,12 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     var consoleTwoButton: UIButton?
     var consoleAddButton: UIButton?
     var currentUser: PlayerInfo?
-    var isConsoleMenuOpen: Bool = false
+    var isConsoleMenuOpen: Bool = true
+    var isAddingConsoles = false
     var consoleAddButtonImageView: UIImageView?
     var consoleTwoButtonImageView: UIImageView?
-    var consoles = ["PS4", "XBox One"]
-    var currentConsole = "PC"
+    var consoles = [String]()
+    var currentConsole = ""
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -47,25 +49,36 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         
         //Update build number
         self.addVersionAndLegalAttributedLabel()
-        
         //Add Radius to buttons
         self.changePasswordButton.layer.cornerRadius = 2.0
         self.contactUsButton.layer.cornerRadius = 2.0
         self.logOutButton.layer.cornerRadius = 2.0
         self.updateView()
-        consolesTable.register(UINib(nibName: "ConsoleCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        consoleButtonPressed()
+        consolesTable.register(UINib(nibName: "ConsoleProfileCell", bundle: nil), forCellReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.backGroundImageView?.clipsToBounds = true
+        if isAddingConsoles {
+            isAddingConsoles = false
+            let profileRequest = ProfileRequest()
+            profileRequest.getProfile(completion: { (profileDidSucceed) in
+                if let profileSucceed = profileDidSucceed,
+                    profileSucceed {
+                    self.updateView()
+                    self.consolesTable.reloadData()
+                }
+            })
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        self.isConsoleMenuOpen = false
+        if isConsoleMenuOpen == true {
+            consoleButtonPressed()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -107,9 +120,26 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     }
     
     func updateView () {
-        
+        consoles.removeAll()
         self.currentUser = ApplicationManager.sharedInstance.getPlayerObjectForCurrentUser()
-        
+        //consoles
+        if let defaultConsole = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole()?.consoleType {
+            currentConsole = defaultConsole
+        }
+        if let savedConsoles = ApplicationManager.sharedInstance.currentUser?.consoles {
+            if savedConsoles.count == 3 {
+                consoles.removeAll()
+            } else {
+                consoles.append("Linked Accounts")
+            }
+            for console in savedConsoles {
+                if let consoleType = console.consoleType,
+                    currentConsole != consoleType {
+                    consoles.insert(consoleType, at: 0)
+                }
+            }
+        }
+        currentConsoleLabel.text = currentConsole
         // User Image
         self.updateUserAvatorImage()
         
@@ -171,9 +201,15 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
 
     @IBAction func consoleButtonPressed() {
         if tableHeightConstraint.constant == 0 {
-            tableHeightConstraint.constant = 90
+            if consoles.count > 1 {
+                tableHeightConstraint.constant = 90
+            } else {
+                tableHeightConstraint.constant = 47
+            }
+            isConsoleMenuOpen = true
         } else {
             tableHeightConstraint.constant = 0
+            isConsoleMenuOpen = false
         }
         UIView.animate(withDuration: 0.3, animations: { () -> Void in
             self.view.layoutIfNeeded()
@@ -229,9 +265,16 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     
     //Table View Delegate methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "choosePlatformViewController") as! ChoosePlatformViewController
-        self.present(vc, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if ApplicationManager.sharedInstance.currentUser?.consoles.count != 3,
+            indexPath.row == consoles.count - 1 {
+            isAddingConsoles = true
+            let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "choosePlatformViewController") as! ChoosePlatformViewController
+            vc.comingFromProfile = true
+            let navigationController = BaseNavigationViewController(rootViewController: vc)
+            self.present(navigationController, animated: true, completion: nil)
+        }
     }
     
 }

@@ -11,6 +11,7 @@ import UIKit
 
 class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var battleTagView: UIView!
     @IBOutlet weak var consolesTable: UITableView!
     @IBOutlet weak var battleTagTextField: UITextField!
@@ -23,10 +24,14 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
     
     var consoles = ["PS4", "XBox One"]
     var currentConsole = "PC"
+    var comingFromProfile = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         consolesTable.register(UINib(nibName: "ConsoleCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        if comingFromProfile {
+            handleComingFromProfile()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,14 +71,55 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
     }
     
     @IBAction func consoleButtonPressed() {
-        if tableHeightConstraint.constant == 0 {
-            tableHeightConstraint.constant = 90
-        } else {
-            tableHeightConstraint.constant = 0
+        if consoles.count > 0 {
+            if tableHeightConstraint.constant == 0 {
+                if consoles.count > 1 {
+                    tableHeightConstraint.constant = 90
+                } else {
+                    tableHeightConstraint.constant = 47
+                }
+            } else {
+                tableHeightConstraint.constant = 0
+            }
+            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            })
         }
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            self.view.layoutIfNeeded()
-        })
+    }
+    
+    func handleComingFromProfile() {
+        titleLabel.text = "ADD LINKED ACCOUNT"
+        consoles.removeAll()
+        let possibleConsoles = ["PC", "PS4", "XBox One"]
+        guard let savedConsoles = ApplicationManager.sharedInstance.currentUser?.consoles else {
+            return
+        }
+        var userConsoles = [String]()
+        for console in savedConsoles {
+            guard let consoleType = console.consoleType?.uppercased() else {
+                break
+            }
+            userConsoles.append(consoleType)
+        }
+        
+        
+        //
+        var elementFound = false
+        for possibleConsole in  possibleConsoles {
+            for console in userConsoles {
+                if possibleConsole.lowercased().replacingOccurrences(of: " ", with: "") == console.lowercased().replacingOccurrences(of: " ", with: "") {
+                    elementFound = true
+                    break
+                }
+            }
+            if !elementFound {
+                consoles.append(possibleConsole)
+            }
+            elementFound = false
+        }
+        if let _ = consoles.first {
+            currentConsole = consoles.removeFirst()
+        }
     }
     
     func refreshView() {
