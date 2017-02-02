@@ -21,6 +21,11 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate,
         }
         self.addLegalStatmentText()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        emailTextField.becomeFirstResponder()
+    }
     
     @IBAction func nextButtonPressed() {
         guard let email = emailTextField.text,

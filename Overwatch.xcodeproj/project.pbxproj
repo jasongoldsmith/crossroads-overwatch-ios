@@ -21,7 +21,6 @@
 		C7562E781E401F600096DE44 /* ErrorNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E771E401F600096DE44 /* ErrorNotificationView.swift */; };
 		C75FDE131E30307F00339634 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FDE121E30307F00339634 /* GradientView.swift */; };
 		C75FDE151E30309200339634 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75FDE141E30309200339634 /* QuartzCore.framework */; };
-		C76B2CD91E415E16009600C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
 		C76B2CDD1E4171FB009600C5 /* ConsoleProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76B2CDC1E4171FB009600C5 /* ConsoleProfileCell.xib */; };
 		C76F088E1E2EACBA0082AAB7 /* CustomError.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76F088D1E2EACBA0082AAB7 /* CustomError.xib */; };
 		C76F08921E2EAF670082AAB7 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F08911E2EAF670082AAB7 /* BaseNavigationViewController.swift */; };
@@ -63,6 +62,18 @@
 		C793CD711E2D5EC80012FEEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793CD6F1E2D5EC80012FEEE /* Main.storyboard */; };
 		C793CD731E2D5EC80012FEEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C793CD721E2D5EC80012FEEE /* Assets.xcassets */; };
 		C793CD761E2D5EC80012FEEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793CD741E2D5EC80012FEEE /* LaunchScreen.storyboard */; };
+		C79480921E428A15002CC601 /* PushNotiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480911E428A15002CC601 /* PushNotiController.swift */; };
+		C79480941E42AB5E002CC601 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
+		C79480961E42C5BC002CC601 /* SendReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480951E42C5BC002CC601 /* SendReportViewController.swift */; };
+		C79480981E43B822002CC601 /* CreateAReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480971E43B822002CC601 /* CreateAReportRequest.swift */; };
+		C794809A1E43B9E2002CC601 /* ForgotPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480991E43B9E2002CC601 /* ForgotPasswordRequest.swift */; };
+		C794809C1E43BB46002CC601 /* AppTrackingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C794809B1E43BB46002CC601 /* AppTrackingRequest.swift */; };
+		C794809E1E43BE68002CC601 /* GroupNotificationUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C794809D1E43BE68002CC601 /* GroupNotificationUpdateRequest.swift */; };
+		C79480A01E43C019002CC601 /* ReportComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C794809F1E43C019002CC601 /* ReportComment.swift */; };
+		C79480A21E43C2CB002CC601 /* KickInActiveUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480A11E43C2CB002CC601 /* KickInActiveUserRequest.swift */; };
+		C79480A41E43C392002CC601 /* RateApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480A31E43C392002CC601 /* RateApplication.swift */; };
+		C79480A61E43C99D002CC601 /* MessageSentConfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480A51E43C99D002CC601 /* MessageSentConfViewController.swift */; };
+		C79480A81E43D112002CC601 /* LogOutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480A71E43D112002CC601 /* LogOutRequest.swift */; };
 		C79899641E2EB05D000D08BB /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79899631E2EB05D000D08BB /* WebViewViewController.swift */; };
 		C79899661E2EB0FC000D08BB /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79899651E2EB0FC000D08BB /* ViewControllerExtension.swift */; };
 		C798996A1E2EF0E1000D08BB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79899691E2EF0E1000D08BB /* ProfileViewController.swift */; };
@@ -195,6 +206,17 @@
 		C793CD721E2D5EC80012FEEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C793CD751E2D5EC80012FEEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C793CD771E2D5EC80012FEEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C79480911E428A15002CC601 /* PushNotiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushNotiController.swift; path = Utilities/PushNotiController.swift; sourceTree = "<group>"; };
+		C79480951E42C5BC002CC601 /* SendReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SendReportViewController.swift; path = ViewControllers/SendReportViewController.swift; sourceTree = "<group>"; };
+		C79480971E43B822002CC601 /* CreateAReportRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateAReportRequest.swift; path = Networking/CreateAReportRequest.swift; sourceTree = "<group>"; };
+		C79480991E43B9E2002CC601 /* ForgotPasswordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordRequest.swift; path = Networking/ForgotPasswordRequest.swift; sourceTree = "<group>"; };
+		C794809B1E43BB46002CC601 /* AppTrackingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTrackingRequest.swift; path = Networking/AppTrackingRequest.swift; sourceTree = "<group>"; };
+		C794809D1E43BE68002CC601 /* GroupNotificationUpdateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupNotificationUpdateRequest.swift; path = Networking/GroupNotificationUpdateRequest.swift; sourceTree = "<group>"; };
+		C794809F1E43C019002CC601 /* ReportComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportComment.swift; path = Networking/ReportComment.swift; sourceTree = "<group>"; };
+		C79480A11E43C2CB002CC601 /* KickInActiveUserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KickInActiveUserRequest.swift; path = Networking/KickInActiveUserRequest.swift; sourceTree = "<group>"; };
+		C79480A31E43C392002CC601 /* RateApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateApplication.swift; path = Networking/RateApplication.swift; sourceTree = "<group>"; };
+		C79480A51E43C99D002CC601 /* MessageSentConfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageSentConfViewController.swift; path = ViewControllers/MessageSentConfViewController.swift; sourceTree = "<group>"; };
+		C79480A71E43D112002CC601 /* LogOutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogOutRequest.swift; path = Networking/LogOutRequest.swift; sourceTree = "<group>"; };
 		C79899631E2EB05D000D08BB /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewViewController.swift; path = ViewControllers/WebViewViewController.swift; sourceTree = "<group>"; };
 		C79899651E2EB0FC000D08BB /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerExtension.swift; path = Utilities/ViewControllerExtension.swift; sourceTree = "<group>"; };
 		C79899691E2EF0E1000D08BB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ViewControllers/ProfileViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +331,8 @@
 				33A4EBEE1E3FE97700E986C0 /* ChangePasswordViewController.swift */,
 				C7562E6B1E4017FC0096DE44 /* LegalViewController.swift */,
 				C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */,
+				C79480951E42C5BC002CC601 /* SendReportViewController.swift */,
+				C79480A51E43C99D002CC601 /* MessageSentConfViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +354,7 @@
 				C7BFCE721E32A1C60081C2B0 /* StringExtension.swift */,
 				C7E5B9A71E32E4F400FB5593 /* DateExtension.swift */,
 				C77A600C1E398D86000D5E94 /* FirebaseManager.swift */,
+				C79480911E428A15002CC601 /* PushNotiController.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -338,22 +363,30 @@
 			isa = PBXGroup;
 			children = (
 				C77A18F81E2D90910047E277 /* Request.swift */,
-				C7C913A61E315678002167D8 /* FeedRequest.swift */,
-				C7C913A81E315C64002167D8 /* GroupsRequest.swift */,
-				C7C913AC1E316350002167D8 /* ProfileRequest.swift */,
-				C7EC42A01E3188BB0070CA8D /* CreateEventRequest.swift */,
 				C75325D01E36E99F00EB719D /* LeaveEventRequest.swift */,
+				C7C913A61E315678002167D8 /* FeedRequest.swift */,
+				C7EC42A01E3188BB0070CA8D /* CreateEventRequest.swift */,
 				C75325D21E36E9D900EB719D /* JoinEventRequest.swift */,
-				C75325D41E36E9EE00EB719D /* InvitePlayersRequest.swift */,
 				C7E39CBF1E37EC05008E47A9 /* DeviceTokenRequest.swift */,
-				C77A600E1E398DCC000D5E94 /* GetEventRequest.swift */,
 				C77A60141E399D27000D5E94 /* SendPushMessage.swift */,
-				C77A60161E399F95000D5E94 /* CancelEventInvitationRequest.swift */,
-				C77A60181E39A19A000D5E94 /* AcceptEventInvitationRequest.swift */,
+				C79480971E43B822002CC601 /* CreateAReportRequest.swift */,
+				33BE5A2D1E3FEC4400BCF486 /* UpdateUser.swift */,
+				C79480991E43B9E2002CC601 /* ForgotPasswordRequest.swift */,
+				C794809B1E43BB46002CC601 /* AppTrackingRequest.swift */,
+				C7C913A81E315C64002167D8 /* GroupsRequest.swift */,
+				C794809D1E43BE68002CC601 /* GroupNotificationUpdateRequest.swift */,
+				C77A600E1E398DCC000D5E94 /* GetEventRequest.swift */,
+				C7AD52C61E3ABFFA001F0617 /* AddConsoleRequest.swift */,
+				C794809F1E43C019002CC601 /* ReportComment.swift */,
 				C7AD52B81E3A876D001F0617 /* SignUpRequest.swift */,
 				C7AD52C41E3ABF1F001F0617 /* SignInRequest.swift */,
-				C7AD52C61E3ABFFA001F0617 /* AddConsoleRequest.swift */,
-				33BE5A2D1E3FEC4400BCF486 /* UpdateUser.swift */,
+				C79480A71E43D112002CC601 /* LogOutRequest.swift */,
+				C7C913AC1E316350002167D8 /* ProfileRequest.swift */,
+				C75325D41E36E9EE00EB719D /* InvitePlayersRequest.swift */,
+				C77A60181E39A19A000D5E94 /* AcceptEventInvitationRequest.swift */,
+				C77A60161E399F95000D5E94 /* CancelEventInvitationRequest.swift */,
+				C79480A11E43C2CB002CC601 /* KickInActiveUserRequest.swift */,
+				C79480A31E43C392002CC601 /* RateApplication.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -641,9 +674,9 @@
 				C793CD761E2D5EC80012FEEE /* LaunchScreen.storyboard in Resources */,
 				C793CD731E2D5EC80012FEEE /* Assets.xcassets in Resources */,
 				C7B6BBFF1E30010A00D6BFF3 /* PushNotificationView.xib in Resources */,
+				C79480941E42AB5E002CC601 /* GoogleService-Info.plist in Resources */,
 				C7B6BC001E30010A00D6BFF3 /* VerificationPromptView.xib in Resources */,
 				C7B6BBEE1E2EFD0A00D6BFF3 /* ErrorView.xib in Resources */,
-				C76B2CD91E415E16009600C5 /* GoogleService-Info.plist in Resources */,
 				C793CD711E2D5EC80012FEEE /* Main.storyboard in Resources */,
 				C7B6BC191E300AD800D6BFF3 /* EventUpcomingNoCheckPointCell.xib in Resources */,
 				C7E5B9A41E32CD7700FB5593 /* InviteView.xib in Resources */,
@@ -721,6 +754,7 @@
 				C7C913A91E315C64002167D8 /* GroupsRequest.swift in Sources */,
 				C77A600F1E398DCC000D5E94 /* GetEventRequest.swift in Sources */,
 				C77A19251E2DA8A70047E277 /* Consoles.swift in Sources */,
+				C794809E1E43BE68002CC601 /* GroupNotificationUpdateRequest.swift in Sources */,
 				C7BFCE641E329C7F0081C2B0 /* EventDetailViewController.swift in Sources */,
 				C798996C1E2EF2B8000D08BB /* BundleExtension.swift in Sources */,
 				C77A19061E2DA50D0047E277 /* EventInfo.swift in Sources */,
@@ -739,13 +773,17 @@
 				C7562E781E401F600096DE44 /* ErrorNotificationView.swift in Sources */,
 				C7BFCE6F1E329D840081C2B0 /* KSUtils.swift in Sources */,
 				C7AD52C71E3ABFFA001F0617 /* AddConsoleRequest.swift in Sources */,
+				C79480A81E43D112002CC601 /* LogOutRequest.swift in Sources */,
+				C794809A1E43B9E2002CC601 /* ForgotPasswordRequest.swift in Sources */,
 				C77A60131E399089000D5E94 /* RatingAppModel.swift in Sources */,
 				C77A600D1E398D86000D5E94 /* FirebaseManager.swift in Sources */,
 				C75FDE131E30307F00339634 /* GradientView.swift in Sources */,
 				C77A19021E2DA4860047E277 /* ApplicationManager.swift in Sources */,
+				C79480A21E43C2CB002CC601 /* KickInActiveUserRequest.swift in Sources */,
 				C77A60191E39A19A000D5E94 /* AcceptEventInvitationRequest.swift in Sources */,
 				C7B6BC1B1E300B0000D6BFF3 /* EventUpcomingNoCheckPointCell.swift in Sources */,
 				C7562E6E1E4017FC0096DE44 /* OnBoardingErrorViewController.swift in Sources */,
+				C794809C1E43BB46002CC601 /* AppTrackingRequest.swift in Sources */,
 				C7B6BC101E3009BE00D6BFF3 /* EventCurrentWithCheckPointCell.swift in Sources */,
 				C7B6BC3A1E3017E700D6BFF3 /* CreateEventViewController.swift in Sources */,
 				C77A19191E2DA7770047E277 /* PlayerInfo.swift in Sources */,
@@ -760,12 +798,18 @@
 				C76F08921E2EAF670082AAB7 /* BaseNavigationViewController.swift in Sources */,
 				C77A19351E2DB6710047E277 /* CaroselCellView.swift in Sources */,
 				C7BFCE711E329F0C0081C2B0 /* BranchManager.swift in Sources */,
+				C79480A61E43C99D002CC601 /* MessageSentConfViewController.swift in Sources */,
+				C79480981E43B822002CC601 /* CreateAReportRequest.swift in Sources */,
 				C77A192C1E2DB20A0047E277 /* LoginOptionViewController.swift in Sources */,
 				C7BFCE6C1E329D840081C2B0 /* KSToken.swift in Sources */,
 				C77A19111E2DA6240047E277 /* ActivityBonus.swift in Sources */,
+				C79480921E428A15002CC601 /* PushNotiController.swift in Sources */,
 				C7E5B9A81E32E4F400FB5593 /* DateExtension.swift in Sources */,
 				C77A19171E2DA7530047E277 /* CreatorInfo.swift in Sources */,
+				C79480961E42C5BC002CC601 /* SendReportViewController.swift in Sources */,
 				C7BFCE731E32A1C60081C2B0 /* StringExtension.swift in Sources */,
+				C79480A01E43C019002CC601 /* ReportComment.swift in Sources */,
+				C79480A41E43C392002CC601 /* RateApplication.swift in Sources */,
 				C7B6BC2D1E300DD100D6BFF3 /* EventDescriptionCell.swift in Sources */,
 				C7B6BBF41E2F00DE00D6BFF3 /* UISegmentedControlExtension.swift in Sources */,
 				C7562E691E4017C60096DE44 /* WebView.swift in Sources */,

@@ -12,11 +12,11 @@ class SignUpRequest: NSObject {
     
     func signUpWith(email: String, and password:String, completion:@escaping TRResponseCallBack) {
         let signUpUrl = K.TRUrls.TR_BaseUrl + "/api/v1/auth/signUp"
-        let request = NetworkRequest.sharedInstance
-        request.requestURL = signUpUrl
         var params = [String: AnyObject]()
         params["email"] = email as AnyObject?
         params["password"] = password as AnyObject?
+        let request = NetworkRequest.sharedInstance
+        request.requestURL = signUpUrl
         request.params = params
         request.URLMethod = .post
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in

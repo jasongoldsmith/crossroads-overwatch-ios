@@ -245,6 +245,7 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
         } else {
             cell.isUserInteractionEnabled = false
             cell.addNoGroupCellUI()
+            cell.isHidden = true
         }
         
         return cell

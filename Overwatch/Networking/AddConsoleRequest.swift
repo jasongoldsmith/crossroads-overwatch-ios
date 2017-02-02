@@ -12,11 +12,11 @@ class AddConsoleRequest: NSObject {
     
     func addConsoleWith(consoleType: String, and consoleId:String, completion:@escaping TRResponseCallBack) {
         let addConsoleUrl = K.TRUrls.TR_BaseUrl + "/api/v1/a/user/addConsole"
-        let request = NetworkRequest.sharedInstance
-        request.requestURL = addConsoleUrl
         var params = [String: AnyObject]()
         params["consoleType"] = consoleType as AnyObject?
         params["consoleId"] = consoleId as AnyObject?
+        let request = NetworkRequest.sharedInstance
+        request.requestURL = addConsoleUrl
         request.params = params
         request.URLMethod = .post
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in

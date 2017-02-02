@@ -14,11 +14,13 @@ class LoginViewController: LoginBaseViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        emailTextField.becomeFirstResponder()
     }
     
     @IBAction func forgotPassword() {
+        self.view.endEditing(true)
         let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "forgotPasswordViewController") as! ForgotPasswordViewController
         self.navigationController?.pushViewController(vc, animated: true)

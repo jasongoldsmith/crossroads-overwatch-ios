@@ -89,6 +89,9 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
     
     func handleComingFromProfile() {
         titleLabel.text = "ADD LINKED ACCOUNT"
+        nextButton.setTitle("LINK TO CROSSROADS", for: .normal)
+        bottomAdviceLabel.isHidden = true
+        topAdviceLabel.isHidden = true
         consoles.removeAll()
         let possibleConsoles = ["PC", "PS4", "XBox One"]
         guard let savedConsoles = ApplicationManager.sharedInstance.currentUser?.consoles else {

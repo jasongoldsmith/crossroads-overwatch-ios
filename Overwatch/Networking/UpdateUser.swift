@@ -26,6 +26,7 @@ class UpdateUser: NSObject {
         let request = NetworkRequest.sharedInstance
         request.params = params
         request.requestURL = updateUserUrl
+        request.URLMethod = .post
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in
             
             if let _ = error {
@@ -55,6 +56,7 @@ class UpdateUser: NSObject {
         let request = NetworkRequest.sharedInstance
         request.params = params
         request.requestURL = updateUserUrl
+        request.URLMethod = .post
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in
             
             if let _ = error {

@@ -97,8 +97,8 @@ class NetworkRequest {
                                 completion(message, nil)
                                 if self.viewHandlesError == false {
                                 }
-                            } else if let message = swiftyJsonVar["error"]["description"].string {
-                                completion(message, nil)
+                            } else if let errorJSONString = swiftyJsonVar["error"].rawString() {
+                                completion(errorJSONString, nil)
                             } else if let statusCode = swiftyJsonVar["httpStatusCode"].int,
                                 statusCode >= 400 {
                                 print(swiftyJsonVar)

@@ -10,7 +10,7 @@ import Foundation
 import pop
 import SDWebImage
 
-class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, CustomErrorDelegate, InvitationViewProtocol {
+class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, CustomErrorDelegate, InvitationViewProtocol, UIGestureRecognizerDelegate {
     
     
     private let EVENT_DESCRIPTION_CELL = "eventDescriptionCell"
@@ -114,11 +114,11 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         }
         
         //Activity Name Label
-        if var eventSubType = self.eventInfo?.eventActivity?.activitySubType {
+        if var eventType = self.eventInfo?.eventActivity?.activityType {
             if let hasDifficulty = self.eventInfo?.eventActivity?.activityDificulty, hasDifficulty != "" {
-                eventSubType = "\(eventSubType) - \(hasDifficulty)"
+                eventType = "\(eventType) - \(hasDifficulty)"
             }
-            self.eventName.text = eventSubType
+            self.eventName.text = eventType
         }
         
         
@@ -130,7 +130,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         self.eventTable?.setNeedsLayout()
         self.eventTable?.layoutIfNeeded()
         
-        if let hasCheckPoint = self.eventInfo?.eventActivity?.activityCheckPoint, hasCheckPoint != "" {
+        if let hasCheckPoint = self.eventInfo?.eventActivity?.activitySubType, hasCheckPoint != "" {
             self.hasCheckPoint = true
             let checkPoint = hasCheckPoint
             let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)]
@@ -389,7 +389,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
                 headerView.textAlignment = .center
                 headerView.textColor = UIColor.white
                 headerView.font = UIFont(name:"HelveticaNeue", size: 12)
-                headerView.backgroundColor = UIColor(red: 32/255, green: 50/255, blue: 54/255, alpha: 1)
+                headerView.backgroundColor = UIColor(red: 53/255, green: 65/255, blue: 91/255, alpha: 1)
                 
                 return headerView
             }
@@ -512,8 +512,6 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
                             cell?.playerInviteButton.isHidden = true
                         } else {
                             cell?.playerUserName?.text = "Invite a Friend"
-                            //TODO: invite shouldn't be hidden
-                            cell?.playerInviteButton.isHidden = true
                             cell?.playerInviteButton.addTarget(self, action: #selector(inviteUser), for: .touchUpInside)
                         }
                     } else {
@@ -659,23 +657,23 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         guard let _ = self.selectedComment else { return }
         
-//        if ApplicationManager.sharedInstance.currentUser?.hasReachedMaxReportedComments == true {
-//            let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-//            let vc : SendReportViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as! SendReportViewController
-//            vc.isModallyPresented = true
-//            vc.eventID = self.eventInfo?.eventID
-//            vc.commentID = (self.selectedComment?.commentId)!
-//            
-//            let navigationController = UINavigationController(rootViewController: vc)
-//            navigationController.navigationBar.isHidden = true
-//            self.presentViewController(navigationController, animated: true, completion: nil)
-//        } else {
-//            _ = TRReportComment().reportAComment((self.selectedComment?.commentId)!, eventID: (self.eventInfo?.eventID)!,reportDetail: nil, reportedEmail: nil, completion: { (didSucceed) in
-//                if didSucceed == true {
-//                    self.selectedComment = nil
-//                }
-//            })
-//        }
+        if ApplicationManager.sharedInstance.currentUser?.hasReachedMaxReportedComments == true {
+            let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+            let vc : SendReportViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as! SendReportViewController
+            vc.eventID = self.eventInfo?.eventID
+            vc.commentID = (self.selectedComment?.commentId)!
+            
+            let navigationController = BaseNavigationViewController(rootViewController: vc)
+            self.present(navigationController, animated: true, completion: nil)
+        } else {
+            let reportRequest = ReportComment()
+            reportRequest.reportAComment(commentID: (self.selectedComment?.commentId)!, eventID: (self.eventInfo?.eventID)!, reportDetail: nil, reportedEmail: nil, completion: { (didSucceed) in
+                if let succeed = didSucceed,
+                    succeed {
+                    self.selectedComment = nil
+                }
+            })
+        }
     }
     
     func customErrorActionButtonPressedWithSelector(selector: Selector) {
@@ -1049,11 +1047,11 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func kickInActiveUser (playerID: String) {
-        
-//        if let playerToKick = self.userToKick?.playerID {
-//            _ = TRKickInActiveUserRequest().kickInActiveUser((self.eventInfo?.eventID)!, playerID: playerToKick, completion: {(error, response) in
-//            })
-//        }
+        if let playerToKick = self.userToKick?.playerID {
+            let kickRequest = KickInActiveUserRequest()
+            kickRequest.kickInActiveUser(eventID: (self.eventInfo?.eventID)!, playerID: playerToKick, completion: { (error, response) in
+            })
+        }
     }
     
     
@@ -1082,6 +1080,14 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         }
     }
     
+    //UIGestureRecognizer Delegate methods
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: eventTable))!{
+            return false
+        }
+        return true
+    }
+
     deinit {
         
     }

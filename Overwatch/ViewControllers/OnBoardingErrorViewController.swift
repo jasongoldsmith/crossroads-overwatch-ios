@@ -20,27 +20,84 @@ class OnBoardingErrorViewController: BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if errorString == "Email is already taken" {
-            errorTitleLabel.text = "ALREADY TAKEN"
-            errorTypeLabel.text = "<Email entered>"
-            errorDescriptionLabel.text = "An account already exists for that <email>. Please check for any typos."
-            errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
-        } else if errorString == "Battletag/Gamertag is already taken" {
-            errorTitleLabel.text = "ALREADY TAKEN"
-            errorTypeLabel.text = "<Gamertag entered>"
-            errorDescriptionLabel.text = "An account already exists for that <Battletag/Gamertag>. Please check for any typos."
-            errorLogoTypeImage.image = UIImage(named: "imgIconID")
-        } else if errorString == "Invalid Password Provided" {
-            errorTitleLabel.text = "INVALID"
-            errorTypeLabel.text = "<Password entered>"
-            errorDescriptionLabel.text = "Invalid <Password> for this account. Please check for any typos."
-            errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
-        } else if errorString == "No User found with the email provided" {
-            errorTitleLabel.text = "CAN’T FIND PLAYER"
-            errorTypeLabel.text = "<Email entered>"
-            errorDescriptionLabel.text = "We couldn’t find that <email>. Please check for any typos."
-            errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+        guard let dictionary = self.getDictionaryFromStringResponse(value: errorString),
+            let type =  dictionary.object(forKey: "type") as? String,
+            let details =  dictionary.object(forKey: "details") as? NSDictionary,
+            let title =  details.object(forKey: "title") as? String,
+            let code =  dictionary.object(forKey: "code") as? Int else {
+                return
         }
+        
+        errorTitleLabel.text = type.uppercased()
+        errorTypeLabel.text = "<\(type)>"
+        errorDescriptionLabel.text = "\(title)."
+        
+        switch code {
+        case 2:
+            errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            break
+        case 3:
+            errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
+            break
+        case 4:
+            errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            break
+        case 5:
+            errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            break
+        case 6:
+            errorLogoTypeImage.image = UIImage(named: "imgIconPlatform")
+            break
+        case 7:
+            errorLogoTypeImage.image = UIImage(named: "imgIconPlatform")
+            break
+        case 8:
+            errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            break
+        case 9:
+            errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            break
+        case 10:
+            errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            break
+        case 11:
+            errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            break
+        case 12:
+            errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            break
+        case 13:
+            errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            break
+        case 14:
+            errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
+            break
+        case 15:
+            errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
+            break
+        default:
+            errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            break
+        }
+
+        guard let message = details.object(forKey: "") as? String else {
+            return
+        }
+        errorDescriptionLabel.text = "\(title). \(message)"
+    }
+    
+    private func getDictionaryFromStringResponse(value:String) -> NSDictionary? {
+        if let data = value.data(using: String.Encoding.utf8) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                if let dic = json as? NSDictionary {
+                    return dic
+                }
+            } catch _ {
+                return nil
+            }
+        }
+        return nil
     }
 
     @IBAction func backButtonPressed() {
@@ -49,7 +106,14 @@ class OnBoardingErrorViewController: BaseViewController{
             navController.navigationBar.isHidden = true
         }
     }
-
+    
+    @IBAction func contactUsButtonPressed() {
+        let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as!
+        SendReportViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     deinit {
         
     }

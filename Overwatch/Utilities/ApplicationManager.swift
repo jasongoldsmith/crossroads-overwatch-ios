@@ -40,6 +40,9 @@ class ApplicationManager: NSObject {
 
     // Error Notification View
     var errorNotificationView = ErrorNotificationView()
+    
+    //Push Notification Controller (Active State)
+    var pushNotiController: PushNotiController?
 
     //Current User
     var currentUser: UserInfo?
@@ -67,8 +70,18 @@ class ApplicationManager: NSObject {
         super.init()
         //Init FireBase Manager
         self.fireBaseManager = FireBaseManager()
+        
         // Init Error Notification View with nib
         self.errorNotificationView = Bundle.main.loadNibNamed("ErrorNotificationView", owner: self, options: nil)?[0] as! ErrorNotificationView
+
+        //Init Push Notification Controller (Active State)
+        self.pushNotiController = PushNotiController()
+
+        // Notification Observer
+        NotificationCenter.default.addObserver(self,
+                                                         selector: #selector(ApplicationManager.didReceiveRemoteNotificationInActiveSesion),
+                                                         name: NSNotification.Name(rawValue: K.NOTIFICATION_TYPE.REMOTE_NOTIFICATION_WITH_ACTIVE_SESSION),
+                                                         object: nil)
     }
 
     // Rewrite this method- User Server Login Response to save userID, psnID, UserImage -- ASHU
@@ -87,6 +100,12 @@ class ApplicationManager: NSObject {
     func purgeSavedData () {
         self.eventsList.removeAll()
         self.eventsListActivity.removeAll()
+    }
+
+    func didReceiveRemoteNotificationInActiveSesion(sender: NSNotification) {
+        let pushInfo = ActiveStatePushInfo()
+        pushInfo.parsePushNotificationPayLoad(sender: sender)
+        self.pushNotiController?.showActiveNotificationView(pushInfo: pushInfo, isExistingPushView: false)
     }
 
     func addSlideMenuController(parentViewController: BaseViewController, pushData: NSDictionary?, branchData:NSDictionary?, showLandingPage: Bool, showGroups: Bool) {

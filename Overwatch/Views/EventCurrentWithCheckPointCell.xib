@@ -43,10 +43,10 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OUS-lF-Pbe">
-                        <rect key="frame" x="10" y="10" width="40" height="40"/>
+                        <rect key="frame" x="10" y="10" width="32" height="32"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="G7O-HW-alZ"/>
-                            <constraint firstAttribute="width" constant="40" id="YUT-eb-yhg"/>
+                            <constraint firstAttribute="height" constant="32" id="G7O-HW-alZ"/>
+                            <constraint firstAttribute="width" constant="32" id="YUT-eb-yhg"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypf-SS-3FF">

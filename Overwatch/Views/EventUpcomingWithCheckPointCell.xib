@@ -44,10 +44,10 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8XS-80-dKn">
-                        <rect key="frame" x="10" y="10" width="40" height="40"/>
+                        <rect key="frame" x="10" y="10" width="32" height="32"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="0WW-O8-Ozz"/>
-                            <constraint firstAttribute="height" constant="40" id="sEM-Ay-uMw"/>
+                            <constraint firstAttribute="width" constant="32" id="0WW-O8-Ozz"/>
+                            <constraint firstAttribute="height" constant="32" id="sEM-Ay-uMw"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swi-aT-vEr">

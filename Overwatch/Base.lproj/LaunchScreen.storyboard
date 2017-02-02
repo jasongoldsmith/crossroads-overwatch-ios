@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,10 +25,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCRBrand" translatesAutoresizingMaskIntoConstraints="NO" id="7Cw-1x-mko">
-                                <rect key="frame" x="94.666666666666686" y="138" width="225" height="154"/>
+                                <rect key="frame" x="94.666666666666686" y="138" width="225" height="156"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="225" id="EeB-e2-RMd"/>
-                                    <constraint firstAttribute="height" constant="154" id="vhc-IM-ysD"/>
+                                    <constraint firstAttribute="height" constant="156" id="vhc-IM-ysD"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -51,6 +51,6 @@
     </scenes>
     <resources>
         <image name="imgBackground" width="375" height="667"/>
-        <image name="imgCRBrand" width="225" height="154"/>
+        <image name="imgCRBrand" width="225" height="156"/>
     </resources>
 </document>

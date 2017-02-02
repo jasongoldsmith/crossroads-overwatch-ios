@@ -11,7 +11,7 @@ import Foundation
 class GroupsRequest: NSObject {
     
     func getGroups (completion: @escaping TRValueCallBack) {
-        let groupsURL = K.TRUrls.TR_BaseUrl + "/api/v1/a/account/group/list"
+        let groupsURL = K.TRUrls.TR_BaseUrl + K.TRUrls.TR_GET_GROUPS
         let request = NetworkRequest.sharedInstance
         request.requestURL = groupsURL
         request.URLMethod = .get

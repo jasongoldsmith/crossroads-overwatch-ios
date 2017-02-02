@@ -12,10 +12,10 @@ class AcceptEventInvitationRequest: NSObject {
     
     func acceptInvitationRequest (eventID: String, completion: @escaping TREventObjCallBackWithError) {
         let requestURL = K.TRUrls.TR_BaseUrl + "/api/v1/a/event/invite/accept"
-        let request = NetworkRequest.sharedInstance
-        request.requestURL = requestURL
         var params = [String: AnyObject]()
         params["eId"] = eventID  as AnyObject?
+        let request = NetworkRequest.sharedInstance
+        request.requestURL = requestURL
         request.params = params
         request.URLMethod = .post
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in

@@ -34,6 +34,7 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     var currentUser: PlayerInfo?
     var isConsoleMenuOpen: Bool = true
     var isAddingConsoles = false
+    var firstEntry = true
     var consoleAddButtonImageView: UIImageView?
     var consoleTwoButtonImageView: UIImageView?
     var consoles = [String]()
@@ -61,8 +62,9 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.backGroundImageView?.clipsToBounds = true
-        if isAddingConsoles {
+        if isAddingConsoles || firstEntry {
             isAddingConsoles = false
+            firstEntry = false
             let profileRequest = ProfileRequest()
             profileRequest.getProfile(completion: { (profileDidSucceed) in
                 if let profileSucceed = profileDidSucceed,
@@ -185,18 +187,16 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
         let vc : ChangePasswordViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CHANGE_PASSWORD) as! ChangePasswordViewController
 
-        let navigationController = UINavigationController(rootViewController: vc)
-        navigationController.navigationBar.isHidden = true
+        let navigationController = BaseNavigationViewController(rootViewController: vc)
         self.present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func sendReport () {
-//        let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-//        let vc : TRSendReportViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as! TRSendReportViewController
-//        
-//        let navigationController = UINavigationController(rootViewController: vc)
-//        navigationController.navigationBar.hidden = true
-//        self.presentViewController(navigationController, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as!
+        SendReportViewController
+        let navigationController = BaseNavigationViewController(rootViewController: vc)
+        self.present(navigationController, animated: true, completion: nil)
     }
 
     @IBAction func consoleButtonPressed() {
@@ -223,10 +223,6 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         legalViewController.linkToOpen = url
         self.present(legalViewController, animated: true, completion: {
         })
-        guard  let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView else {
-            return
-        }
-        statusBar.backgroundColor = UIColor.clear
     }
     
     //MOVE THIS TO ANOTHER CLASS LATER
@@ -234,14 +230,20 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         let refreshAlert = UIAlertController(title: "", message: "Are you sure you want to log out?", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            UserInfo.removeUserData()
-            ApplicationManager.sharedInstance.purgeSavedData()
-            DispatchQueue.main.async {
-                ApplicationManager.sharedInstance.slideMenuController.dismiss(animated: false, completion:{
+            let logoutRequest = LogOutRequest()
+            logoutRequest.logoutUser(completion: {(value ) in
+                if let wrappedValue = value,
+                    wrappedValue {
                     UserInfo.removeUserData()
                     ApplicationManager.sharedInstance.purgeSavedData()
-                })
-            }
+                    DispatchQueue.main.async {
+                        ApplicationManager.sharedInstance.slideMenuController.dismiss(animated: false, completion:{
+                            UserInfo.removeUserData()
+                            ApplicationManager.sharedInstance.purgeSavedData()
+                        })
+                    }
+                }
+            })
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in

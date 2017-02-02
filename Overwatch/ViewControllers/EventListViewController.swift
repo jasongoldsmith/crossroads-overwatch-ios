@@ -442,17 +442,16 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
         
         self.displayAlertWithTwoButtonsTitleAndMessage(title: "\"Do you have time to explain?\" \n - The Exo Stranger", message: nil, buttonOne: "Definitely", buttonTwo: "Cancel") { (complete) in
             if complete == true {
-//                _ = TRRateApplication().updateRateApplication("REFUSED", completion: { (didSucceed) in
-//                    TRApplicationManager.sharedInstance.ratingInfo = nil
-//                    self.reloadEventTable()
-//                    
-//                    let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-//                    let vc : TRSendReportViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as! TRSendReportViewController
-//                    vc.isModallyPresented = false
-//                    let navigationController = UINavigationController(rootViewController: vc)
-//                    navigationController.navigationBar.hidden = true
-//                    self.presentViewController(navigationController, animated: true, completion: nil)
-//                })
+                let rateAppRequest = RateApplication()
+                rateAppRequest.updateRateApplication(ratingStatus: "REFUSED", completion: { (didSucceed) in
+                    ApplicationManager.sharedInstance.ratingInfo = nil
+                    self.reloadEventTable()
+                    
+                    let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                    let vc : SendReportViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as! SendReportViewController
+                    let navigationController = BaseNavigationViewController(rootViewController: vc)
+                    self.present(navigationController, animated: true, completion: nil)
+                })
             }
         }
     }
@@ -461,12 +460,13 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
         
         self.displayAlertWithTwoButtonsTitleAndMessage(title: "\"Tick, tock. Get rolling.\" - Lord Shaxx", message: nil, buttonOne: "Rate Us", buttonTwo: "Cancel") { (complete) in
             if complete == true {
-//                _ = RateApplication().updateRateApplication("COMPLETED", completion: { (didSucceed) in
-//                    TRApplicationManager.sharedInstance.ratingInfo = nil
-//                    self.reloadEventTable()
-//                    
-//                    UIApplication.sharedApplication().openURL(NSURL(string: K.TRUrls.TR_APP_STORE_LINK)!)
-//                })
+                let rateAppRequest = RateApplication()
+                rateAppRequest.updateRateApplication(ratingStatus: "COMPLETED", completion: { (didSucceed) in
+                    ApplicationManager.sharedInstance.ratingInfo = nil
+                    self.reloadEventTable()
+                    
+                    UIApplication.shared.open(URL(string: K.TRUrls.TR_APP_STORE_LINK)!, options: ["":""], completionHandler: nil)
+                })
             }
         }
     }
