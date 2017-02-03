@@ -63,7 +63,6 @@
 		C793CD731E2D5EC80012FEEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C793CD721E2D5EC80012FEEE /* Assets.xcassets */; };
 		C793CD761E2D5EC80012FEEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C793CD741E2D5EC80012FEEE /* LaunchScreen.storyboard */; };
 		C79480921E428A15002CC601 /* PushNotiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480911E428A15002CC601 /* PushNotiController.swift */; };
-		C79480941E42AB5E002CC601 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
 		C79480961E42C5BC002CC601 /* SendReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480951E42C5BC002CC601 /* SendReportViewController.swift */; };
 		C79480981E43B822002CC601 /* CreateAReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480971E43B822002CC601 /* CreateAReportRequest.swift */; };
 		C794809A1E43B9E2002CC601 /* ForgotPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79480991E43B9E2002CC601 /* ForgotPasswordRequest.swift */; };
@@ -129,6 +128,9 @@
 		C7C913A91E315C64002167D8 /* GroupsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C913A81E315C64002167D8 /* GroupsRequest.swift */; };
 		C7C913AB1E315C95002167D8 /* SlideMenuControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C913AA1E315C95002167D8 /* SlideMenuControllerExtension.swift */; };
 		C7C913AD1E316350002167D8 /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C913AC1E316350002167D8 /* ProfileRequest.swift */; };
+		C7D3D1CF1E43E83F00381644 /* UpdateGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D3D1CE1E43E83F00381644 /* UpdateGroupRequest.swift */; };
+		C7D3D1D11E43F1DE00381644 /* ChangeConsoleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D3D1D01E43F1DE00381644 /* ChangeConsoleRequest.swift */; };
+		C7D3D1D31E4412EC00381644 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
 		C7E2C0861E3BF30900EBEF5D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E2C0851E3BF30900EBEF5D /* Default-568h@2x.png */; };
 		C7E39CC01E37EC05008E47A9 /* DeviceTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E39CBF1E37EC05008E47A9 /* DeviceTokenRequest.swift */; };
 		C7E39CC21E38181D008E47A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E39CC11E38181D008E47A9 /* LoginViewController.swift */; };
@@ -272,6 +274,8 @@
 		C7C913A81E315C64002167D8 /* GroupsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsRequest.swift; path = Networking/GroupsRequest.swift; sourceTree = "<group>"; };
 		C7C913AA1E315C95002167D8 /* SlideMenuControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuControllerExtension.swift; path = Utilities/SlideMenuControllerExtension.swift; sourceTree = "<group>"; };
 		C7C913AC1E316350002167D8 /* ProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileRequest.swift; path = Networking/ProfileRequest.swift; sourceTree = "<group>"; };
+		C7D3D1CE1E43E83F00381644 /* UpdateGroupRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupRequest.swift; path = Networking/UpdateGroupRequest.swift; sourceTree = "<group>"; };
+		C7D3D1D01E43F1DE00381644 /* ChangeConsoleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeConsoleRequest.swift; path = Networking/ChangeConsoleRequest.swift; sourceTree = "<group>"; };
 		C7E2C0851E3BF30900EBEF5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C7E39CBF1E37EC05008E47A9 /* DeviceTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceTokenRequest.swift; path = Networking/DeviceTokenRequest.swift; sourceTree = "<group>"; };
 		C7E39CC11E38181D008E47A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 				C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */,
 				C79480951E42C5BC002CC601 /* SendReportViewController.swift */,
 				C79480A51E43C99D002CC601 /* MessageSentConfViewController.swift */,
+				C7D3D1CE1E43E83F00381644 /* UpdateGroupRequest.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				C794809D1E43BE68002CC601 /* GroupNotificationUpdateRequest.swift */,
 				C77A600E1E398DCC000D5E94 /* GetEventRequest.swift */,
 				C7AD52C61E3ABFFA001F0617 /* AddConsoleRequest.swift */,
+				C7D3D1D01E43F1DE00381644 /* ChangeConsoleRequest.swift */,
 				C794809F1E43C019002CC601 /* ReportComment.swift */,
 				C7AD52B81E3A876D001F0617 /* SignUpRequest.swift */,
 				C7AD52C41E3ABF1F001F0617 /* SignInRequest.swift */,
@@ -674,7 +680,7 @@
 				C793CD761E2D5EC80012FEEE /* LaunchScreen.storyboard in Resources */,
 				C793CD731E2D5EC80012FEEE /* Assets.xcassets in Resources */,
 				C7B6BBFF1E30010A00D6BFF3 /* PushNotificationView.xib in Resources */,
-				C79480941E42AB5E002CC601 /* GoogleService-Info.plist in Resources */,
+				C7D3D1D31E4412EC00381644 /* GoogleService-Info.plist in Resources */,
 				C7B6BC001E30010A00D6BFF3 /* VerificationPromptView.xib in Resources */,
 				C7B6BBEE1E2EFD0A00D6BFF3 /* ErrorView.xib in Resources */,
 				C793CD711E2D5EC80012FEEE /* Main.storyboard in Resources */,
@@ -799,6 +805,7 @@
 				C77A19351E2DB6710047E277 /* CaroselCellView.swift in Sources */,
 				C7BFCE711E329F0C0081C2B0 /* BranchManager.swift in Sources */,
 				C79480A61E43C99D002CC601 /* MessageSentConfViewController.swift in Sources */,
+				C7D3D1D11E43F1DE00381644 /* ChangeConsoleRequest.swift in Sources */,
 				C79480981E43B822002CC601 /* CreateAReportRequest.swift in Sources */,
 				C77A192C1E2DB20A0047E277 /* LoginOptionViewController.swift in Sources */,
 				C7BFCE6C1E329D840081C2B0 /* KSToken.swift in Sources */,
@@ -845,6 +852,7 @@
 				C7B6BC0E1E30099F00D6BFF3 /* EventCurrentNoCheckPointCell.swift in Sources */,
 				C75325D31E36E9D900EB719D /* JoinEventRequest.swift in Sources */,
 				C77A19291E2DAA9A0047E277 /* Constants.swift in Sources */,
+				C7D3D1CF1E43E83F00381644 /* UpdateGroupRequest.swift in Sources */,
 				C76F08941E2EAFA70082AAB7 /* UIViewExtension.swift in Sources */,
 				C77A190B1E2DA5840047E277 /* LocationInfo.swift in Sources */,
 				C7B6BC381E3015BB00D6BFF3 /* PushNotification.swift in Sources */,

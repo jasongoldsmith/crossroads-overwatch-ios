@@ -142,20 +142,18 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
         
         self.displayAlertWithActionHandler(title: "Update", message: legalMessage, buttonOneTitle: buttonOneTitle ,buttonTwoTitle: buttonTwoTitle, buttonThreeTitle: buttonOkTitle, completionHandler: {complete in
             
-//            let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+            let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
             switch complete! {
             case K.Legal.TOS:
-//                let legalViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as! TRLegalViewController
-//                legalViewController.linkToOpen = NSURL(string: "https://www.crossroadsapp.co/terms")!
-//                self.presentViewController(legalViewController, animated: true, completion: {
-//                })
+                let legalViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as! LegalViewController
+                legalViewController.linkToOpen = URL(string: "https://www.crossroadsapp.co/terms")!
+                self.present(legalViewController, animated: true, completion: nil)
                 
                 break
             case K.Legal.PP:
-//                let legalViewController = storyboard.instantiateViewControllerWithIdentifier(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as! TRLegalViewController
-//                legalViewController.linkToOpen = NSURL(string: "https://www.crossroadsapp.co/privacy")!
-//                self.presentViewController(legalViewController, animated: true, completion: {
-//                })
+                let legalViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as! LegalViewController
+                legalViewController.linkToOpen = URL(string: "https://www.crossroadsapp.co/privacy")!
+                self.present(legalViewController, animated: true, completion: nil)
                 break
             case K.Legal.OK:
 //                _ = TRRequestUpdateLegalRequest().updateLegalAcceptance({ (didSucceed) in
@@ -715,20 +713,22 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     func createActivityFromEvent (sender: ActivityInfo) {
-//        if let activityType =  sender.activityType {
-//            _ = TRgetActivityList().getActivityListofType(activityType, completion: { (didSucceed) in
-//                if didSucceed == true {
-//                    let vc = ApplicationManager.sharedInstance.stroryBoardManager.getViewControllerWithID(K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CREATE_EVENT_FINAL, storyBoardID: K.StoryBoard.StoryBoard_Main) as! TRCreateEventFinalView
-//                    vc.activityInfo = ApplicationManager.sharedInstance.activityList
-//                    vc.selectedActivity = sender
-//                    
-//                    let navigationController = UINavigationController(rootViewController: vc)
-//                    self.presentViewController(navigationController, animated: true, completion: {
-//                        vc.backButton?.isHidden = true
-//                    })
-//                }
-//            })
-//        }
+        if let activityType =  sender.activityType {
+            let createEventRequest = CreateEventRequest()
+            createEventRequest.getTheListEvents(with: activityType, completion: { (didSucceed) in
+                guard let succeed = didSucceed else {
+                    return
+                }
+                if succeed {
+                    let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                    let vc : CreateEventFinalView = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CREATE_EVENT_FINAL) as! CreateEventFinalView
+                    vc.activityInfo = ApplicationManager.sharedInstance.activityList
+                    vc.selectedActivity = sender
+                    let navigationController = BaseNavigationViewController(rootViewController: vc)
+                    self.present(navigationController, animated: true, completion: nil)
+                }
+            })
+        }
     }
     
     func tableViewScrollToBottom(animated: Bool) {
@@ -786,41 +786,49 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     
     func changeGroupToClickedActivePushNoti (groupId: String) {
         
-//        if let selectedGroup = ApplicationManager.sharedInstance.getGroupByGroupId(groupId) {
-//            _ = TRUpdateGroupRequest().updateUserGroup(selectedGroup.groupId!, groupName:(selectedGroup.groupName)!, groupImage: (selectedGroup.avatarPath)! ,completion: { (didSucceed) in
-//                _ = TRGetEventsList().getEventsListWithClearActivityBackGround(true, clearBG: false, indicatorTopConstraint: nil, completion: { (didSucceed) -> () in
-//                    if(didSucceed == true) {
-//                        self.reloadEventTable()
-//                        self.updateGroupImage ()
-//                    }
-//                })
-//            })
-//        }
+        if let selectedGroup = ApplicationManager.sharedInstance.getGroupByGroupId(groupId: groupId) {
+            let updateGroupRequest = UpdateGroupRequest()
+            updateGroupRequest.updateUserGroup(groupID: selectedGroup.groupId!, groupName: (selectedGroup.groupName)!, groupImage: (selectedGroup.avatarPath)!, completion: { (didSucceed) in
+                let feedRequest = FeedRequest()
+                feedRequest.getPrivateFeed(completion: { (didSucceed) in
+                    guard let succeed = didSucceed else {
+                        return
+                    }
+                    if succeed {
+                        self.reloadEventTable()
+                        self.updateGroupImage ()
+                    }
+                })
+            })
+        }
     }
     
     func changeConsoleToClickActivePushNoti (eventConsole: String) {
         
-//        if let console = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole() {
-//            if console.consoleType == eventConsole {
-//                return
-//            } else {
-//                let consoleArray = ApplicationManager.sharedInstance.currentUser?.consoles.filter{$0.consoleType == eventConsole}
-//                if let existingConsole = consoleArray?.first {
-//                    _ = TRChangeConsoleRequest().changeConsole(existingConsole.consoleType!, completion: { (didSucceed) in
-//                        if didSucceed == true {
-//                            _ = TRGetEventsList().getEventsListWithClearActivityBackGround(true, clearBG: false, indicatorTopConstraint: nil, completion: { (didSucceed) -> () in
-//                                if didSucceed == true {
-//                                    self.reloadEventTable()
-//                                    self.updateUserAvatorImage()
-//                                }
-//                            })
-//                        }
-//                    })
-//                } else {
-//                    return
-//                }
-//            }
-//        }
+        if let console = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole() {
+            if console.consoleType == eventConsole {
+                return
+            } else {
+                let consoleArray = ApplicationManager.sharedInstance.currentUser?.consoles.filter{$0.consoleType == eventConsole}
+                if let existingConsole = consoleArray?.first {
+                    let changeConsoleRequest = ChangeConsoleRequest()
+                    changeConsoleRequest.changeConsole(consoleType: existingConsole.consoleType!, completion: { (didSucceed) in
+                        let feedRequest = FeedRequest()
+                        feedRequest.getPrivateFeed(completion: { (didSucceed) in
+                            guard let succeed = didSucceed else {
+                                return
+                            }
+                            if succeed {
+                                self.reloadEventTable()
+                                self.updateGroupImage ()
+                            }
+                        })
+                    })
+                } else {
+                    return
+                }
+            }
+        }
     }
 
     //MARK:- Error Message View Handling actions

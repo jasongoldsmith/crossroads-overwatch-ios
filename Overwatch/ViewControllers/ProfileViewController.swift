@@ -70,7 +70,6 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
                 if let profileSucceed = profileDidSucceed,
                     profileSucceed {
                     self.updateView()
-                    self.consolesTable.reloadData()
                 }
             })
         }
@@ -127,11 +126,10 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         //consoles
         if let defaultConsole = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole()?.consoleType {
             currentConsole = defaultConsole
+            currentConsoleLabel.text = currentConsole
         }
         if let savedConsoles = ApplicationManager.sharedInstance.currentUser?.consoles {
-            if savedConsoles.count == 3 {
-                consoles.removeAll()
-            } else {
+            if savedConsoles.count != 3 {
                 consoles.append("Linked Accounts")
             }
             for console in savedConsoles {
@@ -141,11 +139,11 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
                 }
             }
         }
-        currentConsoleLabel.text = currentConsole
         // User Image
         self.updateUserAvatorImage()
         
         self.avatorUserName?.text = UserInfo.getUserName()
+        self.consolesTable.reloadData()
     }
     
     func updateUserAvatorImage () {
@@ -276,8 +274,62 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
             vc.comingFromProfile = true
             let navigationController = BaseNavigationViewController(rootViewController: vc)
             self.present(navigationController, animated: true, completion: nil)
+        } else {
+            changePrimaryConsole(consoleType: consoles[indexPath.row].lowercased())
         }
     }
     
+    func changePrimaryConsole (consoleType:String) {
+        let changeConsole = ChangeConsoleRequest()
+        //First Change Console
+        changeConsole.changeConsole(consoleType: consoleType, completion: { (didSucceed) in
+            if let succeed = didSucceed,
+                succeed {
+                //Second FetchGroups
+                let groupsRequest = GroupsRequest()
+                groupsRequest.getGroups(completion: { (didSucceed) in
+                    //Try to take a group with more events
+                    if let group = self.bestGroupOption() {
+                        //Third Change Group
+                        let updateGroupRequest = UpdateGroupRequest()
+                        updateGroupRequest.updateUserGroup(groupID: group.groupId!, groupName:group.groupName!, groupImage: group.avatarPath! ,completion: { (didSucceed) in
+                            //Fourth Get Feed
+                            let feedRequest = FeedRequest()
+                            feedRequest.getPrivateFeed(completion: { (didSucceed) in
+                                guard let succeed = didSucceed else {
+                                    return
+                                }
+                                if succeed {
+                                    let sliderView = ApplicationManager.sharedInstance.slideMenuController
+                                    if let eventView = sliderView.mainViewController as? EventListViewController {
+                                        eventView.reloadEventTable()
+                                        eventView.updateUserAvatorImage()
+                                        self.updateView()
+                                    }
+                                }
+                            })
+                        })
+                    }
+                })
+            }
+        })
+    }
+
+    func bestGroupOption() -> GroupInfo? {
+        var aGroup:GroupInfo?
+        if let firstGroup = ApplicationManager.sharedInstance.groups.first {
+            aGroup = firstGroup
+            for group in ApplicationManager.sharedInstance.groups {
+                guard let iteratedGroupEvents = group.eventCount,
+                    let aGroupEvents = aGroup?.eventCount else {
+                        continue
+                }
+                if iteratedGroupEvents > aGroupEvents {
+                    aGroup = group
+                }
+            }
+        }
+        return aGroup
+    }
 }
 

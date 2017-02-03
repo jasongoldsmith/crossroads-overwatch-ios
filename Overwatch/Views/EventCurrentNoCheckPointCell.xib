@@ -16,11 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b9a-OD-ruc" id="Wc2-De-c8E">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCardBg" translatesAutoresizingMaskIntoConstraints="NO" id="63t-17-G8j">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="161"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

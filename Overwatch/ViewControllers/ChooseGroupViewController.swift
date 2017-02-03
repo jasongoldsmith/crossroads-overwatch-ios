@@ -125,7 +125,7 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
         }
         
         self.selectedGroupViewGroupName.text = self.selectedGroup?.groupName
-        self.selectedGroupViewMemberCount.text = (self.selectedGroup?.memberCount?.description)! + " in Orbit"
+        self.selectedGroupViewMemberCount.text = (self.selectedGroup?.memberCount?.description)! + " in Queue"
         self.selectedGroupViewNotificationButton.isSelected = self.selectedGroup?.groupNotification == true ? true: false
         self.selectedGroupViewNotificationButton.addTarget(self, action: #selector(updateNotificationPreference), for: .touchUpInside)
         self.selectedGroupViewNotificationButton.buttonGroupInfo = self.selectedGroup
@@ -138,7 +138,7 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
         }
         
         if let eventMembers = self.selectedGroup?.memberCount {
-            self.selectedGroupViewMemberCount.text = eventMembers.description + " in Orbit"
+            self.selectedGroupViewMemberCount.text = eventMembers.description + " in Queue"
         } else {
             self.selectedGroupViewMemberCount.isHidden = true
         }
@@ -257,40 +257,46 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
         let cell = tableView.cellForRow(at: indexPath) as? GroupCell
         self.highlightedCell = cell
         
-//        if let group = self.selectedGroup {
-//            _ = TRUpdateGroupRequest().updateUserGroup(group.groupId!, groupName:(self.selectedGroup?.groupName)!, groupImage: (self.selectedGroup?.avatarPath)! ,completion: { (didSucceed) in
-//                _ = TRGetEventsList().getEventsListWithClearActivityBackGround(true, clearBG: false, indicatorTopConstraint: nil, completion: { (didSucceed) -> () in
-//                    if(didSucceed == true) {
-//                        if let del = self.delegate as? TREventListViewController {
-//                            del.reloadEventTable()
-//                            del.updateGroupImage ()
-//                        }
-//                        
-//                        ApplicationManager.sharedInstance.slideMenuController.closeRight()
-//                    }
-//                })
-//            })
-//        }
+        if let group = self.selectedGroup {
+            let updateGroupRequest = UpdateGroupRequest()
+            updateGroupRequest.updateUserGroup(groupID: group.groupId!, groupName:(self.selectedGroup?.groupName)!, groupImage: (self.selectedGroup?.avatarPath)! ,completion: { (didSucceed) in
+                let feedRequest = FeedRequest()
+                feedRequest.getPrivateFeed(completion: { (didSucceed) in
+                    guard let succeed = didSucceed else {
+                        return
+                    }
+                    if succeed {
+                        if let del = self.delegate as? EventListViewController {
+                            del.reloadEventTable()
+                            del.updateGroupImage ()
+                        }
+                        ApplicationManager.sharedInstance.slideMenuController.closeRight()
+                    }
+                })
+            })
+        }
     }
     
     //MARK:- UpdateNotification Request
     func updateNotificationPreference(sender: EventButton) {
         
-//        if let hasGroupId = sender.buttonGroupInfo?.groupId {
-//            if let notificationValue = sender.buttonGroupInfo?.groupNotification {
-//                _ = TRGroupNotificationUpdateRequest().updateUserGroupNotification(hasGroupId, muteNoti: !notificationValue, completion: { (didSucceed) in
-//                    if didSucceed == true {
-//                        dispatch_async(dispatch_get_main_queue(), {
-//                            if hasGroupId == self.selectedGroup?.groupId {
-//                                self.selectedGroupViewNotificationButton.selected = self.selectedGroup?.groupNotification?.boolValue == true ? true: false
-//                            } else {
-//                                self.groupsTableView.reloadData()
-//                            }
-//                        })
-//                    }
-//                })
-//            }
-//        }
+        if let hasGroupId = sender.buttonGroupInfo?.groupId {
+            if let notificationValue = sender.buttonGroupInfo?.groupNotification {
+                let groupNotificationUpdateRequest = GroupNotificationUpdateRequest()
+                groupNotificationUpdateRequest.updateUserGroupNotification(groupID: hasGroupId, muteNoti: !notificationValue, completion: { (didSucceed) in
+                    if let succeed = didSucceed,
+                        succeed {
+                        DispatchQueue.main.async {
+                            if hasGroupId == self.selectedGroup?.groupId {
+                                self.selectedGroupViewNotificationButton.isSelected = self.selectedGroup?.groupNotification == true ? true: false
+                            } else {
+                                self.groupsTableView.reloadData()
+                            }
+                        }
+                    }
+                })
+            }
+        }
     }
     
     func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {

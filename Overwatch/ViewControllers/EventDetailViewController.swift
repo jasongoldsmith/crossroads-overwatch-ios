@@ -213,11 +213,11 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         //Full Event View's Text Labels
         if ApplicationManager.sharedInstance.currentUser?.userID != self.eventInfo?.eventCreator?.playerID {
             if let creatorTag = self.eventInfo?.eventPlayersArray.first?.playerPsnID {
-                self.fullViewsDescriptionLabel?.text = "Send \(creatorTag) a friend request or message for a party invite."
+                self.fullViewsDescriptionLabel?.text = "Send \(creatorTag) a friend request or message for an invite."
                 self.eventFullViewHeightConstraint?.constant = 80
             }
         } else {
-            self.fullViewsDescriptionLabel?.text = "Expect friend requests or messages from your Fireteam. You can start a party and invite everyone."
+            self.fullViewsDescriptionLabel?.text = "Expect friend requests or messages from your team. You can start the party and invite everyone."
             self.eventFullViewHeightConstraint?.constant = 98
         }
         
@@ -259,6 +259,8 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
                 self.joinButton.isHidden = false
                 self.joinButton?.addTarget(self, action: #selector(leaveEvent), for: .touchUpInside)
                 self.joinButton?.setTitle("LEAVE", for: .normal)
+                self.joinButton.backgroundColor = UIColor.cyan
+                self.joinButton?.backgroundColor = UIColor(red: 0/255, green: 194/255, blue: 255/255, alpha: 1)
                 self.tableViewBottomConstraint.constant = 0
             } else {
                 if self.eventInfo?.eventPlayersArray.count == self.eventInfo?.eventMaxPlayers?.intValue {
@@ -269,6 +271,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
                     self.joinButton?.addTarget(self, action: #selector(joinAnEvent), for: .touchUpInside)
                     self.joinButton?.setTitle("JOIN", for: .normal)
                     self.tableViewBottomConstraint.constant = 0
+                    self.joinButton?.backgroundColor = UIColor(red: 250/255, green: 148/255, blue: 0/255, alpha: 1)
                 }
             }
         } else {
@@ -691,11 +694,11 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         if ApplicationManager.sharedInstance.currentUser?.userID != self.eventInfo?.eventCreator?.playerID {
             if let creatorTag = self.eventInfo?.eventPlayersArray.first?.playerPsnID {
-                self.fullViewsDescriptionLabel?.text = "Send \(creatorTag) a friend request or message for a party invite."
+                self.fullViewsDescriptionLabel?.text = "Send \(creatorTag) a friend request or message for an invite."
                 self.eventFullViewHeightConstraint?.constant = 80
             }
         } else {
-            self.fullViewsDescriptionLabel?.text = "Expect friend requests or messages from your Fireteam. You can start a party and invite everyone."
+            self.fullViewsDescriptionLabel?.text = "Expect friend requests or messages from your team. You can start the party and invite everyone."
             self.eventFullViewHeightConstraint?.constant = 98
         }
         
@@ -1038,7 +1041,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         let errorView = Bundle.main.loadNibNamed("CustomErrorUserAction", owner: self, options: nil)?[0] as! CustomError
         errorView.errorMessageHeader?.text = "KICK FOR INACTIVITY?"
-        errorView.errorMessageDescription?.text = "Removing this Guardian will allow another to join instead."
+        errorView.errorMessageDescription?.text = "Removing this player will allow another to join instead."
         errorView.frame = self.view.frame
         errorView.delegate = self
         errorView.selector = #selector(kickInActiveUser)

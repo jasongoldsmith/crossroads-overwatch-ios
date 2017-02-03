@@ -97,7 +97,7 @@ class CaroselCellView: UIView {
             self.joinButton?.backgroundColor = UIColor(red: 99/255, green: 182/255, blue: 32/255, alpha: 1)
         } else {
             self.joinButton?.setTitle("JOIN", for: .normal)
-            self.joinButton?.backgroundColor = UIColor(red: 82/255, green: 100/255, blue: 139/255, alpha: 1)
+            self.joinButton?.backgroundColor = UIColor(red: 250/255, green: 148/255, blue: 0/255, alpha: 1)
         }
         
         self.playerOneIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)

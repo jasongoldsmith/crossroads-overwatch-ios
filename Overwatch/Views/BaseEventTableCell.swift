@@ -65,6 +65,7 @@ class BaseEventTableCell: UITableViewCell {
         //Add corner radius
         self.eventTagLabel?.layer.cornerRadius = 2.0
         self.eventTagLabel?.layer.masksToBounds = true
+        self.eventTagLabel?.backgroundColor = UIColor(red: 82/255, green: 100/255, blue: 139/255, alpha: 1)
         
         if let eventType = eventInfo.eventActivity?.activityType {
             self.activityLight?.isHidden = false
