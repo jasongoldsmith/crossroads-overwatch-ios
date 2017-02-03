@@ -20,8 +20,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCardBg" translatesAutoresizingMaskIntoConstraints="NO" id="0ss-zS-W4c">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="183"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiK-yJ-5ap" customClass="InsertLabel" customModule="Overwatch" customModuleProvider="target">
                         <rect key="frame" x="62" y="95" width="27" height="13"/>
@@ -141,7 +146,7 @@
                     <constraint firstItem="tfd-My-Xo5" firstAttribute="bottom" secondItem="swi-aT-vEr" secondAttribute="bottom" constant="-2" id="Cjt-Nt-3EC"/>
                     <constraint firstItem="BpR-4j-KOr" firstAttribute="leading" secondItem="KKp-FS-SsR" secondAttribute="trailing" constant="6" id="D8U-Vh-rQ8"/>
                     <constraint firstItem="OiK-yJ-5ap" firstAttribute="leading" secondItem="1VX-Rr-n1T" secondAttribute="leading" id="Fa1-9m-a8S"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="0ss-zS-W4c" secondAttribute="bottom" constant="-8.5" id="GQ1-TX-p2b"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="0ss-zS-W4c" secondAttribute="bottom" constant="-11.5" id="GQ1-TX-p2b"/>
                     <constraint firstItem="0ss-zS-W4c" firstAttribute="top" secondItem="JWE-Bm-Fkf" secondAttribute="topMargin" constant="-8" id="GgF-Qh-wNS"/>
                     <constraint firstItem="8XS-80-dKn" firstAttribute="top" secondItem="JWE-Bm-Fkf" secondAttribute="topMargin" constant="2" id="Itj-Uf-HGk"/>
                     <constraint firstItem="OiK-yJ-5ap" firstAttribute="top" secondItem="1VX-Rr-n1T" secondAttribute="bottom" constant="9" id="Jem-4M-X1V"/>

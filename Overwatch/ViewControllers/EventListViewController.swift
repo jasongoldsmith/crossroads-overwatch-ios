@@ -94,9 +94,6 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
         //Add Group Icon Image
         self.updateGroupImage()
         
-        //Add Gestures to Images
-        self.addLogOutEventToAvatorImageView()
-        
         // Hide Navigation Bar
         self.hideNavigationBar()
         
@@ -156,8 +153,9 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
                 self.present(legalViewController, animated: true, completion: nil)
                 break
             case K.Legal.OK:
-//                _ = TRRequestUpdateLegalRequest().updateLegalAcceptance({ (didSucceed) in
-//                })
+                let legalRequest = RequestUpdateLegalRequest()
+                legalRequest.updateLegalAcceptance(completion: { (didSucceed) in
+                })
                 break
             default:
                 break
@@ -191,43 +189,23 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
                 }
             }
         }
-        
-        self.currentPlayerAvatorIcon?.roundRectView(borderWidth: 1.0, borderColor: UIColor.white)
     }
     
     func updateGroupImage () {
         
-        self.playerGroupsIcon?.layer.borderColor = UIColor.white.cgColor
-        self.playerGroupsIcon?.layer.borderWidth = 1.0
-        self.playerGroupsIcon?.layer.borderColor = UIColor.white.cgColor
-        self.playerGroupsIcon?.layer.masksToBounds = true
-        
-        if let currentGroupID = UserInfo.getUserClanID() {
-            if let hasCurrentGroup = ApplicationManager.sharedInstance.getCurrentGroup(groupID: currentGroupID) {
-                if let imageUrlString = hasCurrentGroup.avatarPath,
-                    let imageUrl = URL(string: imageUrlString) {
-                    self.playerGroupsIcon?.sd_setImage(with: imageUrl)
-                }
-            }
-        }
-        
-        if self.playerGroupsIcon?.image == nil {
-            self.playerGroupsIcon?.image = UIImage(named: "iconGroupCrossroadsFreelance")
-        }
+//        self.playerGroupsIcon?.image = UIImage(named: "iconRegionMenu")
+//        if let currentGroupID = UserInfo.getUserClanID() {
+//            if let hasCurrentGroup = ApplicationManager.sharedInstance.getCurrentGroup(groupID: currentGroupID) {
+//                if let imageUrlString = hasCurrentGroup.avatarPath,
+//                    let imageUrl = URL(string: imageUrlString) {
+//                    self.playerGroupsIcon?.sd_setImage(with: imageUrl)
+//                }
+//            }
+//        }
         
         //Remove Observer running on previous clan and add it again on current clan
         ApplicationManager.sharedInstance.fireBaseManager?.removeEventListObserver()
         ApplicationManager.sharedInstance.fireBaseManager?.addEventsObserversWithParentView(parentViewController: self)
-    }
-    
-    func addLogOutEventToAvatorImageView () {
-        let openLeftGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(EventListViewController.avatorBtnTapped))
-        self.currentPlayerAvatorIcon?.isUserInteractionEnabled = true
-        self.currentPlayerAvatorIcon?.addGestureRecognizer(openLeftGestureRecognizer)
-        
-        let openRightGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(EventListViewController.showChangeGroupsVc))
-        self.playerGroupsIcon?.isUserInteractionEnabled = true
-        self.playerGroupsIcon?.addGestureRecognizer(openRightGestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -418,11 +396,9 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
                         mySourceDict["activityId"] = cell.cellActivityAddButton.buttonActivityInfo?.activityID as AnyObject?
                         
                         //TRACKING
-//                        _ = TRAppTrackingRequest().sendApplicationPushNotiTracking(mySourceDict, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_ADD_CARD_CLICKED, completion: {didSucceed in
-//                            if didSucceed == true {
-//                                
-//                            }
-//                        })
+                        let trackingRequest = AppTrackingRequest()
+                        trackingRequest.sendApplicationPushNotiTracking(notiDict: mySourceDict as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_ADD_CARD_CLICKED, completion: {didSucceed in
+                        })
                         
                         self.createActivityWithActivity(sender: cell.cellActivityAddButton)
                     }
@@ -615,10 +591,9 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     @IBAction func createAnEvent () {
         
         //TRACKING
-//        _ = TRAppTrackingRequest().sendApplicationPushNotiTracking(nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_ADD_ACTIVITY_CLICKED, completion: {didSucceed in
-//            if didSucceed == true {
-//            }
-//        })
+        let trackingRequest = AppTrackingRequest()
+        trackingRequest.sendApplicationPushNotiTracking(notiDict: nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_ADD_ACTIVITY_CLICKED, completion: {didSucceed in
+        })
         
         let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
         let vc : CreateEventViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEWCONTROLLER_CREATE_EVENT) as! CreateEventViewController
@@ -669,10 +644,9 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
             self.emptyTableBackGround?.isHidden = self.eventsInfo.count > 0 ? true : false
             
             //TRACKING
-//            _ = TRAppTrackingRequest().sendApplicationPushNotiTracking(nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_SEG_CURRENT_CLICKED, completion: {didSucceed in
-//                if didSucceed == true {
-//                }
-//            })
+            let trackingRequest = AppTrackingRequest()
+            trackingRequest.sendApplicationPushNotiTracking(notiDict: nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_SEG_CURRENT_CLICKED, completion: {didSucceed in
+            })
             
             
             break;
@@ -682,10 +656,9 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
             self.emptyTableBackGround?.isHidden = self.futureEventsInfo.count > 0 ? true : false
             
             //TRACKING
-//            _ = TRAppTrackingRequest().sendApplicationPushNotiTracking(nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_SEG_UPCOMING_CLICKED, completion: {didSucceed in
-//                if didSucceed == true {
-//                }
-//            })
+            let trackingRequest = AppTrackingRequest()
+            trackingRequest.sendApplicationPushNotiTracking(notiDict: nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_SEG_UPCOMING_CLICKED, completion: {didSucceed in
+            })
             
             break;
         default:
@@ -699,7 +672,7 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     //MARK:- OTHER VIEW-CONTROLLERS
-    func avatorBtnTapped(sender: AnyObject) {
+    @IBAction func avatorBtnTapped(sender: AnyObject) {
         ApplicationManager.sharedInstance.slideMenuController.openLeft()
     }
     

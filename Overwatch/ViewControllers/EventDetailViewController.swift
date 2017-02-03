@@ -47,7 +47,8 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var eventInfoTableTopConstraint: NSLayoutConstraint?
     @IBOutlet weak var eventFullViewBottomConstraint: NSLayoutConstraint?
     @IBOutlet weak var eventFullViewHeightConstraint: NSLayoutConstraint?
-    
+    @IBOutlet weak var backgroundImageHeightConstraint: NSLayoutConstraint?
+
     //Invitation View
     @IBOutlet var invitationButtonsView: UIView!
     @IBOutlet var leaveInvitationButton: UIButton!
@@ -191,10 +192,16 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         self.reloadButton()
         
-        let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
-            if let anImage = image, error != nil {
+        let block: SDWebImageCompletionBlock = {(newImage, error, cacheType, imageURL) -> Void in
+            if let anImage = newImage, error == nil {
                 self.eventBackGround.image = anImage
+                self.backgroundImageHeightConstraint?.constant = (ScreenSize.SCREEN_WIDTH*anImage.size.height)/anImage.size.width
+            } else {
+                self.eventBackGround.image = UIImage(named: "imgBGEventDetail")
+                let defaultRadio:CGFloat = 1.5432
+                self.backgroundImageHeightConstraint?.constant = ScreenSize.SCREEN_WIDTH/defaultRadio
             }
+            self.view.layoutIfNeeded()
         }
         
         if let hasImage = self.eventInfo?.eventActivity?.activityImage, hasImage != "",
@@ -319,10 +326,9 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         if let _ = self.eventInfo?.eventID {
             var myEventDict = [String: AnyObject]()
             myEventDict["eventId"] = self.eventInfo?.eventID as AnyObject?
-//            _ = TRAppTrackingRequest().sendApplicationPushNotiTracking(myEventDict, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_EVENT_SHARING, completion: {didSucceed in
-//                if didSucceed == true {
-//                }
-//            })
+            let trackingRequest = AppTrackingRequest()
+            trackingRequest.sendApplicationPushNotiTracking(notiDict: myEventDict as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_EVENT_SHARING, completion: {didSucceed in
+            })
         }
         
         ApplicationManager.sharedInstance.branchManager?.createLinkWithBranch(eventInfo: self.eventInfo!, deepLinkType: BRANCH_DEEP_LINKING_END_POINT.EVENT_DETAIL.rawValue, callback: {(url, error) in

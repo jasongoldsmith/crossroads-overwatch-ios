@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCardBg" translatesAutoresizingMaskIntoConstraints="NO" id="toJ-KA-0fv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -142,7 +142,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="pPg-cW-Kx0" secondAttribute="bottom" constant="8" id="Lf2-NB-yAO"/>
                     <constraint firstAttribute="bottomMargin" secondItem="0wq-oF-g8T" secondAttribute="bottom" constant="8" id="NbK-1h-fe5"/>
                     <constraint firstItem="C89-mY-Qhb" firstAttribute="top" secondItem="4oK-m7-Y31" secondAttribute="bottom" constant="2" id="Q29-U3-iHx"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="toJ-KA-0fv" secondAttribute="bottom" constant="-8" id="Tkg-rI-mhE"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="toJ-KA-0fv" secondAttribute="bottom" constant="-11.5" id="Tkg-rI-mhE"/>
                     <constraint firstItem="0wq-oF-g8T" firstAttribute="leading" secondItem="caf-vk-reg" secondAttribute="trailing" constant="6" id="UR6-LV-bM6"/>
                     <constraint firstAttribute="bottomMargin" secondItem="caf-vk-reg" secondAttribute="bottom" constant="8" id="Up4-OE-fBW"/>
                     <constraint firstItem="HLF-bM-3kR" firstAttribute="leading" secondItem="6E2-wx-rF7" secondAttribute="leading" id="Up7-s0-1oW"/>

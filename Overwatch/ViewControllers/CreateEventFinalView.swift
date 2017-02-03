@@ -35,11 +35,6 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
     @IBOutlet weak var activityDetailButton: UIButton!
     @IBOutlet weak var addActivityButton: UIButton!
     
-    //Constaint outlets
-//    @IBOutlet weak var activityCheckPointHeightConst: NSLayoutConstraint!
-//    @IBOutlet weak var activityCheckPointTopConst: NSLayoutConstraint!
-//    @IBOutlet weak var addButtonTopTopConst: NSLayoutConstraint!
-    
     //Activities of same sub-typeJ
     var selectedActivity: ActivityInfo?
     lazy var activityInfo: [ActivityInfo] = []
@@ -195,13 +190,6 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
         
         if let aCheckPoint = activityInfo.activityCheckPoint, aCheckPoint != "" {
             self.activityCheckPointButton.setTitle(aCheckPoint, for: .normal)
-//            self.activityCheckPointHeightConst.constant = 50
-//            self.activityCheckPointTopConst.constant = 10
-//            self.addButtonTopTopConst.constant = 49
-        } else {
-//            self.activityCheckPointHeightConst.constant = 0
-//            self.activityCheckPointTopConst.constant = 0
-//            self.addButtonTopTopConst.constant = 120
         }
         
         self.filteredTags = self.getActivitiesFilteredSubDifficultyCheckPoint(activity: self.selectedActivity!)!
