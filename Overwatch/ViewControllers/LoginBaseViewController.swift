@@ -60,7 +60,7 @@ class LoginBaseViewController: BaseViewController {
     
     func keyboardWillShow(sender: NSNotification) {
         let userInfo: [String : AnyObject] = sender.userInfo! as! [String : AnyObject]
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue.size
+        let keyboardSize: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
         let keyBoardHeight = keyboardSize.height
         let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
         BottomNextButtonConstraint.constant = keyBoardHeight

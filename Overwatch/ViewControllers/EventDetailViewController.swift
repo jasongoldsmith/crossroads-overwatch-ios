@@ -521,6 +521,8 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
                             cell?.playerInviteButton.isHidden = true
                         } else {
                             cell?.playerUserName?.text = "Invite a Friend"
+                            //TODO: invite shouldn't be hidden
+                            cell?.playerInviteButton.isHidden = true
                             cell?.playerInviteButton.addTarget(self, action: #selector(inviteUser), for: .touchUpInside)
                         }
                     } else {
@@ -848,7 +850,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         let userInfo: [String : AnyObject] = sender.userInfo! as! [String : AnyObject]
         
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue.size
+        let keyboardSize: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
         let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
         self.keyBoardHeight = keyboardSize.height
         
@@ -872,7 +874,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
     func keyboardWillHide(sender: NSNotification) {
         let userInfo: [String
             : AnyObject] = sender.userInfo! as! [String : AnyObject]
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue.size
+        let keyboardSize: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
         
         if self.view.frame.origin.y == self.view.frame.origin.y - keyboardSize.height {
             UIView.animate(withDuration: 0.3, animations: { () -> Void in

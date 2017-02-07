@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import Firebase
+import Branch
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,8 +22,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let rootController = window?.rootViewController as? RootViewController {
             rootController.pushNotificationData = remoteNotification
         }
+
         //Initialize FireBase Configuration
         ApplicationManager.sharedInstance.fireBaseManager?.initFireBaseConfig()
+
+        //Branch Initialized
+        let branch: Branch = Branch.getInstance()
+        branch.initSession(launchOptions: launchOptions, andRegisterDeepLinkHandler: {params, error in
+            if let isBranchLink = (params?["+clicked_branch_link"] as AnyObject).boolValue,  isBranchLink == true {
+                
+                // Tracking Open Source
+                var mySourceDict = [String: AnyObject]()
+                mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
+                let trackingRequest = AppTrackingRequest()
+                trackingRequest.sendApplicationPushNotiTracking(notiDict: mySourceDict as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_APP_INIT, completion: {didSucceed in
+                })
+                
+                let userDefaults = UserDefaults.standard
+                let isInstallInfoSent = userDefaults.bool(forKey: K.UserDefaultKey.INSTALL_INFO_SENT)
+                if isInstallInfoSent == false {
+                    
+                    // App Install Request
+                    let myInstallDict = [String: AnyObject]()
+                    mySourceDict["ads"] = K.SharingPlatformType.Platform_Branch as AnyObject?
+                    
+                    self.appInstallRequestWithDict(installInfo: myInstallDict) { (didSucceed) in
+                        if didSucceed == true {
+                            
+                        }
+                    }
+                } else {
+                    var mySourceDict = [String: AnyObject]()
+                    mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
+                    self.appInitializedRequest(initInfo: mySourceDict)
+                }
+                
+                
+                let eventID = params?["eventId"] as? String
+                let activityName = params?["activityName"] as? String
+                
+                if let inviPlayer = params?["invitees"] as? String {
+                    let invi = InvitationInfo()
+                    invi.eventID = eventID
+                    invi.invitedPlayers = inviPlayer
+                    
+                    ApplicationManager.sharedInstance.invitation = invi
+                }
+                
+                
+                guard let _ = eventID else {
+                    return
+                }
+                
+                ApplicationManager.sharedInstance.addPostActionbranchDeepLink(eventID: eventID!, activityName: activityName!, params: params)
+            }
+        })
+        
         return true
     }
 
@@ -77,5 +132,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
     }
+
+    // MARK:- Branch Deep Linking related methods
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        // pass the url to the handle deep link call
+        if (Branch.getInstance().handleDeepLink(url)) {
+            var mySourceDict = [String: AnyObject]()
+            mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
+            self.appInitializedRequest(initInfo: mySourceDict)
+        }
+        
+        // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
+        return true
+    }
+
+    //MARK:- App Data Requests
+    func appInitializedRequest (initInfo: Dictionary<String, AnyObject>) {
+        let trackingRequest = AppTrackingRequest()
+        trackingRequest.sendApplicationPushNotiTracking(notiDict: initInfo as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_APP_INIT, completion: {didSucceed in
+        })
+    }
+    
+    func appInstallRequestWithDict (installInfo: Dictionary<String, AnyObject>, completion: @escaping TRValueCallBack) {
+        let trackingRequest = AppTrackingRequest()
+        trackingRequest.sendApplicationPushNotiTracking(notiDict: installInfo as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_APP_INSTALL, completion: {didSucceed in
+            if let succeed = didSucceed,
+                succeed {
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(true, forKey: K.UserDefaultKey.INSTALL_INFO_SENT)
+                userDefaults.synchronize()
+                
+                completion(true)
+            }
+        })
+    }
+    
 }
 

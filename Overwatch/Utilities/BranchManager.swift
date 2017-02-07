@@ -9,12 +9,13 @@
 import Foundation
 import Branch
 import SwiftyJSON
+import Fabric
 
 //typealias ErrorTypeCallBack = (errorType: Branch_Error?) -> ()
 
 class BranchManager {
     
-    let canonicalIdentifier = "canonicalIdentifier"
+    let canonicalIdentifier = "Crossroads for Overwatch"
     var branchUniversalObject = BranchUniversalObject()
     let canonicalUrl = "https://dev.branch.io/getting-started/deep-link-routing/guide/ios/"
     let contentTitle = "contentTitle"
@@ -23,12 +24,12 @@ class BranchManager {
     let feature = "Sharing Feature"
     let channel = "Distribution Channel"
     let desktop_url = "http://branch.io"
-    let ios_url = "http://crossrd.app.link/eQIMLli1Yu"
+    let ios_url = "https://crsrdsoverwatch.app.link/WJGmVZrzyA"
     let shareText = "Super amazing thing I want to share"
     let user_id1 = "abe@emailaddress.io"
     let user_id2 = "ben@emailaddress.io"
-    let live_key = "key_live_ilh33QPvqAgDqnVVRh8iXcnnBBaLIp97"
-    let test_key = "key_test_eipYWJLAEvhEqkSRNoZp2lmlvqmOIrkl"
+    let live_key = "key_live_lnAe1OYP1wS0wIoMHoExTmhaFApqc1Nc"
+    let test_key = "key_test_ajwkZHZI8uV7zGaKGmEUCbmbyDbCi2Qv"
     
     func createLinkWithBranch (eventInfo: EventInfo, deepLinkType: String, callback: @escaping callbackWithUrl) {
         
@@ -75,22 +76,22 @@ class BranchManager {
         
         if
             ApplicationManager.sharedInstance.isCurrentPlayerInAnEvent(event: eventInfo) {
-            branchUniversalObject.title = "Join My Fireteam"
+            branchUniversalObject.title = "Join My Team"
             if eventInfo.eventPlayersArray.count == eventInfo.eventMaxPlayers!.intValue {
                 branchUniversalObject.title = eventInfo.eventActivity?.activitySubType
             }
             
             messageString = "\(console): I need \(playerCount) more for \(activityName) in the \(groupName) group"
         } else {
-            branchUniversalObject.title = "Searching for Guardians"
+            branchUniversalObject.title = "Searching for Heroes"
             if eventInfo.eventPlayersArray.count == eventInfo.eventMaxPlayers!.intValue {
                 branchUniversalObject.title = eventInfo.eventActivity?.activitySubType
             }
             
-            messageString = "\(console): This fireteam needs \(extraPlayersRequiredCount) more for \(activityName) in the \(groupName) group"
+            messageString = "\(console): This team needs \(extraPlayersRequiredCount) more for \(activityName) in the \(groupName) group"
             
             if eventInfo.isFutureEvent == true {
-                messageString = "\(console): This fireteam needs \(playerCount) more for \(activityName) on \(formatedDate) in the \(groupName) group"
+                messageString = "\(console): This team needs \(playerCount) more for \(activityName) on \(formatedDate) in the \(groupName) group"
             }
         }
         

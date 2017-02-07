@@ -128,6 +128,7 @@
 		C7C913A91E315C64002167D8 /* GroupsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C913A81E315C64002167D8 /* GroupsRequest.swift */; };
 		C7C913AB1E315C95002167D8 /* SlideMenuControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C913AA1E315C95002167D8 /* SlideMenuControllerExtension.swift */; };
 		C7C913AD1E316350002167D8 /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C913AC1E316350002167D8 /* ProfileRequest.swift */; };
+		C7C96E4A1E49280D00839A71 /* InvitationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C96E491E49280D00839A71 /* InvitationInfo.swift */; };
 		C7D3D1CF1E43E83F00381644 /* UpdateGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D3D1CE1E43E83F00381644 /* UpdateGroupRequest.swift */; };
 		C7D3D1D11E43F1DE00381644 /* ChangeConsoleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D3D1D01E43F1DE00381644 /* ChangeConsoleRequest.swift */; };
 		C7D3D1D31E4412EC00381644 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
@@ -275,6 +276,7 @@
 		C7C913A81E315C64002167D8 /* GroupsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsRequest.swift; path = Networking/GroupsRequest.swift; sourceTree = "<group>"; };
 		C7C913AA1E315C95002167D8 /* SlideMenuControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuControllerExtension.swift; path = Utilities/SlideMenuControllerExtension.swift; sourceTree = "<group>"; };
 		C7C913AC1E316350002167D8 /* ProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileRequest.swift; path = Networking/ProfileRequest.swift; sourceTree = "<group>"; };
+		C7C96E491E49280D00839A71 /* InvitationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationInfo.swift; path = Models/InvitationInfo.swift; sourceTree = "<group>"; };
 		C7D3D1CE1E43E83F00381644 /* UpdateGroupRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupRequest.swift; path = Networking/UpdateGroupRequest.swift; sourceTree = "<group>"; };
 		C7D3D1D01E43F1DE00381644 /* ChangeConsoleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeConsoleRequest.swift; path = Networking/ChangeConsoleRequest.swift; sourceTree = "<group>"; };
 		C7E2C0851E3BF30900EBEF5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				C7B6BBF51E2FF67D00D6BFF3 /* GroupInfo.swift */,
 				C7B6BC371E3015BB00D6BFF3 /* PushNotification.swift */,
 				C77A60121E399089000D5E94 /* RatingAppModel.swift */,
+				C7C96E491E49280D00839A71 /* InvitationInfo.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				C7AD52C51E3ABF1F001F0617 /* SignInRequest.swift in Sources */,
 				C75325D51E36E9EE00EB719D /* InvitePlayersRequest.swift in Sources */,
 				C793CD6C1E2D5EC80012FEEE /* AppDelegate.swift in Sources */,
+				C7C96E4A1E49280D00839A71 /* InvitationInfo.swift in Sources */,
 				C7B6BC1D1E300B6000D6BFF3 /* EventUpcomingWithCheckPointCell.swift in Sources */,
 				C7AD52BF1E3A979C001F0617 /* ConsoleCell.swift in Sources */,
 				C7EC42A11E3188BB0070CA8D /* CreateEventRequest.swift in Sources */,

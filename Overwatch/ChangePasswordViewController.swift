@@ -89,7 +89,7 @@ class ChangePasswordViewController: BaseViewController, UIGestureRecognizerDeleg
     func keyboardWillShow(sender: NSNotification) {
         
         let userInfo: [String : AnyObject] = sender.userInfo! as! [String : AnyObject]
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue.size
+        let keyboardSize: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
         let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
         
         if keyboardSize.height == offset.height {
@@ -118,7 +118,7 @@ class ChangePasswordViewController: BaseViewController, UIGestureRecognizerDeleg
     
     func keyboardWillHide(sender: NSNotification) {
         let userInfo: [String : AnyObject] = sender.userInfo! as! [String : AnyObject]
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue.size
+        let keyboardSize: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
         
         if self.view.frame.origin.y == self.view.frame.origin.y - keyboardSize.height {
             self.view.frame.origin.y += keyboardSize.height

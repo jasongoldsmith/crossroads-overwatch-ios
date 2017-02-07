@@ -53,6 +53,9 @@ class ApplicationManager: NSObject {
     // unVerified Prompt
     var verificationPrompt = VerificationPromptView()
 
+    // Invitation Info
+    var invitation: InvitationInfo?
+
     // SlideMenu Controller
     var slideMenuController = SlideMenuController()
 
@@ -71,6 +74,9 @@ class ApplicationManager: NSObject {
         //Init FireBase Manager
         self.fireBaseManager = FireBaseManager()
         
+        //Init Branch Manager
+        self.branchManager = BranchManager()
+
         // Init Error Notification View with nib
         self.errorNotificationView = Bundle.main.loadNibNamed("ErrorNotificationView", owner: self, options: nil)?[0] as! ErrorNotificationView
 
@@ -181,6 +187,43 @@ class ApplicationManager: NSObject {
                 })
             }
         })
+    }
+
+    func addPostActionbranchDeepLink (eventID: String, activityName: String, params: [AnyHashable : Any]?) {
+        
+        if var currentView = UIApplication.topViewController() {
+            
+            if currentView is RootViewController == true {
+                let rootViewController = UIApplication.shared.delegate?.window!!.rootViewController as! RootViewController
+                rootViewController.branchLinkData = params as NSDictionary?
+            } else if currentView is SlideMenuController {
+                
+                currentView = currentView as! SlideMenuController
+                let slideVewController = currentView as! SlideMenuController
+                let eventListView = slideVewController.mainViewController! as? EventListViewController
+                
+                if ApplicationManager.sharedInstance.slideMenuController.isLeftOpen() {
+                    let leftView = ApplicationManager.sharedInstance.slideMenuController.leftViewController as! ProfileViewController
+                    leftView.dismissViewController(isAnimated: false, dismissed: { (didDismiss) in
+                        eventListView!.fetchEventDetailForDeepLink(eventID: eventID, activityName: activityName)
+                    })
+                } else if (ApplicationManager.sharedInstance.slideMenuController.isRightOpen()) {
+                    let rightView = ApplicationManager.sharedInstance.slideMenuController.rightViewController as! ChooseGroupViewController
+                    rightView.dismissViewController(isAnimated: false, dismissed: { (didDismiss) in
+                        eventListView!.fetchEventDetailForDeepLink(eventID: eventID, activityName: activityName)
+                    })
+                } else {
+                    eventListView!.fetchEventDetailForDeepLink(eventID: eventID, activityName: activityName)
+                }
+            } else {
+                currentView.dismiss(animated: false, completion: {
+                    if let _ = self.slideMenuController.mainViewController {
+                        let eventListView = self.slideMenuController.mainViewController as! EventListViewController
+                        eventListView.fetchEventDetailForDeepLink(eventID: eventID, activityName: activityName)
+                    }
+                })
+            }
+        }
     }
 
     func fetchGroups (openSliderMenu: Bool, completion: @escaping TRValueCallBack) {
