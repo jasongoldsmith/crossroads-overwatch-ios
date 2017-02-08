@@ -124,8 +124,8 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
         self.selectedActivity = activityInfo
         
         // Update View
-        if let activitySubType = activityInfo.activitySubType {
-            self.activityNameLabel.text = activitySubType.uppercased()
+        if let activityType = activityInfo.activityType {
+            self.activityNameLabel.text = activityType.uppercased()
         }
         
         if let level = activityInfo.activityLevel, level != "0" {
@@ -175,17 +175,11 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
             activityBGImageView.sd_setImage(with: imageURL, completed: block)
         }
         
-        if let aType = activityInfo.activityType {
-            var nameString = aType
-            
-            if let aSubType =  activityInfo.activitySubType, aSubType != "" {
-                nameString = "\(nameString) - \(aSubType)"
-            }
-            if let aDifficulty = activityInfo.activityDificulty, aDifficulty != "" {
-                nameString = "\(nameString) - \(aDifficulty)"
-            }
-            
-            self.activityNameButton.setTitle(nameString, for: .normal)
+        if let aSubType =  activityInfo.activitySubType, aSubType != "" {
+            self.activityNameButton.setTitle(aSubType, for: .normal)
+        }
+        if let aDifficulty = activityInfo.activityDificulty, aDifficulty != "" {
+            self.activityNameButton.setTitle(aDifficulty, for: .normal)
         }
         
         if let aCheckPoint = activityInfo.activityCheckPoint, aCheckPoint != "" {
@@ -441,17 +435,11 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
         let activityInfo = self.dataArray[indexPath.section]
         
         if self.showGropName == true {
-            if let aType = activityInfo.activityType {
-                var nameString = aType
-                
-                if let aSubType =  activityInfo.activitySubType, aSubType != "" {
-                    nameString = "\(aSubType)"
-                }
-                if let aDifficulty = activityInfo.activityDificulty, aDifficulty != "" {
-                    nameString = "\(nameString) - \(aDifficulty)"
-                }
-                
-                cell!.textLabel!.text = nameString
+            if let aSubType =  activityInfo.activitySubType, aSubType != "" {
+                cell!.textLabel!.text = aSubType
+            }
+            if let aDifficulty = activityInfo.activityDificulty, aDifficulty != "" {
+                cell!.textLabel!.text = aDifficulty
             }
         } else if self.showCheckPoint == true {
             cell!.textLabel!.text = activityInfo.activityCheckPoint!
