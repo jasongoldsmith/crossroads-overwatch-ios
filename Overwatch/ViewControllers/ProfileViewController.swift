@@ -124,8 +124,9 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         consoles.removeAll()
         self.currentUser = ApplicationManager.sharedInstance.getPlayerObjectForCurrentUser()
         //consoles
-        if let defaultConsole = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole()?.consoleType {
-            currentConsole = defaultConsole
+        if let defaultConsole = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole()?.consoleType,
+            let consoleName = ApplicationManager.sharedInstance.getConsoleNameFrom(consoleType: defaultConsole){
+            currentConsole = consoleName
             currentConsoleLabel.text = currentConsole
         }
         if let savedConsoles = ApplicationManager.sharedInstance.currentUser?.consoles {
@@ -134,8 +135,9 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
             }
             for console in savedConsoles {
                 if let consoleType = console.consoleType,
-                    currentConsole != consoleType {
-                    consoles.insert(consoleType, at: 0)
+                    let consoleName = ApplicationManager.sharedInstance.getConsoleNameFrom(consoleType: consoleType),
+                    currentConsole != consoleName {
+                    consoles.insert(consoleName, at: 0)
                 }
             }
         }
@@ -275,7 +277,8 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
             let navigationController = BaseNavigationViewController(rootViewController: vc)
             self.present(navigationController, animated: true, completion: nil)
         } else {
-            changePrimaryConsole(consoleType: consoles[indexPath.row].lowercased())
+            guard let consoleType = ApplicationManager.sharedInstance.getConsoleTypeFrom(consoleString: consoles[indexPath.row]) else {return}
+            changePrimaryConsole(consoleType: consoleType)
         }
     }
     
@@ -331,5 +334,6 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         }
         return aGroup
     }
+
 }
 

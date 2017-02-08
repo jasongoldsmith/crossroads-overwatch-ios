@@ -35,6 +35,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:732940641689:ios:6befda19bbd3621e</string>
 	<key>DATABASE_URL</key>
-	<string>https://overwatchapp-prod.firebaseio.com/</string>
+	<string>https://overwatchapp-live.firebaseio.com/</string>
 </dict>
 </plist>

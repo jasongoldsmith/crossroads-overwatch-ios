@@ -166,13 +166,16 @@ class BaseEventTableCell: UITableViewCell {
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
             if let eventDate = formatter.date(from: hasLaunchDate) {
                 let nextFormatter = DateFormatter()
-                if Date().daysFrom(date: eventDate) < 7 {
+                if eventDate.daysFrom(date: Date()) < 7 {
+                    nextFormatter.dateFormat = "EEEE 'at' h:mm a"
                     let time = nextFormatter.string(from: eventDate)
-                    self.eventTimeLabel?.text = "\(time)"
+                    let timeAttributedStr = NSAttributedString(string: time, attributes: nil)
+                    self.eventTimeLabel?.text = "\(timeAttributedStr)"
                 } else {
                     nextFormatter.dateFormat = "MMM d 'at' h:mm a"
                     let time = nextFormatter.string(from: eventDate)
-                    self.eventTimeLabel?.text = time
+                    let timeAttributedStr = NSAttributedString(string: time, attributes: nil)
+                    self.eventTimeLabel?.text = "\(timeAttributedStr)"
                 }
             }
         }

@@ -39,7 +39,7 @@ class EventActivityCardCell: UITableViewCell {
         if let hasBGImage = self.activityInfo?.activityAdCard?.adCardImageURL, activityInfo?.activityAdCard?.adCardBaseUrl != "" {
             let imageString = (self.activityInfo?.activityAdCard?.adCardBaseUrl!)! + hasBGImage
             if let imageURL = URL(string: imageString) {
-                cellBackgroundImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "addCardDefault"))
+                cellBackgroundImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "imgCardBg"))
             }
         }
         

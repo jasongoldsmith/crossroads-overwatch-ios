@@ -339,4 +339,42 @@ class ApplicationManager: NSObject {
         self.errorNotificationView.errorSting = errorString
         self.errorNotificationView.addErrorSubViewWithMessage()
     }
+    
+    //console type from string
+    func getConsoleTypeFrom(consoleString:String) -> String? {
+        let possibleConsoles = ["PC", "PlayStation 4", "Xbox One"]
+        if let theIndex = possibleConsoles.index(of: consoleString) {
+            switch theIndex {
+            case 0:
+                return "pc"
+            case 1:
+                return "ps4"
+            case 2:
+                return "xboxone"
+            default:
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    func getConsoleNameFrom(consoleType:String) -> String? {
+        let possibleConsoles = ["pc", "ps4", "xboxone"]
+        if let theIndex = possibleConsoles.index(of: consoleType.lowercased()) {
+            switch theIndex {
+            case 0:
+                return "PC"
+            case 1:
+                return "PlayStation 4"
+            case 2:
+                return "Xbox One"
+            default:
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+
 }

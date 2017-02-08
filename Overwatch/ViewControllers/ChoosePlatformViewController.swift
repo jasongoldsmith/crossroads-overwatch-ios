@@ -22,7 +22,7 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
     @IBOutlet weak var bottomAdviceLabel: UILabel!
     @IBOutlet weak var topAdviceLabel: UILabel!
     
-    var consoles = ["PS4", "XBox One"]
+    var consoles = ["PlayStation 4", "Xbox One"]
     var currentConsole = "PC"
     var comingFromProfile = false
     
@@ -41,9 +41,10 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
     
     @IBAction func nextButtonPressed() {
         if let consoleId = battleTagTextField.text,
-            consoleId != "" {
+            consoleId != "",
+            let consoleType = ApplicationManager.sharedInstance.getConsoleTypeFrom(consoleString: currentConsole){
             let addConsoleRequest = AddConsoleRequest()
-            addConsoleRequest.addConsoleWith(consoleType: currentConsole.lowercased().replacingOccurrences(of: " ", with: ""), and: consoleId, completion: { (error, responseObject) -> () in
+            addConsoleRequest.addConsoleWith(consoleType: consoleType, and: consoleId, completion: { (error, responseObject) -> () in
                 if let _ = responseObject {
                     print("Console added")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -93,16 +94,17 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
         bottomAdviceLabel.isHidden = true
         topAdviceLabel.isHidden = true
         consoles.removeAll()
-        let possibleConsoles = ["PC", "PS4", "XBox One"]
+        let possibleConsoles = ["PC", "PlayStation 4", "Xbox One"]
         guard let savedConsoles = ApplicationManager.sharedInstance.currentUser?.consoles else {
             return
         }
         var userConsoles = [String]()
         for console in savedConsoles {
-            guard let consoleType = console.consoleType?.uppercased() else {
+            guard let consoleType = console.consoleType?.uppercased(),
+            let consoleName = ApplicationManager.sharedInstance.getConsoleNameFrom(consoleType: consoleType) else {
                 break
             }
-            userConsoles.append(consoleType)
+            userConsoles.append(consoleName)
         }
         
         
@@ -110,7 +112,7 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
         var elementFound = false
         for possibleConsole in  possibleConsoles {
             for console in userConsoles {
-                if possibleConsole.lowercased().replacingOccurrences(of: " ", with: "") == console.lowercased().replacingOccurrences(of: " ", with: "") {
+                if possibleConsole == console {
                     elementFound = true
                     break
                 }
@@ -186,4 +188,5 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
         }
         return true
     }
+    
 }
