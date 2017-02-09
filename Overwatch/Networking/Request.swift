@@ -39,18 +39,14 @@ class NetworkRequest {
     var showActivityIndicator: Bool = true
     var showActivityIndicatorBgClear: Bool = false
     var activityIndicatorTopConstraint: CGFloat = 281.0
-    
+
     init() {
         mgr = configureManager()
     }
     
-    func headersForTrackingEvents() -> [String: String] {
-        var devicePropertiesDictionary = [String:String]()
-        devicePropertiesDictionary["x-type"] = "iOS"
-//        devicePropertiesDictionary["x-os-version"] = ProcessInfo().operatingSystemVersionString
-//        devicePropertiesDictionary["x-app-version"] = Bundle.printVersion()
-//        devicePropertiesDictionary["x-manufacturer"] = "Apple"
-//        devicePropertiesDictionary["x-model"] = UIDevice.currentDevice.modelName
+    func headersForTrackingEvents() -> [String: AnyObject] {
+        var devicePropertiesDictionary = [String:AnyObject]()
+        devicePropertiesDictionary = FunnelData.getData()
         return devicePropertiesDictionary
     }
     
@@ -58,7 +54,7 @@ class NetworkRequest {
     func configureManager() -> Alamofire.SessionManager {
         let cfg = URLSessionConfiguration.default
         cfg.httpCookieStorage = cookieStorage
-//        cfg.httpAdditionalHeaders = headersForTrackingEvents()
+        cfg.httpAdditionalHeaders = headersForTrackingEvents()
         cfg.timeoutIntervalForRequest = 12.0
         return Alamofire.SessionManager(configuration: cfg)
     }
@@ -72,10 +68,9 @@ class NetworkRequest {
     }
     
     func sendRequestWithCompletion (completion: @escaping TRResponseCallBack) {
-        
         mgr.request(requestURL, method: URLMethod, parameters: params)
             .responseJSON { response in
-                
+                self.params = nil
                 if let headerFields = response.response?.allHeaderFields as? [String: String],
                     let url = response.request?.url {
                     let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url)
@@ -118,7 +113,7 @@ class NetworkRequest {
         }
     }
 
-    
+
 //    func setCookies() {
 //        let request = NSMutableURLRequest(URL: NSURL(string: "\(kBaseUrl)\(kInitCall)")!)
 //        mgr.request(request).responseString {response in

@@ -56,6 +56,9 @@ class ApplicationManager: NSObject {
     // Invitation Info
     var invitation: InvitationInfo?
 
+    //APP Configuration
+    var appConfiguration: ConfigInfo?
+
     // SlideMenu Controller
     var slideMenuController = SlideMenuController()
 

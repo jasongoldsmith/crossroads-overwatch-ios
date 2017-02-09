@@ -514,6 +514,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
                 cell?.playerUserName?.text = "Searching..."
                 cell?.playerUserName?.textColor = UIColor.white
                 cell?.invitationButton.isHidden = true
+                cell?.creatorDogTag.isHidden = true
                 
                 if (indexPath.section) == self.eventInfo?.eventPlayersArray.count {
                     if ApplicationManager.sharedInstance.isCurrentPlayerInAnEvent(event: self.eventInfo!) == true {

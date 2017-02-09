@@ -17,6 +17,9 @@ class RootViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let configRequest = GetConfigRequest()
+        configRequest.getConfiguration(completion: { (didSucceed) in
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,6 +36,12 @@ class RootViewController: BaseViewController {
     }
     
     func checkForUserDataAndDisplayNextViewController() {
+        guard let _ = ApplicationManager.sharedInstance.appConfiguration?.mixPanelToken else {
+            DispatchQueue.main.async {
+                self.checkForUserDataAndDisplayNextViewController()
+            }
+            return
+        }
         if LoginHelper.sharedInstance.shouldShowLoginSceen() {
             let feedRequest = FeedRequest()
             feedRequest.getPublicFeed(completion: { (didSucceed) in
@@ -58,24 +67,32 @@ class RootViewController: BaseViewController {
                     return
                 }
                 if profileSucceed {
-                    let privateFeedRequest = FeedRequest()
-                    privateFeedRequest.getPrivateFeed(completion: { (didSucceed) in
-                        guard let succeed = didSucceed else {
-                            return
-                        }
-                        if succeed {
-                            DispatchQueue.main.async {
-                                ApplicationManager.sharedInstance.addSlideMenuController(parentViewController: self, pushData: self.pushNotificationData, branchData: self.branchLinkData, showLandingPage: succeed, showGroups: false)
-                                self.pushNotificationData = nil
+                    //Check For Consoles
+                    if let _ = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole(){
+                        let privateFeedRequest = FeedRequest()
+                        privateFeedRequest.getPrivateFeed(completion: { (didSucceed) in
+                            guard let succeed = didSucceed else {
+                                return
                             }
-                        } else {
-                            ApplicationManager.sharedInstance.log.debug("Failed Fetching Feed")
-                            UserInfo.removeUserData()
-                            ApplicationManager.sharedInstance.purgeSavedData()
-                            ApplicationManager.sharedInstance.log.debug("Failed Fetching profile")
-                            self.checkForUserDataAndDisplayNextViewController()
-                        }
-                    })
+                            if succeed {
+                                DispatchQueue.main.async {
+                                    ApplicationManager.sharedInstance.addSlideMenuController(parentViewController: self, pushData: self.pushNotificationData, branchData: self.branchLinkData, showLandingPage: succeed, showGroups: false)
+                                    self.pushNotificationData = nil
+                                }
+                            } else {
+                                ApplicationManager.sharedInstance.log.debug("Failed Fetching Feed")
+                                UserInfo.removeUserData()
+                                ApplicationManager.sharedInstance.purgeSavedData()
+                                ApplicationManager.sharedInstance.log.debug("Failed Fetching profile")
+                                self.checkForUserDataAndDisplayNextViewController()
+                            }
+                        })
+                    } else {
+                        let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "choosePlatformViewController") as! ChoosePlatformViewController
+                        let navigationController = BaseNavigationViewController(rootViewController: vc)
+                        self.present(navigationController, animated: true, completion: nil)
+                    }
                 } else {
                     UserInfo.removeUserData()
                     ApplicationManager.sharedInstance.purgeSavedData()

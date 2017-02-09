@@ -47,7 +47,7 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
             addConsoleRequest.addConsoleWith(consoleType: consoleType, and: consoleId, completion: { (error, responseObject) -> () in
                 if let _ = responseObject {
                     print("Console added")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.validateCookies()
                     }
                 } else if let wrappedError = error {
@@ -67,7 +67,7 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
         self.view.endEditing(true)
         let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
         let vc : WebViewViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW_SIGNIN) as! WebViewViewController
-        vc.consoleLoginEndPoint = K.TRUrls.TR_BaseUrl + "/api/v1/auth/login"
+        vc.consoleLoginEndPoint = K.TRUrls.TR_BaseUrl + "/api/v1/a/user/addConsole?consoleType=pc"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

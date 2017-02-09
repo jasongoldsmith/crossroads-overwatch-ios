@@ -182,7 +182,7 @@ class InviteView: UIView, KSTokenViewDelegate, CustomErrorDelegate, KSTokenField
         if (tokenView.tokens()?.count)! < extraPlayersRequiredCount {
             self.descriptionLabel?.text = "Inviting players will send a message from\nyou to them on Bungie.net."
         } else {
-            self.descriptionLabel?.text = "The maximum number of players for your Fireteam has been reached. Each invited player will have a reserved spot on your Fireteam."
+            self.descriptionLabel?.text = "The maximum number of players for your Team has been reached. Each invited player will have a reserved spot on your Team."
         }
         
         delegate?.showInviteButton!()
@@ -215,7 +215,7 @@ class InviteView: UIView, KSTokenViewDelegate, CustomErrorDelegate, KSTokenField
         if (tokenView.tokens()?.count)! <= extraPlayersRequiredCount {
             self.descriptionLabel?.text = "Inviting players will send a message from\nyou to them on Bungie.net."
         } else {
-            self.descriptionLabel?.text = "The maximum number of players for your Fireteam has been reached. Each invited player will have a reserved spot on your Fireteam."
+            self.descriptionLabel?.text = "The maximum number of players for your Team has been reached. Each invited player will have a reserved spot on your Team."
         }
     }
     

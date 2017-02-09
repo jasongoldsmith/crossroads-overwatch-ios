@@ -16,7 +16,7 @@ class CaroselCellView: UIView {
     @IBOutlet weak var eventIcon: UIImageView!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventCheckPoint: UILabel!
-    @IBOutlet weak var eventCreator: UILabel!
+    @IBOutlet weak var eventCreator: InsertLabel!
     @IBOutlet weak var eventDifficulty: UILabel!
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var playerOneIcon: UIImageView!
@@ -32,7 +32,7 @@ class CaroselCellView: UIView {
         //Event Icon
         self.eventIcon.image = UIImage(named:"iconGhostDefault")
         let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
-            if let anImage = image, error != nil {
+            if let anImage = image, error == nil {
                 self.eventIcon.image = anImage
             } else {
                 self.eventIcon.image = UIImage(named:"iconGhostDefault")
@@ -45,16 +45,46 @@ class CaroselCellView: UIView {
         }
         
         //EventName
-        self.eventName?.text = eventInfo.eventActivity?.activitySubType
+        self.eventName?.text = eventInfo.eventActivity?.activityType
         
         //CheckPoint
-        if eventInfo.eventActivity?.activityCheckPoint != "" &&  eventInfo.eventActivity?.activityCheckPoint != nil{
-            self.eventCheckPoint?.isHidden = false
-            self.eventCheckPoint?.text = eventInfo.eventActivity?.activityCheckPoint
-            self.checkPointHeightCont.constant = 14
+        if let _ = eventInfo.eventActivity?.activityMaxPlayers,
+            (eventInfo.eventPlayersArray.count < (eventInfo.eventActivity?.activityMaxPlayers?.intValue)!) {
+            let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)]
+            let extraPlayersRequiredCount = ((eventInfo.eventActivity?.activityMaxPlayers?.intValue)! - eventInfo.eventPlayersArray.count)
+            let extraPlayersRequiredCountString = String(extraPlayersRequiredCount)
+            let extraPlayersRequiredCountStringNew = " LF" + "\(extraPlayersRequiredCountString)M"
+            
+            // Attributed Strings
+            let extraPlayersRequiredCountStringNewAttributed = NSAttributedString(string: extraPlayersRequiredCountStringNew, attributes: stringColorAttribute)
+            if let _ = eventInfo.eventCreator?.playerPsnID {
+                
+                let finalString = NSMutableAttributedString(string: (eventInfo.eventCreator?.playerPsnID!)!)
+                if var clanTag = eventInfo.eventCreator?.getDefaultConsole()?.clanTag, clanTag != "" {
+                    clanTag = " " + "[" + clanTag + "]"
+                    let clanAttributedStr = NSAttributedString(string: clanTag)
+                    if eventInfo.eventCreator!.playerID != ApplicationManager.sharedInstance.currentUser?.userID {
+                        finalString.append(clanAttributedStr)
+                    } else if (UserInfo.isUserVerified()! == ACCOUNT_VERIFICATION.USER_VERIFIED.rawValue) {
+                        finalString.append(clanAttributedStr)
+                    }
+                }
+                
+                finalString.append(extraPlayersRequiredCountStringNewAttributed)
+                self.eventCheckPoint.attributedText = finalString
+            }
         } else {
-            self.eventCheckPoint?.isHidden = true
-            self.checkPointHeightCont.constant = 0
+            var playersNameString = (eventInfo.eventCreator?.playerPsnID!)!
+            if var clanTag = eventInfo.eventCreator?.getDefaultConsole()?.clanTag, clanTag != "" {
+                clanTag = " " + "[" + clanTag + "]"
+                if eventInfo.eventCreator!.playerID != ApplicationManager.sharedInstance.currentUser?.userID {
+                    playersNameString = playersNameString + clanTag
+                } else if (UserInfo.isUserVerified()! == ACCOUNT_VERIFICATION.USER_VERIFIED.rawValue) {
+                    playersNameString = playersNameString + clanTag
+                }
+            }
+            
+            self.eventCheckPoint.text = playersNameString
         }
         
         if let eventType = eventInfo.eventActivity?.activityType {
@@ -74,17 +104,18 @@ class CaroselCellView: UIView {
             }
         }
         
-        // Creator Name
-        if let _ = eventInfo.eventCreator?.playerPsnID {
-            let finalString = NSMutableAttributedString(string: (eventInfo.eventCreator?.playerPsnID!)!)
-            if var clanTag = eventInfo.eventCreator?.getDefaultConsole()?.clanTag, clanTag != "" {
-                clanTag = " " + "[" + clanTag + "]"
-                let clanAttributedStr = NSAttributedString(string: clanTag)
-                finalString.append(clanAttributedStr)
-            }
-            
-            self.eventCreator.attributedText = finalString
+        //Event Tag
+        if let hasTag = eventInfo.eventActivity?.activityTag, hasTag != "" {
+            self.eventCreator?.isHidden = false
+            self.eventCreator?.text = eventInfo.eventActivity?.activityTag
+        } else {
+            self.eventCreator?.isHidden = true
         }
+        
+        //Add corner radius
+        self.eventCreator?.layer.cornerRadius = 2.0
+        self.eventCreator?.layer.masksToBounds = true
+        self.eventCreator?.backgroundColor = UIColor(red: 82/255, green: 100/255, blue: 139/255, alpha: 1)
         
         //Players Icon
         self.addRadiusToPlayerIconsForPlayersArray(eventInfo: eventInfo)
@@ -121,7 +152,7 @@ class CaroselCellView: UIView {
                 
                 playerOneIcon.image = UIImage(named: "avatar")
                 let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
-                    if let anImage = image, error != nil {
+                    if let anImage = image, error == nil {
                         self.playerOneIcon.image = anImage
                     } else {
                         self.playerOneIcon.image = UIImage(named:"avatar")

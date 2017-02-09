@@ -51,9 +51,6 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         //Update build number
         self.addVersionAndLegalAttributedLabel()
         //Add Radius to buttons
-        self.changePasswordButton.layer.cornerRadius = 2.0
-        self.contactUsButton.layer.cornerRadius = 2.0
-        self.logOutButton.layer.cornerRadius = 2.0
         self.updateView()
         consoleButtonPressed()
         consolesTable.register(UINib(nibName: "ConsoleProfileCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -161,6 +158,16 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
                 }
             }
         }
+        if let defaultConsole = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole()?.consoleType{
+            switch defaultConsole.lowercased() {
+            case "ps4":
+                avatorImageView?.borderColor = UIColor(red: 1/255, green: 59/255, blue: 152/255, alpha: 1)
+            case "xboxone":
+                avatorImageView?.borderColor = UIColor(red: 77/255, green: 194/255, blue: 34/255, alpha: 1)
+            default:
+                avatorImageView?.borderColor = UIColor(red: 250/255, green: 148/255, blue: 0/255, alpha: 1)
+            }
+        }
     }
     
     
@@ -186,7 +193,15 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     @IBAction func changePassword (sender: AnyObject) {
         let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
         let vc : ChangePasswordViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CHANGE_PASSWORD) as! ChangePasswordViewController
-
+        
+        let navigationController = BaseNavigationViewController(rootViewController: vc)
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func changeEmail (sender: AnyObject) {
+        let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+        let vc : ChangeEmailViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CHANGE_EMAIL) as! ChangeEmailViewController
+        
         let navigationController = BaseNavigationViewController(rootViewController: vc)
         self.present(navigationController, animated: true, completion: nil)
     }
@@ -268,17 +283,19 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     //Table View Delegate methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if ApplicationManager.sharedInstance.currentUser?.consoles.count != 3,
-            indexPath.row == consoles.count - 1 {
-            isAddingConsoles = true
-            let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "choosePlatformViewController") as! ChoosePlatformViewController
-            vc.comingFromProfile = true
-            let navigationController = BaseNavigationViewController(rootViewController: vc)
-            self.present(navigationController, animated: true, completion: nil)
-        } else {
-            guard let consoleType = ApplicationManager.sharedInstance.getConsoleTypeFrom(consoleString: consoles[indexPath.row]) else {return}
-            changePrimaryConsole(consoleType: consoleType)
+        if let savedConsoles = ApplicationManager.sharedInstance.currentUser?.consoles {
+            if savedConsoles.count != 3,
+                indexPath.row == consoles.count - 1 {
+                isAddingConsoles = true
+                let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "choosePlatformViewController") as! ChoosePlatformViewController
+                vc.comingFromProfile = true
+                let navigationController = BaseNavigationViewController(rootViewController: vc)
+                self.present(navigationController, animated: true, completion: nil)
+            } else {
+                guard let consoleType = ApplicationManager.sharedInstance.getConsoleTypeFrom(consoleString: consoles[indexPath.row]) else {return}
+                changePrimaryConsole(consoleType: consoleType)
+            }
         }
     }
     

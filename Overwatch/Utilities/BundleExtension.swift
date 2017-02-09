@@ -19,4 +19,18 @@ extension Bundle {
         return self.infoDictionary?["CFBundleVersion"] as? String
     }
     
+    class var applicationVersionNumber: String? {
+        if let version = main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return version
+        }
+        return nil
+    }
+    
+    class var applicationBuildNumber: String? {
+        if let build = main.infoDictionary?[kCFBundleVersionKey as String] as? String {
+            return build
+        }
+        return nil
+    }
+
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Mixpanel
 
 private let _sharedInstance = LoginHelper()
 
@@ -28,12 +29,11 @@ class LoginHelper {
         var returnValue = true
         if let cookies = NetworkRequest.sharedInstance.cookieStorage.cookies {
             for cookie in cookies {
-                print("cookie.name \(cookie.name)\ncookie.value \(cookie.value)\ncookie.domain \(cookie.domain)")
                 if cookie.name == "login.key" || cookie.name == "connect.sid" {
                     returnValue = false
                 }
                 storedCookies.append(cookie)
-           }
+            }
         }
         return returnValue
     }

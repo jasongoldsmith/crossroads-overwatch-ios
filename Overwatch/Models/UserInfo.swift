@@ -18,6 +18,7 @@ class UserInfo: NSObject {
     var userImageURL    :String?
     var userClanID      :String?
     var psnID           :String?
+    var email           :String?
     var legalInfo       :LegalInfo?
     var consoles        :[Consoles] = []
     var bungieMemberShipID: String?
@@ -30,6 +31,7 @@ class UserInfo: NSObject {
     func parseUserResponse (responseObject: JSON) {
         self.userName       = responseObject["value"]["battleTag"].stringValue
         self.userID         = responseObject["value"]["_id"].stringValue
+        self.email          = responseObject["value"]["email"].string
         self.userImageURL   = responseObject["value"]["imageUrl"].stringValue
         self.userClanID     = responseObject["value"]["clanId"].stringValue
         self.bungieMemberShipID = responseObject["value"]["bungieMemberShipId"].stringValue

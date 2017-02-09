@@ -16,4 +16,9 @@ class EventCommentCell: UITableViewCell {
     @IBOutlet weak var creatorDogTag: UIImageView!
     @IBOutlet weak var messageTopConst: NSLayoutConstraint!
     @IBOutlet weak var messageBottomConst: NSLayoutConstraint!
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.creatorDogTag.isHidden = true
+    }
 }

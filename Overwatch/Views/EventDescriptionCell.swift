@@ -13,6 +13,7 @@ class EventDescriptionCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.blueBarView.isHidden = true
+        self.creatorDogTag.isHidden = true
     }
     
     @IBOutlet weak var playerIcon: UIImageView!

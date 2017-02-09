@@ -75,17 +75,16 @@ struct K {
         //Live: https://live.crossroadsapp.co
         //Develop: https://travelerbackend.herokuapp.com
         
-//        static let TR_BaseUrl            =   "https://overwatch-test-server.herokuapp.com"
+//        static let TR_BaseUrl            =   "https://owlive.crossroadsapp.co"
 //        static let TR_BaseUrl            =   "https://overwatch-staging.herokuapp.com"
-        static let TR_BaseUrl            =   "https://owlive.crossroadsapp.co"
-//        #if RELEASE
 //        static let TR_BaseUrl            =   "https://overwatch-test-server.herokuapp.com"
-//
-//        #elseif ADHOC
-//        static let TR_BaseUrl            =   "https://overwatch-test-server.herokuapp.com"
-//        #else
-//        static let TR_BaseUrl            =   "https://overwatch-test-server.herokuapp.com"
-//        #endif
+        #if RELEASE
+            static let TR_BaseUrl            =   "https://owlive.crossroadsapp.co"
+        #elseif ADHOC
+            static let TR_BaseUrl            =   "https://overwatch-staging.herokuapp.com"
+        #else
+            static let TR_BaseUrl            =   "https://overwatch-test-server.herokuapp.com"
+        #endif
         
         static let TR_APP_STORE_LINK     =   "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1195213976&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"
         static let TR_RegisterUrl        =   "/api/v1/auth/register"
@@ -127,8 +126,8 @@ struct K {
         static let TR_CANCEL_INVITATION   =  "/api/v1/a/event/invite/cancel"
         static let TR_KICK_PLAYER         =  "/api/v1/a/event/kick"
         static let TR_APP_REVIEW          =  "/api/v1/a/user/updateReviewPromptCardStatus"
-        static let TR_CHANGE_PASSWORD     =  "/api/v1/a/user/changePassword"
-        static let TR_CHANGE_EMAIL        =  "/api/v1/a/user/changeEmail"
+        static let TR_CHANGE_PASSWORD     =  "/api/v1/a/user/updatePassword"
+        static let TR_CHANGE_EMAIL        =  "/api/v1/a/user/updateEmail"
     }
     
     struct StoryBoard {
@@ -157,6 +156,7 @@ struct K {
         static let VIEW_CONTROLLER_CONTACT_MESSAGE_SENT    = "messageSent"
         static let VIEW_CONTROLLER_WEB_VIEW_SIGNIN         = "webviewVC"
         static let VIEW_CONTROLLER_CHANGE_PASSWORD         = "changePassword"
+        static let VIEW_CONTROLLER_CHANGE_EMAIL            = "changeEmail"
     }
     
     struct ActivityType {

@@ -28,62 +28,76 @@ class OnBoardingErrorViewController: BaseViewController{
                 return
         }
         
-        errorTitleLabel.text = type.uppercased()
-        errorTypeLabel.text = "<\(type)>"
-        errorDescriptionLabel.text = "\(title)."
+        errorTitleLabel.text = title.uppercased()
+        errorDescriptionLabel.text = "\(type)."
         
         switch code {
         case 2:
             errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            errorTypeLabel.text = "<Email entered>"
             break
         case 3:
             errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
+            errorTypeLabel.text = "<Password entered>"
             break
         case 4:
             errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            errorTypeLabel.text = "<Email entered>"
             break
         case 5:
             errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            errorTypeLabel.text = "<Email entered>"
             break
         case 6:
             errorLogoTypeImage.image = UIImage(named: "imgIconPlatform")
+            errorTypeLabel.text = "<Platform entered>"
             break
         case 7:
             errorLogoTypeImage.image = UIImage(named: "imgIconPlatform")
+            errorTypeLabel.text = "<Platform entered>"
             break
         case 8:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            errorTypeLabel.text = "<Gamertag entered>"
             break
         case 9:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            errorTypeLabel.text = "<Gamertag entered>"
             break
         case 10:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            errorTypeLabel.text = "<Gamertag entered>"
             break
         case 11:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            errorTypeLabel.text = "<Gamertag entered>"
             break
         case 12:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            errorTypeLabel.text = "<Gamertag entered>"
             break
         case 13:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
+            errorTypeLabel.text = "<Gamertag entered>"
             break
         case 14:
             errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
+            errorTypeLabel.text = "<Password entered>"
             break
         case 15:
             errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
+            errorTypeLabel.text = "<Password entered>"
             break
         default:
             errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            errorTypeLabel.text = "<Email entered>"
             break
         }
 
         guard let message = details.object(forKey: "") as? String else {
             return
         }
-        errorDescriptionLabel.text = "\(title). \(message)"
+        errorDescriptionLabel.text = "\(type). \(message)"
     }
     
     private func getDictionaryFromStringResponse(value:String) -> NSDictionary? {

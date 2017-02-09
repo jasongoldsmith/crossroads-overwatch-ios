@@ -47,6 +47,13 @@ class CreateEventRequest: NSObject {
 
     func createAnEventWithActivity (activity: ActivityInfo, selectedTime: NSDate?, completion: @escaping TREventObjCallBack) {
         
+        guard let activityID = activity.activityID,
+        let activityMinPlayers = activity.activityMinPlayers,
+        let activityMaxPlayers = activity.activityMaxPlayers else {
+            completion(nil)
+            return
+        }
+        
         let createEventUrl = K.TRUrls.TR_BaseUrl + "/api/v1/a/event/create"
         
         // Current Player
@@ -54,9 +61,9 @@ class CreateEventRequest: NSObject {
         
         //Add Parameters
         var params = [String: AnyObject]()
-        params["eType"] = activity.activityID! as AnyObject?
-        params["minPlayers"] = activity.activityMinPlayers!
-        params["maxPlayers"] = activity.activityMaxPlayers!
+        params["eType"] = activityID as AnyObject?
+        params["minPlayers"] = activityMinPlayers
+        params["maxPlayers"] = activityMaxPlayers
         params["creator"] = UserInfo.getUserID() as AnyObject?
         params["players"] = player
         
