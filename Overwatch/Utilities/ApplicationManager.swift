@@ -342,7 +342,17 @@ class ApplicationManager: NSObject {
         self.errorNotificationView.errorSting = errorString
         self.errorNotificationView.addErrorSubViewWithMessage()
     }
-    
+
+    func addErrorSubViewWithMessageFromDictionaryString(dictionaryString: String) {
+        guard let dictionary = ApplicationManager.sharedInstance.getDictionaryFromStringResponse(value: dictionaryString),
+            let details =  dictionary.object(forKey: "details") as? NSDictionary,
+            let title =  details.object(forKey: "title") as? String else {
+                return
+        }
+        self.errorNotificationView.errorSting = title
+        self.errorNotificationView.addErrorSubViewWithMessage()
+    }
+
     //console type from string
     func getConsoleTypeFrom(consoleString:String) -> String? {
         let possibleConsoles = ["PC", "PlayStation 4", "Xbox One"]
@@ -380,4 +390,17 @@ class ApplicationManager: NSObject {
         }
     }
 
+    func getDictionaryFromStringResponse(value:String) -> NSDictionary? {
+        if let data = value.data(using: String.Encoding.utf8) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                if let dic = json as? NSDictionary {
+                    return dic
+                }
+            } catch _ {
+                return nil
+            }
+        }
+        return nil
+    }
 }

@@ -101,9 +101,9 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         let privateRange = nsString.range(of: privatePolicy)
         let licenseRange = nsString.range(of: licenses)
         
-        let tosUrl = URL(string: "https://www.crossroadsapp.co/terms")!
-        let privatePolicyUrl = URL(string: "https://www.crossroadsapp.co/privacy")!
-        let licensesUrl = URL(string: "https://www.crossroadsapp.co/license")!
+        let tosUrl = URL(string: K.Legal.TERMS_OF_SERVICE_URL)!
+        let privatePolicyUrl = URL(string: K.Legal.PRIVACY_POLICY_URL)!
+        let licensesUrl = URL(string: K.Legal.LICENSES_URL)!
         
         let subscriptionNoticeLinkAttributes = [
             NSForegroundColorAttributeName: UIColor.white,

@@ -10,7 +10,7 @@
 		1CFD73A523B28BC70269AF13 /* Pods_Overwatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA3670E1F77C6BB509919756 /* Pods_Overwatch.framework */; };
 		33A4EBEF1E3FE97700E986C0 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A4EBEE1E3FE97700E986C0 /* ChangePasswordViewController.swift */; };
 		33BE5A2E1E3FEC4400BCF486 /* UpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE5A2D1E3FEC4400BCF486 /* UpdateUser.swift */; };
-		C71BE30B1E4C130C007A1DDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
+		C72ABB771E4D56E5009EBE7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
 		C75325D11E36E99F00EB719D /* LeaveEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D01E36E99F00EB719D /* LeaveEventRequest.swift */; };
 		C75325D31E36E9D900EB719D /* JoinEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D21E36E9D900EB719D /* JoinEventRequest.swift */; };
 		C75325D51E36E9EE00EB719D /* InvitePlayersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D41E36E9EE00EB719D /* InvitePlayersRequest.swift */; };
@@ -707,7 +707,7 @@
 				C793CD761E2D5EC80012FEEE /* LaunchScreen.storyboard in Resources */,
 				C793CD731E2D5EC80012FEEE /* Assets.xcassets in Resources */,
 				C7B6BBFF1E30010A00D6BFF3 /* PushNotificationView.xib in Resources */,
-				C71BE30B1E4C130C007A1DDD /* GoogleService-Info.plist in Resources */,
+				C72ABB771E4D56E5009EBE7D /* GoogleService-Info.plist in Resources */,
 				C7B6BC001E30010A00D6BFF3 /* VerificationPromptView.xib in Resources */,
 				C7B6BBEE1E2EFD0A00D6BFF3 /* ErrorView.xib in Resources */,
 				C793CD711E2D5EC80012FEEE /* Main.storyboard in Resources */,

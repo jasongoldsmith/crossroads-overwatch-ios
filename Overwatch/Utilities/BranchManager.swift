@@ -110,7 +110,7 @@ class BranchManager {
             let imageString = "http://w3.crossroadsapp.co/bungie/share/branch/v1/\(hasActivityCard)"
             branchUniversalObject.imageUrl  = imageString
         } else {
-            branchUniversalObject.imageUrl  = "http://w3.crossroadsapp.co/bungie/share/branch/v1/default.png"
+            branchUniversalObject.imageUrl  = "https://s3-us-west-1.amazonaws.com/w3.crossroadsapp.co/overwatch/ow_branch.png"
         }
         
         branchUniversalObject.addMetadataKey("eventId", value: eventID)

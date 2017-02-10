@@ -47,7 +47,7 @@ class ErrorNotificationView: UIView {
         let popAnimation:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPLayerPositionY)
         popAnimation.toValue = self.frame.height - 25
         self.layer.pop_add(popAnimation, forKey: "slideIn")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             let popAnimation:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPLayerPositionY)
             popAnimation.toValue = -self.frame.height
             popAnimation.completionBlock =  {(animation, finished) in

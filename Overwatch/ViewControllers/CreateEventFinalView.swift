@@ -109,6 +109,7 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
         
         // Update View
         if let _ = self.selectedActivity {
+            backButton.isHidden = true
             self.updateViewWithActivity(activityInfo: self.selectedActivity!)
         } else {
             if let _ = self.filteredActivitiesOfSubTypeAndDifficulty.first {

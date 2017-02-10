@@ -63,6 +63,9 @@ struct K {
         static let PP = "PRIVATE_POLICY"
         static let TOS = "TERMS_OF_SERVICE"
         static let OK = "OK"
+        static let TERMS_OF_SERVICE_URL = "http://w3.crossroadsapp.co/owterms"
+        static let PRIVACY_POLICY_URL = "http://w3.crossroadsapp.co/owprivacy"
+        static let LICENSES_URL = "https://www.crossroadsapp.co/license"
     }
     
     struct Path {
@@ -97,7 +100,7 @@ struct K {
         static let TR_LeaveEventUrl      =   "/api/v1/a/event/leave"
         static let TR_REGISTER_DEVICE    =   "/api/v1/a/installation/ios"
         static let TR_SEND_PUSH_MESSAGE  =   "/api/v1/a/messages/send"
-        static let TR_SEND_REPORT        =   "/api/v2/report/create"
+        static let TR_SEND_REPORT        =   "/api/v1/a/report/create"
         static let TR_UPDATE_USER        =   "/api/v1/a/user/update"
         static let TR_FORGOT_PASSWORD    =   "/api/v1/auth/request/resetPassword"
         static let TR_FETCH_EVENT        =   "/api/v1/a/event/listById"

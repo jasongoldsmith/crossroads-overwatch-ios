@@ -138,18 +138,18 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
         }
         
         self.displayAlertWithActionHandler(title: "Update", message: legalMessage, buttonOneTitle: buttonOneTitle ,buttonTwoTitle: buttonTwoTitle, buttonThreeTitle: buttonOkTitle, completionHandler: {complete in
-            
+
             let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
             switch complete! {
             case K.Legal.TOS:
                 let legalViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as! LegalViewController
-                legalViewController.linkToOpen = URL(string: "https://www.crossroadsapp.co/terms")!
+                legalViewController.linkToOpen = URL(string: K.Legal.TERMS_OF_SERVICE_URL)!
                 self.present(legalViewController, animated: true, completion: nil)
                 
                 break
             case K.Legal.PP:
                 let legalViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_WEB_VIEW) as! LegalViewController
-                legalViewController.linkToOpen = URL(string: "https://www.crossroadsapp.co/privacy")!
+                legalViewController.linkToOpen = URL(string: K.Legal.PRIVACY_POLICY_URL)!
                 self.present(legalViewController, animated: true, completion: nil)
                 break
             case K.Legal.OK:

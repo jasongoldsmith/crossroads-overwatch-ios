@@ -29,11 +29,7 @@ class ChangePasswordViewController: LoginBaseViewController {
             if let _ = responseObject {
                 self.navBackButtonPressed(sender: nil)
             } else if let wrappedError = error {
-                let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
-                vc.errorString = wrappedError
-                self.navigationController?.pushViewController(vc, animated: true)
-                self.view.endEditing(true)
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessageFromDictionaryString(dictionaryString: wrappedError)
             } else {
                 print("Something went wrong updating the user Email")
             }

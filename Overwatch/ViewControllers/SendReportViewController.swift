@@ -18,22 +18,29 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let currentEmail = ApplicationManager.sharedInstance.currentUser?.email {
+            emailTextField.text = currentEmail
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        emailTextField.becomeFirstResponder()
+        if let _ = ApplicationManager.sharedInstance.currentUser?.email {
+            bodyTextView.becomeFirstResponder()
+        } else {
+            emailTextField.becomeFirstResponder()
+        }
     }
     
     @IBAction func sendButtonPressed() {
-        if let email = emailTextField.text,
-            email.isValidEmail,
-            let body = bodyTextView.text,
+        if let body = bodyTextView.text,
             body != "",
             body != placeHolderString {
             view.endEditing(true)
             if let wrappedEventId = eventID,
-                let wrappedCommentId = commentID {
+                let wrappedCommentId = commentID,
+                let email = emailTextField.text,
+                email.isValidEmail {
                 let reportRequest = ReportComment()
                 reportRequest.reportAComment(commentID: wrappedCommentId, eventID: wrappedEventId, reportDetail: body, reportedEmail: email, completion: { (didSucceed) in
                     if let succeed = didSucceed,
@@ -49,7 +56,7 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
                 })
             } else {
                 let reportRequest = CreateAReportRequest()
-                reportRequest.sendCreatedReport(reporterEmail: email, reportDetail: body, reportType: "issue", reporterID: UserInfo.getUserID(), completion: { (didSucceed) in
+                reportRequest.sendCreatedReport(description: body, completion: { (didSucceed) in
                     self.view.endEditing(true)
                     if (didSucceed == true)  {
                         

@@ -17,11 +17,20 @@ class OnBoardingErrorViewController: BaseViewController{
     @IBOutlet weak var errorTypeLabel: UILabel!
     @IBOutlet weak var errorDescriptionLabel: UILabel!
     
-    
+    var emailEntered = ""
+    var passwordEntered = ""
+    var gamertagEntered = ""
+    var platformEntered = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let dictionary = self.getDictionaryFromStringResponse(value: errorString),
-            let type =  dictionary.object(forKey: "type") as? String,
+        var offuscatedPassword = ""
+        for _ in passwordEntered.characters {
+            offuscatedPassword = offuscatedPassword + "●"
+        }
+        passwordEntered = offuscatedPassword
+
+        guard let dictionary = ApplicationManager.sharedInstance.getDictionaryFromStringResponse(value: errorString),
             let details =  dictionary.object(forKey: "details") as? NSDictionary,
             let title =  details.object(forKey: "title") as? String,
             let code =  dictionary.object(forKey: "code") as? Int else {
@@ -29,91 +38,88 @@ class OnBoardingErrorViewController: BaseViewController{
         }
         
         errorTitleLabel.text = title.uppercased()
-        errorDescriptionLabel.text = "\(type)."
         
         switch code {
         case 2:
             errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
-            errorTypeLabel.text = "<Email entered>"
+            errorTypeLabel.text = emailEntered
             break
         case 3:
             errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
-            errorTypeLabel.text = "<Password entered>"
+            errorTypeLabel.text = passwordEntered
             break
         case 4:
             errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
-            errorTypeLabel.text = "<Email entered>"
+            errorTypeLabel.text = emailEntered
             break
         case 5:
             errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
-            errorTypeLabel.text = "<Email entered>"
+            errorTypeLabel.text = emailEntered
             break
         case 6:
             errorLogoTypeImage.image = UIImage(named: "imgIconPlatform")
-            errorTypeLabel.text = "<Platform entered>"
+            errorTypeLabel.text = platformEntered
             break
         case 7:
             errorLogoTypeImage.image = UIImage(named: "imgIconPlatform")
-            errorTypeLabel.text = "<Platform entered>"
+            errorTypeLabel.text = platformEntered
             break
         case 8:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
-            errorTypeLabel.text = "<Gamertag entered>"
+            errorTypeLabel.text = gamertagEntered
             break
         case 9:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
-            errorTypeLabel.text = "<Gamertag entered>"
+            errorTypeLabel.text = gamertagEntered
             break
         case 10:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
-            errorTypeLabel.text = "<Gamertag entered>"
+            errorTypeLabel.text = gamertagEntered
             break
         case 11:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
-            errorTypeLabel.text = "<Gamertag entered>"
+            errorTypeLabel.text = gamertagEntered
             break
         case 12:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
-            errorTypeLabel.text = "<Gamertag entered>"
+            errorTypeLabel.text = gamertagEntered
             break
         case 13:
             errorLogoTypeImage.image = UIImage(named: "imgIconID")
-            errorTypeLabel.text = "<Gamertag entered>"
+            errorTypeLabel.text = gamertagEntered
             break
         case 14:
             errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
-            errorTypeLabel.text = "<Password entered>"
+            errorTypeLabel.text = passwordEntered
             break
         case 15:
             errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
-            errorTypeLabel.text = "<Password entered>"
+            errorTypeLabel.text = passwordEntered
+            break
+        case 16:
+            errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
+            errorTypeLabel.text = passwordEntered
+            break
+        case 17:
+            errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
+            errorTypeLabel.text = emailEntered
+            break
+        case 18:
+            errorLogoTypeImage.image = UIImage(named: "imgIconPassword")
+            errorTypeLabel.text = passwordEntered
             break
         default:
             errorLogoTypeImage.image = UIImage(named: "imgIconEmail")
-            errorTypeLabel.text = "<Email entered>"
+            errorTypeLabel.text = "<Text entered>"
             break
         }
 
-        guard let message = details.object(forKey: "") as? String else {
+        guard let message = details.object(forKey: "message") as? String else {
             return
         }
-        errorDescriptionLabel.text = "\(type). \(message)"
+        errorDescriptionLabel.text = "\(message)"
     }
     
-    private func getDictionaryFromStringResponse(value:String) -> NSDictionary? {
-        if let data = value.data(using: String.Encoding.utf8) {
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-                if let dic = json as? NSDictionary {
-                    return dic
-                }
-            } catch _ {
-                return nil
-            }
-        }
-        return nil
-    }
-
     @IBAction func backButtonPressed() {
         if let navController = navigationController {
             navController.popViewController(animated: true)

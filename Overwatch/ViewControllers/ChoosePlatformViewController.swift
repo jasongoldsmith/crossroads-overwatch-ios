@@ -54,6 +54,10 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
                     let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
                     vc.errorString = wrappedError
+                    if let platformName = ApplicationManager.sharedInstance.getConsoleNameFrom(consoleType: consoleType) {
+                        vc.platformEntered = platformName
+                    }
+                    vc.gamertagEntered = consoleId
                     self.navigationController?.pushViewController(vc, animated: true)
                     self.view.endEditing(true)
                 } else {

@@ -17,7 +17,30 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        switch items.count {
+        case 1:
+            guard let first = items.first else {
+                break
+            }
+            items.append(first)
+            items.append(first)
+            items.append(first)
+            items.append(first)
+            items.append(first)
+        case 2:
+            guard let first = items.first,
+                let last = items.last else {
+                    break
+            }
+            items.append(first)
+            items.append(last)
+            items.append(first)
+            items.append(last)
+            items.append(first)
+            items.append(last)
+        default:
+            break
+        }
         let countString = ApplicationManager.sharedInstance.totalUsers?.description
         let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 195/255, blue: 0/255, alpha: 1)]
         var countAttributedStr = NSAttributedString(string: countString!, attributes: stringColorAttribute)
@@ -45,6 +68,7 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
             self.view.addSubview(errorView)
         }
         
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,6 +77,31 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        switch items.count {
+        case 1:
+            guard let first = items.first else {
+                    break
+            }
+            items.append(first)
+            items.append(first)
+            items.append(first)
+            items.append(first)
+            items.append(first)
+        case 2:
+            guard let first = items.first,
+            let last = items.last else {
+                break
+            }
+            items.append(first)
+            items.append(last)
+            items.append(first)
+            items.append(last)
+            items.append(first)
+            items.append(last)
+        default:
+            break
+        }
+        carousel.reloadData()
     }
     
     
@@ -95,8 +144,8 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
         } else {
             itemView = view as! CaroselCellView
         }
-        
         itemView.updateViewWithActivity(eventInfo: items[index])
+        view?.frame = CGRect(x:0, y:0, width:ScreenSize.SCREEN_WIDTH-48.0, height:carousel.frame.size.height)
         return itemView
     }
     
@@ -108,7 +157,7 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
             return 1
         case .spacing:
             if DeviceType.IS_IPHONE_4_OR_LESS || DeviceType.IS_IPHONE_5 {
-                return value * 1.018
+                return value * 0.88
             }
             return value * 1.04
         case .visibleItems:

@@ -16,8 +16,8 @@ class ChangeEmailViewController: LoginBaseViewController {
         super.viewDidLoad()
         if let currentEmail = ApplicationManager.sharedInstance.currentUser?.email {
             let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 195/255, blue: 0/255, alpha: 1)]
-            let countAttributedStr = NSAttributedString(string: "<\(currentEmail)>", attributes: stringColorAttribute)
-            let helpAttributedStr = NSAttributedString(string: "Current email address: ", attributes: nil)
+            let countAttributedStr = NSAttributedString(string: "\n\(currentEmail)", attributes: stringColorAttribute)
+            let helpAttributedStr = NSAttributedString(string: "Current email address:", attributes: nil)
             let finalString:NSMutableAttributedString = helpAttributedStr.mutableCopy() as! NSMutableAttributedString
             finalString.append(countAttributedStr)
             
@@ -46,11 +46,7 @@ class ChangeEmailViewController: LoginBaseViewController {
                     }
                 })
             } else if let wrappedError = error {
-                let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
-                vc.errorString = wrappedError
-                self.navigationController?.pushViewController(vc, animated: true)
-                self.view.endEditing(true)
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessageFromDictionaryString(dictionaryString: wrappedError)
             } else {
                 print("Something went wrong updating the user Email")
             }

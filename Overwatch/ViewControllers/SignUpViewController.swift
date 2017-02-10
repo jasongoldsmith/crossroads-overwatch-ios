@@ -46,6 +46,8 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate,
                 let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
                 vc.errorString = wrappedError
+                vc.emailEntered = email
+                vc.passwordEntered = password
                 self.navigationController?.pushViewController(vc, animated: true)
                 self.view.endEditing(true)
             } else {
@@ -67,8 +69,8 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate,
         
         let rangeCustomerAgreement = nsString.range(of: customerAgreement)
         let rangePrivacyPolicy = nsString.range(of: privacyPolicy)
-        let urlCustomerAgreement = URL(string: "https://www.crossroadsapp.co/terms")!
-        let urlPrivacyPolicy = URL(string: "https://www.crossroadsapp.co/privacy")!
+        let urlCustomerAgreement = URL(string: K.Legal.TERMS_OF_SERVICE_URL)!
+        let urlPrivacyPolicy = URL(string: K.Legal.PRIVACY_POLICY_URL)!
         
         let subscriptionNoticeLinkAttributes = [
             NSForegroundColorAttributeName: UIColor(red: 188/255, green: 197/255, blue: 225/255, alpha: 1),

@@ -46,9 +46,18 @@
                     <color key="textColor" red="1" green="0.76568001510000006" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-A7-hNu" customClass="InsertLabel" customModule="Overwatch" customModuleProvider="target">
-                    <rect key="frame" x="60" y="55" width="30" height="14"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-A7-hNu">
+                    <rect key="frame" x="60" y="49" width="30" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="TnB-Xe-qB9"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUB-Vc-6n4" customClass="InsertLabel" customModule="Overwatch" customModuleProvider="target">
+                    <rect key="frame" x="60" y="66" width="27" height="13"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -108,22 +117,24 @@
                 <constraint firstItem="fL9-oC-Itc" firstAttribute="top" secondItem="Vji-zx-1aP" secondAttribute="bottom" id="BQE-Wg-j8r"/>
                 <constraint firstItem="NGR-O7-PNB" firstAttribute="centerY" secondItem="6GP-vo-v9F" secondAttribute="centerY" id="Dex-AV-2Kh"/>
                 <constraint firstItem="Vji-zx-1aP" firstAttribute="top" secondItem="bax-ew-igp" secondAttribute="top" constant="10" id="ISg-Cz-gZu"/>
+                <constraint firstAttribute="bottom" secondItem="kUE-cH-6K7" secondAttribute="bottom" constant="16" id="Ilv-XL-wEj"/>
                 <constraint firstAttribute="bottom" secondItem="uo7-RK-gyU" secondAttribute="bottom" id="Jag-SS-LdF"/>
                 <constraint firstItem="uo7-RK-gyU" firstAttribute="leading" secondItem="bax-ew-igp" secondAttribute="leading" id="O3F-1p-RAx"/>
                 <constraint firstItem="NRA-KF-vFN" firstAttribute="top" secondItem="bax-ew-igp" secondAttribute="top" constant="8" id="O9R-60-FhL"/>
                 <constraint firstItem="NRA-KF-vFN" firstAttribute="leading" secondItem="bax-ew-igp" secondAttribute="leading" constant="8" id="P2f-Fz-rjC"/>
                 <constraint firstItem="H04-r7-gzl" firstAttribute="leading" secondItem="kUE-cH-6K7" secondAttribute="trailing" constant="11" id="QAu-TK-OdW"/>
-                <constraint firstItem="kUE-cH-6K7" firstAttribute="top" secondItem="Mha-A7-hNu" secondAttribute="bottom" constant="13" id="Ryw-Nq-Bfu"/>
+                <constraint firstItem="gUB-Vc-6n4" firstAttribute="leading" secondItem="Mha-A7-hNu" secondAttribute="leading" id="TBB-Uz-m1l"/>
                 <constraint firstItem="NGR-O7-PNB" firstAttribute="centerX" secondItem="bax-ew-igp" secondAttribute="centerX" id="TTM-gy-6I2"/>
                 <constraint firstItem="Mha-A7-hNu" firstAttribute="leading" secondItem="fL9-oC-Itc" secondAttribute="leading" id="WsK-Xf-miy"/>
                 <constraint firstAttribute="trailing" secondItem="uo7-RK-gyU" secondAttribute="trailing" id="fe8-xy-Clm"/>
                 <constraint firstItem="H04-r7-gzl" firstAttribute="centerY" secondItem="kUE-cH-6K7" secondAttribute="centerY" id="gz2-2T-J1P"/>
                 <constraint firstAttribute="trailing" secondItem="IKn-ED-crV" secondAttribute="trailing" constant="13" id="h3p-bv-drw"/>
                 <constraint firstItem="Khm-hc-nJ6" firstAttribute="centerY" secondItem="6GP-vo-v9F" secondAttribute="centerY" id="ipi-RN-i4a"/>
+                <constraint firstItem="kUE-cH-6K7" firstAttribute="top" secondItem="gUB-Vc-6n4" secondAttribute="bottom" constant="3.5" id="lph-RE-Ial"/>
                 <constraint firstAttribute="trailing" secondItem="Khm-hc-nJ6" secondAttribute="trailing" constant="15" id="oN1-8z-dIi"/>
                 <constraint firstItem="6GP-vo-v9F" firstAttribute="centerY" secondItem="H04-r7-gzl" secondAttribute="centerY" id="qZr-aa-GjB"/>
                 <constraint firstItem="uo7-RK-gyU" firstAttribute="leading" secondItem="Vji-zx-1aP" secondAttribute="leading" constant="-60" id="tSi-mK-n4i"/>
-                <constraint firstItem="Mha-A7-hNu" firstAttribute="top" secondItem="fL9-oC-Itc" secondAttribute="bottom" constant="7" id="y4G-AZ-yWw"/>
+                <constraint firstItem="Mha-A7-hNu" firstAttribute="top" secondItem="fL9-oC-Itc" secondAttribute="bottom" constant="1" id="y4G-AZ-yWw"/>
                 <constraint firstItem="IKn-ED-crV" firstAttribute="centerY" secondItem="Vji-zx-1aP" secondAttribute="centerY" id="yob-14-0b0"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -148,6 +159,7 @@
                 <outlet property="eventDifficulty" destination="IKn-ED-crV" id="tDV-Ns-q7g"/>
                 <outlet property="eventIcon" destination="NRA-KF-vFN" id="oSI-GW-GnA"/>
                 <outlet property="eventName" destination="Vji-zx-1aP" id="L3K-iN-Sct"/>
+                <outlet property="eventTagLabel" destination="gUB-Vc-6n4" id="Q0v-Fs-azo"/>
                 <outlet property="joinButton" destination="Khm-hc-nJ6" id="XNt-M7-xfO"/>
                 <outlet property="playerCountLabelIcon" destination="NGR-O7-PNB" id="LGI-uf-2HG"/>
                 <outlet property="playerOneIcon" destination="kUE-cH-6K7" id="Yf2-Gq-fie"/>

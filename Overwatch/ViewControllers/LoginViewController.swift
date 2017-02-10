@@ -45,6 +45,8 @@ class LoginViewController: LoginBaseViewController {
                 let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
                 vc.errorString = wrappedError
+                vc.emailEntered = email
+                vc.passwordEntered = password
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 print("Something went wrong signing in")
