@@ -10,28 +10,20 @@ import Foundation
 
 class ForgotPasswordRequest: NSObject {
     
-    func resetUserPassword(userName: String, consoleType: String, completion:@escaping TRValueCallBack) {
+    func resetUserPassword(userEmail: String, completion:@escaping TRResponseCallBack) {
         let resetPassword = K.TRUrls.TR_BaseUrl + K.TRUrls.TR_FORGOT_PASSWORD
         var params = [String: AnyObject]()
-        params["consoleId"] = userName as AnyObject?
-        params["consoleType"] = consoleType as AnyObject?
+        params["email"] = userEmail as AnyObject?
         let request = NetworkRequest.sharedInstance
         request.params = params
         request.requestURL = resetPassword
         request.URLMethod = .post
         request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in
-            if let _ = error {
-                completion(false)
+            if let wrappedError = error {
+                completion(wrappedError, nil)
                 return
             }
-            if let _ = swiftyJsonVar?["_id"].string {
-                var existingEvent = ApplicationManager.sharedInstance.getEventById(eventId: (swiftyJsonVar?["_id"].string!)!)
-                
-                if let _ = existingEvent {
-                    existingEvent = existingEvent?.parseCreateEventInfoObject(swiftyJason: swiftyJsonVar!)
-                }
-            }
-            completion(true)
+            completion(nil, swiftyJsonVar)
         }
     }
     

@@ -82,12 +82,12 @@ class ErrorView: UIView {
             if let consoleType = self.eventInfo?.eventConsoleType {
                 let console  =  self.getConsoleTypeFromString(consoleName: consoleType)
                 self.buttonOneYes.setTitle("OK", for: .normal)
-                self.errorDescription.text = "You'll need a \(console) linked to your Bungie account to join that activity from \(eventGroup)."
+                self.errorDescription.text = "You'll need a \(console) linked to your Battle.net account to join that activity from \(eventGroup)."
                 self.buttonTwoCancel.isHidden = true
             }
             break
         case .JOIN_BUNGIE_GROUP:
-            self.buttonOneYes.setTitle("VIEW GROUP ON BUNGIE.NET", for: .normal)
+            self.buttonOneYes.setTitle("VIEW GROUP ON BATTLE.NET", for: .normal)
             self.errorDescription.text = "You’ll need to be in the \(eventGroup) group to join that \(eventName). Request to join?"
             break
         }

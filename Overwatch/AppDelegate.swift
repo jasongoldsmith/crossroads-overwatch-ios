@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import FBSDKCoreKit
 import Firebase
 import Branch
 
@@ -15,16 +16,24 @@ import Branch
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var faceBookAdLink: Dictionary <String, String>?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary?,
-            let rootController = window?.rootViewController as? RootViewController {
+        guard let rootController = window?.rootViewController as? RootViewController else {
+            return true
+        }
+        if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary? {
             rootController.pushNotificationData = remoteNotification
         }
+        let userDefaults = UserDefaults.standard
+        let isInstallInfoSent = userDefaults.bool(forKey: K.UserDefaultKey.INSTALL_INFO_SENT)
 
         //Initialize FireBase Configuration
         ApplicationManager.sharedInstance.fireBaseManager?.initFireBaseConfig()
+        
+        //Facebook Init
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         //Branch Initialized
         let branch: Branch = Branch.getInstance()
@@ -38,8 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 trackingRequest.sendApplicationPushNotiTracking(notiDict: mySourceDict as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_APP_INIT, completion: {didSucceed in
                 })
                 
-                let userDefaults = UserDefaults.standard
-                let isInstallInfoSent = userDefaults.bool(forKey: K.UserDefaultKey.INSTALL_INFO_SENT)
                 if isInstallInfoSent == false {
                     
                     // App Install Request
@@ -78,6 +85,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         
+        // App Install Request
+        if isInstallInfoSent == false {
+            var myInstallDict = [String: AnyObject]()
+            myInstallDict["ads"] = K.SharingPlatformType.Platform_Organic as AnyObject?
+            
+            self.appInstallRequestWithDict(installInfo: myInstallDict) { (didSucceed) in
+                if didSucceed == true {
+                    
+                    //Send FaceBook Install Info, if avalable
+                    if let _ = self.faceBookAdLink {
+                        self.sendFaceBookAdsInstallInfo()
+                    }
+                    
+                    // App Initialized Request
+                    var mySourceDict = [String: AnyObject]()
+                    mySourceDict["source"] = K.SharingPlatformType.Platform_UnKnown as AnyObject?
+                    self.appInitializedRequest(initInfo: mySourceDict)
+                }
+            }
+        } else {
+            // App Initialized Request
+            var mySourceDict = [String: AnyObject]()
+            mySourceDict["source"] = K.SharingPlatformType.Platform_UnKnown as AnyObject?
+            self.appInitializedRequest(initInfo: mySourceDict)
+        }
+
         return true
     }
 
@@ -101,6 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -143,8 +177,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
-        return true
+        //Facebook
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        return handled
     }
+    
 
     //MARK:- App Data Requests
     func appInitializedRequest (initInfo: Dictionary<String, AnyObject>) {
@@ -167,5 +204,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
     
+    func sendFaceBookAdsInstallInfo () {
+        if let _ = self.faceBookAdLink {
+            self.appInstallRequestWithDict(installInfo: self.faceBookAdLink! as Dictionary<String, AnyObject>) { (didSucceed) in
+                if didSucceed == true {
+                    
+                }
+            }
+        }
+    }
 }
 

@@ -161,14 +161,14 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
     func addNonVerifiedUserUI () {
         self.unVerifiedUserView.isHidden = false
         
-        let messageString = "To play with other groups and update your profile, please verify your account. \n\n Check your messages on Bungie.net for a verification link from Crossroads."
-        let bungieLinkName = "Bungie.net"
+        let messageString = "To play with other groups and update your profile, please verify your account. \n\n Check your messages on Battle.net for a verification link from Crossroads."
+        let bungieLinkName = "Battle.net"
         self.unVerifiedUserLabel?.text = messageString
         
         // Add HyperLink to Bungie
         let nsString = messageString as NSString
         let range = nsString.range(of: bungieLinkName)
-        let url = NSURL(string: "https://www.bungie.net/")!
+        let url = NSURL(string: "https://www.battle.net/")!
         let subscriptionNoticeLinkAttributes = [
             NSForegroundColorAttributeName: UIColor(red: 0/255, green: 182/255, blue: 231/255, alpha: 1),
             NSUnderlineStyleAttributeName: NSNumber(value:true),
@@ -179,7 +179,7 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
         
         self.saveButton.isEnabled = true
         self.saveButton?.isHidden = false
-        self.saveButton.setTitle("VERIFY ON BUNGIE.NET", for: .normal)
+        self.saveButton.setTitle("VERIFY ON BATTLE.NET", for: .normal)
         self.saveButton?.backgroundColor = UIColor(red: 0/255, green: 134/255, blue: 208/255, alpha: 1)
     }
     
@@ -190,14 +190,14 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
     func addNoneGroupCountUI () {
         self.lableThree.isHidden = true
         
-        let messageString = "It looks like you are not a member of any groups. Feel free to Freelance with us or head to Bungie.net to join a group and fully experience the Crossroads for Destiny app."
-        let bungieLinkName = "Bungie.net"
+        let messageString = "It looks like you are not a member of any groups. Feel free to Freelance with us or head to Battle.net to join a group and fully experience the Crossroads for Overwatch app."
+        let bungieLinkName = "Battle.net"
         self.lableThree?.text = messageString
         
         // Add HyperLink to Bungie
         let nsString = messageString as NSString
         let range = nsString.range(of: bungieLinkName)
-        let url = NSURL(string: "https://www.bungie.net/")!
+        let url = NSURL(string: "https://www.battle.net/")!
         let subscriptionNoticeLinkAttributes = [
             NSForegroundColorAttributeName: UIColor(red: 0/255, green: 182/255, blue: 231/255, alpha: 1),
             NSUnderlineStyleAttributeName: NSNumber(value:true),
@@ -304,7 +304,7 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func goToBungieWebSite (sender: UIButton) {
-        let url = URL(string: "https://www.bungie.net/")!
+        let url = URL(string: "https://www.battle.net/")!
         UIApplication.shared.open(url, options: ["":""], completionHandler: nil)
     }
     

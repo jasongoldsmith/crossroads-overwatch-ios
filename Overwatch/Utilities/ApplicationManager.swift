@@ -153,9 +153,8 @@ class ApplicationManager: NSObject {
         
         self.slideMenuController.view.alpha = 0
         parentViewController.present(self.slideMenuController, animated: animated, completion: {
-            
+            UIApplication.shared.applicationIconBadgeNumber = 0
             if let _ = pushData {
-                UIApplication.shared.applicationIconBadgeNumber = 0
                 self.slideMenuController.view.alpha = 0.7
                 self.fetchGroups(openSliderMenu: false, completion: { (didSucceed) in
                     self.slideMenuController.view.alpha = 1

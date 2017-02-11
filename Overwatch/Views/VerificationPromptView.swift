@@ -78,14 +78,14 @@ class VerificationPromptView: UIView, TTTAttributedLabelDelegate {
         self.startThreeLabel?.text = "\u{02726}"
         
         //Attributed Label
-        let messageString = "Check your messages on Bungie.net for a verification link."
-        let bungieLinkName = "Bungie.net"
+        let messageString = "Check your messages on Battle.net for a verification link."
+        let bungieLinkName = "Battle.net"
         self.bungieAttLabel?.text = messageString
         
         // Add HyperLink to Bungie
         let nsString = messageString as NSString
         let range = nsString.range(of: bungieLinkName)
-        let url = NSURL(string: "https://www.bungie.net/")!
+        let url = NSURL(string: "https://www.battle.net/")!
         let subscriptionNoticeLinkAttributes = [
             NSForegroundColorAttributeName: UIColor(red: 0/255, green: 182/255, blue: 231/255, alpha: 1),
             NSUnderlineStyleAttributeName: NSNumber(value:true),
@@ -100,7 +100,7 @@ class VerificationPromptView: UIView, TTTAttributedLabelDelegate {
     }
     
     func goToBungie () {
-        let url = NSURL(string: "https://www.bungie.net/")!
+        let url = NSURL(string: "https://www.battle.net/")!
         UIApplication.shared.open(url as URL, options: ["":""], completionHandler: nil)
     }
     

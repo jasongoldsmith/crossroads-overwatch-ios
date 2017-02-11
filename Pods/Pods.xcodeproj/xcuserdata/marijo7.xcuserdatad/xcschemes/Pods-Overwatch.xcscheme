@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F3799A9D2E51C6B5DD4EB5665EAA6883"
+               BlueprintIdentifier = "D2AA64F3476A5BDF9F9C1D160E38FFC2"
                BuildableName = "Pods_Overwatch.framework"
                BlueprintName = "Pods-Overwatch"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F3799A9D2E51C6B5DD4EB5665EAA6883"
+            BlueprintIdentifier = "D2AA64F3476A5BDF9F9C1D160E38FFC2"
             BuildableName = "Pods_Overwatch.framework"
             BlueprintName = "Pods-Overwatch"
             ReferencedContainer = "container:Pods.xcodeproj">

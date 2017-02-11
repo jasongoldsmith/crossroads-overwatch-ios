@@ -32,7 +32,7 @@ class InviteView: UIView, KSTokenViewDelegate, CustomErrorDelegate, KSTokenField
     
     
     func setUpView () {
-        self.descriptionLabel?.text = "Inviting players will send a message from\nyou to them on Bungie.net."
+        self.descriptionLabel?.text = "Inviting players will send a message from\nyou to them on Battle.net."
         
         self.tokenView.delegate = self
         self.tokenView.placeholder = "Type a Gamertag"
@@ -180,7 +180,7 @@ class InviteView: UIView, KSTokenViewDelegate, CustomErrorDelegate, KSTokenField
         // Check Player Required Limit
         let extraPlayersRequiredCount = ((eventInfo!.eventActivity?.activityMaxPlayers?.intValue)! - (eventInfo!.eventPlayersArray.count))
         if (tokenView.tokens()?.count)! < extraPlayersRequiredCount {
-            self.descriptionLabel?.text = "Inviting players will send a message from\nyou to them on Bungie.net."
+            self.descriptionLabel?.text = "Inviting players will send a message from\nyou to them on Battle.net."
         } else {
             self.descriptionLabel?.text = "The maximum number of players for your Team has been reached. Each invited player will have a reserved spot on your Team."
         }
@@ -213,7 +213,7 @@ class InviteView: UIView, KSTokenViewDelegate, CustomErrorDelegate, KSTokenField
         // Check Player Required Limit
         let extraPlayersRequiredCount = ((eventInfo!.eventActivity?.activityMaxPlayers?.intValue)! - (eventInfo!.eventPlayersArray.count))
         if (tokenView.tokens()?.count)! <= extraPlayersRequiredCount {
-            self.descriptionLabel?.text = "Inviting players will send a message from\nyou to them on Bungie.net."
+            self.descriptionLabel?.text = "Inviting players will send a message from\nyou to them on Battle.net."
         } else {
             self.descriptionLabel?.text = "The maximum number of players for your Team has been reached. Each invited player will have a reserved spot on your Team."
         }

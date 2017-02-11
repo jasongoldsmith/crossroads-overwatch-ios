@@ -28,9 +28,28 @@
 				<string>iosforcecatalystcrossroadsoverwatch</string>
 			</array>
 		</dict>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb1779962922326489</string>
+            </array>
+        </dict>
 	</array>
+    <key>FacebookAppID</key>
+    <string>1779962922326489</string>
+    <key>FacebookDisplayName</key>
+    <string>Crossroads for Overwatch</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We need access to your photos to update your profile picture</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
 	<string>NO</string>
 	<key>LSRequiresIPhoneOS</key>

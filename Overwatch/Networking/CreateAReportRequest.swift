@@ -26,5 +26,23 @@ class CreateAReportRequest: NSObject {
             completion(true)
         }
     }
-    
+
+    func sendCreatedReportForNotLoggedUser (email:String, description: String, completion:@escaping TRValueCallBack) {
+        let pushMessage = K.TRUrls.TR_BaseUrl + K.TRUrls.TR_SEND_REPORT_UNAUTH
+        var params = [String: AnyObject]()
+        params["email"] = email as AnyObject?
+        params["description"] = description as AnyObject?
+        let request = NetworkRequest.sharedInstance
+        request.requestURL = pushMessage
+        request.params = params
+        request.URLMethod = .post
+        request.sendRequestWithCompletion { (error, swiftyJsonVar) -> () in
+            if let _ = error {
+                completion(false)
+                return
+            }
+            completion(true)
+        }
+    }
+
 }

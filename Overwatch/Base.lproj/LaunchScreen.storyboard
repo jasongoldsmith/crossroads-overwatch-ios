@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,25 +19,34 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgBackground" translatesAutoresizingMaskIntoConstraints="NO" id="LnN-uc-QkM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgBGTopHero" translatesAutoresizingMaskIntoConstraints="NO" id="Liv-jR-WV1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="326"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Liv-jR-WV1" secondAttribute="height" multiplier="375:326" id="jnI-2I-DYS"/>
+                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCRBrand" translatesAutoresizingMaskIntoConstraints="NO" id="7Cw-1x-mko">
-                                <rect key="frame" x="94.666666666666686" y="138" width="225" height="156"/>
+                                <rect key="frame" x="84.5" y="158" width="206" height="135"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="EeB-e2-RMd"/>
-                                    <constraint firstAttribute="height" constant="156" id="vhc-IM-ysD"/>
+                                    <constraint firstAttribute="width" constant="206" id="EeB-e2-RMd"/>
+                                    <constraint firstAttribute="height" constant="135" id="vhc-IM-ysD"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Liv-jR-WV1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="9vT-NO-W7E"/>
+                            <constraint firstAttribute="trailing" secondItem="Liv-jR-WV1" secondAttribute="trailing" id="EZw-54-KaS"/>
                             <constraint firstItem="LnN-uc-QkM" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="L8l-s2-bZv"/>
-                            <constraint firstItem="7Cw-1x-mko" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="118" id="VKR-tt-MWC"/>
+                            <constraint firstItem="7Cw-1x-mko" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="138" id="VKR-tt-MWC"/>
                             <constraint firstItem="7Cw-1x-mko" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XXZ-ih-mac"/>
+                            <constraint firstItem="Liv-jR-WV1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ewL-72-zCb"/>
                             <constraint firstAttribute="trailing" secondItem="LnN-uc-QkM" secondAttribute="trailing" id="kYg-ax-0WQ"/>
                             <constraint firstItem="LnN-uc-QkM" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="sCl-aq-xTg"/>
                             <constraint firstAttribute="bottom" secondItem="LnN-uc-QkM" secondAttribute="bottom" id="tvd-LG-GqH"/>
@@ -50,6 +60,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="imgBGTopHero" width="375" height="326"/>
         <image name="imgBackground" width="375" height="667"/>
         <image name="imgCRBrand" width="225" height="156"/>
     </resources>

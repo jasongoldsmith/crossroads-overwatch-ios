@@ -158,18 +158,31 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
                 }
             }
         }
-        if let defaultConsole = ApplicationManager.sharedInstance.currentUser?.getDefaultConsole()?.consoleType{
-            switch defaultConsole.lowercased() {
-            case "ps4":
-                avatorImageView?.borderColor = UIColor(red: 1/255, green: 59/255, blue: 152/255, alpha: 1)
-            case "xboxone":
-                avatorImageView?.borderColor = UIColor(red: 77/255, green: 194/255, blue: 34/255, alpha: 1)
-            default:
-                avatorImageView?.borderColor = UIColor(red: 250/255, green: 148/255, blue: 0/255, alpha: 1)
-            }
-        }
     }
-    
+
+    @IBAction func avatorImageViewTapped (sender: UIButton) {
+        let helmetRequest = HelmetUpdateRequest()
+        helmetRequest.updateHelmetForUser(completion: { (imageStringUrl) in
+            if let _ = imageStringUrl {
+                self.updateUserAvatorImage()
+                let feedRequest = FeedRequest()
+                feedRequest.getPrivateFeed(completion: { (didSucceed) in
+                    guard let succeed = didSucceed else {
+                        return
+                    }
+                    if succeed {
+                        let sliderView = ApplicationManager.sharedInstance.slideMenuController
+                        if let eventView = sliderView.mainViewController as? EventListViewController {
+                            eventView.reloadEventTable()
+                            eventView.updateUserAvatorImage()
+                            self.updateView()
+                        }
+                    }
+                })
+            }
+        })
+    }
+
     
     @IBAction func inviteFriends () {
         

@@ -162,7 +162,7 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
             self.activityIconView.sd_setImage(with: imageUrl)
         }
         
-        let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
+        let block: SDExternalCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
             self.activityBGImageView.alpha = 0
             self.activityBGImageView.image = image
             UIView.animate(withDuration: 0.5, animations: {

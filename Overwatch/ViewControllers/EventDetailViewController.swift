@@ -192,7 +192,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         self.reloadButton()
         
-        let block: SDWebImageCompletionBlock = {(newImage, error, cacheType, imageURL) -> Void in
+        let block: SDExternalCompletionBlock = {(newImage, error, cacheType, imageURL) -> Void in
             if let anImage = newImage, error == nil {
                 self.eventBackGround.image = anImage
                 self.backgroundImageHeightConstraint?.constant = (ScreenSize.SCREEN_WIDTH*anImage.size.height)/anImage.size.width
@@ -521,8 +521,8 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
                         if self.isCurrentPlayerInvited() == true {
                             cell?.playerInviteButton.isHidden = true
                         } else {
-                            cell?.playerUserName?.text = "Invite a Friend"
-                            //TODO: invite shouldn't be hidden
+                            cell?.playerUserName?.text = "Searching..."
+                            //TODO: invite shouldn't be hidden in Destiny but i should in Overwatch 
                             cell?.playerInviteButton.isHidden = true
                             cell?.playerInviteButton.addTarget(self, action: #selector(inviteUser), for: .touchUpInside)
                         }
@@ -1033,7 +1033,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
     @IBAction func leaveInvitationButton (sender: UIButton) {
         let errorView = Bundle.main.loadNibNamed("CustomErrorUserAction", owner: self, options: nil)?[0] as! CustomError
         errorView.errorMessageHeader?.text = "CAN’T MAKE IT?"
-        errorView.errorMessageDescription?.text = "If you turn down this invite, another Guardian will take your spot. Are you sure you want to leave?"
+        errorView.errorMessageDescription?.text = "If you turn down this invite, another Hero will take your spot. Are you sure you want to leave?"
         errorView.frame = self.view.frame
         errorView.delegate = self
         errorView.selector = #selector(leaveEvent)

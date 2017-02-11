@@ -731,7 +731,7 @@
                                     <constraint firstAttribute="height" constant="50" id="cvK-rR-Lis"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                <state key="normal" title="GO TO BUNGIE.NET">
+                                <state key="normal" title="GO TO BATTLE.NET">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1864,7 +1864,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FD5F9A98-B622-4AFD-826E-2BFAB0D1FF2D" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2E08CFAF-E01E-4D9A-8322-A25D39841A19" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
                                 <rect key="frame" x="16" y="113.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UY6-7w-5Ph"/>
@@ -2952,14 +2952,14 @@ you signed up with, please contact us at</string>
                                         <rect key="frame" x="16" y="0.0" width="323" height="66"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sCF-d4-BnV">
-                                                <rect key="frame" x="0.0" y="20.5" width="25" height="25"/>
+                                                <rect key="frame" x="0.0" y="21" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="QxZ-JT-Ik6"/>
                                                     <constraint firstAttribute="height" constant="25" id="pnW-oQ-6fz"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUT-PQ-DlC">
-                                                <rect key="frame" x="41" y="22.5" width="282" height="21"/>
+                                                <rect key="frame" x="41" y="23" width="282" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="DXl-Kd-nuo"/>
                                                 </constraints>
@@ -3105,25 +3105,39 @@ you signed up with, please contact us at</string>
                                     <constraint firstAttribute="width" secondItem="QOs-Lw-ZJA" secondAttribute="height" multiplier="375:144" id="KOL-tC-YHh"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="rqA-c0-toY">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iED-Yp-YXG" customClass="UIButton">
                                 <rect key="frame" x="138" y="94" width="98" height="98"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="rqA-c0-toY">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="49"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.96970623730000005" green="0.57914835210000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="98" id="0B5-FM-u7J"/>
-                                    <constraint firstAttribute="width" constant="98" id="q2g-3B-AJB"/>
+                                    <constraint firstAttribute="trailing" secondItem="rqA-c0-toY" secondAttribute="trailing" id="HN6-K0-LNl"/>
+                                    <constraint firstItem="rqA-c0-toY" firstAttribute="leading" secondItem="iED-Yp-YXG" secondAttribute="leading" id="bQC-XY-NJx"/>
+                                    <constraint firstAttribute="width" constant="98" id="dIk-pq-xH1"/>
+                                    <constraint firstAttribute="bottom" secondItem="rqA-c0-toY" secondAttribute="bottom" id="f61-Fn-yCk"/>
+                                    <constraint firstAttribute="height" constant="98" id="l5b-aO-fBD"/>
+                                    <constraint firstItem="rqA-c0-toY" firstAttribute="top" secondItem="iED-Yp-YXG" secondAttribute="top" id="yn6-We-FpA"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="49"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.96970623730000005" green="0.57914835210000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
+                                <connections>
+                                    <action selector="avatorImageViewTappedWithSender:" destination="CjK-Ih-LA0" eventType="touchUpInside" id="5Jm-4E-vWu"/>
+                                </connections>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRACER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ggL-kY-Blr">
                                 <rect key="frame" x="146" y="210" width="83" height="24"/>
                                 <constraints>
@@ -3178,7 +3192,7 @@ you signed up with, please contact us at</string>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXS-PU-mTa">
-                                <rect key="frame" x="45" y="325" width="285" height="44"/>
+                                <rect key="frame" x="45" y="335" width="285" height="44"/>
                                 <color key="backgroundColor" red="0.20841956140000001" green="0.25428217650000001" blue="0.35780471559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Change Password">
@@ -3194,7 +3208,7 @@ you signed up with, please contact us at</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivA-uB-gna">
-                                <rect key="frame" x="45" y="379" width="285" height="44"/>
+                                <rect key="frame" x="45" y="389" width="285" height="44"/>
                                 <color key="backgroundColor" red="0.20841956140000001" green="0.25428217650000001" blue="0.35780471559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Change Email">
@@ -3210,7 +3224,7 @@ you signed up with, please contact us at</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0GW-Eg-ebi">
-                                <rect key="frame" x="45" y="433" width="285" height="44"/>
+                                <rect key="frame" x="45" y="443" width="285" height="44"/>
                                 <color key="backgroundColor" red="0.20841956140000001" green="0.25428217650000001" blue="0.35780471559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Contact Us">
@@ -3226,7 +3240,7 @@ you signed up with, please contact us at</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f51-1S-8Wu">
-                                <rect key="frame" x="45" y="487" width="285" height="44"/>
+                                <rect key="frame" x="45" y="497" width="285" height="44"/>
                                 <color key="backgroundColor" red="0.20841956140000001" green="0.25428217650000001" blue="0.35780471559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Logout">
@@ -3282,11 +3296,11 @@ you signed up with, please contact us at</string>
                             <constraint firstItem="2gc-0q-uQj" firstAttribute="leading" secondItem="wDe-SW-JZA" secondAttribute="leading" id="AmX-d6-Tv1"/>
                             <constraint firstItem="2gc-0q-uQj" firstAttribute="top" secondItem="wDe-SW-JZA" secondAttribute="bottom" constant="-1" id="B0Q-cc-c7B"/>
                             <constraint firstAttribute="trailing" secondItem="TXS-PU-mTa" secondAttribute="trailing" constant="45" id="CkI-Dn-SH9"/>
-                            <constraint firstItem="ggL-kY-Blr" firstAttribute="top" secondItem="rqA-c0-toY" secondAttribute="bottom" constant="18" id="Dbm-t3-zbW"/>
                             <constraint firstItem="f51-1S-8Wu" firstAttribute="leading" secondItem="0GW-Eg-ebi" secondAttribute="leading" id="GJK-cb-Ikh"/>
                             <constraint firstAttribute="trailing" secondItem="QOs-Lw-ZJA" secondAttribute="trailing" id="GUO-35-iQ6"/>
                             <constraint firstItem="PPU-0B-ZaN" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="IzZ-6n-oMD"/>
-                            <constraint firstItem="TXS-PU-mTa" firstAttribute="top" secondItem="wDe-SW-JZA" secondAttribute="bottom" constant="10" id="JFs-3L-rZ3"/>
+                            <constraint firstItem="TXS-PU-mTa" firstAttribute="top" secondItem="wDe-SW-JZA" secondAttribute="bottom" constant="20" id="JFs-3L-rZ3"/>
+                            <constraint firstItem="iED-Yp-YXG" firstAttribute="centerX" secondItem="jPT-la-SvW" secondAttribute="centerX" id="JiD-ts-RHk"/>
                             <constraint firstItem="2gc-0q-uQj" firstAttribute="trailing" secondItem="wDe-SW-JZA" secondAttribute="trailing" id="MdJ-w4-RRD"/>
                             <constraint firstItem="JCA-LI-jZi" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="QTY-NJ-hwb"/>
                             <constraint firstItem="f51-1S-8Wu" firstAttribute="trailing" secondItem="0GW-Eg-ebi" secondAttribute="trailing" id="QXB-20-DWp"/>
@@ -3294,8 +3308,9 @@ you signed up with, please contact us at</string>
                             <constraint firstItem="21I-9q-cEg" firstAttribute="top" secondItem="Mxt-BW-T6e" secondAttribute="bottom" id="XcN-H5-WmN"/>
                             <constraint firstItem="f51-1S-8Wu" firstAttribute="height" secondItem="0GW-Eg-ebi" secondAttribute="height" id="YKS-Z3-l5T"/>
                             <constraint firstItem="wDe-SW-JZA" firstAttribute="height" secondItem="jPT-la-SvW" secondAttribute="height" multiplier="44:667" id="bcd-OK-3Qo"/>
+                            <constraint firstItem="iED-Yp-YXG" firstAttribute="bottom" secondItem="QOs-Lw-ZJA" secondAttribute="bottom" constant="48" id="coI-r9-GGT"/>
                             <constraint firstItem="0GW-Eg-ebi" firstAttribute="top" secondItem="ivA-uB-gna" secondAttribute="bottom" constant="10" id="d8a-iI-rl9"/>
-                            <constraint firstItem="rqA-c0-toY" firstAttribute="centerX" secondItem="jPT-la-SvW" secondAttribute="centerX" id="eYq-wD-3WX"/>
+                            <constraint firstItem="ggL-kY-Blr" firstAttribute="top" secondItem="iED-Yp-YXG" secondAttribute="bottom" constant="18" id="feQ-ER-vxf"/>
                             <constraint firstItem="f51-1S-8Wu" firstAttribute="top" secondItem="0GW-Eg-ebi" secondAttribute="bottom" constant="10" id="fv7-Kl-KUa"/>
                             <constraint firstItem="0GW-Eg-ebi" firstAttribute="trailing" secondItem="ivA-uB-gna" secondAttribute="trailing" id="gGX-Re-s1S"/>
                             <constraint firstItem="JCA-LI-jZi" firstAttribute="top" secondItem="PPU-0B-ZaN" secondAttribute="bottom" id="gau-Le-vje"/>
@@ -3306,7 +3321,6 @@ you signed up with, please contact us at</string>
                             <constraint firstItem="TXS-PU-mTa" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" constant="45" id="o19-Cw-cFD"/>
                             <constraint firstItem="Mxt-BW-T6e" firstAttribute="top" secondItem="jPT-la-SvW" secondAttribute="top" id="o8T-1S-q1X"/>
                             <constraint firstItem="wDe-SW-JZA" firstAttribute="top" secondItem="ggL-kY-Blr" secondAttribute="bottom" constant="37" id="os9-D8-1pB"/>
-                            <constraint firstItem="rqA-c0-toY" firstAttribute="bottom" secondItem="QOs-Lw-ZJA" secondAttribute="bottom" constant="48" id="pNN-7p-CA9"/>
                             <constraint firstItem="ivA-uB-gna" firstAttribute="height" secondItem="TXS-PU-mTa" secondAttribute="height" id="plY-7D-xQJ"/>
                             <constraint firstItem="Mxt-BW-T6e" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="qkT-w0-KfG"/>
                             <constraint firstItem="0GW-Eg-ebi" firstAttribute="height" secondItem="ivA-uB-gna" secondAttribute="height" id="u69-6o-ZsI"/>
@@ -3778,7 +3792,7 @@ you signed up with, please contact us at</string>
         </scene>
     </scenes>
     <resources>
-        <image name="FD5F9A98-B622-4AFD-826E-2BFAB0D1FF2D" width="40" height="29">
+        <image name="2E08CFAF-E01E-4D9A-8322-A25D39841A19" width="40" height="29">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

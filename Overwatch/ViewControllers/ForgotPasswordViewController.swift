@@ -40,8 +40,14 @@ class ForgotPasswordViewController: LoginBaseViewController {
             email.isValidEmail {
             view.endEditing(true)
             let resetPassword = ForgotPasswordRequest()
-            resetPassword.resetUserPassword(userName: email, consoleType: "", completion: {(value) in
-                self.navBackButtonPressed(sender: nil)
+            resetPassword.resetUserPassword(userEmail: email, completion: { (error, responseObject) -> () in
+                if let _ = responseObject {
+                    self.navBackButtonPressed(sender: nil)
+                } else if let wrappedError = error {
+                    ApplicationManager.sharedInstance.addErrorSubViewWithMessageFromDictionaryString(dictionaryString: wrappedError)
+                } else {
+                    print("Something went wrong updating the user Email")
+                }
             })
         }
     }

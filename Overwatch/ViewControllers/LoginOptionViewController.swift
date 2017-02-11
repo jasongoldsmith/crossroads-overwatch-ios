@@ -62,7 +62,7 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
         if userDefaults.bool(forKey: K.UserDefaultKey.FORCED_LOGOUT_NEW_SIGN_IN) == false && isUserLoggedIn == true {
             let errorView = Bundle.main.loadNibNamed("CustomError", owner: self, options: nil)?[0] as! CustomError
             errorView.errorMessageHeader?.text = "CHANGES TO SIGN IN"
-            errorView.errorMessageDescription?.text = "Good news! You can now sign in using your Xbox or PlayStation account (the same one you use for Bungie.net)"
+            errorView.errorMessageDescription?.text = "Good news! You can now sign in using your Xbox or PlayStation account (the same one you use for Battle.net)"
             errorView.frame = self.view.frame
             errorView.delegate = self
             self.view.addSubview(errorView)
@@ -146,6 +146,7 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
         }
         itemView.updateViewWithActivity(eventInfo: items[index])
         view?.frame = CGRect(x:0, y:0, width:ScreenSize.SCREEN_WIDTH-48.0, height:carousel.frame.size.height)
+        view?.layoutIfNeeded()
         return itemView
     }
     
@@ -156,9 +157,6 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
         case .wrap:
             return 1
         case .spacing:
-            if DeviceType.IS_IPHONE_4_OR_LESS || DeviceType.IS_IPHONE_5 {
-                return value * 0.88
-            }
             return value * 1.04
         case .visibleItems:
             return 3
@@ -167,4 +165,7 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
         }
     }
     
+    func carouselItemWidth(_ carousel: iCarousel) -> CGFloat {
+        return ScreenSize.SCREEN_WIDTH-48.0
+    }
 }

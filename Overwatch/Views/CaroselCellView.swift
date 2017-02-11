@@ -32,7 +32,7 @@ class CaroselCellView: UIView {
         
         //Event Icon
         self.eventIcon.image = UIImage(named:"iconGhostDefault")
-        let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
+        let block: SDExternalCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
             if let anImage = image, error == nil {
                 self.eventIcon.image = anImage
             } else {
@@ -158,7 +158,7 @@ class CaroselCellView: UIView {
                 self.playerOneIcon.isHidden = false
                 
                 playerOneIcon.image = UIImage(named: "avatar")
-                let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
+                let block: SDExternalCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
                     if let anImage = image, error == nil {
                         self.playerOneIcon.image = anImage
                     } else {
@@ -177,7 +177,7 @@ class CaroselCellView: UIView {
                 
                 self.playerTwoIcon.isHidden = false
                 playerTwoIcon.image = UIImage(named: "avatar")
-                let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
+                let block: SDExternalCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
                     if let anImage = image, error != nil {
                         self.playerTwoIcon.image = anImage
                     } else {
@@ -206,7 +206,7 @@ class CaroselCellView: UIView {
                     self.playerThreeIcon.isHidden = false
                     self.playerCountLabelIcon.isHidden = true
                     playerThreeIcon.image = UIImage(named: "avatar")
-                    let block: SDWebImageCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
+                    let block: SDExternalCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
                         if let anImage = image, error != nil {
                             self.playerThreeIcon.image = anImage
                         } else {

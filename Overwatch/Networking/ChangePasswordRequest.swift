@@ -26,7 +26,6 @@ class ChangePasswordRequest: NSObject {
                 return
             }
             completion(nil, swiftyJsonVar)
-            
         }
     }
 }

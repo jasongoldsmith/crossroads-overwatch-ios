@@ -56,19 +56,38 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
                 })
             } else {
                 let reportRequest = CreateAReportRequest()
-                reportRequest.sendCreatedReport(description: body, completion: { (didSucceed) in
-                    self.view.endEditing(true)
-                    if (didSucceed == true)  {
-                        
-                        let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CONTACT_MESSAGE_SENT) as! MessageSentConfViewController
-                        if let navController = self.navigationController {
-                            navController.pushViewController(vc, animated: true)
-                        } else {
-                            self.present(vc, animated: true, completion: nil)
+                if let _ = ApplicationManager.sharedInstance.currentUser?.email {
+                    reportRequest.sendCreatedReport(description: body, completion: { (didSucceed) in
+                        self.view.endEditing(true)
+                        if (didSucceed == true)  {
+                            
+                            let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CONTACT_MESSAGE_SENT) as! MessageSentConfViewController
+                            if let navController = self.navigationController {
+                                navController.pushViewController(vc, animated: true)
+                            } else {
+                                self.present(vc, animated: true, completion: nil)
+                            }
                         }
+                    })
+                } else {
+                    if let email = emailTextField.text,
+                        email.isValidEmail {
+                        reportRequest.sendCreatedReportForNotLoggedUser(email: email, description: body, completion: { (didSucceed) in
+                            self.view.endEditing(true)
+                            if (didSucceed == true)  {
+                                
+                                let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                                let vc = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_CONTACT_MESSAGE_SENT) as! MessageSentConfViewController
+                                if let navController = self.navigationController {
+                                    navController.pushViewController(vc, animated: true)
+                                } else {
+                                    self.present(vc, animated: true, completion: nil)
+                                }
+                            }
+                        })
                     }
-                })
+                }
             }
         }
     }

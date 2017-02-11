@@ -14,7 +14,7 @@ target 'Overwatch' do
     pod 'Firebase/Core'
     pod 'Branch'
     pod 'Mixpanel'
-    pod 'FBSDKCoreKit', '4.17.0'
+    pod 'FacebookCore'
     pod 'Fabric'
     pod 'iCarousel'
     pod 'Crashlytics'
