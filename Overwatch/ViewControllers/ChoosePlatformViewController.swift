@@ -15,7 +15,6 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
     @IBOutlet weak var battleTagView: UIView!
     @IBOutlet weak var consolesTable: UITableView!
     @IBOutlet weak var battleTagTextField: UITextField!
-    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var battleNetButton: UIButton!
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var currentConsoleLabel: UILabel!
@@ -40,9 +39,12 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
     }
     
     @IBAction func nextButtonPressed() {
-        if let consoleId = battleTagTextField.text,
-            consoleId != "",
-            let consoleType = ApplicationManager.sharedInstance.getConsoleTypeFrom(consoleString: currentConsole){
+        guard let consoleId = battleTagTextField.text,
+            isValidBattleTag(battleTag: consoleId) else {
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a valid Gamertag")
+                return
+        }
+        if let consoleType = ApplicationManager.sharedInstance.getConsoleTypeFrom(consoleString: currentConsole){
             let addConsoleRequest = AddConsoleRequest()
             addConsoleRequest.addConsoleWith(consoleType: consoleType, and: consoleId, completion: { (error, responseObject) -> () in
                 if let _ = responseObject {
@@ -152,6 +154,12 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
         nextButton.isHidden = !battleNetButton.isHidden
         consolesTable.reloadData()
         consoleButtonPressed()
+        if comingFromProfile {
+            titleLabel.text = "ADD LINKED ACCOUNT"
+            nextButton.setTitle("LINK TO CROSSROADS", for: .normal)
+            bottomAdviceLabel.isHidden = true
+            topAdviceLabel.isHidden = true
+        }
     }
     
     func validateCookies() {
@@ -193,4 +201,32 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
         return true
     }
     
+    //Validate data
+    override func areTheFieldsValid() -> Bool {
+        if let battleTag = battleTagTextField.text,
+            isValidBattleTag(battleTag: battleTag) {
+            return true
+        }
+        return false
+    }
+    
+    //UITextFieldDelegate Delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if areTheFieldsValid() {
+            nextButtonPressed()
+        }
+        return true
+    }
+    
+    //Checking Battle Tag
+    func isValidBattleTag(battleTag:String) -> Bool {
+        if let consoleType = ApplicationManager.sharedInstance.getConsoleTypeFrom(consoleString: currentConsole){
+            if consoleType == "ps4" {
+                return battleTag.isValidPSNBattleTag
+            } else if consoleType == "xboxone" {
+                return battleTag.isValidXBoxBattleTag
+            }
+        }
+        return false
+    }
 }

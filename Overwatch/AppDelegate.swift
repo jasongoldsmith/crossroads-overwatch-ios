@@ -11,6 +11,8 @@ import UserNotifications
 import FBSDKCoreKit
 import Firebase
 import Branch
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,9 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Initialize FireBase Configuration
         ApplicationManager.sharedInstance.fireBaseManager?.initFireBaseConfig()
         
+        //Initialize Answers
+        Fabric.with([Branch.self, Answers.self, Crashlytics.self])
+
         //Facebook Init
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
+        Branch.getInstance().registerFacebookDeepLinkingClass(FBSDKAppLinkUtility.self)
         //Branch Initialized
         let branch: Branch = Branch.getInstance()
         branch.initSession(launchOptions: launchOptions, andRegisterDeepLinkHandler: {params, error in
@@ -181,7 +187,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         return handled
     }
-    
+
+    // Respond to Universal Links
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        // For Branch to detect when a Universal Link is clicked
+        return Branch.getInstance().continue(userActivity)
+    }
 
     //MARK:- App Data Requests
     func appInitializedRequest (initInfo: Dictionary<String, AnyObject>) {

@@ -9,7 +9,6 @@
 #ifndef Overwatch_Bridging_Header_h
 #define Overwatch_Bridging_Header_h
 
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "TTTAttributedLabel/TTTAttributedLabel.h"
 #import "Mixpanel/Mixpanel.h"

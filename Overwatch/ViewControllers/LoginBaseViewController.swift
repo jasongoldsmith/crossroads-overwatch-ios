@@ -11,14 +11,16 @@ import Alamofire
 import SwiftyJSON
 
 
-class LoginBaseViewController: BaseViewController {
+class LoginBaseViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var BottomNextButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateButtonStatus()
         //        Key Board Observer
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
@@ -26,10 +28,10 @@ class LoginBaseViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateButtonStatus()
     }
     
     @IBAction override func navBackButtonPressed(sender: UIBarButtonItem?) {
-        //    override func navBackButtonPressed(sender: UIBarButtonItem?) {
         if let navController = navigationController {
             if navController.viewControllers.count == 1 {
                 navController.dismiss(animated: true, completion: nil)
@@ -77,4 +79,48 @@ class LoginBaseViewController: BaseViewController {
             self.view.layoutIfNeeded()
         })
     }
+    
+    //Active - inactive states for the buttons
+    func setInactiveStatusForButton() {
+        nextButton.backgroundColor = UIColor.metallicBlue
+        nextButton.setTitleColor(UIColor.lightBlueGrey, for: .normal)
+    }
+
+    func setActiveStatusForButton() {
+        nextButton.backgroundColor = UIColor.tangerine
+        nextButton.setTitleColor(UIColor.white, for: .normal)
+    }
+
+    func areTheFieldsValid() -> Bool {
+        if let email = emailTextField.text,
+            let password = passwordTextField.text,
+            email.isValidEmail,
+            password.isValidPassword {
+            return true
+        }
+        return false
+    }
+
+    func updateButtonStatus() {
+        if areTheFieldsValid() {
+            setActiveStatusForButton()
+        } else {
+            setInactiveStatusForButton()
+        }
+    }
+
+    //UITextField delegate methods
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text else {
+            return true
+        }
+        var newString = "\(currentText)\(string)"
+        if string.isEmpty{
+            newString = newString.substring(to: newString.index(before: newString.endIndex))
+        }
+        textField.text = newString
+        updateButtonStatus()
+        return false
+    }
+    
 }

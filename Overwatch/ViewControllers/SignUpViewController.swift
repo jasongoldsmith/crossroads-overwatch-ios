@@ -29,9 +29,13 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate,
     
     @IBAction func nextButtonPressed() {
         guard let email = emailTextField.text,
-        let password = passwordTextField.text,
-        email.isValidEmail,
-        password.isValidPassword else {
+            email.isValidEmail else {
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a valid email address")
+            return
+        }
+        guard let password = passwordTextField.text,
+            password.isValidPassword else {
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a valid password, it must contain at least 4 charaters")
             return
         }
         view.endEditing(true)
@@ -97,6 +101,20 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate,
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (touch.view?.isDescendant(of: legalLabel))!{
             return false
+        }
+        return true
+    }
+        
+    //UITextFieldDelegate Delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if areTheFieldsValid() {
+            nextButtonPressed()
+        } else {
+            if textField == emailTextField {
+                passwordTextField.becomeFirstResponder()
+            } else if textField == passwordTextField {
+                emailTextField.becomeFirstResponder()
+            }
         }
         return true
     }

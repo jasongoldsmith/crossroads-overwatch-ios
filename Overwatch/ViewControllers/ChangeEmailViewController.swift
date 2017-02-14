@@ -24,12 +24,21 @@ class ChangeEmailViewController: LoginBaseViewController {
             currentEmailAddress.attributedText = finalString
         }
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        emailTextField.becomeFirstResponder()
+    }
+
     @IBAction func saveButtonPressed() {
         guard let email = emailTextField.text,
-            let password = passwordTextField.text,
-            email.isValidEmail,
+            email.isValidEmail else {
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a valid email address")
+                return
+        }
+        guard let password = passwordTextField.text,
             password.isValidPassword else {
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a valid password, it must contain at least 4 charaters")
                 return
         }
         view.endEditing(true)
@@ -51,5 +60,19 @@ class ChangeEmailViewController: LoginBaseViewController {
                 print("Something went wrong updating the user Email")
             }
         })
+    }
+
+    //UITextFieldDelegate Delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if areTheFieldsValid() {
+            saveButtonPressed()
+        } else {
+            if textField == emailTextField {
+                passwordTextField.becomeFirstResponder()
+            } else if textField == passwordTextField {
+                emailTextField.becomeFirstResponder()
+            }
+        }
+        return true
     }
 }

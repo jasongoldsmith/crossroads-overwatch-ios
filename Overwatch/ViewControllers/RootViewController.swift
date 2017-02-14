@@ -52,7 +52,7 @@ class RootViewController: BaseViewController {
                     let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
                     let vc : LoginOptionViewController = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEWCONTROLLER_LOGIN_OPTIONS) as! LoginOptionViewController
                     let navigationController = BaseNavigationViewController(rootViewController: vc)
-                    self.present(navigationController, animated: true, completion: nil)
+                    self.present(navigationController, animated: false, completion: nil)
                 } else {
                     UserInfo.removeUserData()
                     ApplicationManager.sharedInstance.purgeSavedData()

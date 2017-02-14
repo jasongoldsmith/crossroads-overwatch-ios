@@ -524,18 +524,19 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     func showBranchErrorViewWithError (errorType: Branch_Error, eventInfo: EventInfo?, activityName: String?) {
         
         DispatchQueue.main.async {
-            let errorView = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)?[0] as! ErrorView
-            errorView.frame = self.view.frame
-            errorView.errorType = errorType
-            errorView.delegate = self
-            if let _ = eventInfo {
-                errorView.eventInfo = eventInfo!
+            if let errorView = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)?[0] as? ErrorView {
+                errorView.frame = self.view.frame
+                errorView.errorType = errorType
+                errorView.delegate = self
+                if let eInfo = eventInfo {
+                    errorView.eventInfo = eInfo
+                }
+                if let aName = activityName {
+                    errorView.activityName = aName
+                }
+                
+                self.view.addSubview(errorView)
             }
-            if let _ = activityName {
-                errorView.activityName = activityName
-            }
-            
-            self.view.addSubview(errorView)
         }
     }
     
@@ -806,8 +807,8 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
 
     //MARK:- Error Message View Handling actions
     func addActivity (eventInfo: EventInfo?) {
-        if let _ = eventInfo?.eventActivity {
-            self.createActivityFromEvent(sender: (eventInfo?.eventActivity)!)
+        if let eventActivity = eventInfo?.eventActivity {
+            self.createActivityFromEvent(sender:eventActivity)
         }
     }
     

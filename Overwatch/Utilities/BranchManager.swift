@@ -34,11 +34,10 @@ class BranchManager {
     func createLinkWithBranch (eventInfo: EventInfo, deepLinkType: String, callback: @escaping callbackWithUrl) {
         
         var extraPlayersRequiredCount: Int = 0
-        guard let eventID = eventInfo.eventID else {
-            return
-        }
-        
-        guard let maxPlayers = eventInfo.eventActivity?.activityMaxPlayers?.intValue else {
+        guard let eventID = eventInfo.eventID,
+            let maxPlayers = eventInfo.eventActivity?.activityMaxPlayers?.intValue,
+            let consoleType = eventInfo.eventConsoleType,
+            let console = ApplicationManager.sharedInstance.getConsoleNameFrom(consoleType: consoleType) else {
             return
         }
         
@@ -47,7 +46,8 @@ class BranchManager {
         if extraPlayersRequiredCount > 0 {
             playerCount = String(extraPlayersRequiredCount)
         }
-        let console = self.getConsoleTypeFromString(consoleName: eventInfo.eventConsoleType!)
+        
+        
         var activityName = ""
         
         //Formatted Date
@@ -72,7 +72,7 @@ class BranchManager {
         
         // Create Branch Object
         branchUniversalObject = BranchUniversalObject.init(canonicalIdentifier: canonicalIdentifier)
-        var messageString = "\(console): I need \(playerCount) more for \(activityName) in the \(groupName) group"
+        var messageString = "\(console): I need \(playerCount) more for \(activityName) in the \(groupName) region"
         
         if
             ApplicationManager.sharedInstance.isCurrentPlayerInAnEvent(event: eventInfo) {
@@ -81,26 +81,26 @@ class BranchManager {
                 branchUniversalObject.title = eventInfo.eventActivity?.activitySubType
             }
             
-            messageString = "\(console): I need \(playerCount) more for \(activityName) in the \(groupName) group"
+            messageString = "\(console): I need \(playerCount) more for \(activityName) in the \(groupName) region"
         } else {
             branchUniversalObject.title = "Searching for Heroes"
             if eventInfo.eventPlayersArray.count == eventInfo.eventMaxPlayers!.intValue {
                 branchUniversalObject.title = eventInfo.eventActivity?.activitySubType
             }
             
-            messageString = "\(console): This team needs \(extraPlayersRequiredCount) more for \(activityName) in the \(groupName) group"
+            messageString = "\(console): This team needs \(extraPlayersRequiredCount) more for \(activityName) in the \(groupName) region"
             
             if eventInfo.isFutureEvent == true {
-                messageString = "\(console): This team needs \(playerCount) more for \(activityName) on \(formatedDate) in the \(groupName) group"
+                messageString = "\(console): This team needs \(playerCount) more for \(activityName) on \(formatedDate) in the \(groupName) region"
             }
         }
         
         if extraPlayersRequiredCount == 0 {
             branchUniversalObject.title = eventInfo.eventActivity?.activitySubType
             if eventInfo.isFutureEvent == true {
-                messageString = "\(console): Check out this \(activityName) on \(formatedDate) in the \(groupName) group"
+                messageString = "\(console): Check out this \(activityName) on \(formatedDate) in the \(groupName) region"
             } else {
-                messageString = "\(console): Check out this \(activityName) in the \(groupName) group"
+                messageString = "\(console): Check out this \(activityName) in the \(groupName) region"
             }
         }
         

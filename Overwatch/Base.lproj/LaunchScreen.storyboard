@@ -32,7 +32,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCRBrand" translatesAutoresizingMaskIntoConstraints="NO" id="7Cw-1x-mko">
-                                <rect key="frame" x="84.5" y="158" width="206" height="135"/>
+                                <rect key="frame" x="84.5" y="138" width="206" height="135"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="206" id="EeB-e2-RMd"/>
                                     <constraint firstAttribute="height" constant="135" id="vhc-IM-ysD"/>
@@ -41,10 +41,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7Cw-1x-mko" firstAttribute="bottom" secondItem="Liv-jR-WV1" secondAttribute="bottom" constant="-53" id="6hc-vP-bRE"/>
                             <constraint firstItem="Liv-jR-WV1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="9vT-NO-W7E"/>
                             <constraint firstAttribute="trailing" secondItem="Liv-jR-WV1" secondAttribute="trailing" id="EZw-54-KaS"/>
                             <constraint firstItem="LnN-uc-QkM" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="L8l-s2-bZv"/>
-                            <constraint firstItem="7Cw-1x-mko" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="138" id="VKR-tt-MWC"/>
                             <constraint firstItem="7Cw-1x-mko" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XXZ-ih-mac"/>
                             <constraint firstItem="Liv-jR-WV1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ewL-72-zCb"/>
                             <constraint firstAttribute="trailing" secondItem="LnN-uc-QkM" secondAttribute="trailing" id="kYg-ax-0WQ"/>

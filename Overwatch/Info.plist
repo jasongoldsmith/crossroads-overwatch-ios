@@ -28,30 +28,28 @@
 				<string>iosforcecatalystcrossroadsoverwatch</string>
 			</array>
 		</dict>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb1779962922326489</string>
-            </array>
-        </dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1779962922326489</string>
+			</array>
+		</dict>
 	</array>
-    <key>FacebookAppID</key>
-    <string>1779962922326489</string>
-    <key>FacebookDisplayName</key>
-    <string>Crossroads for Overwatch</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>We need access to your photos to update your profile picture</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
 	<string>NO</string>
+	<key>FacebookAppID</key>
+	<string>1779962922326489</string>
+	<key>FacebookDisplayName</key>
+	<string>Crossroads for Overwatch</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -85,6 +83,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photos to update your profile picture</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -104,5 +104,18 @@
 		<key>live</key>
 		<string>key_live_lnAe1OYP1wS0wIoMHoExTmhaFApqc1Nc</string>
 	</dict>
-</dict>
+    <key>Fabric</key>
+    <dict>
+        <key>APIKey</key>
+        <string>11f888057a583a50a91f1434bf728d87358f6d8e</string>
+        <key>Kits</key>
+        <array>
+            <dict>
+                <key>KitInfo</key>
+                <dict/>
+                <key>KitName</key>
+                <string>Crashlytics</string>
+            </dict>
+        </array>
+    </dict></dict>
 </plist>

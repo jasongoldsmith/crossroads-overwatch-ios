@@ -169,13 +169,11 @@ class BaseEventTableCell: UITableViewCell {
                 if eventDate.daysFrom(date: Date()) < 7 {
                     nextFormatter.dateFormat = "EEEE 'at' h:mm a"
                     let time = nextFormatter.string(from: eventDate)
-                    let timeAttributedStr = NSAttributedString(string: time, attributes: nil)
-                    self.eventTimeLabel?.text = "\(timeAttributedStr)"
+                    self.eventTimeLabel?.text = "\(time)"
                 } else {
                     nextFormatter.dateFormat = "MMM d 'at' h:mm a"
                     let time = nextFormatter.string(from: eventDate)
-                    let timeAttributedStr = NSAttributedString(string: time, attributes: nil)
-                    self.eventTimeLabel?.text = "\(timeAttributedStr)"
+                    self.eventTimeLabel?.text = "\(time)"
                 }
             }
         }

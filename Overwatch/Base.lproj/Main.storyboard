@@ -32,6 +32,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgBackground" translatesAutoresizingMaskIntoConstraints="NO" id="zfo-hF-RdN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgBGTopHero" translatesAutoresizingMaskIntoConstraints="NO" id="AAs-ZJ-l5f">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="326"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AAs-ZJ-l5f" secondAttribute="height" multiplier="375:326" id="tIH-dY-z6M"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCRBrand" translatesAutoresizingMaskIntoConstraints="NO" id="Hib-yv-cuH">
+                                <rect key="frame" x="84" y="138" width="206" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="206" id="FEi-YO-DVL"/>
+                                    <constraint firstAttribute="height" constant="135" id="oN9-Cw-pi1"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtZ-AU-ovZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -48,11 +61,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="AAs-ZJ-l5f" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="3sa-2n-sxb"/>
+                            <constraint firstItem="AAs-ZJ-l5f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Vz-mO-8BV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zfo-hF-RdN" secondAttribute="bottom" id="JFX-Qs-9kX"/>
                             <constraint firstAttribute="trailing" secondItem="zfo-hF-RdN" secondAttribute="trailing" id="Lxm-Zw-otQ"/>
+                            <constraint firstItem="Hib-yv-cuH" firstAttribute="bottom" secondItem="AAs-ZJ-l5f" secondAttribute="bottom" constant="-53" id="MxM-KZ-mmf"/>
                             <constraint firstItem="qtZ-AU-ovZ" firstAttribute="bottom" secondItem="zfo-hF-RdN" secondAttribute="bottom" id="TKW-AE-2wf"/>
                             <constraint firstItem="qtZ-AU-ovZ" firstAttribute="top" secondItem="zfo-hF-RdN" secondAttribute="top" id="UGf-bB-47d"/>
+                            <constraint firstItem="Hib-yv-cuH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m4a-Wu-ENo"/>
                             <constraint firstItem="zfo-hF-RdN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oyh-AA-9Xi"/>
+                            <constraint firstAttribute="trailing" secondItem="AAs-ZJ-l5f" secondAttribute="trailing" id="pPq-75-Pvv"/>
                             <constraint firstItem="qtZ-AU-ovZ" firstAttribute="leading" secondItem="zfo-hF-RdN" secondAttribute="leading" id="rSp-FN-rqJ"/>
                             <constraint firstItem="qtZ-AU-ovZ" firstAttribute="trailing" secondItem="zfo-hF-RdN" secondAttribute="trailing" id="ruF-hS-Gwm"/>
                             <constraint firstItem="zfo-hF-RdN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="scO-cZ-Pdz"/>
@@ -128,6 +146,9 @@
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="l8Y-cY-rSJ" id="IeP-Md-oUI"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.25688469409942627" blue="0.35651224851608276" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -166,6 +187,9 @@
                                                 <color key="value" red="0.73582351207733154" green="0.77058464288711548" blue="0.8826720118522644" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="l8Y-cY-rSJ" id="8o4-NF-dLx"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ty0-SJ-E3S">
                                         <rect key="frame" x="305" y="8" width="50" height="50"/>
@@ -262,6 +286,7 @@
                     <connections>
                         <outlet property="BottomNextButtonConstraint" destination="iRk-18-Lcj" id="DqT-PA-JAy"/>
                         <outlet property="emailTextField" destination="ddR-My-DXR" id="co4-4m-jEz"/>
+                        <outlet property="nextButton" destination="S0o-SR-ZoN" id="aHI-0k-3V4"/>
                         <outlet property="passwordTextField" destination="piL-jH-YzP" id="Dr4-it-P7t"/>
                     </connections>
                 </viewController>
@@ -295,15 +320,15 @@
                                     <constraint firstAttribute="width" secondItem="JY4-hR-73K" secondAttribute="height" multiplier="375:326" id="CZ7-kG-3hw"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCRBrand" translatesAutoresizingMaskIntoConstraints="NO" id="Ytk-0u-MKZ">
-                                <rect key="frame" x="75" y="136" width="225" height="156"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgCRBrand" translatesAutoresizingMaskIntoConstraints="NO" id="Ytk-0u-MKZ">
+                                <rect key="frame" x="84.5" y="138" width="206" height="135"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="7LW-AQ-fZh"/>
-                                    <constraint firstAttribute="height" constant="156" id="ljh-IB-9Wo"/>
+                                    <constraint firstAttribute="width" constant="206" id="7LW-AQ-fZh"/>
+                                    <constraint firstAttribute="height" constant="135" id="ljh-IB-9Wo"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="765876578 heroes searching for teams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANL-ya-uNx">
-                                <rect key="frame" x="26" y="317" width="323" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ANL-ya-uNx">
+                                <rect key="frame" x="26" y="302" width="323" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="PgZ-Cy-C2W"/>
                                 </constraints>
@@ -312,7 +337,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWQ-ir-eLV" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="341" width="375" height="134"/>
+                                <rect key="frame" x="0.0" y="326" width="375" height="134"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="134" id="iOy-8V-e1K"/>
                                 </constraints>
@@ -376,8 +401,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ytk-0u-MKZ" firstAttribute="bottom" secondItem="JY4-hR-73K" secondAttribute="bottom" constant="-53" id="13a-Us-5u9"/>
+                            <constraint firstItem="JY4-hR-73K" firstAttribute="top" secondItem="hz5-DY-vef" secondAttribute="top" id="7Zl-J7-QAa"/>
                             <constraint firstAttribute="trailing" secondItem="sis-5E-hAK" secondAttribute="trailing" id="7eU-WE-gJv"/>
-                            <constraint firstItem="Ytk-0u-MKZ" firstAttribute="bottom" secondItem="JY4-hR-73K" secondAttribute="bottom" constant="-34" id="9Cy-IS-pNw"/>
                             <constraint firstItem="08K-ng-E1h" firstAttribute="top" secondItem="sis-5E-hAK" secondAttribute="bottom" id="Ah8-ZV-lgl"/>
                             <constraint firstItem="Ytk-0u-MKZ" firstAttribute="centerX" secondItem="hz5-DY-vef" secondAttribute="centerX" id="An0-UO-byg"/>
                             <constraint firstItem="sis-5E-hAK" firstAttribute="leading" secondItem="hz5-DY-vef" secondAttribute="leading" id="GCv-aS-zXZ"/>
@@ -388,20 +414,19 @@
                             <constraint firstItem="3AI-Uk-pED" firstAttribute="leading" secondItem="hz5-DY-vef" secondAttribute="leading" id="Pbf-27-Ejm"/>
                             <constraint firstItem="NWQ-ir-eLV" firstAttribute="top" secondItem="ANL-ya-uNx" secondAttribute="bottom" constant="10" id="QGx-cp-qG5"/>
                             <constraint firstItem="Trg-L8-nKL" firstAttribute="top" secondItem="dEv-13-vro" secondAttribute="bottom" constant="19" id="Tnn-eg-mGX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JY4-hR-73K" secondAttribute="trailing" constant="-16" id="U7N-Jy-qWZ"/>
-                            <constraint firstItem="ANL-ya-uNx" firstAttribute="top" secondItem="Ytk-0u-MKZ" secondAttribute="bottom" constant="25" id="YD9-na-WBD"/>
+                            <constraint firstAttribute="trailing" secondItem="JY4-hR-73K" secondAttribute="trailing" id="W07-d1-k7E"/>
+                            <constraint firstItem="ANL-ya-uNx" firstAttribute="top" secondItem="Ytk-0u-MKZ" secondAttribute="bottom" constant="29" id="YD9-na-WBD"/>
                             <constraint firstItem="dEv-13-vro" firstAttribute="centerX" secondItem="hz5-DY-vef" secondAttribute="centerX" id="ZWe-SL-Sg7"/>
                             <constraint firstItem="Trg-L8-nKL" firstAttribute="width" secondItem="hz5-DY-vef" secondAttribute="width" multiplier="0.5" id="aI1-l4-bme"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ANL-ya-uNx" secondAttribute="trailing" constant="10" id="aLj-b0-EFv"/>
                             <constraint firstAttribute="trailing" secondItem="NWQ-ir-eLV" secondAttribute="trailing" id="buR-TE-xXC"/>
-                            <constraint firstItem="JY4-hR-73K" firstAttribute="top" secondItem="sti-Rh-wyD" secondAttribute="bottom" constant="-20" id="gGf-gA-YaY"/>
                             <constraint firstItem="NWQ-ir-eLV" firstAttribute="leading" secondItem="hz5-DY-vef" secondAttribute="leading" id="gdH-dQ-GL8"/>
                             <constraint firstItem="08K-ng-E1h" firstAttribute="top" secondItem="Trg-L8-nKL" secondAttribute="bottom" id="lVz-hb-lpE"/>
                             <constraint firstItem="sis-5E-hAK" firstAttribute="top" secondItem="hz5-DY-vef" secondAttribute="top" id="ner-vB-3Wl"/>
                             <constraint firstItem="bse-R6-tWT" firstAttribute="width" secondItem="hz5-DY-vef" secondAttribute="width" multiplier="0.5" id="pXs-xw-HNG"/>
                             <constraint firstItem="08K-ng-E1h" firstAttribute="top" secondItem="3AI-Uk-pED" secondAttribute="bottom" id="qhN-2A-nGj"/>
+                            <constraint firstItem="JY4-hR-73K" firstAttribute="leading" secondItem="hz5-DY-vef" secondAttribute="leading" id="sbN-0d-uvl"/>
                             <constraint firstAttribute="trailing" secondItem="3AI-Uk-pED" secondAttribute="trailing" id="sv8-KR-Isc"/>
-                            <constraint firstItem="JY4-hR-73K" firstAttribute="leading" secondItem="hz5-DY-vef" secondAttribute="leadingMargin" constant="-16" id="w7g-B0-QYf"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -1864,7 +1889,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2E08CFAF-E01E-4D9A-8322-A25D39841A19" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5B1779E6-17CF-4B5B-A0DD-615DD904C2A6" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
                                 <rect key="frame" x="16" y="113.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UY6-7w-5Ph"/>
@@ -2119,6 +2144,9 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="duc-rg-s9h" id="M3E-rq-sIX"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.25688469409999998" blue="0.35651224850000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2157,6 +2185,9 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="duc-rg-s9h" id="qBc-15-bdO"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdH-ya-DA9">
                                         <rect key="frame" x="305" y="8" width="50" height="50"/>
@@ -2252,6 +2283,7 @@ the Crossroads Terms of Service and Privacy Policy.</string>
                         <outlet property="BottomNextButtonConstraint" destination="bNW-5m-avP" id="c64-Wv-G6V"/>
                         <outlet property="emailTextField" destination="M6s-mR-1Af" id="LGR-Pp-B1l"/>
                         <outlet property="legalLabel" destination="hH2-PB-4ME" id="uYb-dO-cJA"/>
+                        <outlet property="nextButton" destination="dhl-NH-rUz" id="GN2-nk-Ver"/>
                         <outlet property="passwordTextField" destination="hKU-ra-Fbd" id="Bdp-Ma-Vex"/>
                     </connections>
                 </viewController>
@@ -2329,6 +2361,9 @@ the Crossroads Terms of Service and Privacy Policy.</string>
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="ygO-sf-ken" id="Tao-ae-xjh"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.25688469409999998" blue="0.35651224850000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2423,6 +2458,7 @@ you signed up with, please contact us at</string>
                     <connections>
                         <outlet property="BottomNextButtonConstraint" destination="gBj-hm-BDq" id="Aor-01-0qw"/>
                         <outlet property="emailTextField" destination="59f-mF-x0R" id="RBB-xH-DXj"/>
+                        <outlet property="nextButton" destination="UEk-hR-Ie2" id="hMx-FY-ey0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbc-md-Rco" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2577,6 +2613,9 @@ you signed up with, please contact us at</string>
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Jh5-3n-are" id="8jy-sD-n5Q"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.25688469409999998" blue="0.35651224850000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2683,7 +2722,7 @@ you signed up with, please contact us at</string>
                         <outlet property="bottomAdviceLabel" destination="WFi-t4-Zhv" id="eEW-qd-njY"/>
                         <outlet property="consolesTable" destination="bpe-Ae-LOh" id="dVX-iW-xi6"/>
                         <outlet property="currentConsoleLabel" destination="MGZ-SR-LTh" id="IgT-Jj-eEN"/>
-                        <outlet property="nextButton" destination="X23-e6-0Cd" id="1GA-m9-uWp"/>
+                        <outlet property="nextButton" destination="X23-e6-0Cd" id="FzP-6p-B80"/>
                         <outlet property="tableHeightConstraint" destination="aNh-eq-Jjm" id="C8n-4x-vr0"/>
                         <outlet property="titleLabel" destination="Gwc-Vz-Afz" id="b9n-9W-mCL"/>
                         <outlet property="topAdviceLabel" destination="U9j-9S-8p0" id="ndB-vj-8aV"/>
@@ -2764,6 +2803,9 @@ you signed up with, please contact us at</string>
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="5bD-zH-QSW" id="lNc-Kf-Xwf"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SrQ-xv-sSk">
                                         <rect key="frame" x="305" y="8" width="50" height="50"/>
@@ -2815,6 +2857,9 @@ you signed up with, please contact us at</string>
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="5bD-zH-QSW" id="Iw0-ff-fMW"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT6-NF-few">
                                         <rect key="frame" x="305" y="8" width="50" height="50"/>
@@ -2892,6 +2937,7 @@ you signed up with, please contact us at</string>
                     <connections>
                         <outlet property="BottomNextButtonConstraint" destination="OsT-Gj-MLT" id="8Cw-ph-cvf"/>
                         <outlet property="newPasswordTextField" destination="JNp-r8-fPk" id="Ckt-tG-r5r"/>
+                        <outlet property="nextButton" destination="jy8-I3-T2g" id="vkJ-DQ-WOf"/>
                         <outlet property="passwordTextField" destination="Hb5-Eg-TrW" id="ppV-Up-cpb"/>
                     </connections>
                 </viewController>
@@ -3412,6 +3458,9 @@ you signed up with, please contact us at</string>
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="1ly-ow-EB9" id="OvU-XT-yEq"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.25688469409999998" blue="0.35651224850000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3507,6 +3556,7 @@ you signed up with, please contact us at</string>
                         <outlet property="BottomNextButtonConstraint" destination="1QF-Ol-4aB" id="Y3t-fa-gpk"/>
                         <outlet property="bodyTextView" destination="oOg-54-bPa" id="TgH-qw-3Aa"/>
                         <outlet property="emailTextField" destination="WHH-6U-B9R" id="pRc-83-wSF"/>
+                        <outlet property="nextButton" destination="wyr-R6-9sy" id="0Or-mT-mWg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJn-Gg-zVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3580,6 +3630,10 @@ you signed up with, please contact us at</string>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="yxb-iY-Tdr" id="fOi-1f-sDZ"/>
+                        <outlet property="titleLabel" destination="5mT-Cs-Mli" id="RZn-r8-pzP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81I-gg-TB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3658,6 +3712,9 @@ you signed up with, please contact us at</string>
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="M19-iA-VTQ" id="QOe-PK-Ngn"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.25688469409999998" blue="0.35651224850000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3696,6 +3753,9 @@ you signed up with, please contact us at</string>
                                                 <color key="value" red="0.73582351209999997" green="0.77058464289999995" blue="0.8826720119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="M19-iA-VTQ" id="JGZ-W6-o8p"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlN-wg-vDG">
                                         <rect key="frame" x="305" y="8" width="50" height="50"/>
@@ -3778,6 +3838,7 @@ you signed up with, please contact us at</string>
                         <outlet property="BottomNextButtonConstraint" destination="6X4-gq-5Tf" id="wTk-x5-swZ"/>
                         <outlet property="currentEmailAddress" destination="fFG-Ju-LRh" id="y2B-CJ-vl3"/>
                         <outlet property="emailTextField" destination="ziI-1h-jG3" id="3bD-sM-Bmo"/>
+                        <outlet property="nextButton" destination="E8C-6b-Zdr" id="E5Z-9f-Qes"/>
                         <outlet property="passwordTextField" destination="Uuj-xA-tC1" id="Iff-td-nYW"/>
                     </connections>
                 </viewController>
@@ -3792,7 +3853,7 @@ you signed up with, please contact us at</string>
         </scene>
     </scenes>
     <resources>
-        <image name="2E08CFAF-E01E-4D9A-8322-A25D39841A19" width="40" height="29">
+        <image name="5B1779E6-17CF-4B5B-A0DD-615DD904C2A6" width="40" height="29">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

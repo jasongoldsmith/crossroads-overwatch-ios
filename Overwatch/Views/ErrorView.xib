@@ -16,14 +16,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="5Cp-if-cEY" customClass="ErrorView">
+        <view contentMode="scaleToFill" id="5Cp-if-cEY" customClass="ErrorView" customModule="Overwatch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tkw-6E-YlU">
+                <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tkw-6E-YlU">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-fH-0wG">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgModalBackground2-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-fH-0wG">
                     <rect key="frame" x="13" y="164" width="350" height="340"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="340" id="l7z-cj-zhH"/>
@@ -33,20 +34,20 @@
                     <rect key="frame" x="312" y="171" width="44" height="44"/>
                     <state key="normal" image="iconCloseX"/>
                     <connections>
-                        <action selector="closeErrorView" destination="5Cp-if-cEY" eventType="touchUpInside" id="Ggg-ei-q5f"/>
+                        <action selector="closeErrorView" destination="5Cp-if-cEY" eventType="touchUpInside" id="gwd-xO-1Kf"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wy6-h0-UeY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconModalpop" translatesAutoresizingMaskIntoConstraints="NO" id="wy6-h0-UeY">
                     <rect key="frame" x="163" y="192" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Ig0-k0-TZL"/>
                         <constraint firstAttribute="width" constant="50" id="TBM-Cu-nRb"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EYES UP!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG5-bO-hxF">
-                    <rect key="frame" x="151.5" y="257" width="73.5" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEADS UP, AGENT!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG5-bO-hxF">
+                    <rect key="frame" x="114.5" y="257" width="148" height="20"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cug-zm-Aw5">
@@ -58,16 +59,22 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll need to be in the group to join activity. Request to join?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="044-lZ-A2B">
                     <rect key="frame" x="32" y="314" width="312" height="37.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uf-fY-on8">
                     <rect key="frame" x="106" y="383.5" width="164" height="37"/>
+                    <color key="backgroundColor" red="0.9806397557258606" green="0.57872366905212402" blue="0.0069670225493609905" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                     <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
                     <state key="normal" title="ADD THIS ACTIVITY"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="buttonOneYesPressed:" destination="5Cp-if-cEY" eventType="touchUpInside" id="D7x-VK-iV9"/>
+                        <action selector="buttonOneYesPressedWithSender:" destination="5Cp-if-cEY" eventType="touchUpInside" id="jdh-sd-KwT"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-IH-onv">
@@ -77,7 +84,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="buttonTwoCancelPressed:" destination="5Cp-if-cEY" eventType="touchUpInside" id="RnL-Uj-4qk"/>
+                        <action selector="buttonTwoCancelPressedWithSender:" destination="5Cp-if-cEY" eventType="touchUpInside" id="79V-M5-K4Y"/>
                     </connections>
                 </button>
             </subviews>
@@ -108,14 +115,16 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
-                <outlet property="buttonOneYes" destination="6uf-fY-on8" id="wFx-SO-23g"/>
-                <outlet property="buttonTwoCancel" destination="ttf-IH-onv" id="xRn-d1-8PG"/>
-                <outlet property="errorDescription" destination="044-lZ-A2B" id="9kT-XX-Hga"/>
+                <outlet property="buttonOneYes" destination="6uf-fY-on8" id="d4U-aF-J1K"/>
+                <outlet property="buttonTwoCancel" destination="ttf-IH-onv" id="6jL-1X-IBr"/>
+                <outlet property="errorDescription" destination="044-lZ-A2B" id="blR-3B-Y7S"/>
             </connections>
             <point key="canvasLocation" x="13" y="59"/>
         </view>
     </objects>
     <resources>
         <image name="iconCloseX" width="44" height="44"/>
+        <image name="iconModalpop" width="45" height="45"/>
+        <image name="imgModalBackground2-1" width="350" height="364"/>
     </resources>
 </document>

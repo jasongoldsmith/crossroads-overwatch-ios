@@ -23,8 +23,8 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if let _ = ApplicationManager.sharedInstance.currentUser?.email {
             bodyTextView.becomeFirstResponder()
         } else {
@@ -86,9 +86,15 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
                                 }
                             }
                         })
+                    } else {
+                        ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a valid email address")
+                        return
                     }
                 }
             }
+        } else {
+            ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter your comment")
+            return
         }
     }
     
@@ -99,10 +105,46 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let currentText = textView.text else {
+            return true
+        }
+        var newString = "\(currentText)\(text)"
+        if text.isEmpty{
+            newString = newString.substring(to: newString.index(before: newString.endIndex))
+        }
+        bodyTextView.text = newString
+        updateButtonStatus()
+        return false
+    }
+    
     //CustomErrorDelegate method
     func okButtonPressed () {
         self.dismissViewController(isAnimated: true) { (didDismiss) in
             
         }
+    }
+
+    override func areTheFieldsValid() -> Bool {
+        if let email = emailTextField.text,
+            let body = bodyTextView.text,
+            email.isValidEmail,
+            body != "",
+            body != placeHolderString {
+            return true
+        }
+        return false
+    }
+    
+    //UITextFieldDelegate Delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if areTheFieldsValid() {
+            sendButtonPressed()
+        } else {
+            if textField == emailTextField {
+                bodyTextView.becomeFirstResponder()
+            }
+        }
+        return true
     }
 }
