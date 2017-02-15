@@ -52,6 +52,9 @@ class LoginBaseViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func showHidePassword() {
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        let trackingRequest = AppTrackingRequest()
+        trackingRequest.sendApplicationPushNotiTracking(notiDict: nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_SHOW_PASSWORD, completion: {didSucceed in
+        })
     }
     
     func dismissView() {
@@ -111,12 +114,27 @@ class LoginBaseViewController: BaseViewController, UITextFieldDelegate {
 
     //UITextField delegate methods
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let currentText = textField.text else {
+        guard let currentText = textField.text,
+        let selectedRange = textField.selectedTextRange else {
             return true
         }
+        let cursorPosition = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
+        if cursorPosition != currentText.characters.count {
+            updateButtonStatus()
+            return true
+        }
+        
         var newString = "\(currentText)\(string)"
-        if string.isEmpty{
-            newString = newString.substring(to: newString.index(before: newString.endIndex))
+        if string.isEmpty {
+            let  char = string.cString(using: String.Encoding.utf8)!
+            let isBackSpace = strcmp(char, "\\b")
+            
+            if (isBackSpace == -92 && cursorPosition == newString.characters.count) {
+                newString = newString.substring(to: newString.index(before: newString.endIndex))
+            } else {
+                updateButtonStatus()
+                return true
+            }
         }
         textField.text = newString
         updateButtonStatus()

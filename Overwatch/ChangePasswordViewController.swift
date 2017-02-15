@@ -18,6 +18,9 @@ class ChangePasswordViewController: LoginBaseViewController {
     }
 
     @IBAction func showHideNewPassword() {
+        let trackingRequest = AppTrackingRequest()
+        trackingRequest.sendApplicationPushNotiTracking(notiDict: nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_SHOW_PASSWORD, completion: {didSucceed in
+        })
         newPasswordTextField.isSecureTextEntry = !newPasswordTextField.isSecureTextEntry
     }
 

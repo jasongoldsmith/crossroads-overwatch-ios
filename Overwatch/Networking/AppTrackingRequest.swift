@@ -11,6 +11,12 @@ import Foundation
 class AppTrackingRequest: NSObject {
     
     func sendApplicationPushNotiTracking (notiDict: NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE, completion:@escaping TRValueCallBack) {
+        guard let _ = ApplicationManager.sharedInstance.appConfiguration?.mixPanelToken else {
+            DispatchQueue.main.async {
+                self.sendApplicationPushNotiTracking(notiDict: notiDict, trackingType: trackingType, completion: completion)
+            }
+            return
+        }
         let appTrackingUrl = K.TRUrls.TR_BaseUrl + K.TRUrls.TR_APP_TRACKING
         var params = [String: AnyObject]()
         

@@ -141,6 +141,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
+        FBSDKAppLinkUtility.fetchDeferredAppLink({ (URL, error) -> Void in
+            if error != nil {
+            }
+            if URL != nil {
+                
+                let urlString = URL?.absoluteString
+                let deepLinkObj = DeepLinkObject(link: urlString!)
+                let deepLinkAnalyticsDict = deepLinkObj.createLinkInfoAndPassToBackEnd()
+                
+                if let _ = deepLinkAnalyticsDict {
+                    self.faceBookAdLink = deepLinkAnalyticsDict
+                }
+            }
+        })
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -173,8 +187,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
     }
 
+//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//        // pass the url to the handle deep link call
+//        if (Branch.getInstance().handleDeepLink(url)) {
+//            var mySourceDict = [String: AnyObject]()
+//            mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
+//            self.appInitializedRequest(initInfo: mySourceDict)
+//        }
+//        
+//        // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
+//        return true
+//    }
+    
     // MARK:- Branch Deep Linking related methods
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         // pass the url to the handle deep link call
         if (Branch.getInstance().handleDeepLink(url)) {
             var mySourceDict = [String: AnyObject]()
@@ -183,11 +209,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
-        //Facebook
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-        return handled
+        let isHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as! String!, annotation: options[.annotation])
+        return isHandled
     }
-
+    
     // Respond to Universal Links
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         // For Branch to detect when a Universal Link is clicked
@@ -216,6 +241,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func sendFaceBookAdsInstallInfo () {
+        guard let _ = ApplicationManager.sharedInstance.appConfiguration?.mixPanelToken else {
+            DispatchQueue.main.async {
+                self.sendFaceBookAdsInstallInfo()
+            }
+            return
+        }
         if let _ = self.faceBookAdLink {
             self.appInstallRequestWithDict(installInfo: self.faceBookAdLink! as Dictionary<String, AnyObject>) { (didSucceed) in
                 if didSucceed == true {

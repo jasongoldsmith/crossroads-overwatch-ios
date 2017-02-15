@@ -29,11 +29,11 @@ class LoginHelper {
         var returnValue = true
         if let cookies = NetworkRequest.sharedInstance.cookieStorage.cookies {
             for cookie in cookies {
-                if cookie.name == "login.key" || cookie.name == "connect.sid" {
-                    returnValue = false
-                }
                 storedCookies.append(cookie)
             }
+        }
+        if let _ = UserInfo.getUserID() {
+            returnValue = false
         }
         return returnValue
     }

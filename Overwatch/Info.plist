@@ -25,7 +25,7 @@
 			<string>com.forcecatalyst.crossroads.overwatch</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>iosforcecatalystcrossroadsoverwatch</string>
+				<string>forcecatalystcrossroadsoverwatch</string>
 			</array>
 		</dict>
 		<dict>
@@ -36,9 +36,23 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>5</string>
 	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
 	<string>NO</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>11f888057a583a50a91f1434bf728d87358f6d8e</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>1779962922326489</string>
 	<key>FacebookDisplayName</key>
@@ -104,18 +118,5 @@
 		<key>live</key>
 		<string>key_live_lnAe1OYP1wS0wIoMHoExTmhaFApqc1Nc</string>
 	</dict>
-    <key>Fabric</key>
-    <dict>
-        <key>APIKey</key>
-        <string>11f888057a583a50a91f1434bf728d87358f6d8e</string>
-        <key>Kits</key>
-        <array>
-            <dict>
-                <key>KitInfo</key>
-                <dict/>
-                <key>KitName</key>
-                <string>Crashlytics</string>
-            </dict>
-        </array>
-    </dict></dict>
+</dict>
 </plist>

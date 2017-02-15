@@ -24,6 +24,9 @@ class SignUpRequest: NSObject {
                 completion(wrappedError, nil)
                 return
             }
+            let userData = UserInfo()
+            userData.parseUserResponse(responseObject: swiftyJsonVar!)
+            UserInfo.saveUserData(userData: userData)
             completion(nil, swiftyJsonVar)
         }
     }

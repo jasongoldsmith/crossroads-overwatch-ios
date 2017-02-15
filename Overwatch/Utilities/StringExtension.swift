@@ -41,7 +41,7 @@ extension String {
 
     var isValidXBoxBattleTag: Bool {
         if self.characters.count >= 1 && self.characters.count <= 15{
-            let xBoxRegEx = "[A-Za-z]{2,}"
+            let xBoxRegEx = "([A-Za-z]+[A-Za-z 0-9]+[A-Za-z0-9])"
             let xBoxTest = NSPredicate(format:"SELF MATCHES %@", xBoxRegEx)
             if xBoxTest.evaluate(with: self) {
                 return true

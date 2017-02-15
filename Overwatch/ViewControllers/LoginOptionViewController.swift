@@ -127,6 +127,9 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
         let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "signupViewController") as! SignUpViewController
         self.navigationController?.pushViewController(vc, animated: true)
+        let trackingRequest = AppTrackingRequest()
+        trackingRequest.sendApplicationPushNotiTracking(notiDict: nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_SIGNUP_INIT, completion: {didSucceed in
+        })
     }
     
     //MARK:- carousel
