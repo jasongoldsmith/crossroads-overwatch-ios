@@ -334,5 +334,22 @@ class UserInfo: NSObject {
             cookieStorage.deleteCookie(cookie)
         }
     }
+
+    class func firstTimeRunningApplication() -> Bool {
+        let userDefaults = UserDefaults.standard
+        let returnValue = userDefaults.object(forKey: K.UserDefaultKey.APP_HAS_RUN_KEY)
+        if let _ = returnValue //Check for first run of app
+        {
+            return false
+        }
+        updateFirstTimeRunningApplication()
+        return true
+    }
+    
+    class func updateFirstTimeRunningApplication() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(true, forKeyPath: K.UserDefaultKey.APP_HAS_RUN_KEY)
+        userDefaults.synchronize()
+    }
 }
 

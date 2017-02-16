@@ -15,6 +15,8 @@ class ErrorNotificationView: UIView {
     
     var errorSting: String? = nil
     @IBOutlet weak var errorMessage: UILabel!
+    var errorTitle: String? = nil
+    @IBOutlet weak var errorTitleLabel: UILabel!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -26,13 +28,17 @@ class ErrorNotificationView: UIView {
     }
     
     func addErrorSubViewWithMessage () {
-        
+        self.errorMessage.text = ""
+        self.errorTitleLabel.text = "ERROR"
         if self.superview != nil {
             return
         }
         
-        guard let _ = errorSting else {
-            return
+        if let message = errorSting {
+            self.errorMessage.text = message
+        }
+        if let title = errorTitle {
+            self.errorTitleLabel.text = title
         }
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -42,7 +48,6 @@ class ErrorNotificationView: UIView {
         let yAxisDistance:CGFloat = -self.frame.height
         let xAxiDistance:CGFloat  = 0
         self.frame = CGRect(x:xAxiDistance, y:yAxisDistance, width:window!.frame.width, height:self.frame.height)
-        self.errorMessage.text = errorSting!
         
         let popAnimation:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPLayerPositionY)
         popAnimation.toValue = self.frame.height - 25

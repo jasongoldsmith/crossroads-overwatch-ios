@@ -345,10 +345,12 @@ class ApplicationManager: NSObject {
     func addErrorSubViewWithMessageFromDictionaryString(dictionaryString: String) {
         guard let dictionary = ApplicationManager.sharedInstance.getDictionaryFromStringResponse(value: dictionaryString),
             let details =  dictionary.object(forKey: "details") as? NSDictionary,
+            let message = details.object(forKey: "message") as? String,
             let title =  details.object(forKey: "title") as? String else {
                 return
         }
-        self.errorNotificationView.errorSting = title
+        self.errorNotificationView.errorTitle = title
+        self.errorNotificationView.errorSting = message
         self.errorNotificationView.addErrorSubViewWithMessage()
     }
 

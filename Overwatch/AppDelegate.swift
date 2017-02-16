@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var faceBookAdLink: Dictionary <String, String>?
+    var initCallPushed = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -47,27 +48,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let isBranchLink = (params?["+clicked_branch_link"] as AnyObject).boolValue,  isBranchLink == true {
                 
                 // Tracking Open Source
-                var mySourceDict = [String: AnyObject]()
-                mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
-                let trackingRequest = AppTrackingRequest()
-                trackingRequest.sendApplicationPushNotiTracking(notiDict: mySourceDict as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_APP_INIT, completion: {didSucceed in
-                })
+                if !self.initCallPushed {
+                    self.initCallPushed = true
+                    var mySourceDict = [String: AnyObject]()
+                    mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
+                    let trackingRequest = AppTrackingRequest()
+                    trackingRequest.sendApplicationPushNotiTracking(notiDict: mySourceDict as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_APP_INIT, completion: {didSucceed in
+                    })
+                }
                 
                 if isInstallInfoSent == false {
-                    
                     // App Install Request
-                    let myInstallDict = [String: AnyObject]()
-                    mySourceDict["ads"] = K.SharingPlatformType.Platform_Branch as AnyObject?
+                    var myInstallDict = [String: AnyObject]()
+                    myInstallDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
+                    myInstallDict["ads"] = K.SharingPlatformType.Platform_Branch as AnyObject?
                     
                     self.appInstallRequestWithDict(installInfo: myInstallDict) { (didSucceed) in
                         if didSucceed == true {
                             
                         }
                     }
-                } else {
-                    var mySourceDict = [String: AnyObject]()
-                    mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
-                    self.appInitializedRequest(initInfo: mySourceDict)
                 }
                 
                 
@@ -91,32 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         
-        // App Install Request
-        if isInstallInfoSent == false {
-            var myInstallDict = [String: AnyObject]()
-            myInstallDict["ads"] = K.SharingPlatformType.Platform_Organic as AnyObject?
-            
-            self.appInstallRequestWithDict(installInfo: myInstallDict) { (didSucceed) in
-                if didSucceed == true {
-                    
-                    //Send FaceBook Install Info, if avalable
-                    if let _ = self.faceBookAdLink {
-                        self.sendFaceBookAdsInstallInfo()
-                    }
-                    
-                    // App Initialized Request
-                    var mySourceDict = [String: AnyObject]()
-                    mySourceDict["source"] = K.SharingPlatformType.Platform_UnKnown as AnyObject?
-                    self.appInitializedRequest(initInfo: mySourceDict)
-                }
-            }
-        } else {
-            // App Initialized Request
-            var mySourceDict = [String: AnyObject]()
-            mySourceDict["source"] = K.SharingPlatformType.Platform_UnKnown as AnyObject?
-            self.appInitializedRequest(initInfo: mySourceDict)
-        }
-
         return true
     }
 
@@ -140,21 +114,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        FBSDKAppEvents.activateApp()
-        FBSDKAppLinkUtility.fetchDeferredAppLink({ (URL, error) -> Void in
-            if error != nil {
-            }
-            if URL != nil {
-                
-                let urlString = URL?.absoluteString
-                let deepLinkObj = DeepLinkObject(link: urlString!)
-                let deepLinkAnalyticsDict = deepLinkObj.createLinkInfoAndPassToBackEnd()
-                
-                if let _ = deepLinkAnalyticsDict {
-                    self.faceBookAdLink = deepLinkAnalyticsDict
+        // App Install Request
+        let userDefaults = UserDefaults.standard
+        let isInstallInfoSent = userDefaults.bool(forKey: K.UserDefaultKey.INSTALL_INFO_SENT)
+        if isInstallInfoSent == false {
+            var myInstallDict = [String: AnyObject]()
+            myInstallDict["ads"] = K.SharingPlatformType.Platform_Organic as AnyObject?
+            
+            self.appInstallRequestWithDict(installInfo: myInstallDict) { (didSucceed) in
+                if didSucceed == true {
+                    
+                    //Send FaceBook Install Info, if avalable
+                    if let _ = self.faceBookAdLink {
+                        self.sendFaceBookAdsInstallInfo()
+                    }
+                    if !self.initCallPushed {
+                        // App Initialized Request
+                        var mySourceDict = [String: AnyObject]()
+                        mySourceDict["source"] = K.SharingPlatformType.Platform_UnKnown as AnyObject?
+                        self.appInitializedRequest(initInfo: mySourceDict)
+                    }
                 }
             }
-        })
+        } else if !self.initCallPushed {
+            // App Initialized Request
+            var mySourceDict = [String: AnyObject]()
+            mySourceDict["source"] = K.SharingPlatformType.Platform_UnKnown as AnyObject?
+            self.appInitializedRequest(initInfo: mySourceDict)
+        }
+        UserInfo.updateFirstTimeRunningApplication()
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -187,30 +176,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
     }
 
-//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//        // pass the url to the handle deep link call
-//        if (Branch.getInstance().handleDeepLink(url)) {
-//            var mySourceDict = [String: AnyObject]()
-//            mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
-//            self.appInitializedRequest(initInfo: mySourceDict)
-//        }
-//        
-//        // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
-//        return true
-//    }
     
     // MARK:- Branch Deep Linking related methods
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         // pass the url to the handle deep link call
-        if (Branch.getInstance().handleDeepLink(url)) {
+        if (Branch.getInstance().handleDeepLink(url)) && !self.initCallPushed {
             var mySourceDict = [String: AnyObject]()
             mySourceDict["source"] = K.SharingPlatformType.Platform_Branch as AnyObject?
             self.appInitializedRequest(initInfo: mySourceDict)
         }
         
         // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
-        let isHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as! String!, annotation: options[.annotation])
-        return isHandled
+        if UserInfo.firstTimeRunningApplication() {
+            let urlString = url.absoluteString
+            let deepLinkObj = DeepLinkObject(link: urlString)
+            let deepLinkAnalyticsDict = deepLinkObj.createLinkInfoAndPassToBackEnd()
+            
+            if let _ = deepLinkAnalyticsDict {
+                self.faceBookAdLink = deepLinkAnalyticsDict
+            }
+        }
+        return true
     }
     
     // Respond to Universal Links
@@ -221,6 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     //MARK:- App Data Requests
     func appInitializedRequest (initInfo: Dictionary<String, AnyObject>) {
+        initCallPushed = true
         let trackingRequest = AppTrackingRequest()
         trackingRequest.sendApplicationPushNotiTracking(notiDict: initInfo as NSDictionary?, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_APP_INIT, completion: {didSucceed in
         })

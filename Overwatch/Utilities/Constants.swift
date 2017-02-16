@@ -41,6 +41,7 @@ struct K {
         static let Platform_Info_Dict = "Platform_Info_Dict"
         static let FORCED_LOGOUT = "FORCED_LOGOUT"
         static let FORCED_LOGOUT_NEW_SIGN_IN = "FORCED_LOGOUT_NEW_SIGN_IN"
+        static let APP_HAS_RUN_KEY = "APP_HAS_RUN"
         
         struct UserAccountInfo {
             static let TR_UserName      = "TR_UserName"

@@ -27,12 +27,12 @@ class ChangePasswordViewController: LoginBaseViewController {
     @IBAction func saveButtonPressed() {
         guard let oldPassword = passwordTextField.text,
             oldPassword.isValidPassword else {
-                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter your valid password, it must contain at least 4 charaters")
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a password with over 4 characters.")
                 return
         }
         guard let newPassword = newPasswordTextField.text,
             newPassword.isValidPassword else {
-                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a valid new password, it must contain at least 4 charaters")
+                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a password with over 4 characters.")
                 return
         }
 
@@ -44,7 +44,7 @@ class ChangePasswordViewController: LoginBaseViewController {
             } else if let wrappedError = error {
                 ApplicationManager.sharedInstance.addErrorSubViewWithMessageFromDictionaryString(dictionaryString: wrappedError)
             } else {
-                print("Something went wrong updating the user Email")
+                print("Something went wrong updating the user Password")
             }
         })
     }

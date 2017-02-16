@@ -23,7 +23,16 @@ class DeepLinkObject: NSObject {
         let trimmedString = finalString.trimmingCharacters(in: .whitespaces)
         let parsedKeys = trimmedString.components(separatedBy: ["/"])
         
-        if let _ = parsedKeys.first {
+        var facebookFound = false
+        
+        for component in parsedKeys {
+            if component == "facebook" {
+                facebookFound = true
+                break
+            }
+        }
+        
+        if let _ = parsedKeys.first, facebookFound {
             self.deepLinkKey = parsedKeys.first
             self.deepLinkString = trimmedString.replacingOccurrences(of: self.deepLinkKey!, with: "")
         }

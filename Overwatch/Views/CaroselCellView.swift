@@ -140,6 +140,7 @@ class CaroselCellView: UIView {
 
         self.playerOneIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
         self.playerTwoIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
+        self.playerThreeIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
     }
     
     func addRadiusToPlayerIconsForPlayersArray (eventInfo:
@@ -178,7 +179,7 @@ class CaroselCellView: UIView {
                 self.playerTwoIcon.isHidden = false
                 playerTwoIcon.image = UIImage(named: "avatar")
                 let block: SDExternalCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
-                    if let anImage = image, error != nil {
+                    if let anImage = image, error == nil {
                         self.playerTwoIcon.image = anImage
                     } else {
                         self.playerTwoIcon.image = UIImage(named:"avatar")
@@ -207,7 +208,7 @@ class CaroselCellView: UIView {
                     self.playerCountLabelIcon.isHidden = true
                     playerThreeIcon.image = UIImage(named: "avatar")
                     let block: SDExternalCompletionBlock = {(image, error, cacheType, imageURL) -> Void in
-                        if let anImage = image, error != nil {
+                        if let anImage = image, error == nil {
                             self.playerThreeIcon.image = anImage
                         } else {
                             self.playerThreeIcon.image = UIImage(named:"avatar")
@@ -217,8 +218,6 @@ class CaroselCellView: UIView {
                         if let url = URL(string: imageURLString){
                             playerThreeIcon.sd_setImage(with: url, completed: block)
                         }
-                    } else {
-                        self.playerThreeIcon?.image = UIImage(named: "avatar")
                     }
                     
                     self.playerThreeIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
