@@ -134,7 +134,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         if let hasCheckPoint = self.eventInfo?.eventActivity?.activitySubType, hasCheckPoint != "" {
             self.hasCheckPoint = true
             let checkPoint = hasCheckPoint
-            let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)]
+            let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 195/255, blue: 0/255, alpha: 1)]
             
             let checkAttributedStr = NSAttributedString(string: checkPoint + "  ", attributes: stringColorAttribute)
             

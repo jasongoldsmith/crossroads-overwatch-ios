@@ -17,30 +17,7 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        switch items.count {
-        case 1:
-            guard let first = items.first else {
-                break
-            }
-            items.append(first)
-            items.append(first)
-            items.append(first)
-            items.append(first)
-            items.append(first)
-        case 2:
-            guard let first = items.first,
-                let last = items.last else {
-                    break
-            }
-            items.append(first)
-            items.append(last)
-            items.append(first)
-            items.append(last)
-            items.append(first)
-            items.append(last)
-        default:
-            break
-        }
+        checkAndFixArrayIfNeeded()
         let countString = ApplicationManager.sharedInstance.totalUsers?.description
         let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 195/255, blue: 0/255, alpha: 1)]
         var countAttributedStr = NSAttributedString(string: countString!, attributes: stringColorAttribute)
@@ -67,8 +44,6 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
             errorView.delegate = self
             self.view.addSubview(errorView)
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,33 +52,8 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        switch items.count {
-        case 1:
-            guard let first = items.first else {
-                    break
-            }
-            items.append(first)
-            items.append(first)
-            items.append(first)
-            items.append(first)
-            items.append(first)
-        case 2:
-            guard let first = items.first,
-            let last = items.last else {
-                break
-            }
-            items.append(first)
-            items.append(last)
-            items.append(first)
-            items.append(last)
-            items.append(first)
-            items.append(last)
-        default:
-            break
-        }
-        carousel.reloadData()
+        checkAndFixArrayIfNeeded()
     }
-    
     
     func okButtonPressed () {
         let userDefaults = UserDefaults.standard
@@ -138,7 +88,6 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView{
-        
         var itemView: CaroselCellView
         
         //create new view if no view is available for recycling
@@ -147,9 +96,9 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
         } else {
             itemView = view as! CaroselCellView
         }
+        itemView.frame = CGRect(x:0, y:0, width:ScreenSize.SCREEN_WIDTH-48.0, height:carousel.frame.size.height)
+        itemView.layoutIfNeeded()
         itemView.updateViewWithActivity(eventInfo: items[index])
-        view?.frame = CGRect(x:0, y:0, width:ScreenSize.SCREEN_WIDTH-48.0, height:carousel.frame.size.height)
-        view?.layoutIfNeeded()
         return itemView
     }
     
@@ -170,5 +119,34 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
     
     func carouselItemWidth(_ carousel: iCarousel) -> CGFloat {
         return ScreenSize.SCREEN_WIDTH-48.0
+    }
+
+    func checkAndFixArrayIfNeeded() {
+        switch items.count {
+        case 1:
+            guard let first = items.first else {
+                break
+            }
+            items.append(first)
+            items.append(first)
+            items.append(first)
+            items.append(first)
+            items.append(first)
+            carousel.reloadData()
+        case 2:
+            guard let first = items.first,
+                let last = items.last else {
+                    break
+            }
+            items.append(first)
+            items.append(last)
+            items.append(first)
+            items.append(last)
+            items.append(first)
+            items.append(last)
+            carousel.reloadData()
+        default:
+            break
+        }
     }
 }

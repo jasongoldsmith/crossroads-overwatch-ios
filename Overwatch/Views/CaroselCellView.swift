@@ -74,7 +74,7 @@ class CaroselCellView: UIView {
         // Set  Event Player Names
         if let _ = eventInfo.eventActivity?.activityMaxPlayers,
             (eventInfo.eventPlayersArray.count < (eventInfo.eventActivity?.activityMaxPlayers?.intValue)!) {
-            let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)]
+            let stringColorAttribute = [NSForegroundColorAttributeName: UIColor(red: 255/255, green: 195/255, blue: 0/255, alpha: 1)]
             let extraPlayersRequiredCount = ((eventInfo.eventActivity?.activityMaxPlayers?.intValue)! - eventInfo.eventPlayersArray.count)
             let extraPlayersRequiredCountString = String(extraPlayersRequiredCount)
             let extraPlayersRequiredCountStringNew = " LF" + "\(extraPlayersRequiredCountString)M"

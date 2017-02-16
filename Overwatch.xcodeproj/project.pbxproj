@@ -12,7 +12,7 @@
 		33BE5A2E1E3FEC4400BCF486 /* UpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE5A2D1E3FEC4400BCF486 /* UpdateUser.swift */; };
 		C7170F071E53D96B007F0CDD /* DeepLinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7170F061E53D96B007F0CDD /* DeepLinkObject.swift */; };
 		C71E5AAF1E524404006B991C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71E5AAE1E524404006B991C /* ColorExtension.swift */; };
-		C73D35F11E5522DC000DDD25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C77A600A1E39885A000D5E94 /* GoogleService-Info.plist */; };
+		C73D35F21E5526D6000DDD25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
 		C750BEFC1E4E8E5200A9C3A1 /* HelmetUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C750BEFB1E4E8E5200A9C3A1 /* HelmetUpdateRequest.swift */; };
 		C75325D11E36E99F00EB719D /* LeaveEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D01E36E99F00EB719D /* LeaveEventRequest.swift */; };
 		C75325D31E36E9D900EB719D /* JoinEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D21E36E9D900EB719D /* JoinEventRequest.swift */; };
@@ -716,8 +716,8 @@
 				C7562E6A1E4017C60096DE44 /* WebView.xib in Resources */,
 				C793CD761E2D5EC80012FEEE /* LaunchScreen.storyboard in Resources */,
 				C793CD731E2D5EC80012FEEE /* Assets.xcassets in Resources */,
+				C73D35F21E5526D6000DDD25 /* GoogleService-Info.plist in Resources */,
 				C7B6BBFF1E30010A00D6BFF3 /* PushNotificationView.xib in Resources */,
-				C73D35F11E5522DC000DDD25 /* GoogleService-Info.plist in Resources */,
 				C7B6BC001E30010A00D6BFF3 /* VerificationPromptView.xib in Resources */,
 				C7B6BBEE1E2EFD0A00D6BFF3 /* ErrorView.xib in Resources */,
 				C793CD711E2D5EC80012FEEE /* Main.storyboard in Resources */,
