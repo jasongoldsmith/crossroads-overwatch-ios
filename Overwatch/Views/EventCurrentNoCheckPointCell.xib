@@ -35,14 +35,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eqp-vg-pJ4">
-                        <rect key="frame" x="101" y="100" width="36" height="36"/>
+                        <rect key="frame" x="101" y="103.5" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="c4y-be-mg9"/>
                             <constraint firstAttribute="width" constant="36" id="p7B-ME-wPL"/>
                         </constraints>
                     </imageView>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="enw-pC-aHH">
-                        <rect key="frame" x="143" y="100" width="36" height="36"/>
+                        <rect key="frame" x="143" y="103.5" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="Kdb-jB-j1a"/>
                             <constraint firstAttribute="height" constant="36" id="SJ6-Ap-xzS"/>
@@ -82,7 +82,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmN-9g-gQ7" customClass="EventButton" customModule="Overwatch" customModuleProvider="target">
-                        <rect key="frame" x="246" y="100" width="64" height="36"/>
+                        <rect key="frame" x="246" y="103.5" width="64" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="uoS-eo-2SI"/>
                             <constraint firstAttribute="width" constant="64" id="y07-Tc-6iD"/>
@@ -90,14 +90,14 @@
                         <state key="normal" image="btnJOIN"/>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TOg-RC-emc">
-                        <rect key="frame" x="59" y="100" width="36" height="36"/>
+                        <rect key="frame" x="59" y="103.5" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="if7-Ne-QUm"/>
                             <constraint firstAttribute="height" constant="36" id="kxe-k3-d8v"/>
                         </constraints>
                     </imageView>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhB-1c-7gp" customClass="EventButton" customModule="Overwatch" customModuleProvider="target">
-                        <rect key="frame" x="204" y="100" width="36" height="36"/>
+                        <rect key="frame" x="204" y="103.5" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="Qty-zo-vCG"/>
                             <constraint firstAttribute="width" constant="36" id="pmO-5O-jGh"/>
@@ -105,7 +105,7 @@
                         <state key="normal" image="imgCancelX"/>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaV-x0-XzN">
-                        <rect key="frame" x="143" y="100" width="36" height="36"/>
+                        <rect key="frame" x="143" y="103.5" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="Q5Q-Jg-mUo"/>
                             <constraint firstAttribute="height" constant="36" id="rJf-UK-sHl"/>
@@ -123,19 +123,19 @@
                     <constraint firstAttribute="bottomMargin" secondItem="tmN-9g-gQ7" secondAttribute="bottom" constant="43" id="2w8-sJ-gX5"/>
                     <constraint firstAttribute="trailingMargin" secondItem="BKZ-bV-Ej7" secondAttribute="trailing" constant="2" id="3hq-UE-xg5"/>
                     <constraint firstItem="IC0-Zd-zMt" firstAttribute="leading" secondItem="TOg-RC-emc" secondAttribute="leading" id="AA2-IU-fnf"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="tmN-9g-gQ7" secondAttribute="bottom" constant="8" id="AIn-Pg-IRm"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="tmN-9g-gQ7" secondAttribute="bottom" constant="5" id="AIn-Pg-IRm"/>
                     <constraint firstItem="eqp-vg-pJ4" firstAttribute="leading" secondItem="TOg-RC-emc" secondAttribute="trailing" constant="6" id="Bjj-L1-KDx"/>
                     <constraint firstItem="HaV-x0-XzN" firstAttribute="leading" secondItem="eqp-vg-pJ4" secondAttribute="trailing" constant="6" id="BtN-ZN-aAj"/>
                     <constraint firstItem="BKZ-bV-Ej7" firstAttribute="top" secondItem="Wc2-De-c8E" secondAttribute="topMargin" constant="2" id="Etn-0O-nVp"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="eqp-vg-pJ4" secondAttribute="bottom" constant="8" id="Fkr-ko-5Id"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="bhB-1c-7gp" secondAttribute="bottom" constant="8" id="GSF-te-hKN"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="eqp-vg-pJ4" secondAttribute="bottom" constant="5" id="Fkr-ko-5Id"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="bhB-1c-7gp" secondAttribute="bottom" constant="5" id="GSF-te-hKN"/>
                     <constraint firstItem="xtd-Vz-qwc" firstAttribute="top" secondItem="Wc2-De-c8E" secondAttribute="topMargin" constant="2" id="GXo-lo-WK4"/>
                     <constraint firstItem="VMi-m4-fAD" firstAttribute="top" secondItem="IC0-Zd-zMt" secondAttribute="bottom" constant="14" id="KD0-OC-dXJ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="HaV-x0-XzN" secondAttribute="bottom" constant="8" id="N2Z-EW-4yt"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="HaV-x0-XzN" secondAttribute="bottom" constant="5" id="N2Z-EW-4yt"/>
                     <constraint firstItem="IC0-Zd-zMt" firstAttribute="top" secondItem="Oyg-jG-0VA" secondAttribute="bottom" constant="2" id="PM0-kh-4gw"/>
                     <constraint firstItem="63t-17-G8j" firstAttribute="top" secondItem="Wc2-De-c8E" secondAttribute="topMargin" constant="-8" id="Rvc-zJ-wgy"/>
                     <constraint firstAttribute="bottomMargin" secondItem="63t-17-G8j" secondAttribute="bottom" constant="-11.5" id="TnW-4m-8AM"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="TOg-RC-emc" secondAttribute="bottom" constant="8" id="UZF-Kn-m39"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="TOg-RC-emc" secondAttribute="bottom" constant="5" id="UZF-Kn-m39"/>
                     <constraint firstItem="IC0-Zd-zMt" firstAttribute="leading" secondItem="xtd-Vz-qwc" secondAttribute="trailing" constant="9" id="WdD-ky-jJF"/>
                     <constraint firstItem="tmN-9g-gQ7" firstAttribute="leading" secondItem="bhB-1c-7gp" secondAttribute="trailing" constant="6" id="cWF-7t-Qgh"/>
                     <constraint firstItem="TOg-RC-emc" firstAttribute="leading" secondItem="Wc2-De-c8E" secondAttribute="leadingMargin" constant="51" id="gmz-ej-fFj"/>
@@ -143,7 +143,7 @@
                     <constraint firstItem="Oyg-jG-0VA" firstAttribute="leading" secondItem="TOg-RC-emc" secondAttribute="leading" id="kjA-fa-fTJ"/>
                     <constraint firstItem="enw-pC-aHH" firstAttribute="leading" secondItem="eqp-vg-pJ4" secondAttribute="trailing" constant="6" id="pgz-SV-3Ze"/>
                     <constraint firstItem="Oyg-jG-0VA" firstAttribute="top" secondItem="Wc2-De-c8E" secondAttribute="topMargin" constant="2" id="t2f-h7-bul"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="enw-pC-aHH" secondAttribute="bottom" constant="8" id="u5F-vp-Sik"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="enw-pC-aHH" secondAttribute="bottom" constant="5" id="u5F-vp-Sik"/>
                     <constraint firstItem="63t-17-G8j" firstAttribute="leading" secondItem="Wc2-De-c8E" secondAttribute="leadingMargin" constant="-8" id="ueA-tT-yyc"/>
                     <constraint firstItem="xtd-Vz-qwc" firstAttribute="leading" secondItem="Wc2-De-c8E" secondAttribute="leadingMargin" constant="2" id="wW8-tB-Sxs"/>
                     <constraint firstItem="Oyg-jG-0VA" firstAttribute="bottom" secondItem="BKZ-bV-Ej7" secondAttribute="bottom" constant="2" id="x7x-Gd-QR5"/>

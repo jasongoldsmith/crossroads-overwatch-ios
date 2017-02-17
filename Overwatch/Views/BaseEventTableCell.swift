@@ -224,11 +224,12 @@ class BaseEventTableCell: UITableViewCell {
                     self.playerCountImage.image = nil
                     self.playerCountLabel.isHidden = false
                     self.playerCountLabel?.text = "+" + String((playerArray.count - 2))
-                    self.playerCountImage?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
+                    self.playerCountLabel?.textColor = UIColor.white
+                    self.playerCountImage?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
                     
                 } else {
                     self.playerCountLabel.isHidden = true
-                    self.playerCountImage?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
+                    self.playerCountImage?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
                     
                     self.playerCountImage.image = UIImage(named: "avatar")
                     if let imageURLString = player.playerImageUrl,

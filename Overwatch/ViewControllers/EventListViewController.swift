@@ -53,7 +53,7 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(EventListViewController.handleRefresh), for: .valueChanged)
-        
+        refreshControl.tintColor = UIColor.white
         return refreshControl
     }()
     
@@ -266,7 +266,6 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
-        
         return headerView
     }
     

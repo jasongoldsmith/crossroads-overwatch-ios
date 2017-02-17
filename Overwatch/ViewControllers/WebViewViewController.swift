@@ -16,6 +16,7 @@ class WebViewViewController: BaseViewController, UIWebViewDelegate, CustomErrorD
     @IBOutlet weak var webView: UIWebView!
     
     var consoleLoginEndPoint: String?
+    let hostName =  K.TRUrls.TR_BaseUrl.replacingOccurrences(of: "https://", with: "")
     
     override func viewDidLoad() {
         
@@ -65,8 +66,6 @@ class WebViewViewController: BaseViewController, UIWebViewDelegate, CustomErrorD
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let hostName =  K.TRUrls.TR_BaseUrl.replacingOccurrences(of: "https://", with: "")
-        
         if webView.request?.url?.host == hostName || webView.request?.url?.host == nil {
             webView.isHidden = true
         } else {
@@ -76,12 +75,18 @@ class WebViewViewController: BaseViewController, UIWebViewDelegate, CustomErrorD
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        
-        let hostName =  K.TRUrls.TR_BaseUrl.replacingOccurrences(of: "https://", with: "")
-
-        if webView.request?.url?.host == hostName {
+        if let url = webView.request?.url,
+            url.host == hostName
+        {
             webView.isHidden = true
-            validateCookies()
+            if validatePathComponents(url.pathComponents) {
+                validateCookies()
+            } else {
+                navBackButtonPressed(sender: nil)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    ApplicationManager.sharedInstance.addErrorSubViewWithTitle("BATTLE.NET ERROR", andMessage:"Please go to Battle.net and verify your account before linking it to Crossroads.")
+                }
+            }
         } else {
             webView.isHidden = false
         }
@@ -110,6 +115,24 @@ class WebViewViewController: BaseViewController, UIWebViewDelegate, CustomErrorD
     
     func okButtonPressed () {
         dismissView()
+    }
+    
+    func validatePathComponents(_ pathComponents:[String]) -> Bool {
+        for component in pathComponents {
+            if component == "failure" {
+                //remove all the cookies except our cookies
+                let cookieStorage = HTTPCookieStorage.shared
+                if let cookies = cookieStorage.cookies {
+                    for cookie in cookies {
+                        if cookie.domain.range(of:hostName) == nil{
+                            cookieStorage.deleteCookie(cookie)
+                        }
+                    }
+                }
+                return false
+            }
+        }
+        return true
     }
     
     deinit {

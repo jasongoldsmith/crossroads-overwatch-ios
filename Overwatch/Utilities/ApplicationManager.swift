@@ -342,6 +342,12 @@ class ApplicationManager: NSObject {
         self.errorNotificationView.addErrorSubViewWithMessage()
     }
 
+    func addErrorSubViewWithTitle(_ title: String, andMessage message:String) {
+        self.errorNotificationView.errorTitle = title
+        self.errorNotificationView.errorSting = message
+        self.errorNotificationView.addErrorSubViewWithMessage()
+    }
+
     func addErrorSubViewWithMessageFromDictionaryString(dictionaryString: String) {
         guard let dictionary = ApplicationManager.sharedInstance.getDictionaryFromStringResponse(value: dictionaryString),
             let details =  dictionary.object(forKey: "details") as? NSDictionary,
@@ -349,9 +355,7 @@ class ApplicationManager: NSObject {
             let title =  details.object(forKey: "title") as? String else {
                 return
         }
-        self.errorNotificationView.errorTitle = title
-        self.errorNotificationView.errorSting = message
-        self.errorNotificationView.addErrorSubViewWithMessage()
+        addErrorSubViewWithTitle(title, andMessage: message)
     }
 
     //console type from string
