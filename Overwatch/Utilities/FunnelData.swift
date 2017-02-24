@@ -48,7 +48,6 @@ class FunnelData {
             devicePropertiesDictionary["config_token"] = "123" as AnyObject?
         #else
             devicePropertiesDictionary["config_token"] = "123" as AnyObject?
-//            devicePropertiesDictionary["config_token"] = "003c2fff-9d24-4dbe-be76-6ab21574e2d9" as AnyObject?
         #endif
         
         if let token = ApplicationManager.sharedInstance.appConfiguration?.mixPanelToken {

@@ -122,10 +122,10 @@ class BaseEventTableCell: UITableViewCell {
             
             // Attributed Strings
             let extraPlayersRequiredCountStringNewAttributed = NSAttributedString(string: extraPlayersRequiredCountStringNew, attributes: stringColorAttribute)
-            if let _ = eventInfo.eventCreator?.playerPsnID {
+            if let _ = eventInfo.eventCreator?.playerConsoleId {
                 
-                let finalString = NSMutableAttributedString(string: (eventInfo.eventCreator?.playerPsnID!)!)
-                if var clanTag = eventInfo.eventCreator?.getDefaultConsole()?.clanTag, clanTag != "" {
+                let finalString = NSMutableAttributedString(string: (eventInfo.eventCreator?.playerConsoleId!)!)
+                if var clanTag = eventInfo.eventCreator?.playerClanTag, clanTag != "" {
                     clanTag = " " + "[" + clanTag + "]"
                     let clanAttributedStr = NSAttributedString(string: clanTag)
                     if eventInfo.eventCreator!.playerID != ApplicationManager.sharedInstance.currentUser?.userID {
@@ -139,8 +139,8 @@ class BaseEventTableCell: UITableViewCell {
                 self.eventPlayersName.attributedText = finalString
             }
         } else {
-            var playersNameString = (eventInfo.eventCreator?.playerPsnID!)!
-            if var clanTag = eventInfo.eventCreator?.getDefaultConsole()?.clanTag, clanTag != "" {
+            var playersNameString = (eventInfo.eventCreator?.playerConsoleId!)!
+            if var clanTag = eventInfo.eventCreator?.playerClanTag, clanTag != "" {
                 clanTag = " " + "[" + clanTag + "]"
                 if eventInfo.eventCreator!.playerID != ApplicationManager.sharedInstance.currentUser?.userID {
                     playersNameString = playersNameString + clanTag
@@ -258,6 +258,9 @@ class BaseEventTableCell: UITableViewCell {
         
         if (event.eventCreator?.playerID == UserInfo.getUserID()) {
             button.setImage(UIImage(named: "btnOWNER"), for: .normal)
+            if event.eventStatus == EVENT_STATUS.FULL.rawValue {
+                button.setImage(UIImage(named: "btnREADY"), for: .normal)
+            }
             button.isUserInteractionEnabled = false
             leaveEventButton.isHidden = false
             

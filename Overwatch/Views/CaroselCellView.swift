@@ -81,10 +81,10 @@ class CaroselCellView: UIView {
             
             // Attributed Strings
             let extraPlayersRequiredCountStringNewAttributed = NSAttributedString(string: extraPlayersRequiredCountStringNew, attributes: stringColorAttribute)
-            if let _ = eventInfo.eventCreator?.playerPsnID {
+            if let _ = eventInfo.eventCreator?.playerConsoleId {
                 
-                let finalString = NSMutableAttributedString(string: (eventInfo.eventCreator?.playerPsnID!)!)
-                if var clanTag = eventInfo.eventCreator?.getDefaultConsole()?.clanTag, clanTag != "" {
+                let finalString = NSMutableAttributedString(string: (eventInfo.eventCreator?.playerConsoleId!)!)
+                if var clanTag = eventInfo.eventCreator?.playerClanTag, clanTag != "" {
                     clanTag = " " + "[" + clanTag + "]"
                     let clanAttributedStr = NSAttributedString(string: clanTag)
                     if eventInfo.eventCreator!.playerID != ApplicationManager.sharedInstance.currentUser?.userID {
@@ -98,8 +98,8 @@ class CaroselCellView: UIView {
                 self.eventCreator.attributedText = finalString
             }
         } else {
-            var playersNameString = (eventInfo.eventCreator?.playerPsnID!)!
-            if var clanTag = eventInfo.eventCreator?.getDefaultConsole()?.clanTag, clanTag != "" {
+            var playersNameString = (eventInfo.eventCreator?.playerConsoleId!)!
+            if var clanTag = eventInfo.eventCreator?.playerClanTag, clanTag != "" {
                 clanTag = " " + "[" + clanTag + "]"
                 if eventInfo.eventCreator!.playerID != ApplicationManager.sharedInstance.currentUser?.userID {
                     playersNameString = playersNameString + clanTag
@@ -201,7 +201,6 @@ class CaroselCellView: UIView {
                     self.playerThreeIcon.image = nil
                     self.playerCountLabelIcon.isHidden = false
                     self.playerCountLabelIcon?.text = "+" + String((playerArray.count - 2))
-                    self.playerThreeIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
                     
                 } else {
                     self.playerThreeIcon.isHidden = false
@@ -219,9 +218,8 @@ class CaroselCellView: UIView {
                             playerThreeIcon.sd_setImage(with: url, completed: block)
                         }
                     }
-                    
-                    self.playerThreeIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
                 }
+                self.playerThreeIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
                 
                 break;
                 

@@ -1845,13 +1845,13 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="SEND"/>
                                     </button>
-                                    <textView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="type your comment here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rt3-bp-I3G">
+                                    <textView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="type your comment here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rt3-bp-I3G" customClass="CustomUITextView" customModule="Overwatch" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="299" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <connections>
-                                            <outlet property="delegate" destination="9RH-pr-1MB" id="JB1-HM-B55"/>
+                                            <outlet property="delegate" destination="9RH-pr-1MB" id="rxd-ft-nYt"/>
                                         </connections>
                                     </textView>
                                 </subviews>
@@ -1889,7 +1889,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="73DDFC2A-5E75-42A4-97CA-6BD056A466A1" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="154683EE-B139-40CF-BFF9-9D7D5A3450F5" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
                                 <rect key="frame" x="16" y="113.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UY6-7w-5Ph"/>
@@ -2044,7 +2044,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                     <connections>
                         <outlet property="backgroundImageHeightConstraint" destination="Nf3-ba-SSO" id="6fG-Nz-feT"/>
                         <outlet property="chatTextBoxView" destination="YGa-aE-P3p" id="8ee-kj-IJO"/>
-                        <outlet property="chatTextView" destination="Rt3-bp-I3G" id="RCA-Ut-HRI"/>
+                        <outlet property="chatTextView" destination="Rt3-bp-I3G" id="iUs-kQ-X0m"/>
                         <outlet property="confirmInvitationButton" destination="MJc-vE-hcb" id="3pQ-WC-awx"/>
                         <outlet property="eventBackGround" destination="rWz-kU-LNE" id="VcL-Ab-hHe"/>
                         <outlet property="eventCheckPoint_Time" destination="NEF-Vv-sDR" id="ydW-pL-7WZ"/>
@@ -3853,7 +3853,7 @@ you signed up with, please contact us at</string>
         </scene>
     </scenes>
     <resources>
-        <image name="73DDFC2A-5E75-42A4-97CA-6BD056A466A1" width="40" height="29">
+        <image name="154683EE-B139-40CF-BFF9-9D7D5A3450F5" width="40" height="29">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

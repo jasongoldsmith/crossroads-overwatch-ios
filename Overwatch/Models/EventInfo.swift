@@ -78,6 +78,8 @@ class EventInfo: NSObject {
             creatorInfo.playerDate      = creator["date"]?.stringValue
             creatorInfo.playerUdate     = creator["uDate"]?.stringValue
             creatorInfo.userVerified    = creator["verifyStatus"]?.stringValue
+            creatorInfo.playerConsoleId    = creator["consoleId"]?.stringValue
+            creatorInfo.playerClanTag    = creator["clanTag"]?.stringValue
             
             for consoles in creator["consoles"]!.arrayValue {
                 let creatorConsole = Consoles()
@@ -117,6 +119,8 @@ class EventInfo: NSObject {
             playerInfo.invitedBy        = playerInfoObject["invitedBy"].stringValue
             playerInfo.isPlayerActive   = playerInfoObject["isActive"].boolValue
             playerInfo.verifyStatus     = playerInfoObject["verifyStatus"].stringValue
+            playerInfo.playerConsoleId  = playerInfoObject["consoleId"].stringValue
+            playerInfo.playerClanTag    = playerInfoObject["clanTag"].stringValue
             playerInfo.isInvited     = playerInfoObject["isInvited"].boolValue
             playerInfo.hasReachedMaxReportedComments = playerInfoObject["hasReachedMaxReportedComments"].boolValue
             

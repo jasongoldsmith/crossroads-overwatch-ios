@@ -808,6 +808,8 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
     func addActivity (eventInfo: EventInfo?) {
         if let eventActivity = eventInfo?.eventActivity {
             self.createActivityFromEvent(sender:eventActivity)
+        } else {
+            createAnEvent()
         }
     }
     

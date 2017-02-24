@@ -34,7 +34,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
     
     //Chat View
     @IBOutlet weak var chatTextBoxView: UIView!
-    @IBOutlet weak var chatTextView: UITextView!
+    @IBOutlet weak var chatTextView: CustomUITextView!
     
     //Event Full View
     @IBOutlet weak var fullViews: UIView!
@@ -219,7 +219,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         //Full Event View's Text Labels
         if ApplicationManager.sharedInstance.currentUser?.userID != self.eventInfo?.eventCreator?.playerID {
-            if let creatorTag = self.eventInfo?.eventPlayersArray.first?.playerPsnID {
+            if let creatorTag = self.eventInfo?.eventPlayersArray.first?.playerConsoleId {
                 self.fullViewsDescriptionLabel?.text = "Send \(creatorTag) a friend request or message for an invite."
                 self.eventFullViewHeightConstraint?.constant = 80
             }
@@ -446,8 +446,8 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
             if indexPath.section < (self.eventInfo?.eventPlayersArray.count)! {
                 
                 // Player USERNAME CLAN-TAG
-                var playersNameString = self.eventInfo?.eventPlayersArray[indexPath.section].getDefaultConsole()?.consoleId!
-                if var clanTag = self.eventInfo?.eventPlayersArray[indexPath.section].getDefaultConsole()?.clanTag!, clanTag != "" {
+                var playersNameString = self.eventInfo?.eventPlayersArray[indexPath.section].playerConsoleId
+                if var clanTag = self.eventInfo?.eventPlayersArray[indexPath.section].playerClanTag, clanTag != "" {
                     clanTag = " " + "[" + clanTag + "]"
                     if self.eventInfo?.eventPlayersArray[indexPath.section].playerID != ApplicationManager.sharedInstance.currentUser?.userID {
                         playersNameString = playersNameString! + clanTag
@@ -571,7 +571,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
             self.eventTable?.rowHeight = UITableViewAutomaticDimension
             
             
-            var playersNameString = self.eventInfo?.eventComments[indexPath.section].commentUserInfo?.getDefaultConsole()?.consoleId!
+            var playersNameString = self.eventInfo?.eventComments[indexPath.section].commentUserInfo?.consoleId!
             if var clanTag = self.eventInfo?.eventComments[indexPath.section].commentUserInfo?.getDefaultConsole()?.clanTag, clanTag != "" {
                 clanTag = " " + "[" + clanTag + "]"
                 if self.eventInfo?.eventComments[indexPath.section].commentUserInfo?.userID != ApplicationManager.sharedInstance.currentUser?.userID {
@@ -702,7 +702,7 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         
         if ApplicationManager.sharedInstance.currentUser?.userID != self.eventInfo?.eventCreator?.playerID {
-            if let creatorTag = self.eventInfo?.eventPlayersArray.first?.playerPsnID {
+            if let creatorTag = self.eventInfo?.eventPlayersArray.first?.playerConsoleId {
                 self.fullViewsDescriptionLabel?.text = "Send \(creatorTag) a friend request or message for an invite."
                 self.eventFullViewHeightConstraint?.constant = 80
             }
@@ -783,8 +783,10 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
         
         if let textMessage = self.chatTextView.text, textMessage != "Type your comment here",
             let eventId = self.eventInfo?.eventID{
+            sender.isEnabled = false
             let sendMessage = SendPushMessage()
             sendMessage.sendEventMessage(eventId: eventId, messageString: textMessage, completion: { (didSucceed) in
+                sender.isEnabled = true
                 if (didSucceed != nil)  {
                     //Clear Text and reset Chat View
                     self.chatTextView?.contentSize = self.chatViewOriginalContentSize!
@@ -1103,4 +1105,15 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
     deinit {
         
     }
+}
+
+class CustomUITextView: UITextView {
+    
+    override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(copy(_:)) || action == #selector(paste(_:)) {
+            return false
+        }
+        return true
+    }
+
 }
