@@ -50,6 +50,7 @@ class LoginViewController: LoginBaseViewController {
                 let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
                 vc.errorString = wrappedError
                 vc.emailEntered = email
+                vc.sourceCode = 2
                 vc.passwordEntered = password
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {

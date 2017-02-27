@@ -42,6 +42,7 @@ class FunnelData {
         devicePropertiesDictionary["x-branchsdk"] = branchSDKVersion as AnyObject?
         devicePropertiesDictionary["x-fabricsdk"] = fabricSDK as AnyObject?
         devicePropertiesDictionary["x-newloginflow"] = true as AnyObject?
+//        devicePropertiesDictionary["config_token"] = "003c2fff-9d24-4dbe-be76-6ab21574e2d9" as AnyObject?
         #if RELEASE
             devicePropertiesDictionary["config_token"] = "003c2fff-9d24-4dbe-be76-6ab21574e2d9" as AnyObject?
         #elseif ADHOC

@@ -56,6 +56,7 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
                     let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
                     vc.errorString = wrappedError
+                    vc.sourceCode = 1
                     if let platformName = ApplicationManager.sharedInstance.getConsoleNameFrom(consoleType: consoleType) {
                         vc.platformEntered = platformName
                     }

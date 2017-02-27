@@ -230,6 +230,9 @@ class EventListViewController: BaseViewController, UITableViewDataSource, UITabl
                 self.view.layoutIfNeeded()
             }
         }
+        if UserInfo.firstTimeShowingGroupPicker() {
+            showChangeGroupsVc(sender: "" as AnyObject)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

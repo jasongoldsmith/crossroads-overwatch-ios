@@ -51,6 +51,7 @@ class SignUpViewController: LoginBaseViewController, TTTAttributedLabelDelegate,
                 let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingErrorViewController") as! OnBoardingErrorViewController
                 vc.errorString = wrappedError
                 vc.emailEntered = email
+                vc.sourceCode = 1
                 vc.passwordEntered = password
                 self.navigationController?.pushViewController(vc, animated: true)
                 self.view.endEditing(true)

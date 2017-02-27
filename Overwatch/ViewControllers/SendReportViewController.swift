@@ -15,6 +15,8 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
 
     var eventID: String?
     var commentID: String?
+    var sourceCode = 3
+    var errorCode: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +59,7 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
             } else {
                 let reportRequest = CreateAReportRequest()
                 if let _ = ApplicationManager.sharedInstance.currentUser?.email {
-                    reportRequest.sendCreatedReport(description: body, completion: { (didSucceed) in
+                    reportRequest.sendCreatedReport(description: body, sourceCode: sourceCode, errorCode: errorCode, completion: { (didSucceed) in
                         self.view.endEditing(true)
                         if (didSucceed == true)  {
                             
@@ -73,7 +75,7 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
                 } else {
                     if let email = emailTextField.text,
                         email.isValidEmail {
-                        reportRequest.sendCreatedReportForNotLoggedUser(email: email, description: body, completion: { (didSucceed) in
+                        reportRequest.sendCreatedReportForNotLoggedUser(email: email, description: body, sourceCode: sourceCode, errorCode: errorCode, completion: { (didSucceed) in
                             self.view.endEditing(true)
                             if (didSucceed == true)  {
                                 

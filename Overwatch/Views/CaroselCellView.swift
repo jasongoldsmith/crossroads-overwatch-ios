@@ -140,7 +140,7 @@ class CaroselCellView: UIView {
 
         self.playerOneIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
         self.playerTwoIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
-        self.playerThreeIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
+        self.playerThreeIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
     }
     
     func addRadiusToPlayerIconsForPlayersArray (eventInfo:
@@ -149,6 +149,7 @@ class CaroselCellView: UIView {
         self.playerOneIcon.isHidden = true
         self.playerTwoIcon.isHidden = true
         self.playerThreeIcon.isHidden = true
+        self.playerCountLabelIcon.isHidden = true
 
         let playerArray = eventInfo.eventPlayersArray
         
@@ -201,6 +202,7 @@ class CaroselCellView: UIView {
                     self.playerThreeIcon.image = nil
                     self.playerCountLabelIcon.isHidden = false
                     self.playerCountLabelIcon?.text = "+" + String((playerArray.count - 2))
+                    self.playerCountLabelIcon?.textColor = UIColor.white
                     
                 } else {
                     self.playerThreeIcon.isHidden = false

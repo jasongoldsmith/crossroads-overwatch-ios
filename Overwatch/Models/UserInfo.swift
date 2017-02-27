@@ -349,10 +349,27 @@ class UserInfo: NSObject {
         updateFirstTimeRunningApplication()
         return true
     }
-    
+
     class func updateFirstTimeRunningApplication() {
         let userDefaults = UserDefaults.standard
         userDefaults.setValue(true, forKeyPath: K.UserDefaultKey.APP_HAS_RUN_KEY)
+        userDefaults.synchronize()
+    }
+
+    class func firstTimeShowingGroupPicker() -> Bool {
+        let userDefaults = UserDefaults.standard
+        let returnValue = userDefaults.object(forKey: K.UserDefaultKey.APP_HAS_SHOWN_GROUP_PICKER)
+        if let _ = returnValue
+        {
+            return false
+        }
+        updateFirstTimeShowingGroupPicker()
+        return true
+    }
+    
+    class func updateFirstTimeShowingGroupPicker() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(true, forKeyPath: K.UserDefaultKey.APP_HAS_SHOWN_GROUP_PICKER)
         userDefaults.synchronize()
     }
 }

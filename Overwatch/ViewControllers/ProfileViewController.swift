@@ -223,6 +223,7 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as!
         SendReportViewController
+        vc.sourceCode = 3
         let navigationController = BaseNavigationViewController(rootViewController: vc)
         self.present(navigationController, animated: true, completion: nil)
     }

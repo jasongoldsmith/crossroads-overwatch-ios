@@ -139,17 +139,17 @@ class BaseEventTableCell: UITableViewCell {
                 self.eventPlayersName.attributedText = finalString
             }
         } else {
-            var playersNameString = (eventInfo.eventCreator?.playerConsoleId!)!
-            if var clanTag = eventInfo.eventCreator?.playerClanTag, clanTag != "" {
+            if var clanTag = eventInfo.eventCreator?.playerClanTag,
+                var playersNameString = eventInfo.eventCreator?.playerConsoleId,
+                clanTag != "" {
                 clanTag = " " + "[" + clanTag + "]"
                 if eventInfo.eventCreator!.playerID != ApplicationManager.sharedInstance.currentUser?.userID {
                     playersNameString = playersNameString + clanTag
                 } else if (UserInfo.isUserVerified()! == ACCOUNT_VERIFICATION.USER_VERIFIED.rawValue) {
                     playersNameString = playersNameString + clanTag
                 }
+                self.eventPlayersName.text = playersNameString
             }
-            
-            self.eventPlayersName.text = playersNameString
         }
         
         // Set Event Icon Image

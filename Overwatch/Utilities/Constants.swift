@@ -12,6 +12,7 @@ import UIKit
 struct K {
     
     struct Tokens {
+//        static let Mix_Panle_Token  =   "36578d79d8accf79418b0b42b410aa17"
         #if RELEASE
         static let Mix_Panle_Token  =   "36578d79d8accf79418b0b42b410aa17"
         #else
@@ -42,6 +43,7 @@ struct K {
         static let FORCED_LOGOUT = "FORCED_LOGOUT"
         static let FORCED_LOGOUT_NEW_SIGN_IN = "FORCED_LOGOUT_NEW_SIGN_IN"
         static let APP_HAS_RUN_KEY = "APP_HAS_RUN"
+        static let APP_HAS_SHOWN_GROUP_PICKER = "APP_HAS_SHOWN_GROUP_PICKER"
         
         struct UserAccountInfo {
             static let TR_UserName      = "TR_UserName"

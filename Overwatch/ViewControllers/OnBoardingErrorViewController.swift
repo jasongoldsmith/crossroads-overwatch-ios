@@ -21,6 +21,7 @@ class OnBoardingErrorViewController: BaseViewController{
     var passwordEntered = ""
     var gamertagEntered = ""
     var platformEntered = ""
+    var sourceCode = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +132,11 @@ class OnBoardingErrorViewController: BaseViewController{
         let storyboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: K.VIEWCONTROLLER_IDENTIFIERS.VIEW_CONTROLLER_SEND_REPORT) as!
         SendReportViewController
+        vc.sourceCode = sourceCode
+        if let dictionary = ApplicationManager.sharedInstance.getDictionaryFromStringResponse(value: errorString),
+            let code =  dictionary.object(forKey: "code") as? Int {
+            vc.errorCode = code
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
