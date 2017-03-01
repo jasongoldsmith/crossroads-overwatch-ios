@@ -138,8 +138,8 @@ class CaroselCellView: UIView {
         self.eventTagLabel?.layer.masksToBounds = true
         self.eventTagLabel?.backgroundColor = UIColor(red: 82/255, green: 100/255, blue: 139/255, alpha: 1)
 
-        self.playerOneIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
-        self.playerTwoIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
+        self.playerOneIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
+        self.playerTwoIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
         self.playerThreeIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
     }
     
@@ -173,7 +173,7 @@ class CaroselCellView: UIView {
                     }
                 }
                 
-                self.playerOneIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
+                self.playerOneIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
                 break;
             case 1:
                 
@@ -192,7 +192,7 @@ class CaroselCellView: UIView {
                     }
                 }
                 
-                self.playerTwoIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
+                self.playerTwoIcon?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
                 break;
                 
             case 2:

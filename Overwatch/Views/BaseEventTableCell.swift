@@ -193,7 +193,7 @@ class BaseEventTableCell: UITableViewCell {
             case 0:
                 
                 self.playerImageOne.isHidden = false
-                self.playerImageOne?.roundRectView(borderWidth: 1, borderColor: UIColor.gray)
+                self.playerImageOne?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
                 self.playerImageOne.image = UIImage(named: "avatar")
                 if let imageURLString = player.playerImageUrl,
                     imageURLString != "",
@@ -205,9 +205,7 @@ class BaseEventTableCell: UITableViewCell {
             case 1:
                 
                 self.playerImageTwo.isHidden = false
-                self.playerImageTwo?.roundRectView(borderWidth: 1, borderColor: UIColor.gray
-                )
-                
+                self.playerImageTwo?.roundRectView(borderWidth: 1, borderColor: UIColor.white)
                 self.playerImageTwo.image = UIImage(named: "avatar")
                 if let imageURLString = player.playerImageUrl,
                     imageURLString != "",

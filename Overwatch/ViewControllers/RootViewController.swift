@@ -17,9 +17,7 @@ class RootViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let configRequest = GetConfigRequest()
-        configRequest.getConfiguration(completion: { (didSucceed) in
-        })
+        initialConfigurationCall()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,6 +30,19 @@ class RootViewController: BaseViewController {
         checkForUserDataAndDisplayNextViewController()
         ApplicationManager.sharedInstance.fireBaseManager?.addUserObserverWithCompletion(complete: { (didCompelete) in
             
+        })
+    }
+    
+    func initialConfigurationCall(){
+        let configRequest = GetConfigRequest()
+        configRequest.getConfiguration(completion: { (didSucceed) in
+            guard let succeed = didSucceed,
+            succeed else {
+                DispatchQueue.main.async {
+                    self.initialConfigurationCall()
+                }
+                return
+            }
         })
     }
     
