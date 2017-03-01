@@ -27,7 +27,8 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var changePasswordButton: UIButton!
     @IBOutlet weak var contactUsButton: UIButton!
     @IBOutlet weak var logOutButton: UIButton!
-    
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var avatorLoadingView: UIView!
     
     var consoleTwoButton: UIButton?
     var consoleAddButton: UIButton?
@@ -143,6 +144,8 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
         
         self.avatorUserName?.text = UserInfo.getUserName()
         self.consolesTable.reloadData()
+        self.loadingView.isHidden = true
+        self.avatorLoadingView.isHidden = true
     }
     
     func updateUserAvatorImage () {
@@ -161,6 +164,7 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     }
 
     @IBAction func avatorImageViewTapped (sender: UIButton) {
+        self.avatorLoadingView.isHidden = false
         let helmetRequest = HelmetUpdateRequest()
         helmetRequest.updateHelmetForUser(completion: { (imageStringUrl) in
             if let _ = imageStringUrl {
@@ -314,6 +318,7 @@ class ProfileViewController: BaseViewController, UIImagePickerControllerDelegate
     }
     
     func changePrimaryConsole (consoleType:String) {
+        self.loadingView.isHidden = false
         let changeConsole = ChangeConsoleRequest()
         //First Change Console
         changeConsole.changeConsole(consoleType: consoleType, completion: { (didSucceed) in

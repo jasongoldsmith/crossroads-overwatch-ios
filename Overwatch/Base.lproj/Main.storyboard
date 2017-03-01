@@ -1899,7 +1899,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="99817221-A298-44B8-92EA-D500C4BE5649" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FC743A98-A132-42CB-84E0-95BF22695CE7" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
                                 <rect key="frame" x="16" y="113.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UY6-7w-5Ph"/>
@@ -3180,13 +3180,35 @@ you signed up with, please contact us at</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pG9-KR-9un">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="jyj-TY-Ijg">
+                                                <rect key="frame" x="30.5" y="30.5" width="37" height="37"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="jyj-TY-Ijg" firstAttribute="centerX" secondItem="pG9-KR-9un" secondAttribute="centerX" id="KyV-39-zv2"/>
+                                            <constraint firstItem="jyj-TY-Ijg" firstAttribute="centerY" secondItem="pG9-KR-9un" secondAttribute="centerY" id="SZr-bF-3C8"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="49"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="pG9-KR-9un" firstAttribute="leading" secondItem="iED-Yp-YXG" secondAttribute="leading" id="6ko-QZ-O2Y"/>
+                                    <constraint firstItem="pG9-KR-9un" firstAttribute="top" secondItem="iED-Yp-YXG" secondAttribute="top" id="ANr-Jz-I00"/>
                                     <constraint firstAttribute="trailing" secondItem="rqA-c0-toY" secondAttribute="trailing" id="HN6-K0-LNl"/>
+                                    <constraint firstAttribute="trailing" secondItem="pG9-KR-9un" secondAttribute="trailing" id="JXp-DV-vFh"/>
                                     <constraint firstItem="rqA-c0-toY" firstAttribute="leading" secondItem="iED-Yp-YXG" secondAttribute="leading" id="bQC-XY-NJx"/>
                                     <constraint firstAttribute="width" constant="98" id="dIk-pq-xH1"/>
                                     <constraint firstAttribute="bottom" secondItem="rqA-c0-toY" secondAttribute="bottom" id="f61-Fn-yCk"/>
+                                    <constraint firstAttribute="bottom" secondItem="pG9-KR-9un" secondAttribute="bottom" id="hKb-hl-V3M"/>
                                     <constraint firstAttribute="height" constant="98" id="l5b-aO-fBD"/>
                                     <constraint firstItem="rqA-c0-toY" firstAttribute="top" secondItem="iED-Yp-YXG" secondAttribute="top" id="yn6-We-FpA"/>
                                 </constraints>
@@ -3340,6 +3362,19 @@ you signed up with, please contact us at</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJE-ZO-6jw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KeI-Cr-zA8">
+                                        <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="KeI-Cr-zA8" firstAttribute="centerX" secondItem="vJE-ZO-6jw" secondAttribute="centerX" id="lhs-B3-2FO"/>
+                                    <constraint firstItem="KeI-Cr-zA8" firstAttribute="centerY" secondItem="vJE-ZO-6jw" secondAttribute="centerY" id="lvW-3t-b0F"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -3354,14 +3389,17 @@ you signed up with, please contact us at</string>
                             <constraint firstAttribute="trailing" secondItem="TXS-PU-mTa" secondAttribute="trailing" constant="45" id="CkI-Dn-SH9"/>
                             <constraint firstItem="f51-1S-8Wu" firstAttribute="leading" secondItem="0GW-Eg-ebi" secondAttribute="leading" id="GJK-cb-Ikh"/>
                             <constraint firstAttribute="trailing" secondItem="QOs-Lw-ZJA" secondAttribute="trailing" id="GUO-35-iQ6"/>
+                            <constraint firstItem="21I-9q-cEg" firstAttribute="top" secondItem="vJE-ZO-6jw" secondAttribute="bottom" id="HYl-Vm-Ozj"/>
                             <constraint firstItem="PPU-0B-ZaN" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="IzZ-6n-oMD"/>
                             <constraint firstItem="TXS-PU-mTa" firstAttribute="top" secondItem="wDe-SW-JZA" secondAttribute="bottom" constant="20" id="JFs-3L-rZ3"/>
                             <constraint firstItem="iED-Yp-YXG" firstAttribute="centerX" secondItem="jPT-la-SvW" secondAttribute="centerX" id="JiD-ts-RHk"/>
                             <constraint firstItem="2gc-0q-uQj" firstAttribute="trailing" secondItem="wDe-SW-JZA" secondAttribute="trailing" id="MdJ-w4-RRD"/>
                             <constraint firstItem="JCA-LI-jZi" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="QTY-NJ-hwb"/>
                             <constraint firstItem="f51-1S-8Wu" firstAttribute="trailing" secondItem="0GW-Eg-ebi" secondAttribute="trailing" id="QXB-20-DWp"/>
+                            <constraint firstItem="vJE-ZO-6jw" firstAttribute="top" secondItem="jPT-la-SvW" secondAttribute="top" id="TsB-qC-Hyl"/>
                             <constraint firstItem="QOs-Lw-ZJA" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="Wr3-X2-k9y"/>
                             <constraint firstItem="21I-9q-cEg" firstAttribute="top" secondItem="Mxt-BW-T6e" secondAttribute="bottom" id="XcN-H5-WmN"/>
+                            <constraint firstItem="vJE-ZO-6jw" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="Y70-Da-EA0"/>
                             <constraint firstItem="f51-1S-8Wu" firstAttribute="height" secondItem="0GW-Eg-ebi" secondAttribute="height" id="YKS-Z3-l5T"/>
                             <constraint firstItem="wDe-SW-JZA" firstAttribute="height" secondItem="jPT-la-SvW" secondAttribute="height" multiplier="44:667" id="bcd-OK-3Qo"/>
                             <constraint firstItem="iED-Yp-YXG" firstAttribute="bottom" secondItem="QOs-Lw-ZJA" secondAttribute="bottom" constant="48" id="coI-r9-GGT"/>
@@ -3381,6 +3419,7 @@ you signed up with, please contact us at</string>
                             <constraint firstItem="Mxt-BW-T6e" firstAttribute="leading" secondItem="jPT-la-SvW" secondAttribute="leading" id="qkT-w0-KfG"/>
                             <constraint firstItem="0GW-Eg-ebi" firstAttribute="height" secondItem="ivA-uB-gna" secondAttribute="height" id="u69-6o-ZsI"/>
                             <constraint firstItem="TXS-PU-mTa" firstAttribute="height" secondItem="wDe-SW-JZA" secondAttribute="height" id="vdp-UL-jnU"/>
+                            <constraint firstAttribute="trailing" secondItem="vJE-ZO-6jw" secondAttribute="trailing" id="voh-bb-BPA"/>
                             <constraint firstItem="QOs-Lw-ZJA" firstAttribute="top" secondItem="jPT-la-SvW" secondAttribute="top" id="xAr-eq-lZx"/>
                             <constraint firstAttribute="trailing" secondItem="PPU-0B-ZaN" secondAttribute="trailing" id="zqM-kw-ah0"/>
                         </constraints>
@@ -3388,6 +3427,7 @@ you signed up with, please contact us at</string>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="avatorImageView" destination="rqA-c0-toY" id="KLt-Od-nq5"/>
+                        <outlet property="avatorLoadingView" destination="pG9-KR-9un" id="xkz-9z-c56"/>
                         <outlet property="avatorUserName" destination="ggL-kY-Blr" id="s4u-mb-hnJ"/>
                         <outlet property="backGroundImageView" destination="Mxt-BW-T6e" id="l57-Xh-lbK"/>
                         <outlet property="buildNumberLabel" destination="PPU-0B-ZaN" id="HUq-Sn-9Dp"/>
@@ -3396,6 +3436,7 @@ you signed up with, please contact us at</string>
                         <outlet property="contactUsButton" destination="0GW-Eg-ebi" id="NPZ-kf-4iD"/>
                         <outlet property="currentConsoleLabel" destination="js7-su-HMi" id="sJD-dM-4VA"/>
                         <outlet property="legalLabel" destination="JCA-LI-jZi" id="wq2-7P-tK2"/>
+                        <outlet property="loadingView" destination="vJE-ZO-6jw" id="Y7j-u1-nq9"/>
                         <outlet property="logOutButton" destination="f51-1S-8Wu" id="OqQ-sd-eVl"/>
                         <outlet property="tableHeightConstraint" destination="qAw-Ad-cOc" id="Lzh-io-LfX"/>
                     </connections>
@@ -3863,7 +3904,7 @@ you signed up with, please contact us at</string>
         </scene>
     </scenes>
     <resources>
-        <image name="99817221-A298-44B8-92EA-D500C4BE5649" width="40" height="29">
+        <image name="FC743A98-A132-42CB-84E0-95BF22695CE7" width="40" height="29">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
