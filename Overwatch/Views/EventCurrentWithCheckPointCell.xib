@@ -49,7 +49,7 @@
                             <constraint firstAttribute="width" constant="32" id="YUT-eb-yhg"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypf-SS-3FF">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypf-SS-3FF">
                         <rect key="frame" x="59" y="10" width="204" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="204" id="AVt-8y-qp1"/>
@@ -59,8 +59,8 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU5-G8-nP8">
-                        <rect key="frame" x="271" y="18" width="39" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU5-G8-nP8">
+                        <rect key="frame" x="310" y="32" width="0.0" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="aD0-hS-10C"/>
                         </constraints>
@@ -73,7 +73,7 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFO-kf-cqm">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFO-kf-cqm">
                         <rect key="frame" x="59" y="52" width="185" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="gUe-eo-QEf"/>
@@ -116,7 +116,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hH4-cw-ymC">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hH4-cw-ymC">
                         <rect key="frame" x="59" y="36" width="221" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="221" id="JKs-QH-SL3"/>
@@ -126,8 +126,8 @@
                         <color key="textColor" red="1" green="0.76470588235294112" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtA-ga-xbM" customClass="InsertLabel" customModule="Overwatch" customModuleProvider="target">
-                        <rect key="frame" x="59" y="78" width="27" height="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtA-ga-xbM" customClass="InsertLabel" customModule="Overwatch" customModuleProvider="target">
+                        <rect key="frame" x="59" y="78" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -177,9 +177,9 @@
                         <exclude reference="Wk4-Og-tJP"/>
                         <exclude reference="ado-2N-W6c"/>
                         <exclude reference="rrR-IG-2Pk"/>
-                        <exclude reference="ucE-4K-Heu"/>
                         <exclude reference="KVI-NP-cyb"/>
                         <exclude reference="eeT-A1-Obo"/>
+                        <exclude reference="ucE-4K-Heu"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

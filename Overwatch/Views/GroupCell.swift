@@ -43,7 +43,7 @@ class GroupCell: UITableViewCell {
         self.groupName.text = "Your Overwatch Group Here"
         self.memberCount.text = "87 in Queue"
         self.memberCount.isHidden = false
-        self.clanEnabled.text = "7 Activities"
+        self.clanEnabled.text = "7 Teams"
     }
     
     func updateCellViewWithGroup (groupInfo: GroupInfo) {
@@ -65,10 +65,10 @@ class GroupCell: UITableViewCell {
         }
         
         if let eventCount = groupInfo.eventCount, eventCount > 0 {
-            let activity = eventCount == 1 ? " Activity" : " Activities"
+            let activity = eventCount == 1 ? " Team" : " Teams"
             self.clanEnabled.text = eventCount > 1 ? eventCount.description + activity : eventCount.description + activity
         } else {
-            self.clanEnabled.text = "0 Activities"
+            self.clanEnabled.text = "0 Teams"
         }
         
         //Add Radius

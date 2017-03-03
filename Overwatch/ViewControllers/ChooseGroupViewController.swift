@@ -46,7 +46,7 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         self.groupsTableView?.register(UINib(nibName: "GroupCell", bundle: nil), forCellReuseIdentifier: GROUP_CELLS_IDENTIFIER)
         
-        self.lableOne?.text = "Region"
+        self.lableOne?.text = "Available Lobbies"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,7 +131,7 @@ class ChooseGroupViewController: BaseViewController, UITableViewDataSource, UITa
         self.selectedGroupViewNotificationButton.buttonGroupInfo = self.selectedGroup
         
         if let eventCount = self.selectedGroup?.eventCount {
-            let activity = eventCount == 1 ? " Activity" : " Activities"
+            let activity = eventCount == 1 ? " Team" : " Teams"
             self.selectedGroupViewEventCount.text = eventCount.description + activity
         } else {
             self.selectedGroupViewEventCount.isHidden = true
