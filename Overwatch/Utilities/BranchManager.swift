@@ -53,20 +53,22 @@ class BranchManager {
         //Formatted Date
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let eventDate = formatter.date(from: eventInfo.eventLaunchDate!)
-        let nextFormatter = DateFormatter()
-        nextFormatter.dateFormat = "MMM d 'at' h:mm a"
-        let formatedDate = nextFormatter.string(from: eventDate!)
+        var formatedDate = ""
+        if let launchDate = eventInfo.eventLaunchDate,
+            let eventDate = formatter.date(from: launchDate) {
+            let nextFormatter = DateFormatter()
+            nextFormatter.dateFormat = "MMM d 'at' h:mm a"
+            formatedDate = nextFormatter.string(from: eventDate)
+        }
         
         // Group Name
         var groupName = ""
-        if let currentGroupID = UserInfo.getUserClanID() {
-            if let hasCurrentGroup = ApplicationManager.sharedInstance.getCurrentGroup(groupID: currentGroupID) {
-                groupName = hasCurrentGroup.groupName!
-            }
+        if let currentGroupID = UserInfo.getUserClanID(),
+            let theGroupName = ApplicationManager.sharedInstance.getCurrentGroup(groupID: currentGroupID)?.groupName {
+                groupName = theGroupName
         }
         
-        if let aName = eventInfo.eventActivity?.activitySubType! {
+        if let aName = eventInfo.eventActivity?.activitySubType {
             activityName = aName
         }
         

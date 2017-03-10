@@ -177,6 +177,8 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
                     let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingVC") as! OnBoardingViewController
                     self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    dismissView()
                 }
             }
         }

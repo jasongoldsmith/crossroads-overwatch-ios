@@ -17,7 +17,7 @@ class OnBoardingViewController: BaseViewController, iCarouselDataSource, iCarous
     @IBOutlet weak var skipButton: UIButton!
     let carouselViewFrame:CGRect = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height)
     let numberOfElements = ApplicationManager.sharedInstance.onBoardingCards.count
-    let magicNumber = 8
+    let magicNumber = 8 //This number helps to manage the spacing with the cards
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
