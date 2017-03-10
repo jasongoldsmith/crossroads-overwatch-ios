@@ -25,18 +25,9 @@ class OnBoardingCarouselView: UIView {
     var delegate: OnBoardingCarouselViewDelegate?
     
     func setViewWith(_ data: OnBoardingCard) {
-        if let backgroundURLString = data.backgroundURL,
-            let backgroundURL = URL(string: backgroundURLString) {
-            backgroundCardImage.sd_setImage(with: backgroundURL)
-        }
-        if let imageURLString = data.imageURL,
-            let imageUrl = URL(string: imageURLString) {
-            mainImage.sd_setImage(with: imageUrl)
-        }
-        if let logoURLString = data.logoAndTextURL,
-            let imageUrl = URL(string: logoURLString) {
-            logoImageView.sd_setImage(with: imageUrl)
-        }
+        backgroundCardImage.image = data.backgroundImage?.image
+        mainImage.image = data.heroImage?.image
+        logoImageView.image = data.textImage?.image
     }
     
     @IBAction func nextButtonPressed() {

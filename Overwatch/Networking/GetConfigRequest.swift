@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class GetConfigRequest: NSObject {
     
@@ -42,29 +43,32 @@ class GetConfigRequest: NSObject {
             request.mgr = request.configureManager()
             
             if let onBoardingScreens = swiftyJsonVar?["onBoardingScreens"] {
-                if let requiredOnboardingScreens = onBoardingScreens["required"].array {
-                    var requiredCards = [OnBoardingCard]()
-                    for requiredOnboardingScreen in requiredOnboardingScreens {
-                        let newCard = OnBoardingCard()
-                        newCard.parse(json: requiredOnboardingScreen)
-                        requiredCards.append(newCard)
-                    }
-                    requiredCards.sort { $0.order < $1.order}
-                    ApplicationManager.sharedInstance.onBoardingCards.append(contentsOf: requiredCards)
-                }
-                if let optionalOnboardingScreens = onBoardingScreens["optional"].array {
-                    var optionalCards = [OnBoardingCard]()
-                    for optionalOnboardingScreen in optionalOnboardingScreens {
-                        let newCard = OnBoardingCard()
-                        newCard.parse(json: optionalOnboardingScreen)
-                        optionalCards.append(newCard)
-                    }
-                    optionalCards.sort { $0.order < $1.order}
-                    ApplicationManager.sharedInstance.onBoardingCards.append(contentsOf: optionalCards)
-                }
+                self.parseAndSaveOnBoardingScreens(onBoardingScreens)
             }
             completion(true)
         }
     }
 
+    private func parseAndSaveOnBoardingScreens(_ onBoardingScreens:JSON) {
+        if let requiredOnboardingScreens = onBoardingScreens["required"].array {
+            var requiredCards = [OnBoardingCard]()
+            for requiredOnboardingScreen in requiredOnboardingScreens {
+                let newCard = OnBoardingCard()
+                newCard.parse(json: requiredOnboardingScreen)
+                requiredCards.append(newCard)
+            }
+            requiredCards.sort { $0.order < $1.order}
+            ApplicationManager.sharedInstance.onBoardingCards.append(contentsOf: requiredCards)
+        }
+        if let optionalOnboardingScreens = onBoardingScreens["optional"].array {
+            var optionalCards = [OnBoardingCard]()
+            for optionalOnboardingScreen in optionalOnboardingScreens {
+                let newCard = OnBoardingCard()
+                newCard.parse(json: optionalOnboardingScreen)
+                optionalCards.append(newCard)
+            }
+            optionalCards.sort { $0.order < $1.order}
+            ApplicationManager.sharedInstance.onBoardingCards.append(contentsOf: optionalCards)
+        }
+    }
 }

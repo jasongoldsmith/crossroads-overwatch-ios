@@ -15,8 +15,9 @@ class OnBoardingViewController: BaseViewController, iCarouselDataSource, iCarous
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var letsRollButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
-    var carouselViewFrame:CGRect = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height)
-    var numberOfElements = ApplicationManager.sharedInstance.onBoardingCards.count
+    let carouselViewFrame:CGRect = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height)
+    let numberOfElements = ApplicationManager.sharedInstance.onBoardingCards.count
+    let magicNumber = 8
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -64,12 +65,21 @@ class OnBoardingViewController: BaseViewController, iCarouselDataSource, iCarous
 
     //iCarouselDataSource methods
     func numberOfItems(in carousel: iCarousel) -> Int {
-        return 8
+        if numberOfElements < magicNumber {
+            return magicNumber
+        } else {
+            return numberOfElements
+        }
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         if index < numberOfElements {
-            let itemView = Bundle.main.loadNibNamed("OnBoardingCarouselView", owner: self, options: nil)?[0] as! OnBoardingCarouselView
+            var itemView:OnBoardingCarouselView!
+            if view is OnBoardingCarouselView {
+                itemView = view as! OnBoardingCarouselView!
+            } else {
+                itemView = Bundle.main.loadNibNamed("OnBoardingCarouselView", owner: self, options: nil)?[0] as! OnBoardingCarouselView
+            }
             itemView.frame = carouselViewFrame
             itemView.setViewWith(ApplicationManager.sharedInstance.onBoardingCards[index])
             if index == carousel.currentItemIndex {
@@ -124,7 +134,17 @@ class OnBoardingViewController: BaseViewController, iCarouselDataSource, iCarous
         case .wrap:
             return 0
         case .spacing:
-            return value * 1.15
+            let correctSpacing:CGFloat = 1.15
+            if carousel.numberOfItems <= magicNumber {
+                return value * correctSpacing
+            } else {
+                let difference:CGFloat = correctSpacing - ((0.05)*CGFloat(carousel.numberOfItems-magicNumber))
+                if difference < value {
+                    return value
+                } else {
+                    return difference
+                }
+            }
         case .visibleItems:
             return 3
         default:
