@@ -71,6 +71,9 @@ class ApplicationManager: NSObject {
     //Push Notification View Array
     var pushNotificationViewArray: [PushNotificationView] = []
 
+    //OnBoarding Cards
+    lazy var onBoardingCards: [OnBoardingCard] = []
+
     // MARK:- Initializer
     private override init() {
         super.init()

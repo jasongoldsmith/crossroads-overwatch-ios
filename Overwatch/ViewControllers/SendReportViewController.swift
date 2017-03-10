@@ -11,7 +11,7 @@ import Foundation
 class SendReportViewController: LoginBaseViewController, UITextViewDelegate, CustomErrorDelegate {
     
     @IBOutlet weak var bodyTextView: UITextView!
-    let placeHolderString = "What would you like to tell us?"
+    let placeHolderString = "For a faster response, please include a detailed description of how we can help you"
 
     var eventID: String?
     var commentID: String?
@@ -20,6 +20,7 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bodyTextView.text = placeHolderString
         if let currentEmail = ApplicationManager.sharedInstance.currentUser?.email {
             emailTextField.text = currentEmail
         }
@@ -108,8 +109,15 @@ class SendReportViewController: LoginBaseViewController, UITextViewDelegate, Cus
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard let currentText = textView.text else {
+        guard let currentText = textView.text,
+        let char = text.cString(using: String.Encoding.utf8) else {
             return true
+        }
+        if currentText == placeHolderString || currentText == "" {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
         }
         var newString = "\(currentText)\(text)"
         if text.isEmpty{

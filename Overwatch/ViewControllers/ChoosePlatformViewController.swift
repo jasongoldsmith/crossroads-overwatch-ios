@@ -170,7 +170,15 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
             ApplicationManager.sharedInstance.purgeSavedData()
             navBackButtonPressed(sender: nil)
         } else {
-            dismissView()
+            if comingFromProfile {
+                dismissView()
+            } else {
+                if ApplicationManager.sharedInstance.onBoardingCards.count != 0 {
+                    let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingVC") as! OnBoardingViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
         }
     }
 

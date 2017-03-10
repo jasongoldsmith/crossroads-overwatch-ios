@@ -20,14 +20,13 @@ class ForgotPasswordViewController: LoginBaseViewController {
     }
         
     @IBAction func resetPassword() {
-        guard let email = emailTextField.text,
-            email.isValidEmail else {
-                ApplicationManager.sharedInstance.addErrorSubViewWithMessage(errorString: "Please enter a valid email address")
-                return
-        }
         view.endEditing(true)
         let subject = "Forgot password"
-        let body = "This is my email address.\n\(email)"
+        var body = ""
+        if let email = emailTextField.text,
+            email.isValidEmail {
+            body = "This is my email address.\n\(email)"
+        }
         guard let urlString = "mailto:support@crossroadsapp.co?subject=\(subject)&body=\(body)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
             let emailURL = URL(string:urlString) else {
                 return

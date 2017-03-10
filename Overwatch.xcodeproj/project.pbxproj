@@ -93,6 +93,9 @@
 		C7AD52C11E3A97F6001F0617 /* ConsoleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7AD52C01E3A97F6001F0617 /* ConsoleCell.xib */; };
 		C7AD52C51E3ABF1F001F0617 /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AD52C41E3ABF1F001F0617 /* SignInRequest.swift */; };
 		C7AD52C71E3ABFFA001F0617 /* AddConsoleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AD52C61E3ABFFA001F0617 /* AddConsoleRequest.swift */; };
+		C7ADC0921E70D9E000117A1A /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ADC0911E70D9E000117A1A /* OnBoardingViewController.swift */; };
+		C7ADC0941E70DA1600117A1A /* OnBoardingCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ADC0931E70DA1600117A1A /* OnBoardingCarouselView.swift */; };
+		C7ADC0981E70DA7D00117A1A /* OnBoardingCarouselView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7ADC0971E70DA7D00117A1A /* OnBoardingCarouselView.xib */; };
 		C7B6BBEA1E2EFC1A00D6BFF3 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B6BBE91E2EFC1A00D6BFF3 /* EventListViewController.swift */; };
 		C7B6BBEC1E2EFC7C00D6BFF3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B6BBEB1E2EFC7C00D6BFF3 /* ErrorView.swift */; };
 		C7B6BBEE1E2EFD0A00D6BFF3 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B6BBED1E2EFD0A00D6BFF3 /* ErrorView.xib */; };
@@ -142,6 +145,7 @@
 		C7C96E4A1E49280D00839A71 /* InvitationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C96E491E49280D00839A71 /* InvitationInfo.swift */; };
 		C7D3D1CF1E43E83F00381644 /* UpdateGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D3D1CE1E43E83F00381644 /* UpdateGroupRequest.swift */; };
 		C7D3D1D11E43F1DE00381644 /* ChangeConsoleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D3D1D01E43F1DE00381644 /* ChangeConsoleRequest.swift */; };
+		C7D81A6F1E70D0AA00BD22F7 /* OnBoardingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D81A6E1E70D0AA00BD22F7 /* OnBoardingCard.swift */; };
 		C7E2C0861E3BF30900EBEF5D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E2C0851E3BF30900EBEF5D /* Default-568h@2x.png */; };
 		C7E39CC01E37EC05008E47A9 /* DeviceTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E39CBF1E37EC05008E47A9 /* DeviceTokenRequest.swift */; };
 		C7E39CC21E38181D008E47A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E39CC11E38181D008E47A9 /* LoginViewController.swift */; };
@@ -250,6 +254,9 @@
 		C7AD52C01E3A97F6001F0617 /* ConsoleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConsoleCell.xib; path = Views/ConsoleCell.xib; sourceTree = "<group>"; };
 		C7AD52C41E3ABF1F001F0617 /* SignInRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInRequest.swift; path = Networking/SignInRequest.swift; sourceTree = "<group>"; };
 		C7AD52C61E3ABFFA001F0617 /* AddConsoleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddConsoleRequest.swift; path = Networking/AddConsoleRequest.swift; sourceTree = "<group>"; };
+		C7ADC0911E70D9E000117A1A /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingViewController.swift; path = ViewControllers/OnBoardingViewController.swift; sourceTree = "<group>"; };
+		C7ADC0931E70DA1600117A1A /* OnBoardingCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingCarouselView.swift; path = Views/OnBoardingCarouselView.swift; sourceTree = "<group>"; };
+		C7ADC0971E70DA7D00117A1A /* OnBoardingCarouselView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnBoardingCarouselView.xib; path = Views/OnBoardingCarouselView.xib; sourceTree = "<group>"; };
 		C7B6BBE91E2EFC1A00D6BFF3 /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListViewController.swift; path = ViewControllers/EventListViewController.swift; sourceTree = "<group>"; };
 		C7B6BBEB1E2EFC7C00D6BFF3 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorView.swift; path = Views/ErrorView.swift; sourceTree = "<group>"; };
 		C7B6BBED1E2EFD0A00D6BFF3 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ErrorView.xib; path = Views/ErrorView.xib; sourceTree = "<group>"; };
@@ -299,6 +306,7 @@
 		C7C96E491E49280D00839A71 /* InvitationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationInfo.swift; path = Models/InvitationInfo.swift; sourceTree = "<group>"; };
 		C7D3D1CE1E43E83F00381644 /* UpdateGroupRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateGroupRequest.swift; path = Networking/UpdateGroupRequest.swift; sourceTree = "<group>"; };
 		C7D3D1D01E43F1DE00381644 /* ChangeConsoleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeConsoleRequest.swift; path = Networking/ChangeConsoleRequest.swift; sourceTree = "<group>"; };
+		C7D81A6E1E70D0AA00BD22F7 /* OnBoardingCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingCard.swift; path = Models/OnBoardingCard.swift; sourceTree = "<group>"; };
 		C7E2C0851E3BF30900EBEF5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C7E39CBF1E37EC05008E47A9 /* DeviceTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceTokenRequest.swift; path = Networking/DeviceTokenRequest.swift; sourceTree = "<group>"; };
 		C7E39CC11E38181D008E47A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
@@ -362,6 +370,7 @@
 				C7562E6B1E4017FC0096DE44 /* LegalViewController.swift */,
 				C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */,
 				C79480A51E43C99D002CC601 /* MessageSentConfViewController.swift */,
+				C7ADC0911E70D9E000117A1A /* OnBoardingViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -452,6 +461,7 @@
 				C7C96E491E49280D00839A71 /* InvitationInfo.swift */,
 				C763054D1E4BB73C00466A9D /* ConfigInfo.swift */,
 				C7170F061E53D96B007F0CDD /* DeepLinkObject.swift */,
+				C7D81A6E1E70D0AA00BD22F7 /* OnBoardingCard.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -482,6 +492,8 @@
 				C7562E771E401F600096DE44 /* ErrorNotificationView.swift */,
 				C7562E751E401F390096DE44 /* ErrorNotificationView.xib */,
 				C7F4DAEC1E41172000E2F697 /* Error_Views */,
+				C7ADC0931E70DA1600117A1A /* OnBoardingCarouselView.swift */,
+				C7ADC0971E70DA7D00117A1A /* OnBoardingCarouselView.xib */,
 			);
 			name = VIews;
 			sourceTree = "<group>";
@@ -732,6 +744,7 @@
 				C7562E761E401F390096DE44 /* ErrorNotificationView.xib in Resources */,
 				C76F088E1E2EACBA0082AAB7 /* CustomError.xib in Resources */,
 				C7F4DAF01E4117E700E2F697 /* RateAppCell.xib in Resources */,
+				C7ADC0981E70DA7D00117A1A /* OnBoardingCarouselView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +844,7 @@
 				C7B6BC041E30023B00D6BFF3 /* EventButton.swift in Sources */,
 				C7562E781E401F600096DE44 /* ErrorNotificationView.swift in Sources */,
 				C7BFCE6F1E329D840081C2B0 /* KSUtils.swift in Sources */,
+				C7D81A6F1E70D0AA00BD22F7 /* OnBoardingCard.swift in Sources */,
 				C7AD52C71E3ABFFA001F0617 /* AddConsoleRequest.swift in Sources */,
 				C79480A81E43D112002CC601 /* LogOutRequest.swift in Sources */,
 				C794809A1E43B9E2002CC601 /* ForgotPasswordRequest.swift in Sources */,
@@ -863,6 +877,7 @@
 				C7D3D1D11E43F1DE00381644 /* ChangeConsoleRequest.swift in Sources */,
 				C79480981E43B822002CC601 /* CreateAReportRequest.swift in Sources */,
 				C77A192C1E2DB20A0047E277 /* LoginOptionViewController.swift in Sources */,
+				C7ADC0941E70DA1600117A1A /* OnBoardingCarouselView.swift in Sources */,
 				C7BFCE6C1E329D840081C2B0 /* KSToken.swift in Sources */,
 				C77A19111E2DA6240047E277 /* ActivityBonus.swift in Sources */,
 				C79480921E428A15002CC601 /* PushNotiController.swift in Sources */,
@@ -911,6 +926,7 @@
 				C7B6BBF61E2FF67D00D6BFF3 /* GroupInfo.swift in Sources */,
 				33BE5A2E1E3FEC4400BCF486 /* UpdateUser.swift in Sources */,
 				C7B6BC0E1E30099F00D6BFF3 /* EventCurrentNoCheckPointCell.swift in Sources */,
+				C7ADC0921E70D9E000117A1A /* OnBoardingViewController.swift in Sources */,
 				C75325D31E36E9D900EB719D /* JoinEventRequest.swift in Sources */,
 				C77A19291E2DAA9A0047E277 /* Constants.swift in Sources */,
 				C7D3D1CF1E43E83F00381644 /* UpdateGroupRequest.swift in Sources */,

@@ -77,19 +77,15 @@ struct K {
     
     struct TRUrls {
         
-        //Staging: https://travelerbackendproduction.herokuapp.com
-        //Live: https://live.crossroadsapp.co
-        //Develop: https://travelerbackend.herokuapp.com
-        
+//        Live:
 //        static let TR_BaseUrl            =   "https://owlive.crossroadsapp.co"
-//        static let TR_BaseUrl            =   "https://overwatch-staging.herokuapp.com"
+//        Develop:
 //        static let TR_BaseUrl            =   "https://overwatch-test-server.herokuapp.com"
+        
         #if RELEASE
-            static let TR_BaseUrl            =   "https://owlive.crossroadsapp.co"
-        #elseif ADHOC
-            static let TR_BaseUrl            =   "https://overwatch-staging.herokuapp.com"
+        static let TR_BaseUrl            =   "https://owlive.crossroadsapp.co"
         #else
-            static let TR_BaseUrl            =   "https://overwatch-test-server.herokuapp.com"
+        static let TR_BaseUrl            =   "https://overwatch-test-server.herokuapp.com"
         #endif
         
         static let TR_APP_STORE_LINK     =   "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1195213976&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"

@@ -10,25 +10,46 @@ import Foundation
 
 extension Date {
     func yearsFrom(date:Date)   -> Int {
-        return Calendar.current.dateComponents([.year], from: date, to: self).year!
+        if let years = Calendar.current.dateComponents([.year], from: date, to: self).year {
+            return years
+        }
+        return 0
     }
     func monthsFrom(date:Date)  -> Int {
-        return Calendar.current.dateComponents([.month], from: date, to: self).month!
+        if let months = Calendar.current.dateComponents([.month], from: date, to: self).month {
+            return months
+        }
+        return 0
     }
     func weeksFrom(date:Date)   -> Int {
-        return Calendar.current.dateComponents([.weekOfYear], from: date, to: self).weekOfYear!
+        if let weeks = Calendar.current.dateComponents([.weekOfYear], from: date, to: self).weekOfYear {
+            return weeks
+        }
+        return 0
     }
     func daysFrom(date:Date)    -> Int {
-        return Calendar.current.dateComponents([.day], from: date, to: self).day!
+        if let days = Calendar.current.dateComponents([.day], from: date, to: self).day {
+            return days
+        }
+        return 0
     }
     func hoursFrom(date:Date)   -> Int {
-        return Calendar.current.dateComponents([.hour], from: date, to: self).hour!
+        if let hours = Calendar.current.dateComponents([.hour], from: date, to: self).hour {
+            return hours
+        }
+        return 0
     }
     func minutesFrom(date:Date) -> Int {
-        return Calendar.current.dateComponents([.minute], from: date, to: self).minute!
+        if let minutes = Calendar.current.dateComponents([.minute], from: date, to: self).minute {
+            return minutes
+        }
+        return 0
     }
     func secondsFrom(date:Date) -> Int {
-        return Calendar.current.dateComponents([.second], from: date, to: self).second!
+        if let seconds = Calendar.current.dateComponents([.second], from: date, to: self).second {
+            return seconds
+        }
+        return 0
     }
     
     func relative () -> String {

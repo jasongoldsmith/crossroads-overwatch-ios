@@ -81,7 +81,15 @@ class LoginOptionViewController: BaseViewController, iCarouselDataSource, iCarou
         trackingRequest.sendApplicationPushNotiTracking(notiDict: nil, trackingType: APP_TRACKING_DATA_TYPE.TRACKING_SIGNUP_INIT, completion: {didSucceed in
         })
     }
-    
+
+    @IBAction func showOnBoardingController(sender: AnyObject) {
+        if ApplicationManager.sharedInstance.onBoardingCards.count != 0 {
+            let storyboard : UIStoryboard = UIStoryboard(name: K.StoryBoard.StoryBoard_Main, bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "onBoardingVC") as! OnBoardingViewController
+            present(vc, animated: true, completion: nil)
+        }
+    }
+
     //MARK:- carousel
     func numberOfItems(in carousel: iCarousel) -> Int {
         return items.count

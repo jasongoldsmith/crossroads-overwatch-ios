@@ -431,26 +431,25 @@ class CreateEventFinalView: BaseViewController, DatePickerProtocol, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "dropDownCell")
-        let activityInfo = self.dataArray[indexPath.section]
-        
-        if self.showGropName == true {
-            if let aSubType =  activityInfo.activitySubType, aSubType != "" {
-                cell!.textLabel!.text = aSubType
-            }
-            if let aDifficulty = activityInfo.activityDificulty, aDifficulty != "" {
-                cell!.textLabel!.text = aDifficulty
-            }
-        } else if self.showCheckPoint == true {
-            cell!.textLabel!.text = activityInfo.activityCheckPoint!
-        } else {
-            cell!.textLabel!.text = activityInfo.activityTag!
-            if activityInfo.activityTag! == "" {
-                cell!.textLabel!.text = "(none)"
+        if dataArray.count > indexPath.section {
+            let activityInfo = self.dataArray[indexPath.section]
+            if self.showGropName == true {
+                if let aSubType =  activityInfo.activitySubType, aSubType != "" {
+                    cell!.textLabel!.text = aSubType
+                }
+                if let aDifficulty = activityInfo.activityDificulty, aDifficulty != "" {
+                    cell!.textLabel!.text = aDifficulty
+                }
+            } else if self.showCheckPoint == true {
+                cell!.textLabel!.text = activityInfo.activityCheckPoint!
+            } else {
+                cell!.textLabel!.text = activityInfo.activityTag!
+                if activityInfo.activityTag! == "" {
+                    cell!.textLabel!.text = "(none)"
+                }
             }
         }
-        
         return cell!
     }
     

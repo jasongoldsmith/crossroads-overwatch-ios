@@ -588,8 +588,11 @@ class EventDetailViewController: BaseViewController, UITableViewDelegate, UITabl
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 
-                let updateDate = formatter.date(from: hasTime)
-                commentCell.messageTimeLabel?.text = updateDate!.relative()
+                if let updateDate = formatter.date(from: hasTime) {
+                    commentCell.messageTimeLabel?.text = updateDate.relative()
+                } else {
+                    commentCell.messageTimeLabel?.text = ""
+                }
             }
             
             

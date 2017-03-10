@@ -125,10 +125,9 @@ class LoginBaseViewController: BaseViewController, UITextFieldDelegate {
         }
         
         var newString = "\(currentText)\(string)"
-        if string.isEmpty {
-            let  char = string.cString(using: String.Encoding.utf8)!
+        if string.isEmpty,
+            let  char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
-            
             if (isBackSpace == -92 && cursorPosition == newString.characters.count) {
                 newString = newString.substring(to: newString.index(before: newString.endIndex))
             } else {
