@@ -1400,10 +1400,10 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tni-Gt-c2K">
-                                <rect key="frame" x="40" y="295" width="295" height="48"/>
+                                <rect key="frame" x="40" y="295" width="295" height="47.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1H-Ck-3if">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="47.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="A Checkpoint">
@@ -1414,14 +1414,14 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckpoint" translatesAutoresizingMaskIntoConstraints="NO" id="3pQ-T7-WWN">
-                                        <rect key="frame" x="14" y="13" width="22" height="22"/>
+                                        <rect key="frame" x="14" y="12.5" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="dRq-bv-7Km"/>
                                             <constraint firstAttribute="height" constant="22" id="hWD-Pf-Fd5"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="lxL-2Z-kVx">
-                                        <rect key="frame" x="270" y="21" width="10" height="5"/>
+                                        <rect key="frame" x="270" y="20.5" width="10" height="5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="2OL-s9-zi1"/>
                                             <constraint firstAttribute="height" constant="5" id="gGT-2Z-iAP"/>
@@ -1452,7 +1452,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFk-bf-NPZ">
-                                <rect key="frame" x="40" y="353" width="295" height="47"/>
+                                <rect key="frame" x="40" y="352.5" width="295" height="47"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64z-Lb-DF7">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
@@ -1473,7 +1473,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="GaC-uL-1JY">
-                                        <rect key="frame" x="270" y="20" width="10" height="5"/>
+                                        <rect key="frame" x="270" y="21" width="10" height="5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="Fds-Fd-xCq"/>
                                             <constraint firstAttribute="height" constant="5" id="TFn-Bb-lZk"/>
@@ -1504,10 +1504,10 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfJ-2H-cl6">
-                                <rect key="frame" x="40" y="410" width="295" height="47"/>
+                                <rect key="frame" x="40" y="409.5" width="295" height="47.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zk4-s6-veA">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="47.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Start Time - Now">
@@ -1622,7 +1622,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9db-4g-gk6">
-                                <rect key="frame" x="40" y="343" width="295" height="274"/>
+                                <rect key="frame" x="40" y="342.5" width="295" height="274.5"/>
                                 <color key="backgroundColor" red="0.2084195613861084" green="0.25428217649459839" blue="0.35780471563339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="dropDownCell" textLabel="79O-zo-EAe" style="IBUITableViewCellStyleDefault" id="axL-mr-sRZ">
@@ -1916,7 +1916,7 @@ Check your messages on Bungie.net for a verification link from Crossroads.</stri
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A7E40B7C-FD37-4C22-8903-8CB2D5709BD7" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4EC6D1B1-E718-4B34-B536-9D3BA3C6C76D" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-N9-uZC">
                                 <rect key="frame" x="16" y="113.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UY6-7w-5Ph"/>
@@ -2596,29 +2596,29 @@ you signed up with, please contact us at</string>
                                     <action selector="consoleButtonPressed" destination="Jh5-3n-are" eventType="touchUpInside" id="fJ0-Hh-UXo"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yf2-bb-Cbn" customClass="UIButton">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLd-B1-Gge">
                                 <rect key="frame" x="10" y="242" width="355" height="50"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5F-Yy-YkB" customClass="GradientView" customModule="Overwatch" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67x-ne-Mxu" customClass="GradientView" customModule="Overwatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.16247236728668213" green="0.74489504098892212" blue="0.99890655279159546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.1624723673" green="0.74489504100000004" blue="0.99890655279999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                <color key="value" red="0.0" green="0.5905725359916687" blue="0.87732917070388794" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.0" green="0.59057253600000004" blue="0.87732917070000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_icon_battlenet" translatesAutoresizingMaskIntoConstraints="NO" id="2Ro-mJ-cEN">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_icon_battlenet" translatesAutoresizingMaskIntoConstraints="NO" id="jx0-Nh-dVh">
                                         <rect key="frame" x="9" y="10" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="cuf-Th-2mx"/>
-                                            <constraint firstAttribute="width" constant="30" id="k9h-WU-Khy"/>
+                                            <constraint firstAttribute="width" constant="30" id="0EH-DQ-tra"/>
+                                            <constraint firstAttribute="height" constant="30" id="xjU-g6-tIx"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in with Battle.net" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDC-3Y-gKx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in with Battle.net" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hom-gT-Ljj">
                                         <rect key="frame" x="96" y="15" width="162.5" height="19.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2626,16 +2626,17 @@ you signed up with, please contact us at</string>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="2Ro-mJ-cEN" firstAttribute="centerY" secondItem="Yf2-bb-Cbn" secondAttribute="centerY" id="7On-HJ-fmj"/>
-                                    <constraint firstAttribute="height" constant="50" id="Aiw-Kg-zy4"/>
-                                    <constraint firstAttribute="bottom" secondItem="V5F-Yy-YkB" secondAttribute="bottom" id="OsK-Md-dsE"/>
-                                    <constraint firstItem="V5F-Yy-YkB" firstAttribute="top" secondItem="Yf2-bb-Cbn" secondAttribute="top" id="UIG-XM-LZd"/>
-                                    <constraint firstItem="XDC-3Y-gKx" firstAttribute="centerY" secondItem="Yf2-bb-Cbn" secondAttribute="centerY" id="YW7-XG-h4A"/>
-                                    <constraint firstItem="XDC-3Y-gKx" firstAttribute="centerX" secondItem="Yf2-bb-Cbn" secondAttribute="centerX" id="laO-Yd-aVe"/>
-                                    <constraint firstItem="2Ro-mJ-cEN" firstAttribute="leading" secondItem="Yf2-bb-Cbn" secondAttribute="leading" constant="9" id="lu6-DI-4Nv"/>
-                                    <constraint firstItem="V5F-Yy-YkB" firstAttribute="leading" secondItem="Yf2-bb-Cbn" secondAttribute="leading" id="qUX-9U-ju5"/>
-                                    <constraint firstAttribute="trailing" secondItem="V5F-Yy-YkB" secondAttribute="trailing" id="ud8-tq-Jeb"/>
+                                    <constraint firstItem="67x-ne-Mxu" firstAttribute="top" secondItem="gLd-B1-Gge" secondAttribute="top" id="2Se-Xm-fGM"/>
+                                    <constraint firstAttribute="bottom" secondItem="67x-ne-Mxu" secondAttribute="bottom" id="3hL-Vx-6IZ"/>
+                                    <constraint firstItem="67x-ne-Mxu" firstAttribute="leading" secondItem="gLd-B1-Gge" secondAttribute="leading" id="PO3-gk-Cf4"/>
+                                    <constraint firstAttribute="trailing" secondItem="67x-ne-Mxu" secondAttribute="trailing" id="X1L-pU-77x"/>
+                                    <constraint firstItem="Hom-gT-Ljj" firstAttribute="centerY" secondItem="gLd-B1-Gge" secondAttribute="centerY" id="iqp-c9-Goa"/>
+                                    <constraint firstItem="jx0-Nh-dVh" firstAttribute="leading" secondItem="gLd-B1-Gge" secondAttribute="leading" constant="9" id="mlB-Rx-YDI"/>
+                                    <constraint firstItem="jx0-Nh-dVh" firstAttribute="centerY" secondItem="gLd-B1-Gge" secondAttribute="centerY" id="ndT-gG-Rw7"/>
+                                    <constraint firstItem="Hom-gT-Ljj" firstAttribute="centerX" secondItem="gLd-B1-Gge" secondAttribute="centerX" id="t5q-k2-BjB"/>
+                                    <constraint firstAttribute="height" constant="50" id="xBX-Ta-2fj"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2643,7 +2644,7 @@ you signed up with, please contact us at</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="battleNetButtonPressed" destination="Jh5-3n-are" eventType="touchUpInside" id="DwV-zY-fK4"/>
+                                    <outletCollection property="gestureRecognizers" destination="j2m-gh-COH" appends="YES" id="6Y6-1V-OsG"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Your gamertag is case-sensitive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9j-9S-8p0">
@@ -2735,7 +2736,6 @@ you signed up with, please contact us at</string>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="raP-Hl-zvQ" secondAttribute="trailing" id="4J5-4J-xmO"/>
-                            <constraint firstItem="U9j-9S-8p0" firstAttribute="top" secondItem="Yf2-bb-Cbn" secondAttribute="bottom" constant="4" id="52U-lg-ze6"/>
                             <constraint firstItem="sVM-8E-OwX" firstAttribute="top" secondItem="oTm-aQ-QAi" secondAttribute="top" id="6NR-0D-zNa"/>
                             <constraint firstItem="bpe-Ae-LOh" firstAttribute="trailing" secondItem="Zq4-iV-f9t" secondAttribute="trailing" id="6PO-aR-Ltb"/>
                             <constraint firstItem="wYn-BO-g5I" firstAttribute="top" secondItem="Zq4-iV-f9t" secondAttribute="bottom" constant="10" id="8m4-Rf-A5n"/>
@@ -2744,10 +2744,12 @@ you signed up with, please contact us at</string>
                             <constraint firstAttribute="trailing" secondItem="sVM-8E-OwX" secondAttribute="trailing" id="AgC-4y-4ZW"/>
                             <constraint firstAttribute="trailing" secondItem="wYn-BO-g5I" secondAttribute="trailing" constant="10" id="BBR-ha-DsD"/>
                             <constraint firstItem="Gwc-Vz-Afz" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" id="CYK-R4-bAS"/>
-                            <constraint firstItem="Yf2-bb-Cbn" firstAttribute="top" secondItem="bpe-Ae-LOh" secondAttribute="bottom" constant="10" id="DDt-PR-UEY"/>
+                            <constraint firstAttribute="trailing" secondItem="gLd-B1-Gge" secondAttribute="trailing" constant="10" id="FGw-vB-gPv"/>
                             <constraint firstItem="IQy-74-c4l" firstAttribute="top" secondItem="oTm-aQ-QAi" secondAttribute="top" id="JRi-PN-vgE"/>
                             <constraint firstItem="WFi-t4-Zhv" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" constant="10" id="LKD-pH-hJo"/>
+                            <constraint firstItem="gLd-B1-Gge" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" constant="10" id="O0x-rj-4pM"/>
                             <constraint firstItem="raP-Hl-zvQ" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" id="OYb-6o-I7A"/>
+                            <constraint firstItem="U9j-9S-8p0" firstAttribute="top" secondItem="gLd-B1-Gge" secondAttribute="bottom" constant="4" id="Ohk-Wz-0bZ"/>
                             <constraint firstItem="Ffr-Cs-0lc" firstAttribute="top" secondItem="oTm-aQ-QAi" secondAttribute="top" constant="20" id="Oy3-n3-ELj"/>
                             <constraint firstAttribute="trailing" secondItem="Gwc-Vz-Afz" secondAttribute="trailing" id="P4b-Wo-Xfu"/>
                             <constraint firstAttribute="trailing" secondItem="X23-e6-0Cd" secondAttribute="trailing" id="PEg-xc-ZuL"/>
@@ -2758,15 +2760,14 @@ you signed up with, please contact us at</string>
                             <constraint firstItem="X23-e6-0Cd" firstAttribute="top" secondItem="WFi-t4-Zhv" secondAttribute="bottom" constant="8" id="cdn-Pz-HJb"/>
                             <constraint firstAttribute="trailing" secondItem="U9j-9S-8p0" secondAttribute="trailing" constant="10" id="coM-pr-Jee"/>
                             <constraint firstItem="wYn-BO-g5I" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" constant="10" id="d0q-Xo-f7T"/>
+                            <constraint firstItem="gLd-B1-Gge" firstAttribute="top" secondItem="bpe-Ae-LOh" secondAttribute="bottom" constant="10" id="dkG-bS-gNb"/>
                             <constraint firstItem="sVM-8E-OwX" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" id="fFC-Ew-Ibz"/>
                             <constraint firstItem="U9j-9S-8p0" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" constant="10" id="hpa-0Q-DJq"/>
                             <constraint firstItem="B62-A6-GQY" firstAttribute="top" secondItem="sVM-8E-OwX" secondAttribute="bottom" id="ibj-xw-T6m"/>
                             <constraint firstItem="Zq4-iV-f9t" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" constant="10" id="kDN-Fv-LE6"/>
-                            <constraint firstItem="Yf2-bb-Cbn" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" constant="10" id="p6u-8P-cxU"/>
                             <constraint firstItem="B62-A6-GQY" firstAttribute="top" secondItem="X23-e6-0Cd" secondAttribute="bottom" id="pqO-Dm-nP2"/>
                             <constraint firstItem="wYn-BO-g5I" firstAttribute="height" secondItem="oTm-aQ-QAi" secondAttribute="height" multiplier="66:667" id="rpT-Ce-2lv"/>
                             <constraint firstItem="Gwc-Vz-Afz" firstAttribute="bottom" secondItem="IQy-74-c4l" secondAttribute="bottom" constant="-36" id="s2R-sQ-9WS"/>
-                            <constraint firstAttribute="trailing" secondItem="Yf2-bb-Cbn" secondAttribute="trailing" constant="10" id="tsU-9i-Q0K"/>
                             <constraint firstAttribute="trailing" secondItem="IQy-74-c4l" secondAttribute="trailing" id="vTl-PV-bMz"/>
                             <constraint firstItem="Ffr-Cs-0lc" firstAttribute="leading" secondItem="oTm-aQ-QAi" secondAttribute="leading" id="whT-FP-eZT"/>
                             <constraint firstItem="Zq4-iV-f9t" firstAttribute="top" secondItem="raP-Hl-zvQ" secondAttribute="bottom" constant="21" id="yEs-p6-ISE"/>
@@ -2779,7 +2780,7 @@ you signed up with, please contact us at</string>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="BottomNextButtonConstraint" destination="pqO-Dm-nP2" id="hDD-aK-Igj"/>
-                        <outlet property="battleNetButton" destination="Yf2-bb-Cbn" id="N1w-Zo-dcl"/>
+                        <outlet property="battleNetButton" destination="gLd-B1-Gge" id="vq5-GG-mzN"/>
                         <outlet property="battleTagTextField" destination="BLu-ij-hAK" id="lck-4P-Qsr"/>
                         <outlet property="battleTagView" destination="wYn-BO-g5I" id="fNz-q4-mPf"/>
                         <outlet property="bottomAdviceLabel" destination="WFi-t4-Zhv" id="eEW-qd-njY"/>
@@ -2796,6 +2797,11 @@ you signed up with, please contact us at</string>
                     <connections>
                         <action selector="dismissKeyboardWithSender:" destination="Jh5-3n-are" id="fgs-UQ-Wct"/>
                         <outlet property="delegate" destination="Jh5-3n-are" id="ypQ-VJ-TS4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="j2m-gh-COH">
+                    <connections>
+                        <action selector="battleNetButtonPressed" destination="Jh5-3n-are" id="Niv-Ku-rEM"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -3701,7 +3707,7 @@ you signed up with, please contact us at</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you! Your message has been sent to support@crossroadsapp.co and we will email you if we need additional details." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxb-iY-Tdr">
-                                <rect key="frame" x="33" y="167" width="309" height="53"/>
+                                <rect key="frame" x="33" y="167" width="309" height="52.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -4055,7 +4061,7 @@ you signed up with, please contact us at</string>
         </scene>
     </scenes>
     <resources>
-        <image name="A7E40B7C-FD37-4C22-8903-8CB2D5709BD7" width="40" height="29">
+        <image name="4EC6D1B1-E718-4B34-B536-9D3BA3C6C76D" width="40" height="29">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

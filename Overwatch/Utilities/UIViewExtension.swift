@@ -125,6 +125,23 @@ extension UIView {
             self.clipsToBounds = true
         }
     }
+    
+    func createImageFromView() -> UIImage {
+        UIGraphicsBeginImageContext(self.bounds.size)
+        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let screenShotimage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return screenShotimage
+    }
+    
+    func createImageFromViewInHD() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0.0);
+        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let screenShotimage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return screenShotimage
+    }
+
 }
 
 

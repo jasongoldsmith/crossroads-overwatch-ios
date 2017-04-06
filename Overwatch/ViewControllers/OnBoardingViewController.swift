@@ -57,6 +57,7 @@ class OnBoardingViewController: BaseViewController, iCarouselDataSource, iCarous
     @IBAction func letsRollButtonPressed() {
         if let _ = navigationController {
             dismissViewController(isAnimated: true, dismissed: { (didDismiss) in
+                CompleteOnBoardingRequest.updateCompleteOnBoarding()
             })
         } else {
             dismiss(animated: true, completion: nil)
@@ -87,9 +88,15 @@ class OnBoardingViewController: BaseViewController, iCarouselDataSource, iCarous
             } else {
                 itemView.imageWidth.constant = carouselViewFrame.size.width*0.5
             }
-            if index == numberOfElements-1 {
-                itemView.nextButton.isHidden = true
+            if DeviceType.IS_IPHONE_5 {
+                itemView.whiteViewBottom.constant = 22
+                itemView.leftSpacing.constant = 41
             }
+            if DeviceType.IS_IPHONE_6P {
+                itemView.whiteViewBottom.constant = 28
+                itemView.leftSpacing.constant = 53
+            }
+            itemView.rightSpacing.constant = itemView.leftSpacing.constant
             itemView.delegate = self
             itemView.layoutIfNeeded()
             return itemView
@@ -170,6 +177,8 @@ class OnBoardingViewController: BaseViewController, iCarouselDataSource, iCarous
     func showNext() {
         if onBoardingCarousel.currentItemIndex < numberOfElements-1 {
             onBoardingCarousel.scrollToItem(at: onBoardingCarousel.currentItemIndex+1, animated: true)
+        } else {
+            letsRollButtonPressed()
         }
     }
 }

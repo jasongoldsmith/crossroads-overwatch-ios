@@ -15,7 +15,7 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
     @IBOutlet weak var battleTagView: UIView!
     @IBOutlet weak var consolesTable: UITableView!
     @IBOutlet weak var battleTagTextField: UITextField!
-    @IBOutlet weak var battleNetButton: UIButton!
+    @IBOutlet weak var battleNetButton: UIView!
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var currentConsoleLabel: UILabel!
     @IBOutlet weak var bottomAdviceLabel: UILabel!
@@ -90,6 +90,11 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
                 tableHeightConstraint.constant = 0
             }
             UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                if self.tableHeightConstraint.constant == 0 {
+                    self.consolesTable.isHidden = true
+                } else {
+                    self.consolesTable.isHidden = false
+                }
                 self.view.layoutIfNeeded()
             })
         }
@@ -143,12 +148,16 @@ class ChoosePlatformViewController: LoginBaseViewController, UITableViewDataSour
             bottomAdviceLabel.isHidden = true
             nextButton.isHidden = true
             view.endEditing(true)
+            view.bringSubview(toFront: battleNetButton)
+            battleNetButton.isUserInteractionEnabled = true
+            view.isUserInteractionEnabled = true
         } else {
             battleTagView.isHidden = false
             topAdviceLabel.isHidden = true
             battleNetButton.isHidden = true
             bottomAdviceLabel.isHidden = false
             nextButton.isHidden = false
+            view.sendSubview(toBack: battleNetButton)
             battleTagTextField.becomeFirstResponder()
         }
         bottomAdviceLabel.isHidden = !topAdviceLabel.isHidden

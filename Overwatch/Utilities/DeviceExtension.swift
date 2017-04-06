@@ -50,4 +50,12 @@ public extension UIDevice {
         }
     }
     
+    var language:String {
+        if let langCode = Locale.current.languageCode {
+            return langCode
+        } else {
+            return "en"
+        }
+    }
+    
 }

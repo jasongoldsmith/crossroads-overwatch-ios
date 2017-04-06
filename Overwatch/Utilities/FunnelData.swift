@@ -37,6 +37,7 @@ class FunnelData {
         devicePropertiesDictionary["$screen_width"]      = Int(size.width) as AnyObject?
         devicePropertiesDictionary["$ios_device_model"]  = UIDevice.current.modelName as AnyObject?
         devicePropertiesDictionary["$ios_version"]       = UIDevice.current.systemVersion as AnyObject?
+        devicePropertiesDictionary["lang_code"]          = UIDevice.current.language as AnyObject?
         devicePropertiesDictionary["$ios_lib_version"]   = self.libVersion() as AnyObject?
         devicePropertiesDictionary["x-fbasesdk"] = fireBaseSDKVersion as AnyObject?
         devicePropertiesDictionary["x-branchsdk"] = branchSDKVersion as AnyObject?

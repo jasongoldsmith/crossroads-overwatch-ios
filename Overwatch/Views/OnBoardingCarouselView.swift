@@ -19,15 +19,18 @@ class OnBoardingCarouselView: UIView {
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var imageWidth: NSLayoutConstraint!
+    @IBOutlet weak var whiteViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var rightSpacing: NSLayoutConstraint!
+    @IBOutlet weak var leftSpacing: NSLayoutConstraint!
     @IBOutlet weak var nextButton: UIButton!
     
     //Delegate
     var delegate: OnBoardingCarouselViewDelegate?
     
     func setViewWith(_ data: OnBoardingCard) {
-        backgroundCardImage.image = data.backgroundImage?.image
-        mainImage.image = data.heroImage?.image
-        logoImageView.image = data.textImage?.image
+        backgroundCardImage.image = data.backgroundImage.image
+        mainImage.image = data.heroImage.image
+        logoImageView.image = data.textImage.image
     }
     
     @IBAction func nextButtonPressed() {

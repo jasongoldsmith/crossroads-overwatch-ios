@@ -11,6 +11,7 @@
 		33A4EBEF1E3FE97700E986C0 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A4EBEE1E3FE97700E986C0 /* ChangePasswordViewController.swift */; };
 		33BE5A2E1E3FEC4400BCF486 /* UpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE5A2D1E3FEC4400BCF486 /* UpdateUser.swift */; };
 		C7170F071E53D96B007F0CDD /* DeepLinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7170F061E53D96B007F0CDD /* DeepLinkObject.swift */; };
+		C71DE9561E8336E900B58029 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C77A600A1E39885A000D5E94 /* GoogleService-Info.plist */; };
 		C71E5AAF1E524404006B991C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71E5AAE1E524404006B991C /* ColorExtension.swift */; };
 		C750BEFC1E4E8E5200A9C3A1 /* HelmetUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C750BEFB1E4E8E5200A9C3A1 /* HelmetUpdateRequest.swift */; };
 		C75325D11E36E99F00EB719D /* LeaveEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75325D01E36E99F00EB719D /* LeaveEventRequest.swift */; };
@@ -22,7 +23,6 @@
 		C7562E6E1E4017FC0096DE44 /* OnBoardingErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E6C1E4017FC0096DE44 /* OnBoardingErrorViewController.swift */; };
 		C7562E761E401F390096DE44 /* ErrorNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7562E751E401F390096DE44 /* ErrorNotificationView.xib */; };
 		C7562E781E401F600096DE44 /* ErrorNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7562E771E401F600096DE44 /* ErrorNotificationView.swift */; };
-		C7587AA61E6A1CB100909BB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7565BDC1E3C31AB00168E72 /* GoogleService-Info.plist */; };
 		C75FDE131E30307F00339634 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FDE121E30307F00339634 /* GradientView.swift */; };
 		C75FDE151E30309200339634 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75FDE141E30309200339634 /* QuartzCore.framework */; };
 		C763054C1E4BB69300466A9D /* GetConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763054B1E4BB69300466A9D /* GetConfigRequest.swift */; };
@@ -66,6 +66,7 @@
 		C77A60151E399D27000D5E94 /* SendPushMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A60141E399D27000D5E94 /* SendPushMessage.swift */; };
 		C77A60171E399F95000D5E94 /* CancelEventInvitationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A60161E399F95000D5E94 /* CancelEventInvitationRequest.swift */; };
 		C77A60191E39A19A000D5E94 /* AcceptEventInvitationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A60181E39A19A000D5E94 /* AcceptEventInvitationRequest.swift */; };
+		C77B81CA1E7B565F00700A74 /* CompleteOnBoardingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77B81C91E7B565F00700A74 /* CompleteOnBoardingRequest.swift */; };
 		C781D6691E3040D1001FA487 /* ChooseGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C781D6681E3040D1001FA487 /* ChooseGroupViewController.swift */; };
 		C781D66B1E3041C5001FA487 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C781D66A1E3041C5001FA487 /* GroupCell.swift */; };
 		C781D66D1E304379001FA487 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C781D66C1E304379001FA487 /* GroupCell.xib */; };
@@ -225,6 +226,7 @@
 		C77A60141E399D27000D5E94 /* SendPushMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SendPushMessage.swift; path = Networking/SendPushMessage.swift; sourceTree = "<group>"; };
 		C77A60161E399F95000D5E94 /* CancelEventInvitationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CancelEventInvitationRequest.swift; path = Networking/CancelEventInvitationRequest.swift; sourceTree = "<group>"; };
 		C77A60181E39A19A000D5E94 /* AcceptEventInvitationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcceptEventInvitationRequest.swift; path = Networking/AcceptEventInvitationRequest.swift; sourceTree = "<group>"; };
+		C77B81C91E7B565F00700A74 /* CompleteOnBoardingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompleteOnBoardingRequest.swift; path = Networking/CompleteOnBoardingRequest.swift; sourceTree = "<group>"; };
 		C781D6681E3040D1001FA487 /* ChooseGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseGroupViewController.swift; path = ViewControllers/ChooseGroupViewController.swift; sourceTree = "<group>"; };
 		C781D66A1E3041C5001FA487 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupCell.swift; path = Views/GroupCell.swift; sourceTree = "<group>"; };
 		C781D66C1E304379001FA487 /* GroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupCell.xib; path = Views/GroupCell.xib; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				C778767C1E4C04AE0081483A /* ChangePasswordRequest.swift */,
 				C778767E1E4C050A0081483A /* ChangeEmailRequest.swift */,
 				C750BEFB1E4E8E5200A9C3A1 /* HelmetUpdateRequest.swift */,
+				C77B81C91E7B565F00700A74 /* CompleteOnBoardingRequest.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -728,9 +731,9 @@
 				C7562E6A1E4017C60096DE44 /* WebView.xib in Resources */,
 				C793CD761E2D5EC80012FEEE /* LaunchScreen.storyboard in Resources */,
 				C793CD731E2D5EC80012FEEE /* Assets.xcassets in Resources */,
-				C7587AA61E6A1CB100909BB0 /* GoogleService-Info.plist in Resources */,
 				C7B6BBFF1E30010A00D6BFF3 /* PushNotificationView.xib in Resources */,
 				C7B6BC001E30010A00D6BFF3 /* VerificationPromptView.xib in Resources */,
+				C71DE9561E8336E900B58029 /* GoogleService-Info.plist in Resources */,
 				C7B6BBEE1E2EFD0A00D6BFF3 /* ErrorView.xib in Resources */,
 				C793CD711E2D5EC80012FEEE /* Main.storyboard in Resources */,
 				C7B6BC191E300AD800D6BFF3 /* EventUpcomingNoCheckPointCell.xib in Resources */,
@@ -846,6 +849,7 @@
 				C7BFCE6F1E329D840081C2B0 /* KSUtils.swift in Sources */,
 				C7D81A6F1E70D0AA00BD22F7 /* OnBoardingCard.swift in Sources */,
 				C7AD52C71E3ABFFA001F0617 /* AddConsoleRequest.swift in Sources */,
+				C77B81CA1E7B565F00700A74 /* CompleteOnBoardingRequest.swift in Sources */,
 				C79480A81E43D112002CC601 /* LogOutRequest.swift in Sources */,
 				C794809A1E43B9E2002CC601 /* ForgotPasswordRequest.swift in Sources */,
 				C77A60131E399089000D5E94 /* RatingAppModel.swift in Sources */,

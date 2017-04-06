@@ -83,6 +83,18 @@ extension UIColor {
     class var darkGreyBlue: UIColor {
         return UIColor(red: 53.0 / 255.0, green: 65.0 / 255.0, blue: 91.0 / 255.0, alpha: 1.0)
     }
+
+    class var niceGreen: UIColor {
+        return UIColor(red: 35.0 / 255.0, green: 212.0 / 255.0, blue: 182.0 / 255.0, alpha: 1.0)
+    }
+
+    class var niceBlue: UIColor {
+        return UIColor(red: 33.0 / 255.0, green: 195.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
+    }
+
+    class var niceOrange: UIColor {
+        return UIColor(red: 248.0 / 255.0, green: 147.0 / 255.0, blue: 38.0, alpha: 1.0)
+    }
 }
 
 // Sample text styles

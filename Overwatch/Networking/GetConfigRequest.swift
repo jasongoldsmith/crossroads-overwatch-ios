@@ -44,6 +44,8 @@ class GetConfigRequest: NSObject {
             
             if let onBoardingScreens = swiftyJsonVar?["onBoardingScreens"] {
                 self.parseAndSaveOnBoardingScreens(onBoardingScreens)
+            } else {
+                self.addDefaultCards()
             }
             completion(true)
         }
@@ -69,6 +71,27 @@ class GetConfigRequest: NSObject {
             }
             optionalCards.sort { $0.order < $1.order}
             ApplicationManager.sharedInstance.onBoardingCards.append(contentsOf: optionalCards)
+        }
+    }
+
+    private func addDefaultCards() {
+        for i in 1...4 {
+            let newCard = OnBoardingCard()
+            let fakeview = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
+            var color:UIColor!
+            switch i {
+            case 2:
+                color = UIColor.niceBlue
+            case 3:
+                color = UIColor.niceGreen
+            default:
+                color = UIColor.tangerine
+            }
+            fakeview.backgroundColor = color
+            newCard.backgroundImage.image = fakeview.createImageFromView()
+            newCard.heroImage.image = UIImage(named:"imgHero0\(i)")
+            newCard.textImage.image = UIImage(named:"imgTextCard0\(i)")
+            ApplicationManager.sharedInstance.onBoardingCards.append(newCard)
         }
     }
 }

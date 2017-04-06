@@ -131,6 +131,7 @@ struct K {
         static let TR_APP_REVIEW          =  "/api/v1/a/user/updateReviewPromptCardStatus"
         static let TR_CHANGE_PASSWORD     =  "/api/v1/a/user/updatePassword"
         static let TR_CHANGE_EMAIL        =  "/api/v1/a/user/updateEmail"
+        static let TR_ONBOARDING_COMPLETE =  "/api/v1/a/user/completeOnBoarding"
     }
     
     struct StoryBoard {
